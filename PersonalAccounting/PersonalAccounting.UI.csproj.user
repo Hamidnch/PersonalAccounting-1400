@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectView>ProjectFiles</ProjectView>
+    <PublishUrlHistory>C:\Users\Chegini.h\Desktop\Test\|C:\Users\Chegini.h\Desktop\PASetup\</PublishUrlHistory>
+    <InstallUrlHistory>\\127.0.0.1\PA\</InstallUrlHistory>
+    <SupportUrlHistory>\\127.0.0.1\PA</SupportUrlHistory>
+    <UpdateUrlHistory />
+    <BootstrapperUrlHistory>C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1A\Bootstrapper\Packages|C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1A\Bootstrapper|\\server2\واحد انفورماتیک\Private Info\Personal Acounting|\\server2\واحد انفورماتیک\Private Info\Personal Acounting\bin\Debug|C:\Users\Chegini.h\Desktop\PA</BootstrapperUrlHistory>
+    <ErrorReportUrlHistory />
+    <FallbackCulture>en-US</FallbackCulture>
+    <VerifyUploadedFiles>false</VerifyUploadedFiles>
+  </PropertyGroup>
+  <PropertyGroup>
+    <EnableSecurityDebugging>false</EnableSecurityDebugging>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EA4ACBA4-4245-439C-9214-DF5D2D43C28E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PersonalAccounting.Domain</RootNamespace>
+    <AssemblyName>PersonalAccounting.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entity\Article.cs" />
+    <Compile Include="Entity\ArticleGroup.cs" />
+    <Compile Include="Entity\Bank.cs" />
+    <Compile Include="Entity\BankAccount.cs" />
+    <Compile Include="Entity\BaseEntity.cs" />
+    <Compile Include="Entity\Cheque.cs" />
+    <Compile Include="Entity\DebtDemand.cs" />
+    <Compile Include="Entity\DiaryNote.cs" />
+    <Compile Include="Entity\ExpenseDocument.cs" />
+    <Compile Include="Entity\FormEntity.cs" />
+    <Compile Include="Entity\Fund.cs" />
+    <Compile Include="Entity\Commodity.cs" />
+    <Compile Include="Entity\IncomeType.cs" />
+    <Compile Include="Entity\CommodityType.cs" />
+    <Compile Include="Entity\Loan.cs" />
+    <Compile Include="Entity\Expense.cs" />
+    <Compile Include="Entity\Income.cs" />
+    <Compile Include="Entity\Log.cs" />
+    <Compile Include="Entity\LogLevel.cs" />
+    <Compile Include="Entity\MeasurementUnit.cs" />
+    <Compile Include="Entity\MentalCondition.cs" />
+    <Compile Include="Entity\Permission.cs" />
+    <Compile Include="Entity\Person.cs" />
+    <Compile Include="Entity\Role.cs" />
+    <Compile Include="Entity\TransferMoney.cs" />
+    <Compile Include="Entity\User.cs" />
+    <Compile Include="Entity\WeatherCondition.cs" />
+    <Compile Include="Enums\Enums.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\ViewModelLoadAllBankAccount.cs" />
+    <Compile Include="ViewModel\ViewModelLoadAllCommodity.cs" />
+    <Compile Include="ViewModel\ViewModelLoadAllCommodityType.cs" />
+    <Compile Include="ViewModel\ViewModelLoadAllMentalCondition.cs" />
+    <Compile Include="ViewModel\ViewModelLoadAllTransferMoney.cs" />
+    <Compile Include="ViewModel\ViewModelPermissionsForFormEntityByUserRoles.cs" />
+    <Compile Include="ViewModel\ViewModelSimpleLoadFund.cs" />
+    <Compile Include="ViewModel\ViewModelSimpleLoadRole.cs" />
+    <Compile Include="ViewModel\ViewModelSimpleLoadPerson.cs" />
+    <Compile Include="ViewModel\ViewModelSimpleLoadMentalCondition.cs" />
+    <Compile Include="ViewModel\ViewModelSimpleLoadWeatherCondition.cs" />
+    <Compile Include="ViewModel\ViewModelSimpleLoadBankAccount.cs" />
+    <Compile Include="ViewModel\ViewModelLoadAllExpenseDocument.cs" />
+    <Compile Include="ViewModel\ViewModelLoadAllExpense.cs" />
+    <Compile Include="ViewModel\ViewModelLoadAllIncome.cs" />
+    <Compile Include="ViewModel\ViewModelSimpleLoadMeasurementUnit.cs" />
+    <Compile Include="ViewModel\ViewModelLoadAllArticleGroup.cs" />
+    <Compile Include="ViewModel\ViewModelLoadAllArticle.cs" />
+    <Compile Include="ViewModel\ViewModelLoadAllBank.cs" />
+    <Compile Include="ViewModel\ViewModelLoadAllFund.cs" />
+    <Compile Include="ViewModel\ViewModelLoadAllIncomeType.cs" />
+    <Compile Include="ViewModel\ViewModelLoadAllMeasurementUnit.cs" />
+    <Compile Include="ViewModel\ViewModelLoadAllPerson.cs" />
+    <Compile Include="ViewModel\ViewModelLoadAllRole.cs" />
+    <Compile Include="ViewModel\ViewModelLoadAllUser.cs" />
+    <Compile Include="ViewModel\ViewModelSimpleLoadArticleGroup.cs" />
+    <Compile Include="ViewModel\ViewModelSimpleLoadArticle.cs" />
+    <Compile Include="ViewModel\ViewModelSimpleLoadUser.cs" />
+    <Compile Include="ViewModel\ViewModelLoadAllWeatherCondition.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PersonalAccounting.CommonLibrary\PersonalAccounting.CommonLibrary.csproj">
+      <Project>{1c8d363f-30d2-4fad-88d4-5d8ec52b42c7}</Project>
+      <Name>PersonalAccounting.CommonLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

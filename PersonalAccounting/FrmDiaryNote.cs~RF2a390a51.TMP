@@ -1,0 +1,937 @@
+﻿using MessageBoxHamidNCH;
+using PersonalAccounting.BLL.IService;
+using PersonalAccounting.CommonLibrary.Helper;
+using PersonalAccounting.CommonLibrary.Properties;
+using PersonalAccounting.Domain.Entity;
+using PersonalAccounting.UI.Helper;
+using PersonalAccounting.UI.Infrastructure;
+using System;
+using System.ComponentModel;
+using System.Drawing;
+using System.Globalization;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Telerik.WinControls.UI;
+
+namespace PersonalAccounting.UI
+{
+    public partial class FrmDiaryNote : BaseForm
+    {
+        public static FrmDiaryNote AFrmDiaryNote = null;
+        private readonly IDiaryNoteService _diaryNoteService;
+        private BackgroundWorker _backgroundWorker;
+        private PictureBox _pictureBox;
+        private RadDateTimePicker _radDateTimePicker = null;
+
+        //private delegate void SafeCallDelegate(string text);
+
+        //public FrmLoading LoadingForm;
+
+        private string _note = string.Empty;
+        private bool _success = false;
+        private string _selectedDate = string.Empty;
+
+        private int _indent = 10;
+        public static FrmDiaryNote Instance()
+        {
+            return AFrmDiaryNote ?? (AFrmDiaryNote = IocConfig.Container.GetInstance<FrmDiaryNote>());
+        }
+
+        public FrmDiaryNote(IDiaryNoteService diaryNoteService)
+        {
+            _diaryNoteService = diaryNoteService;
+            InitializeComponent();
+            //numberLabel.Font = new Font(richTextBox1.Font.FontFamily, richTextBox1.Font.Size + 1.019f);
+            //numberLabel.Font = new Font(rtb_Note.Font.FontFamily, rtb_Note.Font.Size);
+        }
+
+        private void rtb_Note_KeyUp(object sender, KeyEventArgs e)
+        {
+            //if (e.KeyCode == Keys.Return)
+            //{
+            //    richTextBox1.AppendText("_______________");
+            //    richTextBox1.AppendText(Environment.NewLine);
+            //}
+        }
+
+        private void rtb_Note_TextChanged(object sender, EventArgs e)
+        {
+            UpdateNumberLabel();
+            GetLineAndColumn(rtb_Note);
+
+            btn_Undo.Enabled = rtb_Note.CanUndo;
+            btn_Redo.Enabled = rtb_Note.CanRedo;
+            btn_SelectAll.Enabled = rtb_Note.CanSelect;
+        }
+
+        private void CreateDynamicRadDateTime(Control parent)
+        {
+            _radDateTimePicker = new RadDateTimePicker
+            {
+                Anchor = ((AnchorStyles)((AnchorStyles.Top |
+                                                                AnchorStyles.Right))),
+                Font = new Font("Tornado Tahoma", 9F, FontStyle.Regular,
+                    GraphicsUnit.Point, ((byte)(178))),
+                Format = DateTimePickerFormat.Short,
+                Location = new Point(747, 27),
+                MinDate = new DateTime(622, 3, 22, 0, 0, 0, 0),
+                Name = "radDateTimePicker1",
+                RightToLeft = RightToLeft.Yes,
+                Size = new Size(108, 20),
+                TabIndex = 1,
+                TabStop = false,
+                Culture = new CultureInfo("fa-IR"),
+                Text = "1398/03/26",
+                Value = new DateTime(2019, 6, 16, 22, 27, 13, 236)
+            };
+
+
+            _radDateTimePicker.ValueChanged += _radDateTimePicker_ValueChanged;
+            parent.Controls.Add(_radDateTimePicker);
+        }
+
+        private void _radDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            //try
+            //{
+            //    _selectedDate = _radDateTimePicker.Text;
+            //    txt_diaryNoteDate.Text = _selectedDate;
+
+            //    if (!_backgroundWorker.IsBusy)
+            //    {
+            //        LoadingForm = new FrmLoading();
+            //        LoadingForm.ShowDialog();
+
+            //        _backgroundWorker.RunWorkerAsync();
+            //    }
+
+            //    //CommonHelper.IndicatorLoading(this, _pictureBox, true);
+
+            //    //InitializeToday(txt_diaryNoteDate.Text);
+            //    //rtb_Note.Rtf = ReturnDiaryNotesByDate(txt_diaryNoteDate.Text);
+            //}
+            //catch
+            //{
+            //    return;
+            //}
+        }
+
+        private void GetLineAndColumn(RichTextBox richTextBox)
+        {
+            var line = richTextBox.GetLineFromCharIndex(richTextBox.SelectionStart) + 1;
+            var charIndexOfLine = richTextBox.GetFirstCharIndexOfCurrentLine();
+            var charIndex = richTextBox.SelectionStart;
+            var column = Math.Abs(charIndexOfLine - charIndex) <= 0 ? 1 : Math.Abs(charIndexOfLine - charIndex);
+
+            lbl_line.Text = "سطر: " + line;
+            lbl_column.Text = "ستون: " + column;
+        }
+
+        private void rtb_Note_Click(object sender, EventArgs e)
+        {
+            GetLineAndColumn(rtb_Note);
+        }
+
+        private void rtb_Note_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            GetLineAndColumn(rtb_Note);
+        }
+
+
+        private void FrmDiaryNote_Load(object sender, EventArgs e)
+        {
+            //CreateDynamicRadDateTime(pnl_TopData);
+
+            _backgroundWorker = new BackgroundWorker();
+            _backgroundWorker.DoWork += BackgroundWorker_DoWork;
+            _backgroundWorker.RunWorkerCompleted += BackgroundWorker_RunWorkerCompleted;
+            _backgroundWorker.ProgressChanged += _backgroundWorker_ProgressChanged;
+            _backgroundWorker.WorkerReportsProgress = true;
+            _backgroundWorker.WorkerSupportsCancellation = true;
+
+            _pictureBox = new PictureBox()
+            {
+                Parent = this,
+                SizeMode = PictureBoxSizeMode.AutoSize,
+                BorderStyle = BorderStyle.FixedSingle,
+                Size = new Size(356, 19),
+                Location = new Point(20, 60),//new Point(pnl_Data.Width / 25, pnl_Data.Height / 20),
+                Image = Resources.Loading,
+                Visible = true
+            };
+
+
+            // Load system fonts
+            foreach (var family in FontFamily.Families)
+            {
+                tsc_FontName.Items.Add(family.Name);
+            }
+            tsc_FontName.SelectedItem = "Tahoma";
+
+            tsc_FontSize.SelectedItem = "10";
+
+            tst_ZoomFactor.Text = Convert.ToString(rtb_Note.ZoomFactor * 100, CultureInfo.InvariantCulture);
+            tsb_WordWrap.Checked = rtb_Note.WordWrap;
+
+
+            _selectedDate = PersianHelper.GetPersiaDateSimple(DateTime.Now);
+            txt_diaryNoteDate.Text = _selectedDate;
+            //_radDateTimePicker.Text = _selectedDate;
+
+            Txt_diaryNoteDate_TextChanged(sender, e);
+        }
+
+        private void _backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            if (!_backgroundWorker.CancellationPending)
+            {
+                //MessageBox.Show("Percentage: " + e.ProgressPercentage);
+                progressBar1.Value = e.ProgressPercentage;
+            }
+
+        }
+        //public delegate void InvokeDelegate();
+        //public void InvokeMethod()
+        //{
+        //    _pictureBox.Visible = true;
+        //    _pictureBox.BringToFront();
+        //    _pictureBox.Update();
+        //}
+
+        private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                //var worker = (BackgroundWorker)sender;
+
+                //int total = 3; //some number (this is your variable to change)!!
+
+                //for (int i = 0; i <= total; i++) //some number (total)
+                //{
+                //    //System.Threading.Thread.Sleep(100);
+                //    int percents = (i * 100) / total;
+                //    _backgroundWorker.ReportProgress(percents, i);
+                //    //2 arguments:
+                //    //1. procenteges (from 0 t0 100) - i do a calcumation 
+                //    //2. some current value!
+                //}
+                //_backgroundWorker.ReportProgress();
+                //var currentDate = PersianHelper.GetPersiaDateSimple(DateTime.Now);
+                //_note = ReturnDiaryNotesByDate(_selectedDate);
+
+                if (_backgroundWorker.CancellationPending)//checks for cancel request
+                {
+                    e.Cancel = true;
+                }
+
+                //var keepRunning = true;
+                //var n = 0;
+                //while (keepRunning)
+                //{
+                //    n++;
+                //    worker.ReportProgress(n);
+
+                //    keepRunning = false;
+                //}
+                //for (var i = 0; i < 100; ++i)
+                //{
+                //    worker.ReportProgress(i);
+
+                //    //System.Threading.Thread.Sleep(100);
+                //}
+
+                //this._pictureBox.Invoke(new Action(() => this._pictureBox.Image = Resources.Loading));
+
+                //_pictureBox.BeginInvoke(new InvokeDelegate(InvokeMethod));
+
+                CommonHelper.IndicatorLoading(this, _pictureBox, true);
+
+                e.Result = ReturnDiaryNotesByDate(_selectedDate).Result;
+
+
+
+                //SetText(_note);
+                _success = true;
+            }
+            catch (Exception exception)
+            {
+                e.Cancel = true;
+
+                _success = false;
+                Console.WriteLine(exception);
+                throw;
+            }
+        }
+
+        //public void SetLoading(PictureBox pictureBox)
+        //{
+        //    if (rtb_Note.InvokeRequired)
+        //    {
+        //        this.Invoke((MethodInvoker)delegate () { SetLoading(pictureBox); });
+        //        return;
+        //    }
+
+        //    pictureBox.Visible = false;
+        //}
+
+        //public void SetTextBox(string text)
+        //{
+        //    if (rtb_Note.InvokeRequired)
+        //    {
+        //        this.Invoke((MethodInvoker)delegate () { SetTextBox(text); });
+        //        return;
+        //    }
+        //    rtb_Note.Rtf = text;
+        //}
+
+        //private void WriteTextSafe(string text)
+        //{
+        //    if (rtb_Note.InvokeRequired)
+        //    {
+        //        var d = new SafeCallDelegate(WriteTextSafe);
+        //        Invoke(d, new object[] { text });
+        //    }
+        //    else
+        //    {
+        //        rtb_Note.Rtf = text;
+        //    }
+        //}
+
+        //private void SetText(string text)
+        //{
+        //    WriteTextSafe(text);
+        //}
+
+        private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (_success)
+            {
+                if (e.Cancelled)
+                {
+                    progressBar1.Invoke((Action)(() =>
+                    {
+                        progressBar1.MarqueeAnimationSpeed = 0;
+                        progressBar1.Style = ProgressBarStyle.Continuous;
+                    }));
+                    MessageBox.Show("عملیات لغو گردید...");
+                }
+                else
+                {
+
+                    InitializeToday(_selectedDate);
+                    //rtb_Note.Rtf = _note;
+                    rtb_Note.Rtf = e.Result.ToString();
+
+                    //if (LoadingForm != null && LoadingForm.Visible)
+                    //    LoadingForm.Dispose();
+                }
+
+            }
+
+            //Invoke(new MethodInvoker(() =>
+            //{
+            CommonHelper.IndicatorLoading(this, _pictureBox);
+            //}));
+
+            lbl_Loading.Visible = false;
+            rtb_Note.ReadOnly = false;
+            rtb_Note.BackColor = SystemColors.Window;
+            progressBar1.Value = 0;
+
+            _backgroundWorker.Dispose();
+        }
+
+        private void Btn_Save_Click(object sender, EventArgs e)
+        {
+            var dlg = new CustomDialogs(320, 200);
+            var currentDate = PersianHelper.GetGregorianDateSimple(txt_diaryNoteDate.Text);
+
+            if (_diaryNoteService.ExistAsync(currentDate).Result)
+            {
+                var diaryNote = _diaryNoteService.LoadByDateAsync(currentDate).Result;
+
+                diaryNote.Note = Utility.CompressString(rtb_Note.Rtf, Encoding.UTF8);
+
+                _diaryNoteService.UpdateAsync(diaryNote);
+                dlg.Invoke("پیام", "تغییرات بروزرسانی شد.", CustomDialogs.ImageType.itEdit,
+                    CustomDialogs.ButtonType.Ok, InitialHelper.BackColorCustom);
+            }
+            else
+            {
+                var diaryNote = new DiaryNote
+                {
+                    Date = currentDate,
+                    Note = Utility.CompressString(rtb_Note.Rtf, Encoding.UTF8)
+                };
+                _diaryNoteService.CreateAsync(diaryNote);
+                dlg.Invoke("پیام", "تغییرات ذخیره شد.", CustomDialogs.ImageType.itCheck2,
+                    CustomDialogs.ButtonType.Ok, InitialHelper.BackColorCustom);
+            }
+        }
+
+        private void Btn_IncDate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                txt_diaryNoteDate.Text =
+                    CommonHelper.IncDayOfDate(txt_diaryNoteDate.Text, 1, FormatDate.Fd4Year);
+                InitializeToday(txt_diaryNoteDate.Text);
+            }
+            catch (Exception ex)
+            {
+                var dlg = new CustomDialogs(320, 200);
+                dlg.Invoke("تاریخ درست وارد نشده است", ex.ExceptionToString(), CustomDialogs.ImageType.itError5,
+                    CustomDialogs.ButtonType.Ok, InitialHelper.BackColorCustom);
+            }
+
+            //rtb_Note.Rtf = ReturnDiaryNotesByDate(txt_diaryNoteDate.Text).Result;
+            Txt_diaryNoteDate_TextChanged(sender, e);
+        }
+
+        private void Btn_DecDate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                txt_diaryNoteDate.Text = CommonHelper.DecDayOfDate(txt_diaryNoteDate.Text, 1, FormatDate.Fd4Year);
+                InitializeToday(txt_diaryNoteDate.Text);
+            }
+            catch (Exception ex)
+            {
+                var dlg = new CustomDialogs(320, 200);
+                dlg.Invoke("تاریخ درست وارد نشده است", ex.ExceptionToString(), CustomDialogs.ImageType.itError5,
+                    CustomDialogs.ButtonType.Ok, InitialHelper.BackColorCustom);
+            }
+
+            //rtb_Note.Rtf = ReturnDiaryNotesByDate(txt_diaryNoteDate.Text).Result;
+            Txt_diaryNoteDate_TextChanged(sender, e);
+        }
+
+        //private void CallDataForDiaryNote()
+        //{
+        //    progressBar1.Visible = true;
+        //    progressBar1.Style = ProgressBarStyle.Marquee;
+        //    var thread = new System.Threading.Thread(LoadData);
+        //    thread.Start();
+        //}
+
+        //private void LoadData()
+        //{
+        //    // Load your Table...
+        //    _selectedDate = txt_diaryNoteDate.Text;
+        //    _note = ReturnDiaryNotesByDate(_selectedDate);
+        //    SetDataSource(_note);
+        //}
+
+        //internal delegate void SetDelegate(string text);
+        //private void SetDataSource(string text)
+        //{
+        //    // Invoke method if required:
+        //    if (this.InvokeRequired)
+        //    {
+        //        this.Invoke(new SetDelegate(SetDataSource), text);
+        //    }
+        //    else
+        //    {
+        //        rtb_Note.Rtf = text;
+        //        progressBar1.Visible = false;
+        //    }
+        //}
+
+        private void Txt_diaryNoteDate_TextChanged(object sender, EventArgs e)
+        {
+            //CallDataForDiaryNote();
+            try
+            {
+                _selectedDate = txt_diaryNoteDate.Text;
+                // _radDateTimePicker.Text = _selectedDate;
+
+                if (!_backgroundWorker.IsBusy)
+                {
+                    rtb_Note.Clear();
+
+                    _backgroundWorker.RunWorkerAsync();
+
+                    //Task.Factory.StartNew(() =>
+                    //{
+                    //CommonHelper.IndicatorLoading(this, _pictureBox, true);
+                    //});
+
+
+                    lbl_Loading.Visible = true;
+                    rtb_Note.ReadOnly = true;
+                    rtb_Note.BackColor = SystemColors.Menu;
+                    //LoadingForm = new FrmLoading();
+                    //LoadingForm.ShowDialog();
+                }
+
+                //InitializeToday(txt_diaryNoteDate.Text);
+                //rtb_Note.Rtf = ReturnDiaryNotesByDate(txt_diaryNoteDate.Text);
+            }
+            catch
+            {
+                return;
+            }
+        }
+
+        #region Private functions
+
+        private static DateTime GetCurrentDate(string currentDate)
+        {
+            return PersianHelper.GetGregorianDateSimple(currentDate);
+        }
+        private async Task<string> ReturnDiaryNotesByDate(string currentDate)
+        {
+            var date = GetCurrentDate(currentDate);
+            var diaryNote = await _diaryNoteService.LoadByDateAsync(date);
+            return !string.IsNullOrEmpty(diaryNote?.Note)
+                ? Utility.DecompressString(diaryNote.Note, Encoding.UTF8) : string.Empty;
+        }
+        private void InitializeToday(string date)
+        {
+            var newDate = GetCurrentDate(date);
+            var currentDayOfWeek = PersianHelper.GetPersianDayName(newDate);
+            lbl_DayOfWeek.Text = currentDayOfWeek;
+            lbl_DayOfMonth.Text = PersianHelper.GetPersianDayOfMonth(newDate);
+
+            var monthStr = PersianHelper.GetPersianMonth(newDate);
+            var yearStr = PersianHelper.GetPersianYear(newDate);
+
+            lbl_MonthYear.Text = monthStr + Resources.TwoSpace + yearStr;
+
+            switch (currentDayOfWeek)
+            {
+                case "جمعه":
+                    lbl_DayOfWeek.ForeColor = Color.Red;
+                    lbl_DayOfMonth.ForeColor = Color.Red;
+                    lbl_MonthYear.ForeColor = Color.Red;
+                    break;
+                default:
+                    lbl_DayOfWeek.ForeColor = Color.Black;
+                    lbl_DayOfMonth.ForeColor = Color.Black;
+                    lbl_MonthYear.ForeColor = Color.Black;
+                    break;
+            }
+        }
+        #endregion Private functions
+
+        private void Btn_NoteExit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void rtb_Note_VScroll(object sender, EventArgs e)
+        {
+            //move location of numberLabel for amount of pixels caused by scrollbar
+            var d = rtb_Note.GetPositionFromCharIndex(0).Y % (rtb_Note.Font.Height + 1);
+            numberLabel.Location = new Point(0, d);
+
+            UpdateNumberLabel();
+        }
+
+        private void rtb_Note_Resize(object sender, EventArgs e)
+        {
+            rtb_Note_VScroll(null, null);
+            GetLineAndColumn(rtb_Note);
+        }
+
+        private void rtb_Note_FontChanged(object sender, EventArgs e)
+        {
+            rtb_Note_VScroll(null, null);
+            //UpdateNumberLabel();
+            GetLineAndColumn(rtb_Note);
+        }
+
+        private void UpdateNumberLabel()
+        {
+            //we get index of first visible char and number of first visible line
+            var pos = new Point(0, 0);
+            var firstIndex = rtb_Note.GetCharIndexFromPosition(pos);
+            var firstLine = rtb_Note.GetLineFromCharIndex(firstIndex);
+
+            //now we get index of last visible char and number of last visible line
+            pos.X = ClientRectangle.Width;
+            pos.Y = ClientRectangle.Height;
+            var lastIndex = rtb_Note.GetCharIndexFromPosition(pos);
+            var lastLine = rtb_Note.GetLineFromCharIndex(lastIndex);
+
+            //this is point position of last visible char, we'll use its Y value for calculating numberLabel size
+            pos = rtb_Note.GetPositionFromCharIndex(lastIndex);
+
+
+            //finally, renumber label
+            numberLabel.Text = string.Empty;
+            for (var i = firstLine; i <= lastLine + 1; i++)
+            {
+                numberLabel.Text += i + 1 + "\n";
+            }
+        }
+
+        private void Lbl_Loading_Click(object sender, EventArgs e)
+        {
+            if (_backgroundWorker.WorkerSupportsCancellation)
+                _backgroundWorker.CancelAsync();
+        }
+
+        private void Btn_Cut_Click(object sender, EventArgs e)
+        {
+            if (rtb_Note.SelectedText == "") return;
+
+            if (Clipboard.ContainsText())
+            {
+                Clipboard.Clear();
+                Clipboard.SetText(rtb_Note.SelectedText);
+                rtb_Note.SelectedText = "";
+            }
+            else
+            {
+                Clipboard.SetText(rtb_Note.SelectedText);
+                rtb_Note.SelectedText = "";
+            }
+        }
+
+        private void Btn_Copy_Click(object sender, EventArgs e)
+        {
+            if (rtb_Note.SelectedText == "") return;
+
+            if (Clipboard.ContainsText())
+            {
+                Clipboard.Clear();
+                Clipboard.SetText(rtb_Note.SelectedText);
+            }
+            else
+            {
+                Clipboard.SetText(rtb_Note.SelectedText);
+            }
+        }
+
+        private void Btn_Paste_Click(object sender, EventArgs e)
+        {
+            if (Clipboard.ContainsText())
+            {
+                //var str = Clipboard.GetText();
+                rtb_Note.Paste();
+            }
+        }
+
+        private void Btn_Undo_Click(object sender, EventArgs e)
+        {
+            if (rtb_Note.CanUndo)
+            {
+                rtb_Note.Undo();
+            }
+        }
+
+        private void Btn_Redo_Click(object sender, EventArgs e)
+        {
+            if (rtb_Note.CanRedo)
+            {
+                rtb_Note.Redo();
+            }
+        }
+
+        private void Btn_Find_Click(object sender, EventArgs e)
+        {
+            //Find_Form f = new Find_Form(rtb_Note);
+            //f.Show();
+        }
+
+        private void Btn_Replace_Click(object sender, EventArgs e)
+        {
+            //Replace_Form f = new Replace_Form(rtb_Note);
+            //f.ShowDialog();
+        }
+
+
+        private void Btn_SelectAll_Click(object sender, EventArgs e)
+        {
+            rtb_Note.SelectAll();
+        }
+
+        private void Btn_Bold_Click(object sender, EventArgs e)
+        {
+            rtb_Note.ChangeFontStyle(FontStyle.Bold);
+        }
+
+        private void Ts_DiaryNote_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            //switch (e.ClickedItem.Name)
+            //{
+            //    case "tsb_Bold":
+            //        rtb_Note.ChangeFontStyle(FontStyle.Bold, e.ClickedItem.Pressed);
+            //        break;
+            //}
+            // bold, italic, underline
+            try
+            {
+                if (rtb_Note.SelectionFont == null) return;
+
+                var currentFont = rtb_Note.SelectionFont;
+                var newFontStyle = rtb_Note.SelectionFont.Style;
+                var txt = e.ClickedItem.Name;//(sender as ToolStripButton)?.Name;
+                switch (txt)
+                {
+                    case "tsb_Bold":
+                        newFontStyle = rtb_Note.SelectionFont.Style ^ FontStyle.Bold;
+                        break;
+                    case "tsb_Italic":
+                        newFontStyle = rtb_Note.SelectionFont.Style ^ FontStyle.Italic;
+                        break;
+                    case "tsb_Underline":
+                        newFontStyle = rtb_Note.SelectionFont.Style ^ FontStyle.Underline;
+                        break;
+                    case "tsb_Strikeout":
+                        newFontStyle = rtb_Note.SelectionFont.Style ^ FontStyle.Strikeout;
+                        break;
+                    case "tsb_AlignLeft":
+                        rtb_Note.SelectionAlignment = HorizontalAlignment.Left;
+                        tsb_AlignLeft.Checked = true;
+                        tsb_AlignCenter.Checked = false;
+                        tsb_AlignRight.Checked = false;
+                        break;
+                    case "tsb_AlignCenter":
+                        rtb_Note.SelectionAlignment = HorizontalAlignment.Center;
+                        tsb_AlignLeft.Checked = false;
+                        tsb_AlignCenter.Checked = true;
+                        tsb_AlignRight.Checked = false;
+                        break;
+                    case "tsb_AlignRight":
+                        rtb_Note.SelectionAlignment = HorizontalAlignment.Right;
+                        tsb_AlignLeft.Checked = false;
+                        tsb_AlignCenter.Checked = false;
+                        tsb_AlignRight.Checked = true;
+                        break;
+                    case "tsb_FontColor":
+                        try
+                        {
+                            using (var dlg = new ColorDialog())
+                            {
+                                dlg.Color = rtb_Note.SelectionColor;
+                                if (dlg.ShowDialog() == DialogResult.OK)
+                                {
+                                    rtb_Note.SelectionColor = dlg.Color;
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message.ToString(), "Error");
+                        }
+                        break;
+                    case "tsb_FillColor":
+
+                        break;
+                    case "tsb_Bullet":
+                        rtb_Note.SelectionBullet = tsb_Bullet.Checked;
+                        break;
+                    case "tsb_TextIndent":
+                        rtb_Note.SelectionIndent += _indent;
+                        break;
+                    case "tsb_TextOutdent":
+                        rtb_Note.SelectionIndent -= _indent;
+                        break;
+                    case "tsb_ZoomIn":
+
+                        break;
+                    case "tsb_ZoomOut":
+
+                        break;
+                    case "tsc_FontSize":
+                        try
+                        {
+                            if (rtb_Note.SelectionFont != null)
+                            {
+                                var newSize = Convert.ToSingle(tsc_FontSize.SelectedItem.ToString());
+                                rtb_Note.SelectionFont = new Font(currentFont.FontFamily, newSize, currentFont.Style);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message.ToString(), "Error");
+                        }
+                        break;
+                    case "tsc_FontName":
+                        try
+                        {
+                            if (rtb_Note.SelectionFont != null)
+                            {
+                                var newFamily = new FontFamily(tsc_FontName.SelectedItem.ToString());
+                                rtb_Note.SelectionFont = new Font(newFamily, currentFont.Size, currentFont.Style);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message.ToString(), "Error");
+                        }
+                        break;
+                    case "tsc_FontDialog":
+                        using (var dlg = new FontDialog())
+                        {
+                            if (rtb_Note.SelectionFont != null) dlg.Font = rtb_Note.SelectionFont;
+                            if (dlg.ShowDialog() == DialogResult.OK)
+                            {
+                                rtb_Note.SelectionFont = dlg.Font;
+                            }
+                        }
+                        break;
+                    case "tsb_Save":
+                        DiaryNotesSaveOrUpdate();
+                        break;
+                    case "tsb_InsertPicture":
+                        using (var dlg = new OpenFileDialog())
+                        {
+                            dlg.Title = "Insert picture";
+                            dlg.DefaultExt = "jpg";
+                            dlg.Filter = "Bitmap Files|*.bmp|JPEG Files|*.jpg|GIF Files|*.gif|All files|*.*";
+                            dlg.FilterIndex = 1;
+                            if (dlg.ShowDialog() == DialogResult.OK)
+                            {
+                                try
+                                {
+                                    var strImagePath = dlg.FileName;
+                                    var img = Image.FromFile(strImagePath);
+                                    Clipboard.SetDataObject(img);
+                                    var df = DataFormats.GetFormat(DataFormats.Bitmap);
+                                    if (rtb_Note.CanPaste(df))
+                                    {
+                                        rtb_Note.Paste(df);
+                                    }
+                                }
+                                catch
+                                {
+                                    MessageBox.Show("Unable to insert image.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                        }
+                        break;
+                    case "tsb_Exit":
+                        // Check for save editor before exit
+                        Close();
+                        break;
+                }
+
+                rtb_Note.SelectionFont = new Font(currentFont.FontFamily, currentFont.Size, newFontStyle);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Error");
+            }
+        }
+
+        private void DiaryNotesSaveOrUpdate()
+        {
+            var dlg = new CustomDialogs(320, 200);
+            var currentDate = PersianHelper.GetGregorianDateSimple(txt_diaryNoteDate.Text);
+
+            if (_diaryNoteService.ExistAsync(currentDate).Result)
+            {
+                var diaryNote = _diaryNoteService.LoadByDateAsync(currentDate).Result;
+
+                diaryNote.Note = Utility.CompressString(rtb_Note.Rtf, Encoding.UTF8);
+
+                _diaryNoteService.UpdateAsync(diaryNote);
+                dlg.Invoke("پیام", "تغییرات بروزرسانی شد.", CustomDialogs.ImageType.itEdit,
+                    CustomDialogs.ButtonType.Ok, InitialHelper.BackColorCustom);
+            }
+            else
+            {
+                var diaryNote = new DiaryNote
+                {
+                    Date = currentDate,
+                    Note = Utility.CompressString(rtb_Note.Rtf, Encoding.UTF8)
+                };
+                _diaryNoteService.CreateAsync(diaryNote);
+                dlg.Invoke("پیام", "تغییرات ذخیره شد.", CustomDialogs.ImageType.itCheck2,
+                    CustomDialogs.ButtonType.Ok, InitialHelper.BackColorCustom);
+            }
+        }
+
+        private void Rtb_Note_SelectionChanged(object sender, EventArgs e)
+        {
+            GetLineAndColumn(rtb_Note);
+            if (rtb_Note.SelectionFont != null)
+            {
+                tsb_Bold.Checked = rtb_Note.SelectionFont.Bold;
+                tsb_Italic.Checked = rtb_Note.SelectionFont.Italic;
+                tsb_Underline.Checked = rtb_Note.SelectionFont.Underline;
+
+                //boldToolStripMenuItem.Checked = rtb_Note.SelectionFont.Bold;
+                //italicToolStripMenuItem.Checked = rtb_Note.SelectionFont.Italic;
+                //underlineToolStripMenuItem.Checked = rtb_Note.SelectionFont.Underline;
+
+                switch (rtb_Note.SelectionAlignment)
+                {
+                    case HorizontalAlignment.Left:
+                        tsb_AlignLeft.Checked = true;
+                        tsb_AlignCenter.Checked = false;
+                        tsb_AlignRight.Checked = false;
+
+                        //leftToolStripMenuItem.Checked = true;
+                        //centerToolStripMenuItem.Checked = false;
+                        //rightToolStripMenuItem.Checked = false;
+                        break;
+
+                    case HorizontalAlignment.Center:
+                        tsb_AlignLeft.Checked = false;
+                        tsb_AlignCenter.Checked = true;
+                        tsb_AlignRight.Checked = false;
+
+                        //leftToolStripMenuItem.Checked = false;
+                        //centerToolStripMenuItem.Checked = true;
+                        //rightToolStripMenuItem.Checked = false;
+                        break;
+
+                    case HorizontalAlignment.Right:
+                        tsb_AlignLeft.Checked = false;
+                        tsb_AlignCenter.Checked = false;
+                        tsb_AlignRight.Checked = true;
+
+                        //leftToolStripMenuItem.Checked = false;
+                        //centerToolStripMenuItem.Checked = false;
+                        //rightToolStripMenuItem.Checked = true;
+                        break;
+                }
+
+                tsb_Bullet.Checked = rtb_Note.SelectionBullet;
+                //bulletsToolStripMenuItem.Checked = rtb_Note.SelectionBullet;
+
+                tsc_FontName.SelectedItem = rtb_Note.SelectionFont.FontFamily.Name;
+                tsc_FontSize.SelectedItem = rtb_Note.SelectionFont.Size.ToString();
+            }
+        }
+
+        private void Tsc_FontSize_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (rtb_Note.SelectionFont != null)
+                {
+                    var currentFont = rtb_Note.SelectionFont;
+                    var newSize = Convert.ToSingle(tsc_FontSize.Text);
+                    rtb_Note.SelectionFont = new Font(currentFont.FontFamily, newSize, currentFont.Style);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Error");
+            }
+        }
+
+        //private void RadDateTimePicker1_ValueChanged(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        _selectedDate = radDateTimePicker1.Text;
+        //        txt_diaryNoteDate.Text = _selectedDate;
+        //        _backgroundWorker.RunWorkerAsync();
+        //        CommonHelper.IndicatorLoading(this, _pictureBox, true);
+        //        //InitializeToday(txt_diaryNoteDate.Text);
+        //        //rtb_Note.Rtf = ReturnDiaryNotesByDate(txt_diaryNoteDate.Text);
+        //    }
+        //    catch
+        //    {
+        //        return;
+        //    }
+        //}
+    }
+}

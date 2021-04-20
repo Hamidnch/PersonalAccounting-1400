@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1C8D363F-30D2-4FAD-88D4-5D8EC52B42C7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PersonalAccounting.CommonLibrary</RootNamespace>
+    <AssemblyName>PersonalAccounting.CommonLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Janus.Windows.Common.v4, Version=4.0.52.0, Culture=neutral, PublicKeyToken=21d5517571b185bf, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\PersonalAccounting\bin\Debug\Janus.Windows.Common.v4.dll</HintPath>
+    </Reference>
+    <Reference Include="Janus.Windows.GridEX.v4, Version=4.0.52.0, Culture=neutral, PublicKeyToken=21d5517571b185bf, processorArchitecture=MSIL" />
+    <Reference Include="Janus.Windows.UI.v4, Version=4.0.52.0, Culture=neutral, PublicKeyToken=21d5517571b185bf, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\PersonalAccounting\bin\Debug\Janus.Windows.UI.v4.dll</HintPath>
+    </Reference>
+    <Reference Include="Klik.Windows.Forms.EntryLib.V2.2008">
+      <HintPath>..\PersonalAccounting\bin\Debug\Klik.Windows.Forms.EntryLib.V2.2008.dll</HintPath>
+    </Reference>
+    <Reference Include="MessageBoxHamidNCH">
+      <HintPath>..\PersonalAccounting\bin\Debug\MessageBoxHamidNCH.dll</HintPath>
+    </Reference>
+    <Reference Include="Persia">
+      <HintPath>..\PersonalAccounting\bin\Debug\Persia.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="Telerik.WinControls, Version=2020.3.915.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\PersonalAccounting\bin\Debug\Telerik.WinControls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.GridView, Version=2020.3.915.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\PersonalAccounting\bin\Debug\Telerik.WinControls.GridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.UI, Version=2020.3.915.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\PersonalAccounting\bin\Debug\Telerik.WinControls.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Tulpep.NotificationWindow, Version=1.1.38.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Tulpep.NotificationWindow.1.1.38\lib\net40\Tulpep.NotificationWindow.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helper\CommonHelper.cs" />
+    <Compile Include="Helper\Cryption.cs" />
+    <Compile Include="Helper\CryptoHelper.cs" />
+    <Compile Include="Helper\DefaultConstants.cs" />
+    <Compile Include="Helper\ExcelReader.cs" />
+    <Compile Include="Helper\ExceptionHelper.cs" />
+    <Compile Include="Helper\NumToStr.cs" />
+    <Compile Include="Helper\PersianHelper.cs" />
+    <Compile Include="Helper\PersianRadHelper.cs" />
+    <Compile Include="Helper\RichTextBoxExtensions.cs" />
+    <Compile Include="Helper\RichTextBoxHelper.cs" />
+    <Compile Include="Helper\Utility.cs" />
+    <Compile Include="Helper\YeKe.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\AlignLeft.png" />
+    <Content Include="Resources\BackColor.png" />
+    <Content Include="Resources\Backup.png" />
+    <Content Include="Resources\CollapseAll.bmp" />
+    <None Include="packages.config" />
+    <None Include="Resources\CommodityType.png" />
+    <None Include="Resources\Commodity.png" />
+    <Content Include="Resources\ExpandAll.bmp" />
+    <None Include="Resources\TransferMoney.png" />
+    <None Include="Resources\LoadingNote.gif" />
+    <Content Include="Resources\UnCheckAll.bmp" />
+    <Content Include="Resources\CheckAll.bmp" />
+    <Content Include="Resources\MentalCondition.png" />
+    <Content Include="Resources\ClearFormat.png" />
+    <Content Include="Resources\GrowFont.png" />
+    <Content Include="Resources\IndentDecrease.png" />
+    <Content Include="Resources\IndentIncrease.png" />
+    <Content Include="Resources\FullScreen.png" />
+    <Content Include="Resources\Print.png" />
+    <Content Include="Resources\PrintPreview.png" />
+    <Content Include="Resources\SearchHighlight.png" />
+    <Content Include="Resources\SearchHighlightClear.png" />
+    <Content Include="Resources\ShrinkFont.png" />
+    <Content Include="Resources\Stamp.png" />
+    <Content Include="Resources\TextSubscript.png" />
+    <Content Include="Resources\TextSuperscript.png" />
+    <Content Include="Resources\DefaultUser.png" />
+    <Content Include="Resources\UserRoles.png" />
+    <Content Include="Resources\WeatherCondition.png" />
+    <Content Include="Resources\WordWrap.png" />
+    <Content Include="Resources\ZoomOut.png" />
+    <Content Include="Resources\ZoomIn.png" />
+    <None Include="Resources\Bank.png" />
+    <None Include="Resources\Add.png" />
+    <Content Include="Resources\Bold.png" />
+    <None Include="Resources\CloseIcon.png" />
+    <None Include="Resources\Cut.png" />
+    <None Include="Resources\Copy.png" />
+    <Content Include="Resources\FillColor.png" />
+    <Content Include="Resources\Find.png" />
+    <Content Include="Resources\FontColor.png" />
+    <Content Include="Resources\FontDialog.png" />
+    <Content Include="Resources\Italic.png" />
+    <None Include="Resources\Logo.png" />
+    <Content Include="Resources\InsertPicture.png" />
+    <Content Include="Resources\Paste.png" />
+    <None Include="Resources\RedArrowLine.gif" />
+    <Content Include="Resources\Redo.png" />
+    <Content Include="Resources\Replace.png" />
+    <Content Include="Resources\SelectAll.png" />
+    <Content Include="Resources\Strikeout.png" />
+    <None Include="Resources\Underline.png" />
+    <Content Include="Resources\AlignRight.png" />
+    <Content Include="Resources\AlignCenter.png" />
+    <Content Include="Resources\TextBullet.png" />
+    <Content Include="Resources\Undo.png" />
+    <None Include="Resources\Reload.png" />
+    <None Include="Resources\SaveAll.png" />
+    <None Include="Resources\ScheduleTask.png" />
+    <None Include="Resources\Vault.png" />
+    <None Include="Resources\Quit.png" />
+    <None Include="Resources\Remove.png" />
+    <None Include="Resources\Users.png" />
+    <None Include="Resources\BankAccount.png" />
+    <None Include="Resources\Loan.png" />
+    <None Include="Resources\MeasurementUnit.png" />
+    <None Include="Resources\Article.png" />
+    <None Include="Resources\ArticleGroup.png" />
+    <None Include="Resources\Cheque.png" />
+    <None Include="Resources\IncomeType.png" />
+    <None Include="Resources\About.png" />
+    <None Include="Resources\AccessLevel.png" />
+    <None Include="Resources\Pattern.png" />
+    <None Include="Resources\Close.png" />
+    <Content Include="Resources\Persons.png" />
+    <None Include="Resources\Setting.png" />
+    <None Include="Resources\Report.png" />
+    <None Include="Resources\Note.png" />
+    <None Include="Resources\Waiting.gif" />
+    <None Include="Resources\Save.png" />
+    <None Include="Resources\Enter.png" />
+    <None Include="Resources\Cancel.png" />
+    <None Include="Resources\Delete.png" />
+    <None Include="Resources\Edit.png" />
+    <None Include="Resources\Fund.png" />
+    <None Include="Resources\Income.png" />
+    <None Include="Resources\DairyNote.png" />
+    <None Include="Resources\Expense.png" />
+    <Content Include="Resources\Loading.gif" />
+    <None Include="Resources\LoadingBest.gif" />
+    <Content Include="Resources\Loadingvvv.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
