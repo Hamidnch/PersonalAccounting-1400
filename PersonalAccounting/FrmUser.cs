@@ -41,7 +41,7 @@ namespace PersonalAccounting.UI
             BindRoles();
             BindGrid();
             BindPersons(false);
-            rddl_Status.SetEnableDisableDropdownList();
+            rddl_Status.SetEnableDisableStatusDropdownList();
         }
 
         private async void BindGrid()

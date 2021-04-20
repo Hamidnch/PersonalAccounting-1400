@@ -39,7 +39,7 @@ namespace PersonalAccounting.UI
 
             //CommonHelper.SetFont(CommonHelper.BaseFont, pnl_Data, rgv_Fund);
 
-            rddl_FundStatus.SetEnableDisableDropdownList();
+            rddl_FundStatus.SetEnableDisableStatusDropdownList();
             BindGrid();
         }
 
@@ -56,6 +56,7 @@ namespace PersonalAccounting.UI
                 btnDelete, btnCancel, btnClose, rddl_BankAccountSubject);
 
             rddl_FundType.SelectedIndex = 0;
+            rddl_FundStatus.SelectedIndex = 0;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -109,7 +110,7 @@ namespace PersonalAccounting.UI
                 _fundId = int.Parse(dataRow.Cells["FundId"].Value.ToString());
 
                 //rddl_FundType.SelectedValue = dataRow.Cells["FundTypeName"].Value?.ToString();
-                txt_FundCurrentValue.Text = dataRow.Cells["FundPrimaryValueSeparateDigit"].Value?.ToString();
+                txt_FundCurrentValue.Text = dataRow.Cells["FundCurrentValueSeparateDigit"].Value?.ToString();
                 rddl_FundStatus.Text = dataRow.Cells["FundStatus"].Value?.ToString();
                 txt_FundDescription.Text = dataRow.Cells["FundDescription"].Value?.ToString();
 

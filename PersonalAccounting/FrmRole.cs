@@ -5,8 +5,6 @@ using PersonalAccounting.Domain.Entity;
 using PersonalAccounting.UI.Helper;
 using PersonalAccounting.UI.Infrastructure;
 using System;
-using System.Drawing;
-using System.Windows.Forms;
 using Telerik.WinControls.UI;
 
 namespace PersonalAccounting.UI
@@ -57,7 +55,7 @@ namespace PersonalAccounting.UI
             BindAllPermissionsFormEntities();
             rtv_Permissions.ExpandAll();
             BindGrid();
-            rddl_Status.SetEnableDisableDropdownList();
+            rddl_Status.SetEnableDisableStatusDropdownList();
         }
 
         //private void _backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -149,6 +147,8 @@ namespace PersonalAccounting.UI
             _mode = CommonHelper.Mode.Insert;
             CommonHelper.InsertAction(_mode, pnl_Data, rgv_Role, btnInsert, btnRegister, btnModify,
                 btnDelete, btnCancel, btnClose, txt_RoleName);
+
+            rddl_Status.SelectedValue = 0;
         }
 
         private void Rgv_Role_CellClick(object sender, GridViewCellEventArgs e)

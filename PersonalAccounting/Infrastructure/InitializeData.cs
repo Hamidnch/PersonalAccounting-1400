@@ -83,12 +83,12 @@ namespace PersonalAccounting.UI.Infrastructure
                 }
             }
 
-            var person1 = new Person("حمید", DefaultConstants.GenderMale, DateTime.Now, null,
+            var person1 = new Person("حمید", DefaultConstants.GenderMaleOptionString, DateTime.Now, null,
                 CommonHelper.ConvertPicBoxImageToByte(Resources.DefaultUser, ImageFormat.Png),
                 InitialHelper.CurrentUser?.Id, DefaultConstants.ActiveOptionString, string.Empty);
 
             var person2 = new Person(DefaultConstants.AdminRole,
-                DefaultConstants.GenderMale, DateTime.Now, null,
+                DefaultConstants.GenderMaleOptionString, DateTime.Now, null,
                 CommonHelper.ConvertPicBoxImageToByte(Resources.DefaultUser, ImageFormat.Png),
                 InitialHelper.CurrentUser?.Id, DefaultConstants.ActiveOptionString, string.Empty);
 

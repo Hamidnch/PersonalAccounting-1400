@@ -32,6 +32,7 @@ namespace PersonalAccounting.UI
             _mentalConditionService = mentalConditionService;
             InitializeComponent();
             CommonHelper.SetFont(CommonHelper.BaseFont, pnl_Data, rgv_MentalCondition);
+            rddl_MentalStatus.SetEnableDisableStatusDropdownList();
             BindGrid();
         }
 
@@ -53,13 +54,15 @@ namespace PersonalAccounting.UI
             {
                 CommonHelper.ShowNotificationMessage(DefaultConstants.IllegalAccess,
                     DefaultConstants.CreateActionNotAllow);
-                    
+
                 return;
             }
 
             _mode = CommonHelper.Mode.Insert;
             CommonHelper.InsertAction(_mode, pnl_Data, rgv_MentalCondition, btnInsert, btnRegister, btnModify,
                 btnDelete, btnCancel, btnClose, txt_Title);
+
+            rddl_MentalStatus.SelectedValue = 0;
         }
 
         private void BtnModify_Click(object sender, EventArgs e)
@@ -94,7 +97,7 @@ namespace PersonalAccounting.UI
 
                 _mentalConditionId = int.Parse(dataRow.Cells["Id"].Value.ToString());
                 txt_Title.Text = dataRow.Cells["Title"].Value?.ToString();
-                ddl_Status.Text = dataRow.Cells["Status"].Value?.ToString();
+                rddl_MentalStatus.Text = dataRow.Cells["Status"].Value?.ToString();
                 txt_Description.Text = dataRow.Cells["Description"].Value?.ToString();
                 if (dataRow.Cells["Picture"].Value != null
                     && dataRow.Cells["Picture"].Value?.ToString() != string.Empty
@@ -119,7 +122,7 @@ namespace PersonalAccounting.UI
         {
             return CommonHelper.ValidateControls(txt_Title, _errorProvider,
                        "عنوان را وارد نمایید")
-                   || CommonHelper.ValidateControls(ddl_Status, _errorProvider,
+                   || CommonHelper.ValidateControls(rddl_MentalStatus, _errorProvider,
                        "وضعیت را مشخص کنید");
         }
 
@@ -128,7 +131,7 @@ namespace PersonalAccounting.UI
             if (_mode == CommonHelper.Mode.Insert)
             {
                 btnRegister.Enabled = (txt_Title.Text != string.Empty
-                                       && ddl_Status.Text != string.Empty);
+                                       && rddl_MentalStatus.Text != string.Empty);
             }
         }
 
@@ -157,7 +160,7 @@ namespace PersonalAccounting.UI
             //var imageFormat = CommonHelper.GetImageFormatByExtenstion(txt_Extenstion.Text);
             var currentUser = InitialHelper.CurrentUser;
             var currentDateTime = InitialHelper.CurrentDateTime;
-            var mentalStatus = ddl_Status.SelectedItem.Text;
+            var mentalStatus = rddl_MentalStatus.SelectedItem.Text;
             var mentalTitle = txt_Title.Text;
 
             switch (_mode)

@@ -30,7 +30,7 @@ namespace PersonalAccounting.UI
 
             //CommonHelper.SetFont(CommonHelper.BaseFont, pnl_Data, rgv_Bank);
             BindGrid();
-            rddl_BankStatus.SetEnableDisableDropdownList();
+            rddl_BankStatus.SetEnableDisableStatusDropdownList();
         }
 
         private async void BindGrid()

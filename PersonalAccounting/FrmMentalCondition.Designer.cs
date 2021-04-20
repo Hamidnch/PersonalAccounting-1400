@@ -29,8 +29,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Janus.Windows.EditControls.UIComboBoxItem uiComboBoxItem1 = new Janus.Windows.EditControls.UIComboBoxItem();
-            Janus.Windows.EditControls.UIComboBoxItem uiComboBoxItem2 = new Janus.Windows.EditControls.UIComboBoxItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMentalCondition));
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
@@ -42,7 +40,6 @@
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.pic_Picture = new System.Windows.Forms.PictureBox();
-            this.ddl_Status = new Janus.Windows.EditControls.UIComboBox();
             this.pnl_Data = new System.Windows.Forms.Panel();
             this.txt_Description = new Janus.Windows.GridEX.EditControls.EditBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -58,12 +55,14 @@
             this.txt_Extenstion = new System.Windows.Forms.TextBox();
             this.btnInsert = new System.Windows.Forms.Button();
             this.rgv_MentalCondition = new Telerik.WinControls.UI.RadGridView();
+            this.rddl_MentalStatus = new Telerik.WinControls.UI.RadDropDownList();
             ((System.ComponentModel.ISupportInitialize)(this._errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Picture)).BeginInit();
             this.pnl_Data.SuspendLayout();
             this.pnl_Action.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rgv_MentalCondition)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgv_MentalCondition.MasterTemplate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rddl_MentalStatus)).BeginInit();
             this.SuspendLayout();
             // 
             // pic_Picture
@@ -82,44 +81,12 @@
             this.pic_Picture.TabStop = false;
             this.pic_Picture.Click += new System.EventHandler(this.Pic_Picture_Click);
             // 
-            // ddl_Status
-            // 
-            this.ddl_Status.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ddl_Status.BorderStyle = Janus.Windows.UI.BorderStyle.RaisedLight3D;
-            this.ddl_Status.ComboStyle = Janus.Windows.EditControls.ComboStyle.DropDownList;
-            this.ddl_Status.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ddl_Status.FlatBorderColor = System.Drawing.SystemColors.HotTrack;
-            this.ddl_Status.HoverMode = Janus.Windows.EditControls.HoverMode.Highlight;
-            uiComboBoxItem1.FormatStyle.Alpha = 0;
-            uiComboBoxItem1.IsSeparator = false;
-            uiComboBoxItem1.Text = "غیرفعال";
-            uiComboBoxItem1.Value = ((uint)(1u));
-            uiComboBoxItem2.FormatStyle.Alpha = 0;
-            uiComboBoxItem2.IsSeparator = false;
-            uiComboBoxItem2.Text = "فعال";
-            uiComboBoxItem2.Value = 0;
-            this.ddl_Status.Items.AddRange(new Janus.Windows.EditControls.UIComboBoxItem[] {
-            uiComboBoxItem1,
-            uiComboBoxItem2});
-            this.ddl_Status.Location = new System.Drawing.Point(565, 40);
-            this.ddl_Status.MaxDropDownItems = 2;
-            this.ddl_Status.Name = "ddl_Status";
-            this.ddl_Status.OfficeColorScheme = Janus.Windows.UI.OfficeColorScheme.Blue;
-            this.ddl_Status.SelectedIndex = 1;
-            this.ddl_Status.SelectInDataSource = true;
-            this.ddl_Status.Size = new System.Drawing.Size(131, 23);
-            this.ddl_Status.TabIndex = 2;
-            this.ddl_Status.Text = "فعال";
-            this.ddl_Status.TextAlignment = Janus.Windows.EditControls.TextAlignment.Center;
-            this.ddl_Status.UseCompatibleTextRendering = true;
-            this.ddl_Status.TextChanged += new System.EventHandler(this.Txt_Title_TextChanged);
-            // 
             // pnl_Data
             // 
             this.pnl_Data.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.pnl_Data.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnl_Data.Controls.Add(this.rddl_MentalStatus);
             this.pnl_Data.Controls.Add(this.pic_Picture);
-            this.pnl_Data.Controls.Add(this.ddl_Status);
             this.pnl_Data.Controls.Add(this.txt_Description);
             this.pnl_Data.Controls.Add(this.label6);
             this.pnl_Data.Controls.Add(this.label9);
@@ -149,7 +116,7 @@
             this.txt_Description.Name = "txt_Description";
             this.txt_Description.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txt_Description.Size = new System.Drawing.Size(393, 52);
-            this.txt_Description.TabIndex = 3;
+            this.txt_Description.TabIndex = 2;
             this.txt_Description.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
             this.txt_Description.UseCompatibleTextRendering = true;
             this.txt_Description.VisualStyle = Janus.Windows.GridEX.VisualStyle.VS2010;
@@ -426,6 +393,17 @@
             this.rgv_MentalCondition.CurrentRowChanged += new Telerik.WinControls.UI.CurrentRowChangedEventHandler(this.Rgv_MentalCondition_CurrentRowChanged);
             this.rgv_MentalCondition.CellClick += new Telerik.WinControls.UI.GridViewCellEventHandler(this.Rgv_MentalCondition_CellClick);
             // 
+            // rddl_MentalStatus
+            // 
+            this.rddl_MentalStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rddl_MentalStatus.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
+            this.rddl_MentalStatus.Font = new System.Drawing.Font("Tornado Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.rddl_MentalStatus.Location = new System.Drawing.Point(585, 41);
+            this.rddl_MentalStatus.MaxDropDownItems = 10;
+            this.rddl_MentalStatus.Name = "rddl_MentalStatus";
+            this.rddl_MentalStatus.Size = new System.Drawing.Size(111, 22);
+            this.rddl_MentalStatus.TabIndex = 1;
+            // 
             // FrmMentalCondition
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -450,6 +428,7 @@
             this.pnl_Action.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rgv_MentalCondition.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgv_MentalCondition)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rddl_MentalStatus)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -458,7 +437,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pic_Picture;
-        private Janus.Windows.EditControls.UIComboBox ddl_Status;
         private System.Windows.Forms.Panel pnl_Data;
         private Janus.Windows.GridEX.EditControls.EditBox txt_Description;
         private System.Windows.Forms.Label label6;
@@ -474,5 +452,6 @@
         private System.Windows.Forms.Button btnInsert;
         private Telerik.WinControls.UI.RadGridView rgv_MentalCondition;
         private System.Windows.Forms.TextBox txt_Extenstion;
+        private Telerik.WinControls.UI.RadDropDownList rddl_MentalStatus;
     }
 }

@@ -44,7 +44,8 @@
         public const string ActiveOptionString = "فعال";
         public const string NonActiveOptionString = "غیرفعال";
 
-        public const string GenderMale = "مذکر";
+        public const string GenderMaleOptionString = "مذکر";
+        public const string GenderFemaleOptionString = "مونث";
 
 
     }

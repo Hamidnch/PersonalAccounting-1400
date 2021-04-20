@@ -1368,7 +1368,7 @@ namespace PersonalAccounting.UI
             {
                 dlg.Title = "افزودن عکس";
                 dlg.DefaultExt = "jpg";
-                dlg.Filter = "Bitmap Files|*.bmp|JPEG Files|*.jpg|GIF Files|*.gif|All files|PNG Files|*.png|*.*";
+                dlg.Filter = "Bitmap Files|*.bmp|JPEG Files|*.jpg|GIF Files|*.gif|PNG Files|*.png|All files|*.*";
                 dlg.FilterIndex = 1;
                 if (dlg.ShowDialog() != DialogResult.OK) return;
                 try

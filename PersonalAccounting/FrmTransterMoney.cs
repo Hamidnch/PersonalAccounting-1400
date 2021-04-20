@@ -83,8 +83,11 @@ namespace PersonalAccounting.UI
             }
 
             _mode = CommonHelper.Mode.Insert;
+
             CommonHelper.InsertAction(_mode, pnl_Data, rgv_TransferMoney, btnInsert, btnRegister, btnModify,
                 btnDelete, btnCancel, btnClose, rddl_OriginFund);
+
+            txt_TransferMoneyDate.SetPersianDateToTextBoxAndSelectAll();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -132,6 +135,8 @@ namespace PersonalAccounting.UI
                 if (!(rgv_TransferMoney.CurrentRow is GridViewDataRowInfo dataRow)) return;
 
                 _transferMoneyId = int.Parse(dataRow.Cells["TransferMoneyId"].Value.ToString());
+                var transferMoneyPersianDate = dataRow.Cells["TransferMoneyPersianDate"].Value.ToString();
+                txt_TransferMoneyDate.Text = transferMoneyPersianDate;
                 txt_TransferValue.Text = dataRow.Cells["AmountSeparateDigit"].Value?.ToString();
                 txt_BankCommission.Text = dataRow.Cells["BankCommissionSeparateDigit"].Value?.ToString();
                 //ddl_FundStatus.Text = dataRow.Cells["TransferMoneyStatus"].Value.ToString();
@@ -172,7 +177,7 @@ namespace PersonalAccounting.UI
             var secondFundId = int.Parse(rddl_DestFund.SelectedItem.Value.ToString());
             var amount = double.Parse(txt_TransferValue.Text);
             var bankCommission = double.Parse(txt_BankCommission.Text);
-
+            var transferDate = PersianHelper.GetGregorianDate(txt_TransferMoneyDate.Text);
             switch (_mode)
             {
                 case CommonHelper.Mode.Insert:
@@ -194,6 +199,7 @@ namespace PersonalAccounting.UI
                                 break;
                             case TransferStatus.Success:
                                 var newTransferMoney = new TransferMoney(
+                                    transferDate,
                                     amount,
                                     firstFundId,
                                     secondFundId,
@@ -300,6 +306,7 @@ namespace PersonalAccounting.UI
 
                         var currentTransferMoney = await _transferMoneyService.GetByIdAsync(_transferMoneyId);
 
+                        currentTransferMoney.TransferDate = transferDate;
                         currentTransferMoney.OriginFundId = firstFundId;
                         currentTransferMoney.DestinationFundId = secondFundId;
                         currentTransferMoney.Amount = amount;

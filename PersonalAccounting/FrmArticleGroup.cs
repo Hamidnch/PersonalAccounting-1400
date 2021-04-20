@@ -38,7 +38,7 @@ namespace PersonalAccounting.UI
             InitializeComponent();
 
             //CommonHelper.SetFont(CommonHelper.BaseFont, pnl_Data, rlv_ArticleGroup);
-            rddl_ArticleGroupStatus.SetEnableDisableDropdownList();
+            rddl_ArticleGroupStatus.SetEnableDisableStatusDropdownList();
 
             SetupSimpleListView();
             rlv_ArticleGroup.ItemSize = _customItemSize;

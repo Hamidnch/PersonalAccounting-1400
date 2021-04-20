@@ -30,7 +30,8 @@ namespace PersonalAccounting.UI
             _personService = personService;
             InitializeComponent();
             CommonHelper.SetFont(CommonHelper.BaseFont, pnl_Data, rgv_Person);
-            ddl_PersonStatus.SetEnableDisableDropdownList();
+            rddl_PersonStatus.SetEnableDisableStatusDropdownList();
+            rddl_PersonSex.SetMaleAndFemaleOptionsDropdownList();
             BindGrid();
         }
 
@@ -58,7 +59,8 @@ namespace PersonalAccounting.UI
             CommonHelper.InsertAction(_mode, pnl_Data, rgv_Person, btnInsert, btnRegister, btnModify,
                 btnDelete, btnCancel, btnClose, txt_PersonFullName);
 
-            ddl_PersonStatus.SelectedValue = 0;
+            rddl_PersonStatus.SelectedValue = 0;
+            rddl_PersonSex.SelectedValue = 0;
         }
 
         private void btnModify_Click(object sender, EventArgs e)
@@ -92,8 +94,8 @@ namespace PersonalAccounting.UI
 
                 _personId = int.Parse(dataRow.Cells["PersonId"].Value.ToString());
                 txt_PersonFullName.Text = dataRow.Cells["PersonFullName"].Value?.ToString();
-                ddl_PersonSex.Text = dataRow.Cells["PersonSex"].Value?.ToString();
-                ddl_PersonStatus.Text = dataRow.Cells["PersonStatus"].Value?.ToString();
+                rddl_PersonSex.Text = dataRow.Cells["PersonSex"].Value?.ToString();
+                rddl_PersonStatus.Text = dataRow.Cells["PersonStatus"].Value?.ToString();
                 txt_PersonDescription.Text = dataRow.Cells["PersonDescription"].Value?.ToString();
                 if (dataRow.Cells["PersonPicture"].Value != null
                     && dataRow.Cells["PersonPicture"].Value?.ToString() != string.Empty
@@ -119,9 +121,9 @@ namespace PersonalAccounting.UI
         {
             return CommonHelper.ValidateControls(txt_PersonFullName, _errorProvider,
                        "نام شخص  را وارد نمایید")
-                   || CommonHelper.ValidateControls(ddl_PersonSex, _errorProvider,
+                   || CommonHelper.ValidateControls(rddl_PersonSex, _errorProvider,
                        "جنسیت شخص  را تعیین نمایید")
-                   || CommonHelper.ValidateControls(ddl_PersonStatus, _errorProvider,
+                   || CommonHelper.ValidateControls(rddl_PersonStatus, _errorProvider,
                        "وضعیت شخص  را مشخص کنید");
         }
 
@@ -130,8 +132,8 @@ namespace PersonalAccounting.UI
             if (_mode == CommonHelper.Mode.Insert)
             {
                 btnRegister.Enabled = (txt_PersonFullName.Text != string.Empty
-                                       && ddl_PersonSex.Text != string.Empty
-                    && ddl_PersonStatus.Text != string.Empty);
+                                       && rddl_PersonSex.Text != string.Empty
+                    && rddl_PersonStatus.Text != string.Empty);
             }
         }
 
@@ -162,8 +164,8 @@ namespace PersonalAccounting.UI
             var currentUser = InitialHelper.CurrentUser;
             var currentDateTime = InitialHelper.CurrentDateTime;
             var personFullName = txt_PersonFullName.Text;
-            var personSex= ddl_PersonSex.SelectedItem.Text;
-            var personStatus = ddl_PersonStatus.Text;
+            var personSex = rddl_PersonSex.SelectedItem.Text;
+            var personStatus = rddl_PersonStatus.Text;
             switch (_mode)
             {
                 case CommonHelper.Mode.Insert:
@@ -175,7 +177,7 @@ namespace PersonalAccounting.UI
                             return;
                         }
 
-                        var newPerson = new Person(personFullName, personSex, 
+                        var newPerson = new Person(personFullName, personSex,
                             currentDateTime, currentDateTime,
                             CommonHelper.ConvertPicBoxImageToByte(pic_PersonPicture, ImageFormat.Png),
                             currentUser?.Id, personStatus,
@@ -237,7 +239,7 @@ namespace PersonalAccounting.UI
                     try
                     {
                         var currentPerson = await _personService.GetByIdAsync(_personId);
-                        
+
                         currentPerson.FullName = personFullName;
                         currentPerson.UpdateBy = currentUser.Id;
                         currentPerson.Gender = personSex;//ddl_PersonSex.SelectedItem.Text;

@@ -78,7 +78,7 @@ namespace PersonalAccounting.UI
             rlv_Article.ListViewElement.Alignment = ContentAlignment.MiddleCenter;
             rlv_Article.ListViewElement.TextAlignment = ContentAlignment.MiddleCenter;
 
-            rddl_ArticleStatus.SetEnableDisableDropdownList();
+            rddl_ArticleStatus.SetEnableDisableStatusDropdownList();
             //multiColumnCombo1.DisplayMember = "MeasurementUnitName";
             //multiColumnCombo1.ValueMember = "MeasurementUnitId";
             //multiColumnCombo1.DataSource = _measurementUnitService.GetMeasurementUnitNames();

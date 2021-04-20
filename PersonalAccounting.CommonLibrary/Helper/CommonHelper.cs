@@ -1895,11 +1895,17 @@ namespace PersonalAccounting.CommonLibrary.Helper
             ddl.DataSource = t;
         }
 
-        public static void SetEnableDisableDropdownList(this RadDropDownList ddl)
+        public static void SetEnableDisableStatusDropdownList(this RadDropDownList ddl)
         {
             ddl.Items.Add(new RadListDataItem(DefaultConstants.ActiveOptionString, 0));
             ddl.Items.Add(new RadListDataItem(DefaultConstants.NonActiveOptionString, 1));
-            ddl.SelectedValue = 0;
+            //ddl.SelectedValue = 0;
+        }
+        public static void SetMaleAndFemaleOptionsDropdownList(this RadDropDownList ddl)
+        {
+            ddl.Items.Add(new RadListDataItem(DefaultConstants.GenderMaleOptionString, 0));
+            ddl.Items.Add(new RadListDataItem(DefaultConstants.GenderFemaleOptionString, 1));
+            //ddl.SelectedValue = 0;
         }
     }
 }

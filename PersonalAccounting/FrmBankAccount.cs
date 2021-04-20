@@ -51,7 +51,7 @@ namespace PersonalAccounting.UI
             FillDropdownList(rddl_BankAccountPerson);
             FillDropdownList(rddl_BankAccountBank);
             BindGrid();
-            rddl_BankAccountStatus.SetEnableDisableDropdownList();
+            rddl_BankAccountStatus.SetEnableDisableStatusDropdownList();
         }
 
         private void btnInsert_Click(object sender, EventArgs e)

@@ -37,6 +37,8 @@ namespace PersonalAccounting.Domain.ViewModel
         public double BankCommission { get; set; }
         public string BankCommissionSeparateDigit => Convert.ToString(BankCommission, CultureInfo.InvariantCulture).AddSeparateEx();
 
+        public DateTime? TransferMoneyDate { get; set; }
+        public string TransferMoneyPersianDate => TransferMoneyDate != null ? PersianHelper.GetPersiaDateSimple(TransferMoneyDate) : "";
         /// <summary>
         /// تاریخ ایجاد رکورد
         /// </summary>

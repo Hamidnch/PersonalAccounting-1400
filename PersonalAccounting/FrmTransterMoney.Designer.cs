@@ -45,9 +45,14 @@ namespace PersonalAccounting.UI
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn12 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn13 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn14 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn15 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn16 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.Data.SortDescriptor sortDescriptor1 = new Telerik.WinControls.Data.SortDescriptor();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.pnl_Data = new System.Windows.Forms.Panel();
+            this.txt_TransferMoneyDate = new System.Windows.Forms.MaskedTextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.rddl_DestFund = new Telerik.WinControls.UI.RadDropDownList();
             this.rddl_OriginFund = new Telerik.WinControls.UI.RadDropDownList();
             this.txt_DestFundRemain = new System.Windows.Forms.TextBox();
@@ -83,6 +88,9 @@ namespace PersonalAccounting.UI
             // 
             this.pnl_Data.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.pnl_Data.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnl_Data.Controls.Add(this.txt_TransferMoneyDate);
+            this.pnl_Data.Controls.Add(this.label1);
+            this.pnl_Data.Controls.Add(this.label3);
             this.pnl_Data.Controls.Add(this.rddl_DestFund);
             this.pnl_Data.Controls.Add(this.rddl_OriginFund);
             this.pnl_Data.Controls.Add(this.txt_DestFundRemain);
@@ -102,8 +110,46 @@ namespace PersonalAccounting.UI
             this.pnl_Data.Location = new System.Drawing.Point(0, 27);
             this.pnl_Data.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnl_Data.Name = "pnl_Data";
-            this.pnl_Data.Size = new System.Drawing.Size(813, 184);
+            this.pnl_Data.Size = new System.Drawing.Size(813, 199);
             this.pnl_Data.TabIndex = 2;
+            // 
+            // txt_TransferMoneyDate
+            // 
+            this.txt_TransferMoneyDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_TransferMoneyDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_TransferMoneyDate.Enabled = false;
+            this.txt_TransferMoneyDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.txt_TransferMoneyDate.Location = new System.Drawing.Point(608, 50);
+            this.txt_TransferMoneyDate.Mask = "1000/00/00";
+            this.txt_TransferMoneyDate.Name = "txt_TransferMoneyDate";
+            this.txt_TransferMoneyDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txt_TransferMoneyDate.Size = new System.Drawing.Size(83, 20);
+            this.txt_TransferMoneyDate.TabIndex = 131;
+            this.txt_TransferMoneyDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_TransferMoneyDate.TextChanged += new System.EventHandler(this.rddl_OriginAccount_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(709, 54);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.TabIndex = 132;
+            this.label1.Text = "تاریخ انتقال";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.BackColor = System.Drawing.SystemColors.Control;
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label3.Location = new System.Drawing.Point(9, 35);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(792, 2);
+            this.label3.TabIndex = 130;
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // rddl_DestFund
             // 
@@ -116,7 +162,7 @@ namespace PersonalAccounting.UI
             this.rddl_DestFund.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.rddl_DestFund.EnableAlternatingItemColor = true;
             this.rddl_DestFund.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rddl_DestFund.Location = new System.Drawing.Point(46, 42);
+            this.rddl_DestFund.Location = new System.Drawing.Point(39, 77);
             this.rddl_DestFund.Name = "rddl_DestFund";
             this.rddl_DestFund.Size = new System.Drawing.Size(241, 29);
             this.rddl_DestFund.TabIndex = 129;
@@ -134,7 +180,7 @@ namespace PersonalAccounting.UI
             this.rddl_OriginFund.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.rddl_OriginFund.EnableAlternatingItemColor = true;
             this.rddl_OriginFund.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rddl_OriginFund.Location = new System.Drawing.Point(435, 42);
+            this.rddl_OriginFund.Location = new System.Drawing.Point(450, 77);
             this.rddl_OriginFund.Name = "rddl_OriginFund";
             this.rddl_OriginFund.Size = new System.Drawing.Size(241, 29);
             this.rddl_OriginFund.TabIndex = 129;
@@ -144,9 +190,9 @@ namespace PersonalAccounting.UI
             // txt_DestFundRemain
             // 
             this.txt_DestFundRemain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_DestFundRemain.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.txt_DestFundRemain.ForeColor = System.Drawing.Color.Red;
-            this.txt_DestFundRemain.Location = new System.Drawing.Point(88, 3);
+            this.txt_DestFundRemain.BackColor = System.Drawing.SystemColors.GrayText;
+            this.txt_DestFundRemain.ForeColor = System.Drawing.Color.Gold;
+            this.txt_DestFundRemain.Location = new System.Drawing.Point(83, 6);
             this.txt_DestFundRemain.Name = "txt_DestFundRemain";
             this.txt_DestFundRemain.ReadOnly = true;
             this.txt_DestFundRemain.Size = new System.Drawing.Size(168, 24);
@@ -157,9 +203,9 @@ namespace PersonalAccounting.UI
             // txt_OriginFundRemain
             // 
             this.txt_OriginFundRemain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_OriginFundRemain.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.txt_OriginFundRemain.ForeColor = System.Drawing.Color.Red;
-            this.txt_OriginFundRemain.Location = new System.Drawing.Point(466, 6);
+            this.txt_OriginFundRemain.BackColor = System.Drawing.SystemColors.GrayText;
+            this.txt_OriginFundRemain.ForeColor = System.Drawing.Color.Gold;
+            this.txt_OriginFundRemain.Location = new System.Drawing.Point(488, 6);
             this.txt_OriginFundRemain.Name = "txt_OriginFundRemain";
             this.txt_OriginFundRemain.ReadOnly = true;
             this.txt_OriginFundRemain.Size = new System.Drawing.Size(168, 24);
@@ -175,7 +221,7 @@ namespace PersonalAccounting.UI
             this.txt_BankCommission.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.txt_BankCommission.HideSelection = false;
             this.txt_BankCommission.HoverMode = Janus.Windows.GridEX.HoverMode.Highlight;
-            this.txt_BankCommission.Location = new System.Drawing.Point(46, 81);
+            this.txt_BankCommission.Location = new System.Drawing.Point(39, 114);
             this.txt_BankCommission.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_BankCommission.Name = "txt_BankCommission";
             this.txt_BankCommission.Size = new System.Drawing.Size(241, 23);
@@ -194,7 +240,7 @@ namespace PersonalAccounting.UI
             this.lbl_BankCommission.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_BankCommission.AutoSize = true;
             this.lbl_BankCommission.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_BankCommission.Location = new System.Drawing.Point(293, 90);
+            this.lbl_BankCommission.Location = new System.Drawing.Point(286, 119);
             this.lbl_BankCommission.Name = "lbl_BankCommission";
             this.lbl_BankCommission.Size = new System.Drawing.Size(90, 13);
             this.lbl_BankCommission.TabIndex = 127;
@@ -208,7 +254,7 @@ namespace PersonalAccounting.UI
             this.txt_TransferValue.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.txt_TransferValue.HideSelection = false;
             this.txt_TransferValue.HoverMode = Janus.Windows.GridEX.HoverMode.Highlight;
-            this.txt_TransferValue.Location = new System.Drawing.Point(435, 81);
+            this.txt_TransferValue.Location = new System.Drawing.Point(450, 114);
             this.txt_TransferValue.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_TransferValue.Name = "txt_TransferValue";
             this.txt_TransferValue.Size = new System.Drawing.Size(241, 23);
@@ -227,7 +273,7 @@ namespace PersonalAccounting.UI
             this.lbl_TransferValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_TransferValue.AutoSize = true;
             this.lbl_TransferValue.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_TransferValue.Location = new System.Drawing.Point(713, 90);
+            this.lbl_TransferValue.Location = new System.Drawing.Point(712, 119);
             this.lbl_TransferValue.Name = "lbl_TransferValue";
             this.lbl_TransferValue.Size = new System.Drawing.Size(59, 13);
             this.lbl_TransferValue.TabIndex = 127;
@@ -243,12 +289,12 @@ namespace PersonalAccounting.UI
             this.txt_TransferDescription.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.txt_TransferDescription.HideSelection = false;
             this.txt_TransferDescription.HoverMode = Janus.Windows.GridEX.HoverMode.Highlight;
-            this.txt_TransferDescription.Location = new System.Drawing.Point(11, 117);
+            this.txt_TransferDescription.Location = new System.Drawing.Point(39, 145);
             this.txt_TransferDescription.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_TransferDescription.Multiline = true;
             this.txt_TransferDescription.Name = "txt_TransferDescription";
             this.txt_TransferDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txt_TransferDescription.Size = new System.Drawing.Size(665, 56);
+            this.txt_TransferDescription.Size = new System.Drawing.Size(652, 42);
             this.txt_TransferDescription.TabIndex = 5;
             this.txt_TransferDescription.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
             this.txt_TransferDescription.UseCompatibleTextRendering = true;
@@ -260,7 +306,7 @@ namespace PersonalAccounting.UI
             this.lbl_TransferDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_TransferDescription.AutoSize = true;
             this.lbl_TransferDescription.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_TransferDescription.Location = new System.Drawing.Point(729, 129);
+            this.lbl_TransferDescription.Location = new System.Drawing.Point(721, 157);
             this.lbl_TransferDescription.Name = "lbl_TransferDescription";
             this.lbl_TransferDescription.Size = new System.Drawing.Size(47, 13);
             this.lbl_TransferDescription.TabIndex = 125;
@@ -271,7 +317,7 @@ namespace PersonalAccounting.UI
             this.lbl_SecondAccount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_SecondAccount.AutoSize = true;
             this.lbl_SecondAccount.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_SecondAccount.Location = new System.Drawing.Point(304, 44);
+            this.lbl_SecondAccount.Location = new System.Drawing.Point(308, 84);
             this.lbl_SecondAccount.Name = "lbl_SecondAccount";
             this.lbl_SecondAccount.Size = new System.Drawing.Size(68, 13);
             this.lbl_SecondAccount.TabIndex = 123;
@@ -283,7 +329,7 @@ namespace PersonalAccounting.UI
             this.lbl_DestFundRemain.AutoSize = true;
             this.lbl_DestFundRemain.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_DestFundRemain.ForeColor = System.Drawing.Color.Navy;
-            this.lbl_DestFundRemain.Location = new System.Drawing.Point(262, 12);
+            this.lbl_DestFundRemain.Location = new System.Drawing.Point(281, 12);
             this.lbl_DestFundRemain.Name = "lbl_DestFundRemain";
             this.lbl_DestFundRemain.Size = new System.Drawing.Size(102, 13);
             this.lbl_DestFundRemain.TabIndex = 123;
@@ -295,7 +341,7 @@ namespace PersonalAccounting.UI
             this.lbl_OriginFundRemain.AutoSize = true;
             this.lbl_OriginFundRemain.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_OriginFundRemain.ForeColor = System.Drawing.Color.Navy;
-            this.lbl_OriginFundRemain.Location = new System.Drawing.Point(650, 12);
+            this.lbl_OriginFundRemain.Location = new System.Drawing.Point(671, 12);
             this.lbl_OriginFundRemain.Name = "lbl_OriginFundRemain";
             this.lbl_OriginFundRemain.Size = new System.Drawing.Size(108, 13);
             this.lbl_OriginFundRemain.TabIndex = 123;
@@ -306,7 +352,7 @@ namespace PersonalAccounting.UI
             this.lbl_FirstAccount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_FirstAccount.AutoSize = true;
             this.lbl_FirstAccount.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_FirstAccount.Location = new System.Drawing.Point(716, 44);
+            this.lbl_FirstAccount.Location = new System.Drawing.Point(711, 84);
             this.lbl_FirstAccount.Name = "lbl_FirstAccount";
             this.lbl_FirstAccount.Size = new System.Drawing.Size(60, 13);
             this.lbl_FirstAccount.TabIndex = 123;
@@ -325,7 +371,7 @@ namespace PersonalAccounting.UI
             this.pnl_Action.Controls.Add(this.btnInsert);
             this.pnl_Action.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_Action.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.pnl_Action.Location = new System.Drawing.Point(0, 211);
+            this.pnl_Action.Location = new System.Drawing.Point(0, 226);
             this.pnl_Action.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_Action.Name = "pnl_Action";
             this.pnl_Action.Size = new System.Drawing.Size(813, 41);
@@ -429,7 +475,7 @@ namespace PersonalAccounting.UI
             this.rgv_TransferMoney.ForeColor = System.Drawing.SystemColors.ControlText;
             this.rgv_TransferMoney.GroupExpandAnimationType = Telerik.WinControls.UI.GridExpandAnimationType.Slide;
             this.rgv_TransferMoney.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.rgv_TransferMoney.Location = new System.Drawing.Point(0, 252);
+            this.rgv_TransferMoney.Location = new System.Drawing.Point(0, 267);
             this.rgv_TransferMoney.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             // 
             // 
@@ -449,75 +495,71 @@ namespace PersonalAccounting.UI
             gridViewTextBoxColumn1.ReadOnly = true;
             gridViewTextBoxColumn1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             gridViewTextBoxColumn1.Width = 62;
-            gridViewTextBoxColumn2.EnableExpressionEditor = false;
-            gridViewTextBoxColumn2.FieldName = "OriginFundId";
-            gridViewTextBoxColumn2.HeaderText = "کد حساب مبدا";
-            gridViewTextBoxColumn2.IsVisible = false;
-            gridViewTextBoxColumn2.Name = "OriginFundId";
-            gridViewTextBoxColumn2.ReadOnly = true;
+            gridViewTextBoxColumn2.FieldName = "TransferMoneyPersianDate";
+            gridViewTextBoxColumn2.HeaderText = "تاریخ  انتقال";
+            gridViewTextBoxColumn2.Name = "TransferMoneyPersianDate";
             gridViewTextBoxColumn2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn2.Width = 84;
+            gridViewTextBoxColumn2.Width = 150;
             gridViewTextBoxColumn3.EnableExpressionEditor = false;
-            gridViewTextBoxColumn3.FieldName = "OriginFundName";
-            gridViewTextBoxColumn3.HeaderText = "حساب مبدا";
-            gridViewTextBoxColumn3.Name = "OriginFundName";
+            gridViewTextBoxColumn3.FieldName = "OriginFundId";
+            gridViewTextBoxColumn3.HeaderText = "کد حساب مبدا";
+            gridViewTextBoxColumn3.IsVisible = false;
+            gridViewTextBoxColumn3.Name = "OriginFundId";
             gridViewTextBoxColumn3.ReadOnly = true;
             gridViewTextBoxColumn3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn3.Width = 200;
+            gridViewTextBoxColumn3.Width = 84;
             gridViewTextBoxColumn4.EnableExpressionEditor = false;
-            gridViewTextBoxColumn4.FieldName = "DestinationFundId";
-            gridViewTextBoxColumn4.HeaderText = "کد حساب مقصد";
-            gridViewTextBoxColumn4.IsVisible = false;
-            gridViewTextBoxColumn4.Name = "DestinationFundId";
+            gridViewTextBoxColumn4.FieldName = "OriginFundName";
+            gridViewTextBoxColumn4.HeaderText = "حساب مبدا";
+            gridViewTextBoxColumn4.Name = "OriginFundName";
             gridViewTextBoxColumn4.ReadOnly = true;
             gridViewTextBoxColumn4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn4.Width = 93;
+            gridViewTextBoxColumn4.Width = 200;
             gridViewTextBoxColumn5.EnableExpressionEditor = false;
-            gridViewTextBoxColumn5.FieldName = "DestinationFundName";
-            gridViewTextBoxColumn5.HeaderText = "حساب مقصد";
-            gridViewTextBoxColumn5.Name = "DestinationFundName";
+            gridViewTextBoxColumn5.FieldName = "DestinationFundId";
+            gridViewTextBoxColumn5.HeaderText = "کد حساب مقصد";
+            gridViewTextBoxColumn5.IsVisible = false;
+            gridViewTextBoxColumn5.Name = "DestinationFundId";
             gridViewTextBoxColumn5.ReadOnly = true;
             gridViewTextBoxColumn5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn5.Width = 200;
-            gridViewTextBoxColumn6.FieldName = "Amount";
-            gridViewTextBoxColumn6.HeaderText = "مبلغ";
-            gridViewTextBoxColumn6.IsVisible = false;
-            gridViewTextBoxColumn6.Name = "Amount";
+            gridViewTextBoxColumn5.Width = 93;
+            gridViewTextBoxColumn6.EnableExpressionEditor = false;
+            gridViewTextBoxColumn6.FieldName = "DestinationFundName";
+            gridViewTextBoxColumn6.HeaderText = "حساب مقصد";
+            gridViewTextBoxColumn6.Name = "DestinationFundName";
+            gridViewTextBoxColumn6.ReadOnly = true;
             gridViewTextBoxColumn6.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn6.Width = 81;
-            gridViewTextBoxColumn7.FieldName = "AmountSeparateDigit";
+            gridViewTextBoxColumn6.Width = 200;
+            gridViewTextBoxColumn7.FieldName = "Amount";
             gridViewTextBoxColumn7.HeaderText = "مبلغ";
-            gridViewTextBoxColumn7.Name = "AmountSeparateDigit";
-            gridViewTextBoxColumn7.ReadOnly = true;
+            gridViewTextBoxColumn7.IsVisible = false;
+            gridViewTextBoxColumn7.Name = "Amount";
             gridViewTextBoxColumn7.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn7.Width = 150;
-            gridViewTextBoxColumn8.FieldName = "BankCommission";
-            gridViewTextBoxColumn8.HeaderText = "کارمزد بانکی";
-            gridViewTextBoxColumn8.IsVisible = false;
-            gridViewTextBoxColumn8.Name = "BankCommission";
+            gridViewTextBoxColumn7.Width = 81;
+            gridViewTextBoxColumn8.FieldName = "AmountSeparateDigit";
+            gridViewTextBoxColumn8.HeaderText = "مبلغ";
+            gridViewTextBoxColumn8.Name = "AmountSeparateDigit";
             gridViewTextBoxColumn8.ReadOnly = true;
             gridViewTextBoxColumn8.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn8.Width = 81;
-            gridViewTextBoxColumn9.FieldName = "BankCommissionSeparateDigit";
+            gridViewTextBoxColumn8.Width = 150;
+            gridViewTextBoxColumn9.FieldName = "BankCommission";
             gridViewTextBoxColumn9.HeaderText = "کارمزد بانکی";
-            gridViewTextBoxColumn9.Name = "BankCommissionSeparateDigit";
+            gridViewTextBoxColumn9.IsVisible = false;
+            gridViewTextBoxColumn9.Name = "BankCommission";
             gridViewTextBoxColumn9.ReadOnly = true;
             gridViewTextBoxColumn9.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn9.Width = 120;
-            gridViewTextBoxColumn10.EnableExpressionEditor = false;
-            gridViewTextBoxColumn10.FieldName = "TransferMoneyPersianRegisterDate";
-            gridViewTextBoxColumn10.HeaderText = "تاریخ ثبت";
-            gridViewTextBoxColumn10.Name = "TransferMoneyPersianRegisterDate";
+            gridViewTextBoxColumn9.Width = 81;
+            gridViewTextBoxColumn10.FieldName = "BankCommissionSeparateDigit";
+            gridViewTextBoxColumn10.HeaderText = "کارمزد بانکی";
+            gridViewTextBoxColumn10.Name = "BankCommissionSeparateDigit";
             gridViewTextBoxColumn10.ReadOnly = true;
             gridViewTextBoxColumn10.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             gridViewTextBoxColumn10.Width = 120;
-            gridViewTextBoxColumn11.EnableExpressionEditor = false;
-            gridViewTextBoxColumn11.FieldName = "TransferMoneyPersianLastUpdate";
-            gridViewTextBoxColumn11.HeaderText = "تاریخ آخرین ویرایش";
-            gridViewTextBoxColumn11.Name = "TransferMoneyPersianLastUpdate";
-            gridViewTextBoxColumn11.ReadOnly = true;
+            gridViewTextBoxColumn11.FieldName = "TransferMoneyPersianRegisterDate";
+            gridViewTextBoxColumn11.HeaderText = "تاریخ ثبت";
+            gridViewTextBoxColumn11.Name = "TransferMoneyPersianRegisterDate";
             gridViewTextBoxColumn11.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn11.Width = 120;
+            gridViewTextBoxColumn11.Width = 150;
             gridViewTextBoxColumn12.EnableExpressionEditor = false;
             gridViewTextBoxColumn12.FieldName = "TransferMoneyCreationUserName";
             gridViewTextBoxColumn12.HeaderText = "کاربر ثبت کننده";
@@ -526,18 +568,29 @@ namespace PersonalAccounting.UI
             gridViewTextBoxColumn12.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             gridViewTextBoxColumn12.Width = 85;
             gridViewTextBoxColumn13.EnableExpressionEditor = false;
-            gridViewTextBoxColumn13.FieldName = "TransferMoneyStatus";
-            gridViewTextBoxColumn13.HeaderText = "وضعیت";
-            gridViewTextBoxColumn13.Name = "TransferMoneyStatus";
+            gridViewTextBoxColumn13.FieldName = "TransferMoneyPersianLastUpdate";
+            gridViewTextBoxColumn13.HeaderText = "تاریخ آخرین ویرایش";
+            gridViewTextBoxColumn13.Name = "TransferMoneyPersianLastUpdate";
             gridViewTextBoxColumn13.ReadOnly = true;
             gridViewTextBoxColumn13.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn13.Width = 81;
-            gridViewTextBoxColumn14.FieldName = "TransferMoneyDescription";
-            gridViewTextBoxColumn14.HeaderText = "توضیحات";
-            gridViewTextBoxColumn14.Name = "TransferMoneyDescription";
-            gridViewTextBoxColumn14.ReadOnly = true;
+            gridViewTextBoxColumn13.Width = 120;
+            gridViewTextBoxColumn14.FieldName = "TransferMoneyUpdateByUserName";
+            gridViewTextBoxColumn14.HeaderText = "کاربر ویرایش کننده";
+            gridViewTextBoxColumn14.Name = "TransferMoneyUpdateByUserName";
             gridViewTextBoxColumn14.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn14.Width = 120;
+            gridViewTextBoxColumn15.EnableExpressionEditor = false;
+            gridViewTextBoxColumn15.FieldName = "TransferMoneyStatus";
+            gridViewTextBoxColumn15.HeaderText = "وضعیت";
+            gridViewTextBoxColumn15.Name = "TransferMoneyStatus";
+            gridViewTextBoxColumn15.ReadOnly = true;
+            gridViewTextBoxColumn15.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn15.Width = 81;
+            gridViewTextBoxColumn16.FieldName = "TransferMoneyDescription";
+            gridViewTextBoxColumn16.HeaderText = "توضیحات";
+            gridViewTextBoxColumn16.Name = "TransferMoneyDescription";
+            gridViewTextBoxColumn16.ReadOnly = true;
+            gridViewTextBoxColumn16.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn16.Width = 120;
             this.rgv_TransferMoney.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
@@ -552,7 +605,9 @@ namespace PersonalAccounting.UI
             gridViewTextBoxColumn11,
             gridViewTextBoxColumn12,
             gridViewTextBoxColumn13,
-            gridViewTextBoxColumn14});
+            gridViewTextBoxColumn14,
+            gridViewTextBoxColumn15,
+            gridViewTextBoxColumn16});
             this.rgv_TransferMoney.MasterTemplate.EnableAlternatingRowColor = true;
             this.rgv_TransferMoney.MasterTemplate.EnableFiltering = true;
             this.rgv_TransferMoney.MasterTemplate.ReadOnly = true;
@@ -565,7 +620,7 @@ namespace PersonalAccounting.UI
             this.rgv_TransferMoney.Name = "rgv_TransferMoney";
             this.rgv_TransferMoney.ReadOnly = true;
             this.rgv_TransferMoney.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.rgv_TransferMoney.Size = new System.Drawing.Size(813, 349);
+            this.rgv_TransferMoney.Size = new System.Drawing.Size(813, 365);
             this.rgv_TransferMoney.TabIndex = 4;
             this.rgv_TransferMoney.CurrentRowChanged += new Telerik.WinControls.UI.CurrentRowChangedEventHandler(this.rgv_TransferMoney_CurrentRowChanged);
             this.rgv_TransferMoney.CellClick += new Telerik.WinControls.UI.GridViewCellEventHandler(this.rgv_TransferMoney_CellClick);
@@ -575,7 +630,7 @@ namespace PersonalAccounting.UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(813, 601);
+            this.ClientSize = new System.Drawing.Size(813, 632);
             this.Controls.Add(this.rgv_TransferMoney);
             this.Controls.Add(this.pnl_Action);
             this.Controls.Add(this.pnl_Data);
@@ -625,5 +680,8 @@ namespace PersonalAccounting.UI
         private System.Windows.Forms.TextBox txt_DestFundRemain;
         private Telerik.WinControls.UI.RadDropDownList rddl_OriginFund;
         private Telerik.WinControls.UI.RadDropDownList rddl_DestFund;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.MaskedTextBox txt_TransferMoneyDate;
+        private System.Windows.Forms.Label label1;
     }
 }

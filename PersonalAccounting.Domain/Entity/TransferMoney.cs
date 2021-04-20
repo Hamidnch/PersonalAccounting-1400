@@ -3,13 +3,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PersonalAccounting.Domain.Entity
 {
-    public class TransferMoney: BaseEntity
+    public class TransferMoney : BaseEntity
     {
-        public TransferMoney(double amount, int originFundId, 
+        public TransferMoney(DateTime? transferDate, double amount, int originFundId,
             int destinationFundId, double bankCommission,
             DateTime? createdOn, DateTime? lastUpdate,
             int? createdBy, string description)
         {
+            TransferDate = transferDate;
             Amount = amount;
             OriginFundId = originFundId;
             DestinationFundId = destinationFundId;
@@ -28,9 +29,10 @@ namespace PersonalAccounting.Domain.Entity
             IsDeleted = false;
         }
 
-        public TransferMoney(double amount, int originFundId,
+        public TransferMoney(DateTime? transferDate, double amount, int originFundId,
             int destinationFundId, double bankCommission)
         {
+            TransferDate = transferDate;
             Amount = amount;
             OriginFundId = originFundId;
             DestinationFundId = destinationFundId;
@@ -39,16 +41,19 @@ namespace PersonalAccounting.Domain.Entity
             Description = "";
             IsDeleted = false;
         }
+
+        public DateTime? TransferDate { get; set; }
+
         /// <summary>
         /// مبلغ قابل انتقال
         /// </summary>
         public double Amount { get; set; }
-       /// <summary>
-       /// حساب مبدا
-       /// </summary>
+        /// <summary>
+        /// حساب مبدا
+        /// </summary>
         public int OriginFundId { get; set; }
-       ///حساب مقصد 
-       public int DestinationFundId { get; set; }
+        ///حساب مقصد 
+        public int DestinationFundId { get; set; }
         /// <summary>
         /// کارمزد بانکی
         /// </summary>
