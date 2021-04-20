@@ -171,8 +171,8 @@ namespace PersonalAccounting.UI
             var dlg = new CustomDialogs(400, 200);
 
             var commodityTypeId = int.Parse(rddl_CommodityTypes.SelectedItem["CommodityTypeId"].ToString());
-            var commodityTypeTitle = int.Parse(rddl_CommodityTypes.SelectedItem["CommodityTypeTitle"].ToString());
-            var receiverId = int.Parse(rddl_Receiver.SelectedItem["PersonId"].ToString());
+            var commodityTypeTitle = rddl_CommodityTypes.Text; 
+             var receiverId = int.Parse(rddl_Receiver.SelectedItem["PersonId"].ToString());
             var receivedBy = txt_ReceivedBy.Text;
             var commodityDate = PersianHelper.GetGregorianDate(txt_CommodityDate.Text);
             var description = txt_CommodityDescription.Text;
