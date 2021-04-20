@@ -55,7 +55,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnInsert = new System.Windows.Forms.Button();
-            this.txt_FundPrimaryValue = new Janus.Windows.GridEX.EditControls.EditBox();
+            this.txt_FundCurrentValue = new Janus.Windows.GridEX.EditControls.EditBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.pnl_Data = new System.Windows.Forms.Panel();
             this.rddl_FundStatus = new Telerik.WinControls.UI.RadDropDownList();
@@ -172,9 +172,9 @@
             this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(471, 15);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 13);
+            this.label3.Size = new System.Drawing.Size(72, 13);
             this.label3.TabIndex = 123;
-            this.label3.Text = "موجودی اولیه";
+            this.label3.Text = "موجودی جاری";
             // 
             // btnCancel
             // 
@@ -206,25 +206,25 @@
             this.btnInsert.UseVisualStyleBackColor = false;
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
-            // txt_FundPrimaryValue
+            // txt_FundCurrentValue
             // 
-            this.txt_FundPrimaryValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_FundPrimaryValue.BackColor = System.Drawing.Color.FloralWhite;
-            this.txt_FundPrimaryValue.BorderStyle = Janus.Windows.GridEX.BorderStyle.RaisedLight3D;
-            this.txt_FundPrimaryValue.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txt_FundPrimaryValue.HideSelection = false;
-            this.txt_FundPrimaryValue.HoverMode = Janus.Windows.GridEX.HoverMode.Highlight;
-            this.txt_FundPrimaryValue.Location = new System.Drawing.Point(273, 8);
-            this.txt_FundPrimaryValue.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txt_FundPrimaryValue.Name = "txt_FundPrimaryValue";
-            this.txt_FundPrimaryValue.Size = new System.Drawing.Size(192, 23);
-            this.txt_FundPrimaryValue.TabIndex = 2;
-            this.txt_FundPrimaryValue.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-            this.txt_FundPrimaryValue.UseCompatibleTextRendering = true;
-            this.txt_FundPrimaryValue.VisualStyle = Janus.Windows.GridEX.VisualStyle.VS2010;
-            this.txt_FundPrimaryValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_FundPrimaryValue_KeyDown);
-            this.txt_FundPrimaryValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_FundPrimaryValue_KeyPress);
-            this.txt_FundPrimaryValue.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txt_FundPrimaryValue_KeyUp);
+            this.txt_FundCurrentValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_FundCurrentValue.BackColor = System.Drawing.Color.FloralWhite;
+            this.txt_FundCurrentValue.BorderStyle = Janus.Windows.GridEX.BorderStyle.RaisedLight3D;
+            this.txt_FundCurrentValue.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.txt_FundCurrentValue.HideSelection = false;
+            this.txt_FundCurrentValue.HoverMode = Janus.Windows.GridEX.HoverMode.Highlight;
+            this.txt_FundCurrentValue.Location = new System.Drawing.Point(273, 8);
+            this.txt_FundCurrentValue.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txt_FundCurrentValue.Name = "txt_FundCurrentValue";
+            this.txt_FundCurrentValue.Size = new System.Drawing.Size(192, 23);
+            this.txt_FundCurrentValue.TabIndex = 2;
+            this.txt_FundCurrentValue.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            this.txt_FundCurrentValue.UseCompatibleTextRendering = true;
+            this.txt_FundCurrentValue.VisualStyle = Janus.Windows.GridEX.VisualStyle.VS2010;
+            this.txt_FundCurrentValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_FundPrimaryValue_KeyDown);
+            this.txt_FundCurrentValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_FundPrimaryValue_KeyPress);
+            this.txt_FundCurrentValue.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txt_FundPrimaryValue_KeyUp);
             // 
             // btnClose
             // 
@@ -251,7 +251,7 @@
             this.pnl_Data.Controls.Add(this.label6);
             this.pnl_Data.Controls.Add(this.label9);
             this.pnl_Data.Controls.Add(this.txt_FundDescription);
-            this.pnl_Data.Controls.Add(this.txt_FundPrimaryValue);
+            this.pnl_Data.Controls.Add(this.txt_FundCurrentValue);
             this.pnl_Data.Controls.Add(this.label3);
             this.pnl_Data.Controls.Add(this.label4);
             this.pnl_Data.Controls.Add(this.lbl_FundName);
@@ -576,7 +576,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnInsert;
-        private Janus.Windows.GridEX.EditControls.EditBox txt_FundPrimaryValue;
+        private Janus.Windows.GridEX.EditControls.EditBox txt_FundCurrentValue;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Panel pnl_Data;
         private System.Windows.Forms.Panel pnl_Action;

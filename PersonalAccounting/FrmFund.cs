@@ -109,7 +109,7 @@ namespace PersonalAccounting.UI
                 _fundId = int.Parse(dataRow.Cells["FundId"].Value.ToString());
 
                 //rddl_FundType.SelectedValue = dataRow.Cells["FundTypeName"].Value?.ToString();
-                txt_FundPrimaryValue.Text = dataRow.Cells["FundPrimaryValueSeparateDigit"].Value?.ToString();
+                txt_FundCurrentValue.Text = dataRow.Cells["FundPrimaryValueSeparateDigit"].Value?.ToString();
                 rddl_FundStatus.Text = dataRow.Cells["FundStatus"].Value?.ToString();
                 txt_FundDescription.Text = dataRow.Cells["FundDescription"].Value?.ToString();
 
@@ -150,7 +150,7 @@ namespace PersonalAccounting.UI
             //{
             return CommonHelper.ValidateControls(rddl_BankAccountSubject, _errorProvider,
                        "عنوان صندوق  را انتخاب نمایید") ||
-                   CommonHelper.ValidateControls(txt_FundPrimaryValue, _errorProvider,
+                   CommonHelper.ValidateControls(txt_FundCurrentValue, _errorProvider,
                        "موجودی اولیه صندوق را مشخص نمایید");
             //}
             //if (ddl_BankAccountSubject.ComboStyle == ComboStyle.DropDownList)
@@ -179,7 +179,8 @@ namespace PersonalAccounting.UI
             var fundStatus = rddl_FundStatus.Text;
             var currentUser = InitialHelper.CurrentUser;
             var currentDateTime = InitialHelper.CurrentDateTime;
-            var fundPrimaryValue = double.Parse(txt_FundPrimaryValue.Text);
+            var fundCurrentValue = double.Parse(txt_FundCurrentValue.Text);
+            var fundTypeTitle = rddl_FundType.Text;
             switch (_mode)
             {
                 case CommonHelper.Mode.Insert:
@@ -196,7 +197,7 @@ namespace PersonalAccounting.UI
                         //else bankAccountId = null;
 
                         var newFund = new Fund(fundType, fundTitle, bankAccountId,
-                            fundPrimaryValue, fundPrimaryValue,
+                            fundCurrentValue, fundCurrentValue,
                             currentDateTime, currentDateTime,
                             currentUser.Id, fundStatus,
                             txt_FundDescription.Text);
@@ -220,11 +221,11 @@ namespace PersonalAccounting.UI
                                 BindGrid();
 
                                 CommonHelper.ShowNotificationMessage("ایجاد صندوق جدید",
-                                    $"صندوق با نوع {rddl_FundType.Text} توسط کاربری با عنوان" +
+                                    $"صندوق با نوع {fundTypeTitle} توسط کاربری با عنوان" +
                                     $" {currentUser.UserName} ایجاد گردید.");
 
                                 await LoggerService.InformationAsync(this.Name,
-                                    "btnRegister_Click(Insert Mode)", $"ایجاد صندوق با نوع {rddl_FundType.Text} ",
+                                    "btnRegister_Click(Insert Mode)", $"ایجاد صندوق با نوع {fundTypeTitle} ",
                                     $"این صندوق توسط کاربری با نام {currentUser.UserName} ایجاد گردید.");
 
                                 //CommonHelper.ClearInputControls(this, false, false);
@@ -282,8 +283,7 @@ namespace PersonalAccounting.UI
                         currentFund.UpdateBy = currentUser.Id;
                         currentFund.LastUpdate = currentDateTime;
                         currentFund.Status = fundStatus;
-                        currentFund.PrimaryValue = fundPrimaryValue;
-                        //currentFund.CurrentValue = double.Parse(txt_FundPrimaryValue.Text);
+                        currentFund.CurrentValue = fundCurrentValue;
                         currentFund.Description = txt_FundDescription.Text;
 
                         //if (await _fundService.ExistAsync(currentFund))
@@ -297,12 +297,12 @@ namespace PersonalAccounting.UI
 
                         await _fundService.UpdateAsync(currentFund);
 
-                        CommonHelper.ShowNotificationMessage("ویرایش صندوق جدید",
-                            $"صندوق با نوع {rddl_FundType.Text} توسط کاربری با عنوان" +
+                        CommonHelper.ShowNotificationMessage("ویرایش صندوق",
+                            $"صندوق با نوع {fundTypeTitle} توسط کاربری با عنوان" +
                             $" {currentUser.UserName} ویرایش گردید.");
 
                         await LoggerService.InformationAsync(this.Name,
-                            "btnRegister_Click(Update Mode)", $"ویرایش صندوق با نوع {rddl_FundType.Text} ",
+                            "btnRegister_Click(Update Mode)", $"ویرایش صندوق با نوع {fundTypeTitle} ",
                             $"این صندوق توسط کاربری با نام {currentUser.UserName} ویرایش گردید.");
 
                         //CommonHelper.ClearInputControls(pnl_Data);
@@ -426,13 +426,13 @@ namespace PersonalAccounting.UI
 
         private void txt_FundPrimaryValue_KeyUp(object sender, KeyEventArgs e)
         {
-            if (txt_FundPrimaryValue.Text != string.Empty)
+            if (txt_FundCurrentValue.Text != string.Empty)
             {
-                var fi = txt_FundPrimaryValue.Text.ClearSeparateEx();
+                var fi = txt_FundCurrentValue.Text.ClearSeparateEx();
                 var temp = fi.ToString(CultureInfo.InvariantCulture).AddSeparateEx();
-                txt_FundPrimaryValue.Text = temp;
+                txt_FundCurrentValue.Text = temp;
             }
-            txt_FundPrimaryValue.SelectionStart = txt_FundPrimaryValue.Text.Length;
+            txt_FundCurrentValue.SelectionStart = txt_FundCurrentValue.Text.Length;
         }
 
         private void Txt_FundPrimaryValue_KeyDown(object sender, KeyEventArgs e)
@@ -481,7 +481,7 @@ namespace PersonalAccounting.UI
             if (_mode == CommonHelper.Mode.Insert)
             {
                 btnRegister.Enabled = (rddl_BankAccountSubject.Text != string.Empty &&
-                    txt_FundPrimaryValue.Text != string.Empty);
+                    txt_FundCurrentValue.Text != string.Empty);
             }
         }
 
@@ -490,7 +490,7 @@ namespace PersonalAccounting.UI
             if (_mode == CommonHelper.Mode.Insert)
             {
                 btnRegister.Enabled = (rddl_BankAccountSubject.Text != string.Empty &&
-                                       txt_FundPrimaryValue.Text != string.Empty);
+                                       txt_FundCurrentValue.Text != string.Empty);
             }
         }
 
