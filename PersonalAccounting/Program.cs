@@ -46,7 +46,6 @@ namespace PersonalAccounting.UI
 
             //Application.Run(new FrmLogin());
             Application.Run(IocConfig.Container.GetInstance<FrmLogin>());
-
         }
     }
 }
