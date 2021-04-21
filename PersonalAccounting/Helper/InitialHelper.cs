@@ -120,8 +120,8 @@ namespace PersonalAccounting.UI.Helper
 
             //if (File.Exists(databasePath)) return;
 
-            if(!flag) return;
-            
+            if (!flag) return;
+
 #if DEBUG
             MessageBox.Show("Mode=Debug"); 
 #else
@@ -132,11 +132,11 @@ namespace PersonalAccounting.UI.Helper
 
         }
 
-        public static void Backup(string strDestinationFolder,string folderPath, bool compressed = true)
+        public static void Backup(string strDestinationFolder, string folderPath, bool compressed = true)
         {
             var backupDestinationFolder = strDestinationFolder + "\\" + folderPath;
             var currentDate = DateTime.Now;
-           
+
             if (!Directory.Exists(backupDestinationFolder))
             {
                 Directory.CreateDirectory(backupDestinationFolder);
@@ -158,7 +158,7 @@ namespace PersonalAccounting.UI.Helper
             if (!compressed) return;
 
 
-            var zipFilePath = backupDestinationFolder + "\\PACompressed.rar";
+            var zipFilePath = backupDestinationFolder + "\\PACompressed.nch.rar";
             //Utility.CreateEncryptedZipFileFromDirectory(backupDestinationFolder + "\\", zipFilePath);
 
             using (var fStream = File.Open(zipFilePath, FileMode.Create, FileAccess.ReadWrite))
