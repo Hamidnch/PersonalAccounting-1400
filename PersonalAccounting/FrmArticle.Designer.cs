@@ -31,10 +31,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmArticle));
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.Data.SortDescriptor sortDescriptor1 = new Telerik.WinControls.Data.SortDescriptor();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.Data.SortDescriptor sortDescriptor3 = new Telerik.WinControls.Data.SortDescriptor();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
             this.pnl_Action = new System.Windows.Forms.Panel();
             this._picLoading = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
@@ -107,7 +107,7 @@
             this.pnl_Action.Controls.Add(this.btnInsert);
             this.pnl_Action.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_Action.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.pnl_Action.Location = new System.Drawing.Point(0, 95);
+            this.pnl_Action.Location = new System.Drawing.Point(0, 122);
             this.pnl_Action.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_Action.Name = "pnl_Action";
             this.pnl_Action.Size = new System.Drawing.Size(907, 39);
@@ -229,7 +229,7 @@
             this.pnl_Data.Controls.Add(this.label1);
             this.pnl_Data.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_Data.Enabled = false;
-            this.pnl_Data.Location = new System.Drawing.Point(0, 0);
+            this.pnl_Data.Location = new System.Drawing.Point(0, 27);
             this.pnl_Data.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnl_Data.Name = "pnl_Data";
             this.pnl_Data.Size = new System.Drawing.Size(907, 95);
@@ -436,6 +436,7 @@
             this.rlv_Article.ItemSize = new System.Drawing.Size(64, 64);
             this.rlv_Article.Location = new System.Drawing.Point(0, 30);
             this.rlv_Article.Name = "rlv_Article";
+            this.rlv_Article.Padding = new System.Windows.Forms.Padding(10);
             this.rlv_Article.ShowGridLines = true;
             this.rlv_Article.Size = new System.Drawing.Size(614, 462);
             this.rlv_Article.TabIndex = 30;
@@ -453,7 +454,7 @@
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "Article.png");
+            this.imageList1.Images.SetKeyName(0, "32.png");
             // 
             // radCommandBar1
             // 
@@ -571,32 +572,32 @@
             this.rgv_ArticleGroup.MasterTemplate.AllowRowResize = false;
             this.rgv_ArticleGroup.MasterTemplate.AutoExpandGroups = true;
             this.rgv_ArticleGroup.MasterTemplate.AutoGenerateColumns = false;
-            gridViewTextBoxColumn1.EnableExpressionEditor = false;
-            gridViewTextBoxColumn1.FieldName = "ArticleGroupId";
-            gridViewTextBoxColumn1.HeaderText = "شناسه";
-            gridViewTextBoxColumn1.Name = "ArticleGroupId";
-            gridViewTextBoxColumn1.ReadOnly = true;
-            gridViewTextBoxColumn1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn1.Width = 70;
-            gridViewTextBoxColumn2.EnableExpressionEditor = false;
-            gridViewTextBoxColumn2.FieldName = "ArticleGroupName";
-            gridViewTextBoxColumn2.HeaderText = "نام گروه";
-            gridViewTextBoxColumn2.Name = "ArticleGroupName";
-            gridViewTextBoxColumn2.ReadOnly = true;
-            gridViewTextBoxColumn2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn2.Width = 198;
+            gridViewTextBoxColumn5.EnableExpressionEditor = false;
+            gridViewTextBoxColumn5.FieldName = "ArticleGroupId";
+            gridViewTextBoxColumn5.HeaderText = "شناسه";
+            gridViewTextBoxColumn5.Name = "ArticleGroupId";
+            gridViewTextBoxColumn5.ReadOnly = true;
+            gridViewTextBoxColumn5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn5.Width = 70;
+            gridViewTextBoxColumn6.EnableExpressionEditor = false;
+            gridViewTextBoxColumn6.FieldName = "ArticleGroupName";
+            gridViewTextBoxColumn6.HeaderText = "نام گروه";
+            gridViewTextBoxColumn6.Name = "ArticleGroupName";
+            gridViewTextBoxColumn6.ReadOnly = true;
+            gridViewTextBoxColumn6.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn6.Width = 198;
             this.rgv_ArticleGroup.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn1,
-            gridViewTextBoxColumn2});
+            gridViewTextBoxColumn5,
+            gridViewTextBoxColumn6});
             this.rgv_ArticleGroup.MasterTemplate.EnableAlternatingRowColor = true;
             this.rgv_ArticleGroup.MasterTemplate.EnableFiltering = true;
             this.rgv_ArticleGroup.MasterTemplate.EnableGrouping = false;
             this.rgv_ArticleGroup.MasterTemplate.ReadOnly = true;
             this.rgv_ArticleGroup.MasterTemplate.ShowGroupedColumns = true;
-            sortDescriptor1.PropertyName = "column1";
+            sortDescriptor3.PropertyName = "column1";
             this.rgv_ArticleGroup.MasterTemplate.SortDescriptors.AddRange(new Telerik.WinControls.Data.SortDescriptor[] {
-            sortDescriptor1});
-            this.rgv_ArticleGroup.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            sortDescriptor3});
+            this.rgv_ArticleGroup.MasterTemplate.ViewDefinition = tableViewDefinition3;
             this.rgv_ArticleGroup.Name = "rgv_ArticleGroup";
             this.rgv_ArticleGroup.ReadOnly = true;
             this.rgv_ArticleGroup.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -652,6 +653,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "فرم جزئیات کالا";
             this.Load += new System.EventHandler(this.FrmArticle_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmArticle_KeyDown);
+            this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.FrmArticle_PreviewKeyDown);
             this.Controls.SetChildIndex(this.pnl_Data, 0);
             this.Controls.SetChildIndex(this.pnl_Action, 0);
             this.Controls.SetChildIndex(this.radSplitContainer1, 0);

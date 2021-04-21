@@ -29,8 +29,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.RadListDataItem radListDataItem1 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem2 = new Telerik.WinControls.UI.RadListDataItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmWeatherCondition));
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
@@ -43,7 +41,7 @@
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.pic_Picture = new System.Windows.Forms.PictureBox();
             this.pnl_Data = new System.Windows.Forms.Panel();
-            this.ddl_Status = new Telerik.WinControls.UI.RadDropDownList();
+            this.rddl_Status = new Telerik.WinControls.UI.RadDropDownList();
             this.txt_Description = new Telerik.WinControls.UI.RadTextBoxControl();
             this.txt_Title = new Telerik.WinControls.UI.RadTextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -61,7 +59,7 @@
             ((System.ComponentModel.ISupportInitialize)(this._errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Picture)).BeginInit();
             this.pnl_Data.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ddl_Status)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rddl_Status)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Description)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Title)).BeginInit();
             this.pnl_Action.SuspendLayout();
@@ -89,7 +87,7 @@
             // 
             this.pnl_Data.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.pnl_Data.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnl_Data.Controls.Add(this.ddl_Status);
+            this.pnl_Data.Controls.Add(this.rddl_Status);
             this.pnl_Data.Controls.Add(this.txt_Description);
             this.pnl_Data.Controls.Add(this.txt_Title);
             this.pnl_Data.Controls.Add(this.pic_Picture);
@@ -104,24 +102,18 @@
             this.pnl_Data.Size = new System.Drawing.Size(780, 89);
             this.pnl_Data.TabIndex = 7;
             // 
-            // ddl_Status
+            // rddl_Status
             // 
-            this.ddl_Status.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ddl_Status.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
-            this.ddl_Status.Font = new System.Drawing.Font("Tornado Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            radListDataItem1.ImageAlignment = System.Drawing.ContentAlignment.MiddleRight;
-            radListDataItem1.Text = "فعال";
-            radListDataItem2.ImageAlignment = System.Drawing.ContentAlignment.MiddleRight;
-            radListDataItem2.Text = "غیرفعال";
-            this.ddl_Status.Items.Add(radListDataItem1);
-            this.ddl_Status.Items.Add(radListDataItem2);
-            this.ddl_Status.Location = new System.Drawing.Point(570, 41);
-            this.ddl_Status.MaxDropDownItems = 10;
-            this.ddl_Status.Name = "ddl_Status";
-            this.ddl_Status.Size = new System.Drawing.Size(131, 19);
-            this.ddl_Status.TabIndex = 211;
-            this.ddl_Status.TextChanged += new System.EventHandler(this.Txt_Title_TextChanged);
-            this.ddl_Status.SelectedValueChanged += new System.EventHandler(this.Txt_Title_TextChanged);
+            this.rddl_Status.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rddl_Status.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
+            this.rddl_Status.Font = new System.Drawing.Font("Tornado Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.rddl_Status.Location = new System.Drawing.Point(570, 41);
+            this.rddl_Status.MaxDropDownItems = 10;
+            this.rddl_Status.Name = "rddl_Status";
+            this.rddl_Status.Size = new System.Drawing.Size(131, 19);
+            this.rddl_Status.TabIndex = 211;
+            this.rddl_Status.TextChanged += new System.EventHandler(this.Txt_Title_TextChanged);
+            this.rddl_Status.SelectedValueChanged += new System.EventHandler(this.Txt_Title_TextChanged);
             // 
             // txt_Description
             // 
@@ -414,7 +406,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pic_Picture)).EndInit();
             this.pnl_Data.ResumeLayout(false);
             this.pnl_Data.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ddl_Status)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rddl_Status)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Description)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Title)).EndInit();
             this.pnl_Action.ResumeLayout(false);
@@ -444,6 +436,6 @@
         private System.Windows.Forms.TextBox txt_Extenstion;
         private Telerik.WinControls.UI.RadTextBox txt_Title;
         private Telerik.WinControls.UI.RadTextBoxControl txt_Description;
-        private Telerik.WinControls.UI.RadDropDownList ddl_Status;
+        private Telerik.WinControls.UI.RadDropDownList rddl_Status;
     }
 }

@@ -33,6 +33,7 @@ namespace PersonalAccounting.UI
             _weatherConditionService = weatherConditionService;
             InitializeComponent();
             CommonHelper.SetFont(CommonHelper.BaseFont, pnl_Data, rgv_WeatherCondition);
+            rddl_Status.SetEnableDisableStatusDropdownList();
             BindGrid();
         }
         private async void BindGrid()
@@ -60,7 +61,7 @@ namespace PersonalAccounting.UI
             CommonHelper.InsertAction(_mode, pnl_Data, rgv_WeatherCondition, btnInsert, btnRegister, btnModify,
                 btnDelete, btnCancel, btnClose, txt_Title);
 
-            ddl_Status.SelectedValue = 0;
+            rddl_Status.SelectedValue = 0;
         }
 
         private void BtnModify_Click(object sender, System.EventArgs e)
@@ -94,7 +95,7 @@ namespace PersonalAccounting.UI
 
                 _weatherConditionId = int.Parse(dataRow.Cells["Id"].Value.ToString());
                 txt_Title.Text = dataRow.Cells["Title"].Value?.ToString();
-                ddl_Status.Text = dataRow.Cells["Status"].Value?.ToString();
+                rddl_Status.Text = dataRow.Cells["Status"].Value?.ToString();
                 txt_Description.Text = dataRow.Cells["Description"].Value?.ToString();
                 if (dataRow.Cells["Picture"].Value != null
                     && dataRow.Cells["Picture"].Value?.ToString() != string.Empty
@@ -119,7 +120,7 @@ namespace PersonalAccounting.UI
         {
             return CommonHelper.ValidateControls(txt_Title, _errorProvider,
                        "عنوان  را وارد نمایید")
-                   || CommonHelper.ValidateControls(ddl_Status, _errorProvider,
+                   || CommonHelper.ValidateControls(rddl_Status, _errorProvider,
                        "وضعیت را مشخص کنید");
         }
 
@@ -128,7 +129,7 @@ namespace PersonalAccounting.UI
             if (_mode == CommonHelper.Mode.Insert)
             {
                 btnRegister.Enabled = (txt_Title.Text != string.Empty
-                                       && ddl_Status.Text != string.Empty);
+                                       && rddl_Status.Text != string.Empty);
             }
         }
 
@@ -159,7 +160,7 @@ namespace PersonalAccounting.UI
             var currentUser = InitialHelper.CurrentUser;
             var currentDateTime = InitialHelper.CurrentDateTime;
             var weatherConditionTitle = txt_Title.Text;
-            var weatherConditionStatus = ddl_Status.Text;
+            var weatherConditionStatus = rddl_Status.Text;
 
             switch (_mode)
             {
@@ -241,7 +242,7 @@ namespace PersonalAccounting.UI
                         currentWeatherCondition.Title = weatherConditionTitle;
                         currentWeatherCondition.UpdateBy = currentUser.Id;
                         currentWeatherCondition.LastUpdate = currentDateTime;
-                        currentWeatherCondition.Status = ddl_Status.Text;
+                        currentWeatherCondition.Status = rddl_Status.Text;
                         currentWeatherCondition.Picture = CommonHelper.ConvertPicBoxImageToByte(pic_Picture, ImageFormat.Png);
                         currentWeatherCondition.Description = txt_Description.Text;
 
@@ -308,6 +309,8 @@ namespace PersonalAccounting.UI
 
         private async void btnDelete_Click(object sender, EventArgs e)
         {
+            if (rgv_WeatherCondition.Rows.Count <= 0) return;
+
             if (!InitialHelper.HasPermissionFor(this.Name, PermissionMode.Delete))
             {
                 CommonHelper.ShowNotificationMessage(DefaultConstants.IllegalAccess,

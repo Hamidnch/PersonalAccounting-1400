@@ -102,6 +102,7 @@ namespace PersonalAccounting.UI
         private void btnCancel_Click(object sender, EventArgs e)
         {
             _mode = CommonHelper.Mode.Cancel;
+
             CommonHelper.CancelAction(_mode, pnl_Data, rlv_ArticleGroup, btnInsert, btnRegister, btnModify,
                 btnDelete, btnCancel, btnClose);
 
@@ -292,14 +293,13 @@ namespace PersonalAccounting.UI
             _mode = CommonHelper.Mode.Update;
             CommonHelper.ModifyAction(_mode, pnl_Data, rlv_ArticleGroup, btnInsert, btnRegister,
                 btnModify, btnDelete, btnCancel, btnClose);
-            _mode = CommonHelper.Mode.Update;
         }
 
         private void txt_ArticleGroupName_TextChanged(object sender, EventArgs e)
         {
             if (_mode == CommonHelper.Mode.Insert)
             {
-                btnRegister.Enabled = (txt_ArticleGroupName.Text != String.Empty);
+                btnRegister.Enabled = (txt_ArticleGroupName.Text != string.Empty);
             }
         }
 
@@ -435,6 +435,7 @@ namespace PersonalAccounting.UI
             if (e.Column.FieldName == "ArticleGroupPersianRegisterDate") { e.Column.HeaderText = "تاریخ ثبت"; }
             if (e.Column.FieldName == "ArticleGroupPersianLastUpdate") { e.Column.HeaderText = "تاریخ ویرایش"; }
             if (e.Column.FieldName == "ArticleGroupDescription") { e.Column.HeaderText = "توضیحات"; }
+            if (e.Column.FieldName == "ArticleGroupUpdateByUserName") { e.Column.HeaderText = "کاربر ویرایش کننده"; }
             if (e.Column.FieldName == "ArticleGroupId"
                 || e.Column.FieldName == "ArticleGroupCreationDate"
                 || e.Column.FieldName == "ArticleGroupLastUpdate")
@@ -457,6 +458,8 @@ namespace PersonalAccounting.UI
 
         private async void btnDelete_Click(object sender, EventArgs e)
         {
+            if (rlv_ArticleGroup.Items.Count <= 0) return;
+
             if (!InitialHelper.HasPermissionFor(this.Name, PermissionMode.Delete))
             {
                 CommonHelper.ShowNotificationMessage(DefaultConstants.IllegalAccess, DefaultConstants.DeleteActionNotAllow);

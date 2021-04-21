@@ -1427,8 +1427,9 @@ namespace PersonalAccounting.UI
                         rtb_Note.Focus();
                         rtb_Note.Select(rtb_Note.Text.Length - 1, 0);
                         rtb_Note.ScrollToCaret();
+
+                        CommonHelper.ShowNotificationMessage("یادداشت روزانه", "اطلاعات یادداشت روزانه بروز رسانی شد");
                     }
-                    CommonHelper.ShowNotificationMessage("یادداشت روزانه", "اطلاعات یادداشت روزانه بروز رسانی شد");
 
                     //dlg.Invoke("پیام", "تغییرات بروزرسانی شد.", CustomDialogs.ImageType.itEdit,
                     //    CustomDialogs.ButtonType.Ok, InitialHelper.BackColorCustom);

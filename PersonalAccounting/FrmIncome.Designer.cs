@@ -30,23 +30,23 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmIncome));
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn9 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn10 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn11 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn12 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn13 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn14 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn15 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.Data.SortDescriptor sortDescriptor1 = new Telerik.WinControls.Data.SortDescriptor();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn76 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn77 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn78 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn79 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn80 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn81 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn82 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn83 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn84 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn85 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn86 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn87 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn88 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn89 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn90 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.Data.SortDescriptor sortDescriptor6 = new Telerik.WinControls.Data.SortDescriptor();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition6 = new Telerik.WinControls.UI.TableViewDefinition();
             this.pnl_Action = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -69,6 +69,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.rgv_Income = new Telerik.WinControls.UI.RadGridView();
+            this.circleShape1 = new Telerik.WinControls.CircleShape();
             ((System.ComponentModel.ISupportInitialize)(this._errorProvider)).BeginInit();
             this.pnl_Action.SuspendLayout();
             this.pnl_Data.SuspendLayout();
@@ -215,7 +216,8 @@
             this.rddl_Funds.AutoSize = false;
             this.rddl_Funds.AutoSizeItems = true;
             this.rddl_Funds.BackColor = System.Drawing.Color.White;
-            this.rddl_Funds.DropDownAnimationEasing = Telerik.WinControls.RadEasingType.InCubic;
+            this.rddl_Funds.DefaultItemsCountInDropDown = 10;
+            this.rddl_Funds.DropDownAnimationEasing = Telerik.WinControls.RadEasingType.InOutExponential;
             this.rddl_Funds.DropDownSizingMode = ((Telerik.WinControls.UI.SizingMode)((Telerik.WinControls.UI.SizingMode.RightBottom | Telerik.WinControls.UI.SizingMode.UpDown)));
             this.rddl_Funds.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.rddl_Funds.EnableAlternatingItemColor = true;
@@ -226,17 +228,22 @@
             this.rddl_Funds.TabIndex = 4;
             this.rddl_Funds.TextChanged += new System.EventHandler(this.txt_IncomeDate_TextChanged);
             this.rddl_Funds.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_IncomeDate_KeyDown);
+            ((Telerik.WinControls.UI.RadDropDownListElement)(this.rddl_Funds.GetChildAt(0))).RightToLeft = true;
+            ((Telerik.WinControls.UI.RadDropDownListElement)(this.rddl_Funds.GetChildAt(0))).DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             // 
             // rddl_IncomeTypes
             // 
             this.rddl_IncomeTypes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rddl_IncomeTypes.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.rddl_IncomeTypes.AutoSize = false;
             this.rddl_IncomeTypes.AutoSizeItems = true;
             this.rddl_IncomeTypes.BackColor = System.Drawing.Color.White;
-            this.rddl_IncomeTypes.DropDownAnimationEasing = Telerik.WinControls.RadEasingType.InCubic;
+            this.rddl_IncomeTypes.DefaultItemsCountInDropDown = 10;
+            this.rddl_IncomeTypes.DropDownAnimationEasing = Telerik.WinControls.RadEasingType.InBounce;
             this.rddl_IncomeTypes.DropDownSizingMode = ((Telerik.WinControls.UI.SizingMode)((Telerik.WinControls.UI.SizingMode.RightBottom | Telerik.WinControls.UI.SizingMode.UpDown)));
             this.rddl_IncomeTypes.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.rddl_IncomeTypes.EnableAlternatingItemColor = true;
+            this.rddl_IncomeTypes.EnableAnalytics = false;
             this.rddl_IncomeTypes.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rddl_IncomeTypes.Location = new System.Drawing.Point(373, 7);
             this.rddl_IncomeTypes.Name = "rddl_IncomeTypes";
@@ -244,6 +251,15 @@
             this.rddl_IncomeTypes.TabIndex = 1;
             this.rddl_IncomeTypes.TextChanged += new System.EventHandler(this.txt_IncomeDate_TextChanged);
             this.rddl_IncomeTypes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_IncomeDate_KeyDown);
+            ((Telerik.WinControls.UI.RadDropDownListElement)(this.rddl_IncomeTypes.GetChildAt(0))).RightToLeft = true;
+            ((Telerik.WinControls.UI.RadDropDownListElement)(this.rddl_IncomeTypes.GetChildAt(0))).DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
+            ((Telerik.WinControls.UI.RadDropDownListElement)(this.rddl_IncomeTypes.GetChildAt(0))).EnableElementShadow = true;
+            ((Telerik.WinControls.UI.RadDropDownListElement)(this.rddl_IncomeTypes.GetChildAt(0))).EnableFocusBorder = true;
+            ((Telerik.WinControls.UI.RadDropDownListElement)(this.rddl_IncomeTypes.GetChildAt(0))).EnableHighlight = true;
+            ((Telerik.WinControls.UI.RadDropDownListElement)(this.rddl_IncomeTypes.GetChildAt(0))).EnableBorderHighlight = true;
+            ((Telerik.WinControls.UI.RadDropDownListElement)(this.rddl_IncomeTypes.GetChildAt(0))).BorderHighlightThickness = 1;
+            ((Telerik.WinControls.UI.RadDropDownListElement)(this.rddl_IncomeTypes.GetChildAt(0))).ShouldPaint = true;
+            ((Telerik.WinControls.UI.RadDropDownListElement)(this.rddl_IncomeTypes.GetChildAt(0))).Shape = null;
             // 
             // txt_IncomeDescription
             // 
@@ -386,6 +402,7 @@
             this.rgv_Income.Cursor = System.Windows.Forms.Cursors.Default;
             this.rgv_Income.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rgv_Income.EnableHotTracking = false;
+            this.rgv_Income.EnableKineticScrolling = true;
             this.rgv_Income.EnterKeyMode = Telerik.WinControls.UI.RadGridViewEnterKeyMode.EnterMovesToNextRow;
             this.rgv_Income.Font = new System.Drawing.Font("Tahoma", 9F);
             this.rgv_Income.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -403,127 +420,129 @@
             this.rgv_Income.MasterTemplate.AllowRowResize = false;
             this.rgv_Income.MasterTemplate.AutoExpandGroups = true;
             this.rgv_Income.MasterTemplate.AutoGenerateColumns = false;
-            gridViewTextBoxColumn1.EnableExpressionEditor = false;
-            gridViewTextBoxColumn1.FieldName = "IncomeId";
-            gridViewTextBoxColumn1.HeaderText = "#";
-            gridViewTextBoxColumn1.Name = "IncomeId";
-            gridViewTextBoxColumn1.ReadOnly = true;
-            gridViewTextBoxColumn1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn1.Width = 60;
-            gridViewTextBoxColumn2.EnableExpressionEditor = false;
-            gridViewTextBoxColumn2.FieldName = "IncomePersianDate";
-            gridViewTextBoxColumn2.HeaderText = "تاریخ درآمد";
-            gridViewTextBoxColumn2.Name = "IncomePersianDate";
-            gridViewTextBoxColumn2.ReadOnly = true;
-            gridViewTextBoxColumn2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn2.Width = 120;
-            gridViewTextBoxColumn3.FieldName = "IncomeTypeId";
-            gridViewTextBoxColumn3.HeaderText = "کد نوع درآمد";
-            gridViewTextBoxColumn3.IsVisible = false;
-            gridViewTextBoxColumn3.Name = "IncomeTypeId";
-            gridViewTextBoxColumn3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn4.EnableExpressionEditor = false;
-            gridViewTextBoxColumn4.FieldName = "IncomeTypeTitle";
-            gridViewTextBoxColumn4.HeaderText = "نوع درآمد";
-            gridViewTextBoxColumn4.Name = "IncomeTypeTitle";
-            gridViewTextBoxColumn4.ReadOnly = true;
-            gridViewTextBoxColumn4.SortOrder = Telerik.WinControls.UI.RadSortOrder.Ascending;
-            gridViewTextBoxColumn4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn4.Width = 140;
-            gridViewTextBoxColumn5.FieldName = "IncomePrice";
-            gridViewTextBoxColumn5.HeaderText = "مبلغ درآمد";
-            gridViewTextBoxColumn5.IsVisible = false;
-            gridViewTextBoxColumn5.Name = "IncomePrice";
-            gridViewTextBoxColumn5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn6.EnableExpressionEditor = false;
-            gridViewTextBoxColumn6.FieldName = "IncomeSeparateDigitPrice";
-            gridViewTextBoxColumn6.HeaderText = "مبلغ درآمد";
-            gridViewTextBoxColumn6.Name = "IncomeSeparateDigitPrice";
-            gridViewTextBoxColumn6.ReadOnly = true;
-            gridViewTextBoxColumn6.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn6.Width = 113;
-            gridViewTextBoxColumn7.EnableExpressionEditor = false;
-            gridViewTextBoxColumn7.FieldName = "ReceivedBy";
-            gridViewTextBoxColumn7.HeaderText = "دریافت از طریق";
-            gridViewTextBoxColumn7.Name = "ReceivedBy";
-            gridViewTextBoxColumn7.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn7.Width = 173;
-            gridViewTextBoxColumn8.FieldName = "FundId";
-            gridViewTextBoxColumn8.HeaderText = "کد صندوق";
-            gridViewTextBoxColumn8.IsVisible = false;
-            gridViewTextBoxColumn8.Name = "FundId";
-            gridViewTextBoxColumn8.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn9.EnableExpressionEditor = false;
-            gridViewTextBoxColumn9.FieldName = "FundTitle";
-            gridViewTextBoxColumn9.HeaderText = "واریز به صندوق";
-            gridViewTextBoxColumn9.Name = "FundTitle";
-            gridViewTextBoxColumn9.ReadOnly = true;
-            gridViewTextBoxColumn9.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn9.Width = 168;
-            gridViewTextBoxColumn10.FieldName = "FundOldValueSeparateDigit";
-            gridViewTextBoxColumn10.HeaderText = "مانده قبلی صندوق";
-            gridViewTextBoxColumn10.Name = "FundOldValueSeparateDigit";
-            gridViewTextBoxColumn10.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn10.Width = 168;
-            gridViewTextBoxColumn11.EnableExpressionEditor = false;
-            gridViewTextBoxColumn11.FieldName = "FundCurrentValueSeparateDigit";
-            gridViewTextBoxColumn11.HeaderText = "مانده جاری صندوق";
-            gridViewTextBoxColumn11.Name = "FundCurrentValueSeparateDigit";
-            gridViewTextBoxColumn11.ReadOnly = true;
-            gridViewTextBoxColumn11.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn11.Width = 118;
-            gridViewTextBoxColumn12.EnableExpressionEditor = false;
-            gridViewTextBoxColumn12.FieldName = "IncomeCreationUserName";
-            gridViewTextBoxColumn12.HeaderText = "کاربر ثبت کننده";
-            gridViewTextBoxColumn12.Name = "IncomeCreationUserName";
-            gridViewTextBoxColumn12.ReadOnly = true;
-            gridViewTextBoxColumn12.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn12.Width = 141;
-            gridViewTextBoxColumn13.EnableExpressionEditor = false;
-            gridViewTextBoxColumn13.FieldName = "IncomePersianCreationDate";
-            gridViewTextBoxColumn13.HeaderText = "تاریخ ایجاد";
-            gridViewTextBoxColumn13.Name = "IncomePersianCreationDate";
-            gridViewTextBoxColumn13.ReadOnly = true;
-            gridViewTextBoxColumn13.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn13.Width = 129;
-            gridViewTextBoxColumn14.EnableExpressionEditor = false;
-            gridViewTextBoxColumn14.FieldName = "IncomePersianLastUpate";
-            gridViewTextBoxColumn14.HeaderText = "تاریخ آخرین ویرایش";
-            gridViewTextBoxColumn14.Name = "IncomePersianLastUpate";
-            gridViewTextBoxColumn14.ReadOnly = true;
-            gridViewTextBoxColumn14.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn14.Width = 126;
-            gridViewTextBoxColumn15.EnableExpressionEditor = false;
-            gridViewTextBoxColumn15.FieldName = "Description";
-            gridViewTextBoxColumn15.HeaderText = "توضیحات";
-            gridViewTextBoxColumn15.Name = "Description";
-            gridViewTextBoxColumn15.ReadOnly = true;
-            gridViewTextBoxColumn15.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn15.Width = 246;
+            this.rgv_Income.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
+            gridViewTextBoxColumn76.EnableExpressionEditor = false;
+            gridViewTextBoxColumn76.FieldName = "IncomeId";
+            gridViewTextBoxColumn76.HeaderText = "#";
+            gridViewTextBoxColumn76.Name = "IncomeId";
+            gridViewTextBoxColumn76.ReadOnly = true;
+            gridViewTextBoxColumn76.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn76.Width = 30;
+            gridViewTextBoxColumn77.EnableExpressionEditor = false;
+            gridViewTextBoxColumn77.FieldName = "IncomePersianDate";
+            gridViewTextBoxColumn77.HeaderText = "تاریخ درآمد";
+            gridViewTextBoxColumn77.Name = "IncomePersianDate";
+            gridViewTextBoxColumn77.ReadOnly = true;
+            gridViewTextBoxColumn77.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn77.Width = 60;
+            gridViewTextBoxColumn78.FieldName = "IncomeTypeId";
+            gridViewTextBoxColumn78.HeaderText = "کد نوع درآمد";
+            gridViewTextBoxColumn78.IsVisible = false;
+            gridViewTextBoxColumn78.Name = "IncomeTypeId";
+            gridViewTextBoxColumn78.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn79.EnableExpressionEditor = false;
+            gridViewTextBoxColumn79.FieldName = "IncomeTypeTitle";
+            gridViewTextBoxColumn79.HeaderText = "نوع درآمد";
+            gridViewTextBoxColumn79.Name = "IncomeTypeTitle";
+            gridViewTextBoxColumn79.ReadOnly = true;
+            gridViewTextBoxColumn79.SortOrder = Telerik.WinControls.UI.RadSortOrder.Ascending;
+            gridViewTextBoxColumn79.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn79.Width = 70;
+            gridViewTextBoxColumn80.FieldName = "IncomePrice";
+            gridViewTextBoxColumn80.HeaderText = "مبلغ درآمد";
+            gridViewTextBoxColumn80.IsVisible = false;
+            gridViewTextBoxColumn80.Name = "IncomePrice";
+            gridViewTextBoxColumn80.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn81.EnableExpressionEditor = false;
+            gridViewTextBoxColumn81.FieldName = "IncomeSeparateDigitPrice";
+            gridViewTextBoxColumn81.HeaderText = "مبلغ درآمد";
+            gridViewTextBoxColumn81.Name = "IncomeSeparateDigitPrice";
+            gridViewTextBoxColumn81.ReadOnly = true;
+            gridViewTextBoxColumn81.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn81.Width = 56;
+            gridViewTextBoxColumn82.EnableExpressionEditor = false;
+            gridViewTextBoxColumn82.FieldName = "ReceivedBy";
+            gridViewTextBoxColumn82.HeaderText = "دریافت از طریق";
+            gridViewTextBoxColumn82.Name = "ReceivedBy";
+            gridViewTextBoxColumn82.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn82.Width = 86;
+            gridViewTextBoxColumn83.FieldName = "FundId";
+            gridViewTextBoxColumn83.HeaderText = "کد صندوق";
+            gridViewTextBoxColumn83.IsVisible = false;
+            gridViewTextBoxColumn83.Name = "FundId";
+            gridViewTextBoxColumn83.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn84.EnableExpressionEditor = false;
+            gridViewTextBoxColumn84.FieldName = "FundTitle";
+            gridViewTextBoxColumn84.HeaderText = "واریز به صندوق";
+            gridViewTextBoxColumn84.Name = "FundTitle";
+            gridViewTextBoxColumn84.ReadOnly = true;
+            gridViewTextBoxColumn84.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn84.Width = 83;
+            gridViewTextBoxColumn85.FieldName = "FundOldValueSeparateDigit";
+            gridViewTextBoxColumn85.HeaderText = "مانده قبلی صندوق";
+            gridViewTextBoxColumn85.Name = "FundOldValueSeparateDigit";
+            gridViewTextBoxColumn85.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn85.Width = 83;
+            gridViewTextBoxColumn86.EnableExpressionEditor = false;
+            gridViewTextBoxColumn86.FieldName = "FundCurrentValueSeparateDigit";
+            gridViewTextBoxColumn86.HeaderText = "مانده جاری صندوق";
+            gridViewTextBoxColumn86.Name = "FundCurrentValueSeparateDigit";
+            gridViewTextBoxColumn86.ReadOnly = true;
+            gridViewTextBoxColumn86.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn86.Width = 59;
+            gridViewTextBoxColumn87.EnableExpressionEditor = false;
+            gridViewTextBoxColumn87.FieldName = "IncomeCreationUserName";
+            gridViewTextBoxColumn87.HeaderText = "کاربر ثبت کننده";
+            gridViewTextBoxColumn87.Name = "IncomeCreationUserName";
+            gridViewTextBoxColumn87.ReadOnly = true;
+            gridViewTextBoxColumn87.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn87.Width = 70;
+            gridViewTextBoxColumn88.EnableExpressionEditor = false;
+            gridViewTextBoxColumn88.FieldName = "IncomePersianCreationDate";
+            gridViewTextBoxColumn88.HeaderText = "تاریخ ایجاد";
+            gridViewTextBoxColumn88.Name = "IncomePersianCreationDate";
+            gridViewTextBoxColumn88.ReadOnly = true;
+            gridViewTextBoxColumn88.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn88.Width = 64;
+            gridViewTextBoxColumn89.EnableExpressionEditor = false;
+            gridViewTextBoxColumn89.FieldName = "IncomePersianLastUpate";
+            gridViewTextBoxColumn89.HeaderText = "تاریخ آخرین ویرایش";
+            gridViewTextBoxColumn89.Name = "IncomePersianLastUpate";
+            gridViewTextBoxColumn89.ReadOnly = true;
+            gridViewTextBoxColumn89.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn89.Width = 63;
+            gridViewTextBoxColumn90.EnableExpressionEditor = false;
+            gridViewTextBoxColumn90.FieldName = "Description";
+            gridViewTextBoxColumn90.HeaderText = "توضیحات";
+            gridViewTextBoxColumn90.Name = "Description";
+            gridViewTextBoxColumn90.ReadOnly = true;
+            gridViewTextBoxColumn90.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn90.Width = 121;
             this.rgv_Income.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn1,
-            gridViewTextBoxColumn2,
-            gridViewTextBoxColumn3,
-            gridViewTextBoxColumn4,
-            gridViewTextBoxColumn5,
-            gridViewTextBoxColumn6,
-            gridViewTextBoxColumn7,
-            gridViewTextBoxColumn8,
-            gridViewTextBoxColumn9,
-            gridViewTextBoxColumn10,
-            gridViewTextBoxColumn11,
-            gridViewTextBoxColumn12,
-            gridViewTextBoxColumn13,
-            gridViewTextBoxColumn14,
-            gridViewTextBoxColumn15});
+            gridViewTextBoxColumn76,
+            gridViewTextBoxColumn77,
+            gridViewTextBoxColumn78,
+            gridViewTextBoxColumn79,
+            gridViewTextBoxColumn80,
+            gridViewTextBoxColumn81,
+            gridViewTextBoxColumn82,
+            gridViewTextBoxColumn83,
+            gridViewTextBoxColumn84,
+            gridViewTextBoxColumn85,
+            gridViewTextBoxColumn86,
+            gridViewTextBoxColumn87,
+            gridViewTextBoxColumn88,
+            gridViewTextBoxColumn89,
+            gridViewTextBoxColumn90});
             this.rgv_Income.MasterTemplate.EnableAlternatingRowColor = true;
             this.rgv_Income.MasterTemplate.EnableFiltering = true;
+            this.rgv_Income.MasterTemplate.PageSize = 15;
             this.rgv_Income.MasterTemplate.ReadOnly = true;
             this.rgv_Income.MasterTemplate.ShowGroupedColumns = true;
-            sortDescriptor1.PropertyName = "IncomeTypeTitle";
+            sortDescriptor6.PropertyName = "IncomeTypeTitle";
             this.rgv_Income.MasterTemplate.SortDescriptors.AddRange(new Telerik.WinControls.Data.SortDescriptor[] {
-            sortDescriptor1});
-            this.rgv_Income.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            sortDescriptor6});
+            this.rgv_Income.MasterTemplate.ViewDefinition = tableViewDefinition6;
             this.rgv_Income.Name = "rgv_Income";
             this.rgv_Income.ReadOnly = true;
             this.rgv_Income.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -532,6 +551,10 @@
             this.rgv_Income.CurrentRowChanged += new Telerik.WinControls.UI.CurrentRowChangedEventHandler(this.MasterTemplate_CurrentRowChanged);
             this.rgv_Income.CellClick += new Telerik.WinControls.UI.GridViewCellEventHandler(this.MasterTemplate_CellClick);
             this.rgv_Income.Click += new System.EventHandler(this.rgv_Income_Click);
+            // 
+            // circleShape1
+            // 
+            this.circleShape1.IsRightToLeft = false;
             // 
             // FrmIncome
             // 
@@ -585,5 +608,6 @@
         private System.Windows.Forms.TextBox txt_IncomeDescription;
         private Telerik.WinControls.UI.RadDropDownList rddl_IncomeTypes;
         private Telerik.WinControls.UI.RadDropDownList rddl_Funds;
+        private Telerik.WinControls.CircleShape circleShape1;
     }
 }

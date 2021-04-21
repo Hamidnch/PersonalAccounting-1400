@@ -418,10 +418,5 @@ namespace PersonalAccounting.UI
         {
             CommonHelper.CheckUncheckTreeNode(rtv_Permissions.Nodes, false);
         }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

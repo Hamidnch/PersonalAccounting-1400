@@ -86,7 +86,7 @@ namespace PersonalAccounting.UI
 
             CommonHelper.InsertAction(_mode, pnl_Data, rgv_TransferMoney, btnInsert, btnRegister, btnModify,
                 btnDelete, btnCancel, btnClose, rddl_OriginFund);
-
+            txt_BankCommission.Text = "0";
             txt_TransferMoneyDate.SetPersianDateToTextBoxAndSelectAll();
         }
 
@@ -410,6 +410,8 @@ namespace PersonalAccounting.UI
 
         private async void btnDelete_Click(object sender, EventArgs e)
         {
+            if(rgv_TransferMoney.Rows.Count <= 0) return;
+            
             if (!InitialHelper.HasPermissionFor(this.Name, PermissionMode.Delete))
             {
                 CommonHelper.ShowNotificationMessage(DefaultConstants.IllegalAccess, DefaultConstants.DeleteActionNotAllow);

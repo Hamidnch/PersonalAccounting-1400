@@ -31,10 +31,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmArticleGroup));
-            Telerik.WinControls.UI.RadListDataItem radListDataItem1 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem2 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem3 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem4 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem9 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem10 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem11 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem12 = new Telerik.WinControls.UI.RadListDataItem();
             this.pnl_Data = new System.Windows.Forms.Panel();
             this.rddl_ArticleGroupStatus = new Telerik.WinControls.UI.RadDropDownList();
             this.txt_ArticleGroupDescription = new System.Windows.Forms.TextBox();
@@ -97,7 +97,7 @@
             this.pnl_Data.Controls.Add(this.label1);
             this.pnl_Data.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_Data.Enabled = false;
-            this.pnl_Data.Location = new System.Drawing.Point(0, 0);
+            this.pnl_Data.Location = new System.Drawing.Point(0, 27);
             this.pnl_Data.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnl_Data.Name = "pnl_Data";
             this.pnl_Data.Size = new System.Drawing.Size(1025, 102);
@@ -210,7 +210,7 @@
             this.pnl_Action.Controls.Add(this.btnInsert);
             this.pnl_Action.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_Action.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.pnl_Action.Location = new System.Drawing.Point(0, 102);
+            this.pnl_Action.Location = new System.Drawing.Point(0, 129);
             this.pnl_Action.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_Action.Name = "pnl_Action";
             this.pnl_Action.Size = new System.Drawing.Size(1025, 39);
@@ -307,7 +307,7 @@
             // 
             this.rcb_Search.Dock = System.Windows.Forms.DockStyle.Top;
             this.rcb_Search.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.rcb_Search.Location = new System.Drawing.Point(0, 141);
+            this.rcb_Search.Location = new System.Drawing.Point(0, 168);
             this.rcb_Search.Name = "rcb_Search";
             this.rcb_Search.Rows.AddRange(new Telerik.WinControls.UI.CommandBarRowElement[] {
             this.commandBarRowElement1});
@@ -438,10 +438,10 @@
             // commandBarDropDownSort
             // 
             this.commandBarDropDownSort.DropDownAnimationEnabled = true;
-            radListDataItem1.Text = "نام محصول";
-            radListDataItem2.Text = "طبقه محصول";
-            this.commandBarDropDownSort.Items.Add(radListDataItem1);
-            this.commandBarDropDownSort.Items.Add(radListDataItem2);
+            radListDataItem9.Text = "نام محصول";
+            radListDataItem10.Text = "طبقه محصول";
+            this.commandBarDropDownSort.Items.Add(radListDataItem9);
+            this.commandBarDropDownSort.Items.Add(radListDataItem10);
             this.commandBarDropDownSort.MaxDropDownItems = 0;
             this.commandBarDropDownSort.Name = "commandBarDropDownSort";
             this.commandBarDropDownSort.ShowHorizontalLine = false;
@@ -458,10 +458,10 @@
             // commandBarDropDownGroup
             // 
             this.commandBarDropDownGroup.DropDownAnimationEnabled = true;
-            radListDataItem3.Text = "None";
-            radListDataItem4.Text = "طبقه محصول";
-            this.commandBarDropDownGroup.Items.Add(radListDataItem3);
-            this.commandBarDropDownGroup.Items.Add(radListDataItem4);
+            radListDataItem11.Text = "None";
+            radListDataItem12.Text = "طبقه محصول";
+            this.commandBarDropDownGroup.Items.Add(radListDataItem11);
+            this.commandBarDropDownGroup.Items.Add(radListDataItem12);
             this.commandBarDropDownGroup.MaxDropDownItems = 0;
             this.commandBarDropDownGroup.Name = "commandBarDropDownGroup";
             this.commandBarDropDownGroup.Text = "";
@@ -541,7 +541,9 @@
             this.rlv_ArticleGroup.AllowRemove = false;
             this.rlv_ArticleGroup.AutoScroll = true;
             this.rlv_ArticleGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rlv_ArticleGroup.EnableAnalytics = false;
             this.rlv_ArticleGroup.EnableColumnSort = true;
+            this.rlv_ArticleGroup.EnableFiltering = true;
             this.rlv_ArticleGroup.EnableLassoSelection = true;
             this.rlv_ArticleGroup.EnableSorting = true;
             this.rlv_ArticleGroup.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
@@ -551,8 +553,10 @@
             this.rlv_ArticleGroup.HeaderHeight = 37.69231F;
             this.rlv_ArticleGroup.ImageList = this.imageList1;
             this.rlv_ArticleGroup.ItemSize = new System.Drawing.Size(75, 69);
+            this.rlv_ArticleGroup.KeyboardSearchEnabled = true;
             this.rlv_ArticleGroup.Location = new System.Drawing.Point(0, 198);
             this.rlv_ArticleGroup.Name = "rlv_ArticleGroup";
+            this.rlv_ArticleGroup.Padding = new System.Windows.Forms.Padding(10);
             this.rlv_ArticleGroup.ShowGridLines = true;
             this.rlv_ArticleGroup.Size = new System.Drawing.Size(1025, 560);
             this.rlv_ArticleGroup.TabIndex = 2;
@@ -568,7 +572,7 @@
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "ArticleGroup.png");
+            this.imageList1.Images.SetKeyName(0, "3Box_64x64.png");
             // 
             // FrmArticleGroup
             // 

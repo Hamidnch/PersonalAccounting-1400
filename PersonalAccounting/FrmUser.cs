@@ -482,10 +482,5 @@ namespace PersonalAccounting.UI
         {
             gb_Password.Enabled = chk_EnablePassword.Checked;
         }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

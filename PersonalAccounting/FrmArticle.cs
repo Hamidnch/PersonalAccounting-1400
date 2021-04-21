@@ -74,6 +74,7 @@ namespace PersonalAccounting.UI
             //BindListViewArticleByArticleGroupId(GetSelectedArticleGroupId());
 
             SetupSimpleListView();
+
             rlv_Article.ItemSize = _customItemSize;
             rlv_Article.ListViewElement.Alignment = ContentAlignment.MiddleCenter;
             rlv_Article.ListViewElement.TextAlignment = ContentAlignment.MiddleCenter;
@@ -822,6 +823,8 @@ namespace PersonalAccounting.UI
 
         private async void btnDelete_Click(object sender, EventArgs e)
         {
+            if (rlv_Article.Items.Count <= 0) return;
+
             if (!InitialHelper.HasPermissionFor(this.Name, PermissionMode.Delete))
             {
                 CommonHelper.ShowNotificationMessage(DefaultConstants.IllegalAccess, DefaultConstants.DeleteActionNotAllow);
@@ -861,6 +864,26 @@ namespace PersonalAccounting.UI
             btnDelete.Enabled = true;
 
             BindGrid();
+        }
+
+        private void FrmArticle_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode != Keys.Escape) return;
+
+            if (_pnlFloating.Visible)
+            {
+                _pnlFloating.Visible = false;
+            }
+        }
+
+        private void FrmArticle_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode != Keys.Escape) return;
+
+            if (_pnlFloating.Visible)
+            {
+                _pnlFloating.Visible = false;
+            }
         }
     }
 }

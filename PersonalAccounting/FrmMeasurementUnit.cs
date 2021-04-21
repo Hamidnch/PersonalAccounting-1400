@@ -305,6 +305,8 @@ namespace PersonalAccounting.UI
 
         private async void btnDelete_Click(object sender, EventArgs e)
         {
+            if (rlv_MeasurementUnit.Items.Count <= 0) return;
+
             if (!InitialHelper.HasPermissionFor(this.Name, PermissionMode.Delete))
             {
                 CommonHelper.ShowNotificationMessage(DefaultConstants.IllegalAccess, DefaultConstants.DeleteActionNotAllow);

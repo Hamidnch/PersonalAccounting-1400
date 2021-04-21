@@ -245,8 +245,8 @@
             this.rrb_Main.AutoScroll = true;
             this.rrb_Main.CloseButton = false;
             this.rrb_Main.CommandTabs.AddRange(new Telerik.WinControls.RadItem[] {
-            this.rt_PrimaryDefinitions,
             this.rt_PersonsAndUsers,
+            this.rt_PrimaryDefinitions,
             this.rt_FundAndAccount,
             this.rt_ExpenseAndNote,
             this.rt_System});

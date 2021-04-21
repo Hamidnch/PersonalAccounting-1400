@@ -373,7 +373,7 @@ namespace PersonalAccounting.UI
             gridViewTextBoxColumn5.Name = "FundName";
             gridViewTextBoxColumn5.ReadOnly = true;
             gridViewTextBoxColumn5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn5.Width = 123;
+            gridViewTextBoxColumn5.Width = 170;
             gridViewTextBoxColumn6.AllowGroup = false;
             gridViewTextBoxColumn6.AllowSort = false;
             gridViewTextBoxColumn6.EnableExpressionEditor = false;
@@ -501,7 +501,7 @@ namespace PersonalAccounting.UI
             gridViewTextBoxColumn12.HeaderText = "توضیحات";
             gridViewTextBoxColumn12.Name = "Comment";
             gridViewTextBoxColumn12.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn12.Width = 221;
+            gridViewTextBoxColumn12.Width = 300;
             gridViewTextBoxColumn13.AllowGroup = false;
             gridViewTextBoxColumn13.AllowSort = false;
             gridViewTextBoxColumn13.DisableHTMLRendering = false;
