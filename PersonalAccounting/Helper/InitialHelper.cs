@@ -7,6 +7,8 @@ using System;
 using System.ComponentModel;
 using System.Data.SQLite;
 using System.Drawing;
+using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -102,16 +104,72 @@ namespace PersonalAccounting.UI.Helper
             textBox.SelectAll();
         }
 
-        public static void Backup(string strDestination)
+        public static void InstallFont()
         {
+            var path = Utility.GetBinFolderPath();
+            const string fontName = "\\TTahoma.ttf";
+            var contentFontName = path + fontName;
+
+            Utility.RegisterFont(contentFontName);
+        }
+
+        public static void SeedData(bool flag = false)
+        {
+            //var path = GetOutputPath();
+            //var databasePath = path + "\\db\\PA.nch";
+
+            //if (File.Exists(databasePath)) return;
+
+            if(!flag) return;
+            
+#if DEBUG
+            MessageBox.Show("Mode=Debug"); 
+#else
+            //Initialize Seed Data
+            var dbInitializer = IocConfig.Container.GetInstance<InitializeData>();
+            dbInitializer.ExecuteSeedData();
+#endif
+
+        }
+
+        public static void Backup(string strDestinationFolder,string folderPath, bool compressed = true)
+        {
+            var backupDestinationFolder = strDestinationFolder + "\\" + folderPath;
+            var currentDate = DateTime.Now;
+           
+            if (!Directory.Exists(backupDestinationFolder))
+            {
+                Directory.CreateDirectory(backupDestinationFolder);
+            }
+
+            var sqliteFileNameFullPath = string.Format(DefaultConstants.SqliteFolderPath, backupDestinationFolder, currentDate);
+            //var backupSourceFolder = string.Format(DefaultConstants.SqliteFolderPath, Utility.GetBinFolderPath() + "\\db", currentDate);
+            var destPath = string.Format(DefaultConstants.SqliteConnectionString, sqliteFileNameFullPath);
+
             using (var location = new SQLiteConnection(dbPath))
-            using (var destination = new SQLiteConnection(
-                    string.Format(DefaultConstants.SqliteBackupDestinationPath, strDestination, DateTime.Now)))
+            using (var destination = new SQLiteConnection(destPath))
             //$@"Data Source={strDestination}\PA-{DateTime.Now:yyyyMMdd}.nch;foreign keys=true;"
             {
                 location.Open();
                 destination.Open();
                 location.BackupDatabase(destination, "main", "main", -1, null, 0);
+            }
+
+            if (!compressed) return;
+
+
+            var zipFilePath = backupDestinationFolder + "\\PACompressed.rar";
+            //Utility.CreateEncryptedZipFileFromDirectory(backupDestinationFolder + "\\", zipFilePath);
+
+            using (var fStream = File.Open(zipFilePath, FileMode.Create, FileAccess.ReadWrite))
+            {
+                var obj = new GZipStream(fStream, CompressionMode.Compress, true);
+                //fStream.CopyToAsync(obj);
+                var bt = File.ReadAllBytes(sqliteFileNameFullPath);
+                obj.Write(bt, 0, bt.Length);
+
+                obj.Close();
+                obj.Dispose();
             }
         }
     }

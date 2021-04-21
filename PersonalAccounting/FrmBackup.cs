@@ -21,7 +21,7 @@ namespace PersonalAccounting.UI
     
         private BackgroundWorker _backgroundWorker;
         private PictureBox _pictureBox;
-        private JobStatus jobStatus;
+        private JobStatus _jobStatus;
         public FrmBackup()
         {
             InitializeComponent();
@@ -33,7 +33,7 @@ namespace PersonalAccounting.UI
             _backgroundWorker.DoWork += _backgroundWorker_DoWork;
             _backgroundWorker.RunWorkerCompleted += _backgroundWorker_RunWorkerCompleted;
 
-            var backupFolderPath = Utility.GetBinFolderPath() + "\\" + txt_BackupFolderName.Text;
+            var backupFolderPath = Utility.GetBinFolderPath(); //+ "\\" + txt_BackupFolderName.Text;
             if (!Directory.Exists(backupFolderPath))
             {
                 Directory.CreateDirectory(backupFolderPath);
@@ -65,7 +65,7 @@ namespace PersonalAccounting.UI
 
             if (result != DialogResult.OK) return;
 
-            txt_Path.Text = folderDlg.SelectedPath + "\\" + txt_BackupFolderName.Text;
+            txt_Path.Text = folderDlg.SelectedPath; // + "\\" + txt_BackupFolderName.Text;
             var root = folderDlg.RootFolder;
         }
 
@@ -91,28 +91,28 @@ namespace PersonalAccounting.UI
         {
             if (!ValidateBackupFolder(txt_BackupFolderName.Text))
             {
-                jobStatus = JobStatus.Invalid;
+                _jobStatus = JobStatus.Invalid;
             }
             try
             {
-                InitialHelper.Backup(txt_Path.Text);
-                jobStatus = JobStatus.Success;
+                InitialHelper.Backup(txt_Path.Text, txt_BackupFolderName.Text, true);
+                _jobStatus = JobStatus.Success;
             }
             catch (Exception exception)
             {
-                jobStatus = JobStatus.Fail;
+                _jobStatus = JobStatus.Fail;
                 MessageBox.Show(exception.Message);
             }
         }
         private void _backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if(jobStatus == JobStatus.Invalid)
+            if(_jobStatus == JobStatus.Invalid)
             {
                 txt_BackupFolderName.SelectAll();
                 txt_BackupFolderName.Focus();
                 return;
             }
-            if(jobStatus == JobStatus.Success)
+            if(_jobStatus == JobStatus.Success)
             {
                 CommonHelper.ShowNotificationMessage("پیام", "بکاپ با موفقیت انجام شد.");
             }

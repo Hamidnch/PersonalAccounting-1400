@@ -3,6 +3,7 @@ using PersonalAccounting.UI.Infrastructure;
 using System;
 using System.Threading;
 using System.Windows.Forms;
+using PersonalAccounting.UI.Helper;
 using Telerik.WinControls.UI.Localization;
 
 namespace PersonalAccounting.UI
@@ -27,6 +28,10 @@ namespace PersonalAccounting.UI
             //}
             RadGridLocalizationProvider.CurrentProvider = new PersianRadHelper();
             RadGridLocalizationProvider.CurrentProvider.ApplyCorrectYeKe();
+            
+            //Installing TTahoma.ttf font
+            InitialHelper.InstallFont();
+            InitialHelper.SeedData();
 
             //var path = Path.GetDirectoryName(
             //    System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase)?.Replace("file:\\", "");

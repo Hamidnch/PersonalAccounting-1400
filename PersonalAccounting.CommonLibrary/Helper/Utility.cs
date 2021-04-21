@@ -1,11 +1,16 @@
 ﻿using System;
+using System.Drawing;
+using System.Drawing.Text;
 using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
+using Microsoft.Win32;
+using Telerik.WinControls.Zip;
 
 namespace PersonalAccounting.CommonLibrary.Helper
 {
@@ -151,7 +156,7 @@ namespace PersonalAccounting.CommonLibrary.Helper
         [MethodImpl(MethodImplOptions.NoOptimization)]
         private static bool ByteArraysEqual(byte[] a, byte[] b)
         {
-            if (object.ReferenceEquals(a, b))
+            if (ReferenceEquals(a, b))
             {
                 return true;
             }
@@ -581,5 +586,152 @@ namespace PersonalAccounting.CommonLibrary.Helper
         //    Marshal.FreeCoTaskMem(data);
         //    control.Font = new Font(pfc.Families[0], control.Font.Size);
         //}
+
+        
+        
+        //[DllImport("gdi32.dll", EntryPoint = "AddFontResourceW", SetLastError = true)]
+        //public static extern int AddFontResource([In][MarshalAs(UnmanagedType.LPWStr)]
+        //    string lpFileName);
+
+        [DllImport("gdi32.dll", EntryPoint = "RemoveFontResourceW", SetLastError = true)]
+        public static extern int RemoveFontResource([In][MarshalAs(UnmanagedType.LPWStr)]
+            string lpFileName);
+
+        [DllImport("gdi32", EntryPoint = "AddFontResource")]
+        public static extern int AddFontResourceA(string lpFileName);
+        [DllImport("gdi32.dll")]
+        private static extern int AddFontResource(string lpszFilename);
+        [DllImport("gdi32.dll")]
+        private static extern int CreateScalableFontResource(uint fdwHidden, string
+            lpszFontRes, string lpszFontFile, string lpszCurrentPath);
+
+        /// <summary>
+        /// Installs font on the user's system and adds it to the registry so it's available on the next session
+        /// Your font must be included in your project with its build path set to 'Content' and its Copy property
+        /// set to 'Copy Always'
+        /// </summary>
+        /// <param name="contentFontName">Your font to be passed as a resource (i.e. "TTahoma.tff")</param>
+        public static void RegisterFont(string contentFontName)
+        {
+            if(IsFontInstalled(contentFontName)) return;
+            
+            // Creates the full path where your font will be installed
+            var fontDestination = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), contentFontName);
+
+            if (File.Exists(fontDestination)) return;
+
+            // Copies font to destination
+            File.Copy(Path.Combine(Directory.GetCurrentDirectory(), contentFontName), fontDestination);
+
+            // Retrieves font name
+            // Makes sure you reference System.Drawing
+            var fontCol = new PrivateFontCollection();
+            fontCol.AddFontFile(fontDestination);
+            var actualFontName = fontCol.Families[0].Name;
+
+            //Add font
+            AddFontResource(fontDestination);
+            //Add registry entry   
+            Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts",
+                actualFontName, contentFontName, RegistryValueKind.String);
+        }
+
+        public static void UnRegisterFont(string contentFontName)
+        {
+            if (!IsFontInstalled(contentFontName)) return;
+
+            // Creates the full path where your font will be installed
+            var fontDestination = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), contentFontName);
+
+            if (!File.Exists(fontDestination)) return;
+
+            var fontCol = new PrivateFontCollection();
+            fontCol.AddFontFile(fontDestination);
+            var actualFontName = fontCol.Families[0].Name;
+
+            RemoveFontResource(fontDestination);
+
+            const string keyName = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts";
+            using (var key = Registry.CurrentUser.OpenSubKey(keyName, true))
+            {
+                key?.DeleteValue(actualFontName);
+            }
+        }
+
+        public static bool IsFontInstalled(string fontName)
+        {
+            var installed = IsFontInstalled(fontName, FontStyle.Regular);
+            if (!installed) { installed = IsFontInstalled(fontName, FontStyle.Bold); }
+            if (!installed) { installed = IsFontInstalled(fontName, FontStyle.Italic); }
+
+            return installed;
+        }
+
+        public static bool IsFontInstalled(string fontName, FontStyle style)
+        {
+            var installed = false;
+            const float emSize = 8.0f;
+
+            try
+            {
+                using (var testFont = new Font(fontName, emSize, style))
+                {
+                    installed = (0 == string.Compare(fontName, testFont.Name, StringComparison.InvariantCultureIgnoreCase));
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return installed;
+        }
+
+
+        public static void CreateEncryptedZipFileFromDirectory(
+            string sourceDirectoryName,
+            string destinationArchiveFileName)
+        {
+            char[] directorySeparatorChar = new char[] { Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar };
+
+            if (!string.IsNullOrEmpty(sourceDirectoryName))
+            {
+                using (FileStream archiveStream = File.Open(
+                    destinationArchiveFileName,
+                    FileMode.Create))
+                {
+                    // Set password to protect ZIP archive
+                    DefaultEncryptionSettings encryptionSettings = new DefaultEncryptionSettings();
+                    encryptionSettings.Password = "PaSsWoRd";
+
+                    using (ZipArchive archive = new ZipArchive(
+                        archiveStream,
+                        ZipArchiveMode.Create,
+                        true,
+                        null,
+                        null,
+                        encryptionSettings))
+                    {
+                        foreach (string fileName in Directory.GetFiles(sourceDirectoryName))
+                        {
+                            using (FileStream file = File.OpenRead(sourceDirectoryName))
+                            {
+                                int length = fileName.Length - sourceDirectoryName.Length;
+                                string entryName = fileName.Substring(sourceDirectoryName.Length, length);
+                                entryName = entryName.TrimStart(directorySeparatorChar);
+
+                                using (ZipArchiveEntry entry = archive.CreateEntry(entryName))
+                                {
+                                    using (Stream entryStream = entry.Open())
+                                    {
+                                        file.CopyTo(entryStream);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

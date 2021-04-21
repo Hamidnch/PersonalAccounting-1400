@@ -3,7 +3,8 @@
     public static class DefaultConstants
     {
         public const string SqliteDbPath = @"data source=.\db\PA.nch;foreign keys=true;";
-        public const string SqliteBackupDestinationPath = @"Data Source={0}\PA-{1:yyyyMMdd}.nch;foreign keys=true;";
+        public const string SqliteFolderPath = @"{0}\PA-{1:yyyyMMdd}.nch";
+        public const string SqliteConnectionString = @"Data Source={0};foreign keys=true;";
 
         public const string AdminRole = "مدیر سیستم";
         public const string SupervisorRole = "کاربر ارشد";
