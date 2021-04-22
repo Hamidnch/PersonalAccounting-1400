@@ -43,14 +43,14 @@ namespace PersonalAccounting.UI
             rgv_WeatherCondition.EndUpdate();
         }
 
-        private void Pic_Picture_Click(object sender, System.EventArgs e)
+        private void Pic_Picture_Click(object sender, EventArgs e)
         {
             txt_Extenstion.Text = CommonHelper.OpenDialogForSelectPicture(pic_Picture);
         }
 
-        private void BtnInsert_Click(object sender, System.EventArgs e)
+        private void BtnInsert_Click(object sender, EventArgs e)
         {
-            if (!InitialHelper.HasPermissionFor(this.Name, PermissionMode.Add))
+            if (!InitialHelper.HasPermissionFor(Name, PermissionMode.Add))
             {
                 CommonHelper.ShowNotificationMessage(DefaultConstants.IllegalAccess,
                     DefaultConstants.CreateActionNotAllow);
@@ -64,9 +64,9 @@ namespace PersonalAccounting.UI
             rddl_Status.SelectedValue = 0;
         }
 
-        private void BtnModify_Click(object sender, System.EventArgs e)
+        private void BtnModify_Click(object sender, EventArgs e)
         {
-            if (!InitialHelper.HasPermissionFor(this.Name, PermissionMode.Edit))
+            if (!InitialHelper.HasPermissionFor(Name, PermissionMode.Edit))
             {
                 CommonHelper.ShowNotificationMessage(DefaultConstants.IllegalAccess,
                     DefaultConstants.EditActionNotAllow);
@@ -79,7 +79,7 @@ namespace PersonalAccounting.UI
             _mode = CommonHelper.Mode.Update;
         }
 
-        private void BtnCancel_Click(object sender, System.EventArgs e)
+        private void BtnCancel_Click(object sender, EventArgs e)
         {
             _mode = CommonHelper.Mode.Cancel;
             CommonHelper.CancelAction(_mode, pnl_Data, rgv_WeatherCondition, btnInsert, btnRegister, btnModify,
@@ -112,7 +112,7 @@ namespace PersonalAccounting.UI
             }
             catch (Exception exception)
             {
-                await LoggerService.ErrorAsync(this.Name, "ReturnDetails", exception.Message,
+                await LoggerService.ErrorAsync(Name, "ReturnDetails", exception.Message,
                     exception.ToDetailedString());
             }
         }
@@ -138,7 +138,7 @@ namespace PersonalAccounting.UI
             ReturnDetails();
         }
 
-        private async void BtnRegister_Click(object sender, System.EventArgs e)
+        private async void BtnRegister_Click(object sender, EventArgs e)
         {
             if (ValidateAllControls()) return;
 
@@ -167,7 +167,7 @@ namespace PersonalAccounting.UI
                 case CommonHelper.Mode.Insert:
                     try
                     {
-                        if (!InitialHelper.HasPermissionFor(this.Name, PermissionMode.Add))
+                        if (!InitialHelper.HasPermissionFor(Name, PermissionMode.Add))
                         {
                             CommonHelper.ShowNotificationMessage(DefaultConstants.IllegalAccess,
                                 DefaultConstants.CreateActionNotAllow);
@@ -199,7 +199,7 @@ namespace PersonalAccounting.UI
                                 CommonHelper.ShowNotificationMessage("ایجاد شرایط آب و هوایی جدید",
                                     $"شرایط آب و هوای جدید با نام {weatherConditionTitle} ایجاد گردید.");
 
-                                await LoggerService.InformationAsync(this.Name, "btnRegister_Click(Insert Mode)",
+                                await LoggerService.InformationAsync(Name, "btnRegister_Click(Insert Mode)",
                                     $"شرایط آب و هوای جدید با نام {weatherConditionTitle} ",
                                     $" توسط کاربر  {currentUser?.UserName} ایجاد گردید.");
                                 
@@ -222,7 +222,7 @@ namespace PersonalAccounting.UI
                             "خطای زیر به وقوع پیوست \n" + exception.Message,
                             CustomDialogs.ImageType.itError2, CustomDialogs.ButtonType.Ok,
                             InitialHelper.BackColorCustom);
-                        await LoggerService.ErrorAsync(this.Name, "btnRegister_Click(Insert Mode)", exception.Message,
+                        await LoggerService.ErrorAsync(Name, "btnRegister_Click(Insert Mode)", exception.Message,
                             exception.ToDetailedString());
                         return;
                     }
@@ -231,7 +231,7 @@ namespace PersonalAccounting.UI
                 case CommonHelper.Mode.Update:
                     try
                     {
-                        if (!InitialHelper.HasPermissionFor(this.Name, PermissionMode.Edit))
+                        if (!InitialHelper.HasPermissionFor(Name, PermissionMode.Edit))
                         {
                             CommonHelper.ShowNotificationMessage(DefaultConstants.IllegalAccess,
                                 DefaultConstants.EditActionNotAllow);
@@ -251,7 +251,7 @@ namespace PersonalAccounting.UI
                         CommonHelper.ShowNotificationMessage("ویرایش شرایط آب و هوایی",
                             $"شرایط آب و هوایی با نام {weatherConditionTitle} ویرایش گردید.");
 
-                        await LoggerService.InformationAsync(this.Name, "btnRegister_Click(Update Mode)",
+                        await LoggerService.InformationAsync(Name, "btnRegister_Click(Update Mode)",
                             $"شرایط آب و هوای با نام {weatherConditionTitle} ",
                             $" توسط کاربر  {currentUser.UserName} ویرایش گردید.");
 
@@ -268,7 +268,7 @@ namespace PersonalAccounting.UI
                             "خطای زیر به وقوع پیوست \n" + exception.Message,
                             CustomDialogs.ImageType.itError2, CustomDialogs.ButtonType.Ok,
                             InitialHelper.BackColorCustom);
-                        await LoggerService.ErrorAsync(this.Name, "btnRegister_Click(Update Mode)", exception.Message,
+                        await LoggerService.ErrorAsync(Name, "btnRegister_Click(Update Mode)", exception.Message,
                             exception.ToDetailedString());
                         return;
                     }
@@ -311,7 +311,7 @@ namespace PersonalAccounting.UI
         {
             if (rgv_WeatherCondition.Rows.Count <= 0) return;
 
-            if (!InitialHelper.HasPermissionFor(this.Name, PermissionMode.Delete))
+            if (!InitialHelper.HasPermissionFor(Name, PermissionMode.Delete))
             {
                 CommonHelper.ShowNotificationMessage(DefaultConstants.IllegalAccess,
                     DefaultConstants.DeleteActionNotAllow);
@@ -337,7 +337,7 @@ namespace PersonalAccounting.UI
 
             CommonHelper.ShowNotificationMessage("پیام", $"نوع وضعیت آب و هوا با شناسه {_weatherConditionId} حذف گردید");
 
-            await LoggerService.InformationAsync(this.Name, "BtnDelete_Click", $"حذف شرایط آب و هوا با شماره {_weatherConditionId}",
+            await LoggerService.InformationAsync(Name, "BtnDelete_Click", $"حذف شرایط آب و هوا با شماره {_weatherConditionId}",
                 $"این وضعیت آب و هوا توسط کاربری با نام {InitialHelper.CurrentUser.UserName} حذف گردید.");
             _mode = CommonHelper.Mode.None;
             rgv_WeatherCondition.Enabled = true;

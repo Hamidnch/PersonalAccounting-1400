@@ -74,7 +74,7 @@ namespace PersonalAccounting.BLL.Service
                             ExpenseDocumentLastUpdate = expenseDocument.LastUpdate
                         };
                 return await myQuery.AsNoTracking()
-                    //.OrderByDescending(a => a.ExpenseDocumentCreationDate)
+                    .OrderByDescending(a => a.ExpenseDocumentCreationDate)
                     .ToListAsync();
             }
             else

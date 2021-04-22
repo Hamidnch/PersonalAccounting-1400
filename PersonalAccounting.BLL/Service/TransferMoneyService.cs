@@ -96,7 +96,6 @@ namespace PersonalAccounting.BLL.Service
                     };
                 return await query.ToListAsync(); //.OrderByDescending(x => x.Amount)
             }
-
         }
 
         public async Task<CreateStatus> CreateAsync(TransferMoney transferMoney)

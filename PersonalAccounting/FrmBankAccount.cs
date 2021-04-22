@@ -93,12 +93,12 @@ namespace PersonalAccounting.UI
 
         private async void BindGrid()
         {
-            int? currentUserId = null;
-            if (!await InitialHelper.CurrentUser.IsAdmin())
-                currentUserId = InitialHelper.CurrentUser.Id;
+            //int? currentUserId = null;
+            //if (!await InitialHelper.CurrentUser.IsAdmin())
+            //    currentUserId = InitialHelper.CurrentUser.Id;
 
             rgv_BankAccount.BeginUpdate();
-            rgv_BankAccount.DataSource = await _bankAccountService.LoadAllViewModelAsync(currentUserId);
+            rgv_BankAccount.DataSource = await _bankAccountService.LoadAllViewModelAsync();
             rgv_BankAccount.EndUpdate();
         }
 

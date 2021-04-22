@@ -184,7 +184,7 @@ namespace PersonalAccounting.UI
                             rgv_BuyList.BeginUpdate();
                             //_articleId = int.Parse(_rgv.CurrentRow.Cells[0].Value.ToString());
                             rgv_BuyList.CurrentRow.Cells[2].Value = _rgv.CurrentRow.Cells[0].Value.ToString();
-                            rgv_BuyList.CurrentRow.Cells[3].Value = _rgv.CurrentRow.Cells[2].Value.ToString();
+                            rgv_BuyList.CurrentRow.Cells[3].Value = _rgv.CurrentRow.Cells[1].Value.ToString();
                             rgv_BuyList.CurrentRow.Cells[10].Value = null;
                             rgv_BuyList.CurrentRow.Cells[11].Value = null;
                             _currentSelected = CurrentSelected.Fund;
@@ -418,12 +418,11 @@ namespace PersonalAccounting.UI
 
         private async void BindGrid()
         {
-            rgv_Expenses.BeginUpdate();
-
             int? currentUserId = null;
             if (!await InitialHelper.CurrentUser.IsAdmin())
                 currentUserId = InitialHelper.CurrentUser.Id;
-
+            
+            rgv_Expenses.BeginUpdate();
             rgv_Expenses.DataSource =
                 await _expenseDocumentService.LoadAllViewModelAsync(currentUserId);
             rgv_Expenses.EndUpdate();

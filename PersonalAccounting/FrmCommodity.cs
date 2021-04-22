@@ -48,12 +48,12 @@ namespace PersonalAccounting.UI
 
         private async void BindGrid()
         {
-            int? currentUserId = null;
-            if (!await InitialHelper.CurrentUser.IsAdmin())
-                currentUserId = InitialHelper.CurrentUser.Id;
+            //int? currentUserId = null;
+            //if (!await InitialHelper.CurrentUser.IsAdmin())
+            //    currentUserId = InitialHelper.CurrentUser.Id;
 
             rgv_Commodity.BeginUpdate();
-            rgv_Commodity.DataSource = await _commodityService.LoadAllViewModelAsync(currentUserId);
+            rgv_Commodity.DataSource = await _commodityService.LoadAllViewModelAsync();
             rgv_Commodity.EndUpdate();
             CommonHelper.SortOrderByColumn(rgv_Commodity, "CommodityId", ListSortDirection.Descending);
         }

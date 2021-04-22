@@ -65,7 +65,7 @@ namespace PersonalAccounting.BLL.Service
             else
             {
                 var myQuery =
-                    from mentalCondition in _weatherConditions//.Where(a => a.Status == "فعال")
+                    from mentalCondition in _weatherConditions //.Where(a => a.Status == "فعال")
                     select new ViewModelLoadAllWeatherCondition()
                     {
                         Id = mentalCondition.Id,

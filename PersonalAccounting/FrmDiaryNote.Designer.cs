@@ -32,11 +32,13 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDiaryNote));
             this.pnl_TopData = new Telerik.WinControls.UI.RadPanel();
-            this.rb_Exit = new Telerik.WinControls.UI.RadButton();
+            this.rddl_Users = new Telerik.WinControls.UI.RadDropDownList();
             this.rb_Save = new Telerik.WinControls.UI.RadButton();
+            this.rb_Exit = new Telerik.WinControls.UI.RadButton();
             this.btn_IncDate = new System.Windows.Forms.Button();
             this.btn_DecDate = new System.Windows.Forms.Button();
             this.txt_diaryNoteDate = new System.Windows.Forms.MaskedTextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.rddl_WeatherConditions = new Telerik.WinControls.UI.RadDropDownList();
             this.rddl_MentalConditions = new Telerik.WinControls.UI.RadDropDownList();
@@ -137,8 +139,9 @@
             ((System.ComponentModel.ISupportInitialize)(this._errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnl_TopData)).BeginInit();
             this.pnl_TopData.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rb_Exit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rddl_Users)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rb_Save)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rb_Exit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rddl_WeatherConditions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rddl_MentalConditions)).BeginInit();
             this.ts_DiaryNote.SuspendLayout();
@@ -154,11 +157,13 @@
             // pnl_TopData
             // 
             this.pnl_TopData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
-            this.pnl_TopData.Controls.Add(this.rb_Exit);
+            this.pnl_TopData.Controls.Add(this.rddl_Users);
             this.pnl_TopData.Controls.Add(this.rb_Save);
+            this.pnl_TopData.Controls.Add(this.rb_Exit);
             this.pnl_TopData.Controls.Add(this.btn_IncDate);
             this.pnl_TopData.Controls.Add(this.btn_DecDate);
             this.pnl_TopData.Controls.Add(this.txt_diaryNoteDate);
+            this.pnl_TopData.Controls.Add(this.label3);
             this.pnl_TopData.Controls.Add(this.label4);
             this.pnl_TopData.Controls.Add(this.rddl_WeatherConditions);
             this.pnl_TopData.Controls.Add(this.rddl_MentalConditions);
@@ -169,34 +174,51 @@
             this.pnl_TopData.Controls.Add(this.lbl_MonthYear);
             this.pnl_TopData.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_TopData.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnl_TopData.Location = new System.Drawing.Point(0, 0);
+            this.pnl_TopData.Location = new System.Drawing.Point(0, 27);
             this.pnl_TopData.Name = "pnl_TopData";
             this.pnl_TopData.Size = new System.Drawing.Size(1076, 133);
             this.pnl_TopData.TabIndex = 11;
             // 
-            // rb_Exit
+            // rddl_Users
             // 
-            this.rb_Exit.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.rb_Exit.Image = ((System.Drawing.Image)(resources.GetObject("rb_Exit.Image")));
-            this.rb_Exit.Location = new System.Drawing.Point(33, 43);
-            this.rb_Exit.Name = "rb_Exit";
-            this.rb_Exit.Padding = new System.Windows.Forms.Padding(5);
-            this.rb_Exit.Size = new System.Drawing.Size(83, 30);
-            this.rb_Exit.TabIndex = 4;
-            this.rb_Exit.Text = "خروج";
-            this.rb_Exit.Click += new System.EventHandler(this.Rb_Exit_Click);
+            this.rddl_Users.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rddl_Users.AutoSize = false;
+            this.rddl_Users.AutoSizeItems = true;
+            this.rddl_Users.BackColor = System.Drawing.Color.White;
+            this.rddl_Users.DropDownAnimationEasing = Telerik.WinControls.RadEasingType.InCubic;
+            this.rddl_Users.DropDownSizingMode = ((Telerik.WinControls.UI.SizingMode)((Telerik.WinControls.UI.SizingMode.RightBottom | Telerik.WinControls.UI.SizingMode.UpDown)));
+            this.rddl_Users.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
+            this.rddl_Users.EnableAlternatingItemColor = true;
+            this.rddl_Users.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rddl_Users.Location = new System.Drawing.Point(608, 6);
+            this.rddl_Users.Name = "rddl_Users";
+            this.rddl_Users.Size = new System.Drawing.Size(228, 29);
+            this.rddl_Users.TabIndex = 199;
+            this.rddl_Users.SelectedIndexChanged += new Telerik.WinControls.UI.Data.PositionChangedEventHandler(this.rddl_Users_SelectedIndexChanged);
             // 
             // rb_Save
             // 
             this.rb_Save.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.rb_Save.Image = ((System.Drawing.Image)(resources.GetObject("rb_Save.Image")));
-            this.rb_Save.Location = new System.Drawing.Point(33, 11);
+            this.rb_Save.Location = new System.Drawing.Point(174, 76);
             this.rb_Save.Name = "rb_Save";
             this.rb_Save.Padding = new System.Windows.Forms.Padding(5);
-            this.rb_Save.Size = new System.Drawing.Size(83, 30);
+            this.rb_Save.Size = new System.Drawing.Size(79, 26);
             this.rb_Save.TabIndex = 3;
             this.rb_Save.Text = "ذخیره";
             this.rb_Save.Click += new System.EventHandler(this.Rb_Save_Click);
+            // 
+            // rb_Exit
+            // 
+            this.rb_Exit.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.rb_Exit.Image = ((System.Drawing.Image)(resources.GetObject("rb_Exit.Image")));
+            this.rb_Exit.Location = new System.Drawing.Point(92, 76);
+            this.rb_Exit.Name = "rb_Exit";
+            this.rb_Exit.Padding = new System.Windows.Forms.Padding(5);
+            this.rb_Exit.Size = new System.Drawing.Size(79, 26);
+            this.rb_Exit.TabIndex = 4;
+            this.rb_Exit.Text = "خروج";
+            this.rb_Exit.Click += new System.EventHandler(this.Rb_Exit_Click);
             // 
             // btn_IncDate
             // 
@@ -205,7 +227,7 @@
             this.btn_IncDate.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btn_IncDate.FlatAppearance.BorderSize = 2;
             this.btn_IncDate.Image = ((System.Drawing.Image)(resources.GetObject("btn_IncDate.Image")));
-            this.btn_IncDate.Location = new System.Drawing.Point(1009, 11);
+            this.btn_IncDate.Location = new System.Drawing.Point(1009, 9);
             this.btn_IncDate.Name = "btn_IncDate";
             this.btn_IncDate.Size = new System.Drawing.Size(23, 25);
             this.btn_IncDate.TabIndex = 5;
@@ -220,7 +242,7 @@
             this.btn_DecDate.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btn_DecDate.FlatAppearance.BorderSize = 2;
             this.btn_DecDate.Image = ((System.Drawing.Image)(resources.GetObject("btn_DecDate.Image")));
-            this.btn_DecDate.Location = new System.Drawing.Point(906, 11);
+            this.btn_DecDate.Location = new System.Drawing.Point(906, 9);
             this.btn_DecDate.Name = "btn_DecDate";
             this.btn_DecDate.Size = new System.Drawing.Size(23, 25);
             this.btn_DecDate.TabIndex = 6;
@@ -235,7 +257,7 @@
             this.txt_diaryNoteDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_diaryNoteDate.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.txt_diaryNoteDate.HideSelection = false;
-            this.txt_diaryNoteDate.Location = new System.Drawing.Point(929, 12);
+            this.txt_diaryNoteDate.Location = new System.Drawing.Point(929, 10);
             this.txt_diaryNoteDate.Mask = "1000/00/00";
             this.txt_diaryNoteDate.Name = "txt_diaryNoteDate";
             this.txt_diaryNoteDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -244,6 +266,19 @@
             this.txt_diaryNoteDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txt_diaryNoteDate.TextChanged += new System.EventHandler(this.Txt_diaryNoteDate_TextChanged);
             // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label3.Location = new System.Drawing.Point(842, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(47, 14);
+            this.label3.TabIndex = 198;
+            this.label3.Text = "نام کاربر";
+            // 
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -251,7 +286,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label4.Location = new System.Drawing.Point(1035, 16);
+            this.label4.Location = new System.Drawing.Point(1035, 12);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 14);
             this.label4.TabIndex = 198;
@@ -268,7 +303,7 @@
             this.rddl_WeatherConditions.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.rddl_WeatherConditions.EnableAlternatingItemColor = true;
             this.rddl_WeatherConditions.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rddl_WeatherConditions.Location = new System.Drawing.Point(201, 6);
+            this.rddl_WeatherConditions.Location = new System.Drawing.Point(12, 6);
             this.rddl_WeatherConditions.Name = "rddl_WeatherConditions";
             this.rddl_WeatherConditions.Size = new System.Drawing.Size(241, 66);
             this.rddl_WeatherConditions.TabIndex = 2;
@@ -285,7 +320,7 @@
             this.rddl_MentalConditions.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.rddl_MentalConditions.EnableAlternatingItemColor = true;
             this.rddl_MentalConditions.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rddl_MentalConditions.Location = new System.Drawing.Point(554, 6);
+            this.rddl_MentalConditions.Location = new System.Drawing.Point(351, 6);
             this.rddl_MentalConditions.Name = "rddl_MentalConditions";
             this.rddl_MentalConditions.NullText = "موردی یافت نشد";
             this.rddl_MentalConditions.Size = new System.Drawing.Size(241, 66);
@@ -303,7 +338,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label2.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.label2.Location = new System.Drawing.Point(447, 26);
+            this.label2.Location = new System.Drawing.Point(257, 51);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 14);
             this.label2.TabIndex = 194;
@@ -316,7 +351,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label1.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.label1.Location = new System.Drawing.Point(799, 26);
+            this.label1.Location = new System.Drawing.Point(596, 51);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 14);
             this.label1.TabIndex = 195;
@@ -727,7 +762,7 @@
             // 
             // tst_ZoomFactor
             // 
-            this.tst_ZoomFactor.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tst_ZoomFactor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tst_ZoomFactor.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tst_ZoomFactor.Name = "tst_ZoomFactor";
             this.tst_ZoomFactor.Size = new System.Drawing.Size(45, 27);
@@ -904,7 +939,7 @@
             // txt_SearchHighlight
             // 
             this.txt_SearchHighlight.AutoToolTip = true;
-            this.txt_SearchHighlight.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_SearchHighlight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_SearchHighlight.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.txt_SearchHighlight.Name = "txt_SearchHighlight";
             this.txt_SearchHighlight.Size = new System.Drawing.Size(310, 27);
@@ -917,9 +952,9 @@
             this.lbl_MonthYear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.lbl_MonthYear.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lbl_MonthYear.ForeColor = System.Drawing.Color.Brown;
-            this.lbl_MonthYear.Location = new System.Drawing.Point(801, 46);
+            this.lbl_MonthYear.Location = new System.Drawing.Point(682, 42);
             this.lbl_MonthYear.Name = "lbl_MonthYear";
-            this.lbl_MonthYear.Size = new System.Drawing.Size(263, 23);
+            this.lbl_MonthYear.Size = new System.Drawing.Size(380, 26);
             this.lbl_MonthYear.TabIndex = 176;
             this.lbl_MonthYear.Text = "مهر 1387";
             this.lbl_MonthYear.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1301,14 +1336,16 @@
             this.Name = "FrmDiaryNote";
             this.ShowInTaskbar = false;
             this.Text = "یادداشت های روزانه";
+            this.Load += new System.EventHandler(this.FrmDiaryNote_Load);
             this.Controls.SetChildIndex(this.pnl_TopData, 0);
             this.Controls.SetChildIndex(this.splitContainer1, 0);
             ((System.ComponentModel.ISupportInitialize)(this._errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnl_TopData)).EndInit();
             this.pnl_TopData.ResumeLayout(false);
             this.pnl_TopData.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rb_Exit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rddl_Users)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rb_Save)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rb_Exit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rddl_WeatherConditions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rddl_MentalConditions)).EndInit();
             this.ts_DiaryNote.ResumeLayout(false);
@@ -1432,6 +1469,8 @@
         private Telerik.WinControls.UI.RadDropDownList rddl_MentalConditions;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private Telerik.WinControls.UI.RadDropDownList rddl_Users;
         //private Telerik.WinControls.UI.RadDateTimePicker radDateTimePicker1;
     }
 }

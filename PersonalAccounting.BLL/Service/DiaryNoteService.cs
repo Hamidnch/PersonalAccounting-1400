@@ -33,30 +33,33 @@ namespace PersonalAccounting.BLL.Service
             return res != null ? res.Note : "هیچ";
         }
 
-        public async Task<DiaryNote> LoadByDateAsync(DateTime date, int? createdBy = null)
+        public async Task<DiaryNote> LoadByDateAsync(DateTime date, int createdBy)
         {
-            if (createdBy != null)
-            {
-                var res = await DiaryNotes.AsNoTracking()
-                    .FirstOrDefaultAsync(dn => dn.Date == date && dn.CreatedBy == createdBy);
-                return res;
-            }
-            else
-            {
-                return await DiaryNotes.AsNoTracking().FirstOrDefaultAsync(dn => dn.Date == date);
-            }
+            //if (createdBy == null)
+            //{
+            //    return await DiaryNotes.AsNoTracking().FirstOrDefaultAsync(dn => dn.Date == date);
+            //}
+
+            var res = await DiaryNotes.AsNoTracking()
+                .FirstOrDefaultAsync(dn => dn.Date == date && dn.CreatedBy == createdBy);
+            return res;
         }
 
-        public DiaryNote LoadByDate(DateTime date)
+        public DiaryNote LoadByDate(DateTime date, int createdBy)
         {
-            return DiaryNotes.AsNoTracking().FirstOrDefault(dn => dn.Date == date);
+            //if (createdBy == null)
+            //{
+            //    DiaryNotes.AsNoTracking().FirstOrDefault(dn => dn.Date == date);
+            //}
+
+            return DiaryNotes.AsNoTracking().FirstOrDefault(dn => dn.Date == date && dn.CreatedBy == createdBy);
         }
 
         public async Task<CreateStatus> CreateAsync(DiaryNote diaryNote)
         {
             try
             {
-                if (await ExistAsync(diaryNote.Date))
+                if (await ExistAsync(diaryNote.Date, diaryNote.UserId))
                 {
                     InsertLog(LogLevel.Warning, EntityName,
                         "CreateAsync", GetServiceName(), EntityNameNormal + "جدید تکراری می باشد");
@@ -87,9 +90,14 @@ namespace PersonalAccounting.BLL.Service
                 "UpdateAsync", GetServiceName(), EntityNameNormal + $" با موفقیت ویرایش گردید.");
         }
 
-        public async Task<bool> ExistAsync(DateTime date)
+        public async Task<bool> ExistAsync(DateTime date, int createdBy)
         {
-            return await DiaryNotes.AnyAsync(dn => dn.Date == date);
+            //if (createdBy == null)
+            //{
+            //    return await DiaryNotes.AnyAsync(dn => dn.Date == date);
+            //}
+
+            return await DiaryNotes.AnyAsync(dn => dn.Date == date && dn.CreatedBy == createdBy );
         }
     }
 }

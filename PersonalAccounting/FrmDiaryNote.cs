@@ -28,6 +28,8 @@ namespace PersonalAccounting.UI
         private readonly
             IRepositoryService<WeatherCondition, ViewModelLoadAllWeatherCondition, ViewModelSimpleLoadWeatherCondition> _weatherConditionService;
 
+        private readonly IUserService _userService;
+
         private readonly BackgroundWorker _backgroundWorker;
         private readonly PictureBox _pictureBox;
         //private Cryption _cryption;
@@ -52,11 +54,13 @@ namespace PersonalAccounting.UI
 
         public FrmDiaryNote(IDiaryNoteService diaryNoteService,
             IRepositoryService<MentalCondition, ViewModelLoadAllMentalCondition, ViewModelSimpleLoadMentalCondition> mentalConditionService,
-            IRepositoryService<WeatherCondition, ViewModelLoadAllWeatherCondition, ViewModelSimpleLoadWeatherCondition> weatherConditionService)
+            IRepositoryService<WeatherCondition, ViewModelLoadAllWeatherCondition, ViewModelSimpleLoadWeatherCondition> weatherConditionService, 
+            IUserService userService)
         {
             _diaryNoteService = diaryNoteService;
             _mentalConditionService = mentalConditionService;
             _weatherConditionService = weatherConditionService;
+            _userService = userService;
 
             _backgroundWorker = new BackgroundWorker();
             _backgroundWorker.DoWork += BackgroundWorker_DoWork;
@@ -85,6 +89,7 @@ namespace PersonalAccounting.UI
                 CultureInfo.InvariantCulture);
             tsb_WordWrap.Checked = rtb_Note.WordWrap;
 
+            FillDropdownList(rddl_Users);
             FillDropdownList(rddl_MentalConditions);
             FillDropdownList(rddl_WeatherConditions);
 
@@ -92,6 +97,31 @@ namespace PersonalAccounting.UI
             txt_diaryNoteDate.Text = _selectedDate;
 
             _isModify = false;
+        }
+
+        private async Task<int> GetSelectedUserId()
+        {
+            var currentUser = InitialHelper.CurrentUser;
+            if (!await currentUser.IsAdmin())
+            {
+                return currentUser.Id;
+            }
+
+            try
+            {
+                return int.Parse(rddl_Users.SelectedValue.ToString());
+            }
+            catch (Exception exception)
+            {
+                await LoggerService.ErrorAsync(this.Name, "GetSelectedUserId", exception.Message,
+                    exception.ToDetailedString());
+                return currentUser.Id;
+            }
+            
+        }
+        private async void FrmDiaryNote_Load(object sender, EventArgs e)
+        {
+            rddl_Users.Visible = await InitialHelper.CurrentUser.IsAdmin();
         }
 
         //private void FrmDiaryNote_Load(object sender, EventArgs e)
@@ -144,17 +174,18 @@ namespace PersonalAccounting.UI
 
         //    //Txt_diaryNoteDate_TextChanged(sender, e);
         //}
+
         private async void FillDropdownList(RadDropDownList ddl)
         {
             ddl.DisplayMember = "Title";
             ddl.ValueMember = "Id";
-            var which = (ddl.Name == "rddl_MentalConditions")
-                ? "mental" : (ddl.Name == "rddl_WeatherConditions")
-                ? "weather" : "";
+            //var which = (ddl.Name == "rddl_MentalConditions")
+            //    ? "mental" : (ddl.Name == "rddl_WeatherConditions")
+            //    ? "weather" : "";
 
-            switch (which)
+            switch (ddl.Name)
             {
-                case "mental":
+                case "rddl_MentalConditions":
                     {
                         var mentalConditionDefault = new ViewModelSimpleLoadMentalCondition
                         {
@@ -169,7 +200,7 @@ namespace PersonalAccounting.UI
                         break;
                     }
 
-                case "weather":
+                case "rddl_WeatherConditions":
                     {
                         var weatherConditionDefault = new ViewModelSimpleLoadWeatherCondition()
                         {
@@ -183,6 +214,22 @@ namespace PersonalAccounting.UI
                         ddl.DataSource = weatherConditions;
                         break;
                     }
+                case "rddl_Users":
+                {
+                    ddl.DisplayMember = "UserName";
+                    ddl.ValueMember = "UserId";
+
+                    var defaultOption = new ViewModelLoadAllUser()
+                    {
+                        UserId = 0,
+                        UserName = "انتخاب کنید ..."
+                    };
+
+                    var users = await _userService.LoadAllViewModelAsync();
+                    users.Insert(0, defaultOption);
+                    ddl.DataSource = users;
+                    break;
+                }
             }
         }
         //private void rtb_Note_KeyUp(object sender, KeyEventArgs e)
@@ -1391,8 +1438,10 @@ namespace PersonalAccounting.UI
                 }
             }
         }
-        private async void DiaryNotesSaveOrUpdate()
+        private async void DiaryNotesSaveOrUpdate(bool onlyLoad = false)
         {
+            if(await GetSelectedUserId() <= 0) return;
+            
             try
             {
                 var currentDate = PersianHelper.GetGregorianDateSimple(txt_diaryNoteDate.Text);
@@ -1402,17 +1451,23 @@ namespace PersonalAccounting.UI
                 var currentUser = InitialHelper.CurrentUser;
                 var currentDateTime = InitialHelper.CurrentDateTime;
 
-                if (await _diaryNoteService.ExistAsync(currentDate))
+                //if (await currentUser.IsAdmin() ?
+                //    await _diaryNoteService.ExistAsync(currentDate, await GetSelectedUserId()):
+                //    await _diaryNoteService.ExistAsync(currentDate, currentUser.Id))
+                if(await _diaryNoteService.ExistAsync(currentDate, await GetSelectedUserId()))
                 {
                     //var encryptNote = _cryption.Encrypt(rtb_Note.Rtf);
                     //var encryptNote = CryptoHelper.Encrypt(rtb_Note.Rtf, true, "1^Gandom&~");
                     //var encryptNote = CryptoHelper.EncryptDecrypt(rtb_Note.Rtf, 1231);
                     //var encryptNote = CryptoHelper.EncryptData(rtb_Note.Rtf, "1231");
 
-                    var diaryNote = await currentUser.IsAdmin() ?
-                        await _diaryNoteService.LoadByDateAsync(currentDate) :
-                        await _diaryNoteService.LoadByDateAsync(currentDate, currentUser.Id);
+                    var diaryNote = await _diaryNoteService.LoadByDateAsync(currentDate, await GetSelectedUserId());
+                    //await currentUser.IsAdmin() ?
+                    //await _diaryNoteService.LoadByDateAsync(currentDate) :
+                    //await _diaryNoteService.LoadByDateAsync(currentDate, currentUser.Id);
 
+                    if (onlyLoad) return;
+                    
                     var encryptNote = CryptoHelper.EncryptNew(rtb_Note.Rtf);
                     diaryNote.Note = Utility.CompressString(encryptNote, Encoding.UTF8);
                     diaryNote.WeatherConditionId = wcId == 0 ? null : wcId;
@@ -1421,6 +1476,7 @@ namespace PersonalAccounting.UI
                     diaryNote.LastUpdate = currentDateTime;
 
                     await _diaryNoteService.UpdateAsync(diaryNote);
+                    
                     if (_isModify)
                     {
                         _isModify = false;
@@ -1440,6 +1496,8 @@ namespace PersonalAccounting.UI
                     //var encryptNote = CryptoHelper.Encrypt(rtb_Note.Rtf, true, "1^Gandom&~");
                     //var encryptNote = CryptoHelper.EncryptDecrypt(rtb_Note.Rtf, 1231);
                     //var encryptNote = CryptoHelper.EncryptData(rtb_Note.Rtf, "1231");
+                    
+                    if(onlyLoad) return;
 
                     var encryptNote = CryptoHelper.EncryptNew(rtb_Note.Rtf);
                     var diaryNote = new DiaryNote
@@ -1448,6 +1506,7 @@ namespace PersonalAccounting.UI
                         Note = Utility.CompressString(encryptNote, Encoding.UTF8),
                         WeatherConditionId = wcId == 0 ? null : wcId,
                         MentalConditionId = mcId == 0 ? null : mcId,
+                        UserId =  await GetSelectedUserId(),
                         CreatedBy = currentUser.Id,
                         UpdateBy = currentUser.Id,
                         CreatedOn = currentDateTime,
@@ -1567,11 +1626,11 @@ namespace PersonalAccounting.UI
             try
             {
                 var date = GetCurrentDate(currentDate);
-                var currentUser = InitialHelper.CurrentUser;
+                //var currentUser = InitialHelper.CurrentUser;
 
-                var diaryNote = await currentUser.IsAdmin() ?
-                    await _diaryNoteService.LoadByDateAsync(date) :
-                    await _diaryNoteService.LoadByDateAsync(date, currentUser.Id);
+                var diaryNote = await _diaryNoteService.LoadByDateAsync(date, await GetSelectedUserId());
+                //await currentUser.IsAdmin() ?
+                //: await _diaryNoteService.LoadByDateAsync(date, user.Id);
 
                 if (diaryNote == null) return null;
                 if (string.IsNullOrEmpty(diaryNote.Note)) return diaryNote;
@@ -2020,6 +2079,15 @@ namespace PersonalAccounting.UI
                         break;
                 }
             }
+        }
+
+        private void rddl_Users_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
+        {
+            if(!txt_diaryNoteDate.Text.IsValidPersianDate()) return;
+            
+            DiaryNotesSaveOrUpdate(true);
+            Txt_diaryNoteDate_TextChanged(sender, e);
+            //MessageBox.Show((await GetSelectedUserId()).ToString());
         }
 
         #endregion

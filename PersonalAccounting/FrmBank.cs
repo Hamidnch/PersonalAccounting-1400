@@ -35,12 +35,12 @@ namespace PersonalAccounting.UI
 
         private async void BindGrid()
         {
-            int? currentUserId = null;
-            if (!await InitialHelper.CurrentUser.IsAdmin())
-                currentUserId = InitialHelper.CurrentUser.Id;
+            //int? currentUserId = null;
+            //if (!await InitialHelper.CurrentUser.IsAdmin())
+            //int? currentUserId = InitialHelper.CurrentUser.Id;
 
             rgv_Bank.BeginUpdate();
-            rgv_Bank.DataSource = await _bankService.LoadAllViewModelAsync(currentUserId);
+            rgv_Bank.DataSource = await _bankService.LoadAllViewModelAsync();
             rgv_Bank.EndUpdate();
         }
         private void btnClose_Click(object sender, EventArgs e)

@@ -61,10 +61,11 @@ namespace PersonalAccounting.BLL.Service
                     };
                 return await myQuery.ToListAsync();
             }
+
             else
             {
                 var myQuery =
-                    from measurementUnit in _measurementUnits//.Where(a => a.Status == "فعال")
+                    from measurementUnit in _measurementUnits //.Where(a => a.Status == "فعال")
                     select new ViewModelLoadAllMeasurementUnit()
                     {
                         MeasurementUnitId = measurementUnit.Id,
@@ -76,7 +77,6 @@ namespace PersonalAccounting.BLL.Service
                     };
                 return await myQuery.ToListAsync();
             }
-
         }
 
         public async Task<IList<ViewModelSimpleLoadMeasurementUnit>> SimpleLoadViewModelAsync()

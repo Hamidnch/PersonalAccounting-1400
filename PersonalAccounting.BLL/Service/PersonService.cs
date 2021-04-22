@@ -39,7 +39,7 @@ namespace PersonalAccounting.BLL.Service
         public async Task<IList<Person>> LoadAllAsync(bool containActives = true)
         {
             if (!containActives)
-                return await _persons.Where(a => a.Status != "فعال")
+                return await _persons.Where(a => a.Status != DefaultConstants.ActiveOptionString)
                     .AsNoTracking().OrderByDescending(a => a.Id).ToListAsync();
             return await _persons.AsNoTracking().ToListAsync();
         }

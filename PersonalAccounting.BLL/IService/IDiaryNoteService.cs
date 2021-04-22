@@ -8,10 +8,10 @@ namespace PersonalAccounting.BLL.IService
     public interface IDiaryNoteService
     {
         Task<string> LoadByIdAsync(int noteId);
-        Task<DiaryNote> LoadByDateAsync(DateTime date, int? createdBy = null);
-        DiaryNote LoadByDate(DateTime date);
+        Task<DiaryNote> LoadByDateAsync(DateTime date, int createdBy);
+        DiaryNote LoadByDate(DateTime date, int createdBy);
         Task<CreateStatus> CreateAsync(DiaryNote diaryNote);
         Task UpdateAsync(DiaryNote diaryNote);
-        Task<bool> ExistAsync(DateTime date);
+        Task<bool> ExistAsync(DateTime date, int createdBy);
     }
 }

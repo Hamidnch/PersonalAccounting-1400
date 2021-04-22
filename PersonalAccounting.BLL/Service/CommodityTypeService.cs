@@ -75,7 +75,6 @@ namespace PersonalAccounting.BLL.Service
                     };
                 return await myQuery.ToListAsync();
             }
-
         }
 
         public Task<IList<CommodityType>> SimpleLoadViewModelAsync()

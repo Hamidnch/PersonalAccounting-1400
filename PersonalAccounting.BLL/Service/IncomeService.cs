@@ -66,7 +66,7 @@ namespace PersonalAccounting.BLL.Service
                         Description = income.Description
                     };
                 return await myQuery.ToListAsync();
-            }
+        }
             else
             {
                 var myQuery =
@@ -91,8 +91,8 @@ namespace PersonalAccounting.BLL.Service
                         Description = income.Description
                     };
                 return await myQuery.ToListAsync();
-            }
-        }
+    }
+}
 
         public Task<IList<Income>> SimpleLoadViewModelAsync()
         {

@@ -43,9 +43,9 @@ namespace PersonalAccounting.BLL.Service
             return await _roles.ToListAsync();
         }
 
-        public async Task<IList<ViewModelLoadAllRole>> LoadAllViewModelAsync()
+        public async Task<IList<ViewModelLoadAllRole>> LoadAllViewModelAsync(int? createdBy)
         {
-            var myQuery = from role in _roles //.Include(u => u.Users)
+            var myQuery = from role in _roles.Where(r=> r.CreatedBy == createdBy) //.Include(u => u.Users)
                           select new ViewModelLoadAllRole()
                           {
                               RoleId = role.Id,

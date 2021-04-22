@@ -12,7 +12,7 @@ namespace PersonalAccounting.BLL.IService
     {
         Task<int> CountAsync();
         Task<IList<Role>> LoadAllAsync(bool containActives = true);
-        Task<IList<ViewModelLoadAllRole>> LoadAllViewModelAsync();
+        Task<IList<ViewModelLoadAllRole>> LoadAllViewModelAsync(int? createdBy);
         Task<IList<ViewModelSimpleLoadRole>> SimpleLoadViewModelAsync();
         Task<IList<ViewModelSimpleLoadRole>> GetAllRolesForUserAsync(string userName);
         Task<Role> GetRoleByNameAsync(string roleName);

@@ -55,7 +55,8 @@ namespace PersonalAccounting.BLL.Service
                     {
                         FundId = fund.Id,
                         FundType = fund.Type,
-                        BankAccountSubject = !string.IsNullOrEmpty(fund.BankAccount.Name) ? fund.BankAccount.Name : " ------ ",
+                        BankAccountSubject =
+                            !string.IsNullOrEmpty(fund.BankAccount.Name) ? fund.BankAccount.Name : " ------ ",
                         BankAccountId = fund.BankAccountId,
                         FundTitle = fund.Title,
                         FundCreationDate = fund.CreatedOn,
@@ -91,7 +92,6 @@ namespace PersonalAccounting.BLL.Service
                     };
                 return await query.OrderByDescending(x => x.FundCurrentValue).ToListAsync();
             }
-
         }
 
         public async Task<IList<ViewModelSimpleLoadFund>> SimpleLoadViewModelAsync()

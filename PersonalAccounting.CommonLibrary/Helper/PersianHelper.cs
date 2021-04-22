@@ -294,6 +294,8 @@ namespace PersonalAccounting.CommonLibrary.Helper
 
         public static bool IsValidPersianDate(this string persianDate)
         {
+            if (persianDate == "1   /  /" || string.IsNullOrEmpty(persianDate)) 
+                return false;
             try
             {
                 var year = int.Parse(persianDate.Substring(0, 4));

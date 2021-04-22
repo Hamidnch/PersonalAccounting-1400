@@ -75,8 +75,12 @@ namespace PersonalAccounting.UI
 
         private async void BindGrid()
         {
+            int? currentUserId = null;
+            if (!await InitialHelper.CurrentUser.IsAdmin())
+                currentUserId = InitialHelper.CurrentUser.Id;
+
             rgv_Role.BeginUpdate();
-            rgv_Role.DataSource = await _roleService.LoadAllViewModelAsync();
+            rgv_Role.DataSource = await _roleService.LoadAllViewModelAsync(currentUserId);
             rgv_Role.EndUpdate();
         }
 

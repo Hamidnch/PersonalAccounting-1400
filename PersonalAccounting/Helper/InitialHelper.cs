@@ -79,6 +79,7 @@ namespace PersonalAccounting.UI.Helper
             return await roleService.IsRoleForUserAsync(adminRole, user);
 
         }
+
         public static bool HasPermissionFor(string formName, PermissionMode permissionMode)
         {
             var permissionName = GetPermissionName(formName, permissionMode);
@@ -123,12 +124,13 @@ namespace PersonalAccounting.UI.Helper
             if (!flag) return;
 
 #if DEBUG
-            MessageBox.Show("Mode=Debug"); 
+            //MessageBox.Show("Mode=Debug");
 #else
+
+#endif
             //Initialize Seed Data
             var dbInitializer = IocConfig.Container.GetInstance<InitializeData>();
             dbInitializer.ExecuteSeedData();
-#endif
 
         }
 
