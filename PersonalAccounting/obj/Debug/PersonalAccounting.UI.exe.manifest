@@ -228,14 +228,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PersonalAccounting.BLL.dll" size="385536">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PersonalAccounting.BLL.dll" size="384512">
       <assemblyIdentity name="PersonalAccounting.BLL" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>aBNu1+FgUsG8GtfLEgMk7bdX6sjKmB2HF5q6mU4OtMg=</dsig:DigestValue>
+        <dsig:DigestValue>gBScU8/I6ZpIC1zdLTBDF1tdKnvdFs4PAOC3vLAdlAc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -247,43 +247,43 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>3zkcdA7cOVbAy72WkkudoBHoFMw5Z9DUT3FU2c6EC0Q=</dsig:DigestValue>
+        <dsig:DigestValue>lX4XfDOcDyJee6DXk3gdz+tyZlbBsn43aYgSmkb93WE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PersonalAccounting.DAL.dll" size="98304">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PersonalAccounting.DAL.dll" size="99328">
       <assemblyIdentity name="PersonalAccounting.DAL" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>OqC289gHTaT1srVQZ8BZv5r8LQ9Q28H5EaXsNp6F/6s=</dsig:DigestValue>
+        <dsig:DigestValue>O4QXgaAPdrKgegeLK9F/d3J/OtfwwrszM8iZpGjVf14=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PersonalAccounting.Domain.dll" size="75776">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PersonalAccounting.Domain.dll" size="76288">
       <assemblyIdentity name="PersonalAccounting.Domain" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>jeWJHWAwu/OsS3uwsDptr44ySctaTjNFlaqaUMvFWa0=</dsig:DigestValue>
+        <dsig:DigestValue>xxkfLqDSGz/BMbP3LgiAYYcw6c1f2hkyxaTFo5Qts1o=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PersonalAccounting.UI.exe" size="1179136">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PersonalAccounting.UI.exe" size="1181184">
       <assemblyIdentity name="PersonalAccounting.UI" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>31MLvtJKhCKOMHlK2osVCioYJ1tFsArqkFIDzO0cMw4=</dsig:DigestValue>
+        <dsig:DigestValue>pcRl/Ak21ZLh9eNHOdA2ABSvHPjXM3OPF2o0vgadbEo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

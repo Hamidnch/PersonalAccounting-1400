@@ -260,6 +260,10 @@ namespace PersonalAccounting.DAL.Infrastructure
                 .HasForeignKey(p => p.UpdateBy)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<DiaryNote>().HasOptional(u => u.User)
+                .WithMany(r => r.DiaryNotes)
+                .HasForeignKey(u => u.UserId);
+
             modelBuilder.Entity<DiaryNote>().HasOptional(u => u.WeatherCondition)
                 .WithMany(r => r.DiaryNotes)
                 .HasForeignKey(u => u.WeatherConditionId);
@@ -306,6 +310,11 @@ namespace PersonalAccounting.DAL.Infrastructure
             //modelBuilder.Entity<ExpenseDocument>().Property(ed => ed.RowVersion).IsRowVersion();
 
             //Relationship
+            modelBuilder.Entity<ExpenseDocument>().HasOptional(p => p.User)
+                .WithMany(p=> p.ExpenseDocuments)
+                .HasForeignKey(p => p.UserId)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<ExpenseDocument>().HasOptional(p => p.SelfUser)
                 .WithMany()
                 .HasForeignKey(p => p.CreatedBy)

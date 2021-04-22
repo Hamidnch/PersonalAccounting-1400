@@ -14,6 +14,7 @@ namespace PersonalAccounting.DAL.Mapping
                 .HasColumnOrder(1)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(b => b.Date).HasColumnType("datetime");
+            Property(b => b.UserId).IsRequired();
             //Property(b => b.Note).HasColumnType("ntext");
             Property(b => b.Concurrency).IsConcurrencyToken();
 
@@ -27,6 +28,10 @@ namespace PersonalAccounting.DAL.Mapping
                 .WithMany()
                 .HasForeignKey(p => p.UpdateBy)
                 .WillCascadeOnDelete(false);
+
+            HasRequired(u => u.User)
+                .WithMany(r => r.DiaryNotes)
+                .HasForeignKey(u => u.UserId);
 
             HasOptional(u => u.WeatherCondition)
                 .WithMany(r => r.DiaryNotes)

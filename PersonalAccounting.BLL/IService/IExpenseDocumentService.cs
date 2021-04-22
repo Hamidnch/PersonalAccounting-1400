@@ -10,12 +10,12 @@ namespace PersonalAccounting.BLL.IService
     public interface IExpenseDocumentService : IDisposable
     {
         Task<int> CountAsync();
-        Task<IList<ExpenseDocument>> LoadAllAsync(bool containActives = true, int? createdBy = null);
-        Task<IList<ViewModelLoadAllExpenseDocument>> LoadAllViewModelAsync(int? createdBy = null);
+        Task<IList<ExpenseDocument>> LoadAllAsync(int userId, bool containActives = true);
+        Task<IList<ViewModelLoadAllExpenseDocument>> LoadAllViewModelAsync(int? userId);
         Task<CreateStatus> CreateAsync(ExpenseDocument expenseDocument);
         Task UpdateAsync(ExpenseDocument expenseDocument);
-        Task<ExpenseDocument> GetByIdAsync(int expenseDocumentId, int? createdBy = null);
-        Task<IList<ViewModelLoadAllExpense>> GetExpensesByDocumentIdAsync(int expenseDocumentId, int? createdBy = null);
+        Task<ExpenseDocument> GetByIdAsync(int expenseDocumentId, int userId);
+        Task<IList<ViewModelLoadAllExpense>> GetExpensesByDocumentIdAsync(int expenseDocumentId);
         Task<bool> ExistAsync(ExpenseDocument expenseDocument);
         Task<int> RemoveAsync(ExpenseDocument expenseDocument);
         Task<int> RemoveAsync(int expenseDocumentId);

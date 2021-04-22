@@ -126,6 +126,8 @@ namespace PersonalAccounting.Domain.Entity
         //public virtual Role Role { get; set; }
         [ForeignKey("PersonId")]
         public virtual Person Person { get; protected set; }
+        public virtual ICollection<DiaryNote> DiaryNotes { get; set; }
+        public virtual ICollection<ExpenseDocument> ExpenseDocuments { get; set; }
         #endregion Navigation Property
     }
 }

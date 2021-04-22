@@ -37,7 +37,7 @@ namespace PersonalAccounting.UI
         private readonly IFundService _fundService;
         private readonly IExpenseDocumentService _expenseDocumentService;
         private readonly IExpenseService _expenseService;
-
+        private readonly IUserService _userService;
         //private int _articleId;
         private CurrentSelected _currentSelected = CurrentSelected.None;
         private int _documentId;
@@ -69,7 +69,7 @@ namespace PersonalAccounting.UI
             IRepositoryService<Person, ViewModelLoadAllPerson, ViewModelSimpleLoadPerson> personService, IFundService fundService,
             IRepositoryService<Article, ViewModelLoadAllArticle, ViewModelSimpleLoadArticle> articleService,
             IMeasurementUnitService measurementUnitService, IExpenseDocumentService expenseDocumentService,
-            IExpenseService expenseService)
+            IExpenseService expenseService, IUserService userService)
         {
             _personService = personService;
             _fundService = fundService;
@@ -77,6 +77,7 @@ namespace PersonalAccounting.UI
             _measurementUnitService = measurementUnitService;
             _expenseDocumentService = expenseDocumentService;
             _expenseService = expenseService;
+            _userService = userService;
 
             InitializeComponent();
 
@@ -108,7 +109,57 @@ namespace PersonalAccounting.UI
             // _rgv.CellFormatting += _rgv_CellFormatting;
             _rgv.RowFormatting += _rgv_RowFormatting;
 
+            FillDropdownList(rddl_Users);
             BindGrid();
+        }
+
+        private async Task<int> GetSelectedUserId()
+        {
+            var currentUser = InitialHelper.CurrentUser;
+            if (!await currentUser.IsAdmin())
+            {
+                return currentUser.Id;
+            }
+
+            try
+            {
+                return int.Parse(rddl_Users.SelectedValue.ToString());
+            }
+            catch (Exception exception)
+            {
+                await LoggerService.ErrorAsync(this.Name, "GetSelectedUserId", exception.Message,
+                    exception.ToDetailedString());
+                return currentUser.Id;
+            }
+        }
+
+        private async void FillDropdownList(RadDropDownList ddl)
+        {
+            ddl.DisplayMember = "Title";
+            ddl.ValueMember = "Id";
+            //var which = (ddl.Name == "rddl_MentalConditions")
+            //    ? "mental" : (ddl.Name == "rddl_WeatherConditions")
+            //    ? "weather" : "";
+
+            switch (ddl.Name)
+            {
+                case "rddl_Users":
+                    {
+                        ddl.DisplayMember = "UserName";
+                        ddl.ValueMember = "UserId";
+
+                        var defaultOption = new ViewModelLoadAllUser()
+                        {
+                            UserId = 0,
+                            UserName = "انتخاب کنید ..."
+                        };
+
+                        var users = await _userService.LoadAllViewModelAsync();
+                        users.Insert(0, defaultOption);
+                        ddl.DataSource = users;
+                        break;
+                    }
+            }
         }
 
         private async void _rgv_RowFormatting(object sender, RowFormattingEventArgs e)
@@ -421,7 +472,7 @@ namespace PersonalAccounting.UI
             int? currentUserId = null;
             if (!await InitialHelper.CurrentUser.IsAdmin())
                 currentUserId = InitialHelper.CurrentUser.Id;
-            
+
             rgv_Expenses.BeginUpdate();
             rgv_Expenses.DataSource =
                 await _expenseDocumentService.LoadAllViewModelAsync(currentUserId);
@@ -721,8 +772,9 @@ namespace PersonalAccounting.UI
             }
 
             _mode = CommonHelper.Mode.Insert;
+
             CommonHelper.InsertAction(_mode, pnl_Data, rgv_Expenses, btnInsert, btnRegister,
-                btnModify, btnDelete, btnCancel, btnClose, txt_IncomeDate);
+                btnModify, btnDelete, btnCancel, btnClose, txt_ExpenseDocumentDate);
 
             lbl_DocumentId.Text = string.Empty;
             lbl_SumPrice.Text = string.Empty;
@@ -746,7 +798,7 @@ namespace PersonalAccounting.UI
             //txt_IncomeDate.Select();
             //txt_IncomeDate.SelectAll();
 
-            txt_IncomeDate.SetPersianDateToTextBoxAndSelectAll();
+            txt_ExpenseDocumentDate.SetPersianDateToTextBoxAndSelectAll();
         }
 
         private void rgv_BuyList_UserDeletingRow(object sender, GridViewRowCancelEventArgs e)
@@ -779,11 +831,13 @@ namespace PersonalAccounting.UI
                 CommonHelper.ShowNotificationMessage(DefaultConstants.IllegalAccess, DefaultConstants.EditActionNotAllow);
                 return;
             }
+            
+            _mode = CommonHelper.Mode.Update;
 
             CommonHelper.ModifyAction(_mode, pnl_Data, rgv_Expenses, btnInsert,
                 btnRegister, btnModify, btnDelete, btnCancel, btnClose);
-            txt_IncomeDate.Enabled = true;
-            _mode = CommonHelper.Mode.Update;
+            txt_ExpenseDocumentDate.Enabled = true;
+
         }
 
         private async void rgv_BuyList_CellValueChanged(object sender, GridViewCellEventArgs e)
@@ -859,10 +913,10 @@ namespace PersonalAccounting.UI
             //    return;
             //}
 
-            var persianRegisterDate = PersianHelper.GetGregorianDate(txt_IncomeDate.Text);
+            var persianRegisterDate = PersianHelper.GetGregorianDate(txt_ExpenseDocumentDate.Text);
             var currentUser = InitialHelper.CurrentUser;
             var currentDateTime = InitialHelper.CurrentDateTime;
-
+            var selectedUser = await GetSelectedUserId();
             switch (_mode)
             {
                 case CommonHelper.Mode.Insert:
@@ -882,8 +936,8 @@ namespace PersonalAccounting.UI
                         //    lastRow.Delete();
                         //}
 
-                        var document = new ExpenseDocument(persianRegisterDate,
-                            currentUser.Id, currentDateTime, currentDateTime, string.Empty);
+                        var document = new ExpenseDocument(persianRegisterDate, selectedUser,
+                            currentUser.Id, currentDateTime, null, string.Empty);
                         
                         await _expenseDocumentService.CreateAsync(document);
 
@@ -980,9 +1034,10 @@ namespace PersonalAccounting.UI
                             return;
                         }
 
-                        var currentDocument = await currentUser.IsAdmin()
-                            ? await _expenseDocumentService.GetByIdAsync(int.Parse(lbl_DocumentId.Text)) :
-                            await _expenseDocumentService.GetByIdAsync(int.Parse(lbl_DocumentId.Text), currentUser.Id);
+                        var currentDocument = 
+                            //await currentUser.IsAdmin()
+                            //? await _expenseDocumentService.GetByIdAsync(int.Parse(lbl_DocumentId.Text)) :
+                            await _expenseDocumentService.GetByIdAsync(int.Parse(lbl_DocumentId.Text), selectedUser);
 
                         //_expenseService.DeleteExpensesFromDocumentAsync(currentDocument);
 
@@ -1208,8 +1263,8 @@ namespace PersonalAccounting.UI
         {
             if (_mode == CommonHelper.Mode.Insert)
             {
-                btnRegister.Enabled = (txt_IncomeDate.Text != string.Empty &&
-                    txt_IncomeDate.Text != CommonLibrary.Properties.Resources.DateMaskFormat);
+                btnRegister.Enabled = (txt_ExpenseDocumentDate.Text != string.Empty &&
+                    txt_ExpenseDocumentDate.Text != CommonLibrary.Properties.Resources.DateMaskFormat);
             }
         }
 
@@ -1263,12 +1318,12 @@ namespace PersonalAccounting.UI
 
                 _documentId = int.Parse(dataRow.Cells["ExpenseDocumentId"].Value.ToString());
                 _expenseDocumentDate = dataRow.Cells["ExpenseDocumentPersianDate"].Value.ToString();
+                
+                //int? currentUserId = null;
+                //if (!await InitialHelper.CurrentUser.IsAdmin())
+                //    currentUserId = InitialHelper.CurrentUser.Id;
 
-                int? currentUserId = null;
-                if (!await InitialHelper.CurrentUser.IsAdmin())
-                    currentUserId = InitialHelper.CurrentUser.Id;
-
-                _expenses = await _expenseDocumentService.GetExpensesByDocumentIdAsync(_documentId, currentUserId);
+                _expenses = await _expenseDocumentService.GetExpensesByDocumentIdAsync(_documentId);
                 _sumPrice = GetSumPrice(_expenses);
             }
             catch (Exception exception)
@@ -1287,7 +1342,7 @@ namespace PersonalAccounting.UI
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             lbl_DocumentId.Text = Convert.ToString(_documentId);
-            txt_IncomeDate.Text = _expenseDocumentDate;
+            txt_ExpenseDocumentDate.Text = _expenseDocumentDate;
             rgv_BuyList.DataSource = _expenses;
             lbl_SumPrice.Text = "هزینه کل: " + _sumPrice.ToString("N0") + " ریال";
             CommonHelper.IndicatorLoading(_pictureBox, false);
@@ -1468,6 +1523,14 @@ namespace PersonalAccounting.UI
             _mode = CommonHelper.Mode.None;
 
             BindGrid();
+        }
+
+        private void rddl_Users_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
+        {
+            if (!txt_ExpenseDocumentDate.Text.IsValidPersianDate()) return;
+
+            ReturnExpenseDocumentDetailsById();
+            txt_IncomeDate_TextChanged(sender, e);
         }
     }
 }

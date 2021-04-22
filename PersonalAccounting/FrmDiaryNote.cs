@@ -123,8 +123,8 @@ namespace PersonalAccounting.UI
                     exception.ToDetailedString());
                 return currentUser.Id;
             }
-            
         }
+
         private async void FrmDiaryNote_Load(object sender, EventArgs e)
         {
             rddl_Users.Visible = await InitialHelper.CurrentUser.IsAdmin();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PersonalAccounting.Domain.Entity
 {
@@ -17,17 +18,19 @@ namespace PersonalAccounting.Domain.Entity
             IsDeleted = false;
         }
 
-        public ExpenseDocument(DateTime? registerDate)
+        public ExpenseDocument(DateTime? registerDate, int userId)
         {
             Status = "فعال";
             Description = "";
             IsDeleted = false;
             RegisterDate = registerDate;
+            UserId = userId;
         }
-        public ExpenseDocument(DateTime? registerDate, int? createdBy,
+        public ExpenseDocument(DateTime? registerDate, int userId, int? createdBy,
             DateTime? createdOn, DateTime? lastUpdate, string description)
         {
             RegisterDate = registerDate;
+            UserId = userId;
             CreatedBy = createdBy;
             CreatedOn = createdOn;
             LastUpdate = lastUpdate;
@@ -42,6 +45,8 @@ namespace PersonalAccounting.Domain.Entity
         /// تاریخ ثبت سند هزینه
         /// </summary>
         public DateTime? RegisterDate { get; set; }
+
+        public int UserId { get; set; }
         ///// <summary>
         ///// شماره سند
         ///// </summary>
@@ -53,6 +58,9 @@ namespace PersonalAccounting.Domain.Entity
 
         #region Navigation Property
         public ICollection<Expense> Expenses { get; set; }
+
+        [ForeignKey("UserId")]
+        public User User { get; set; }
 
         #endregion Navigation Property
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -54,7 +55,6 @@ namespace PersonalAccounting.Domain.Entity
         public virtual WeatherCondition WeatherCondition { get; set; }
         [ForeignKey("MentalConditionId")]
         public virtual MentalCondition MentalCondition { get; set; }
-
         #endregion Navigation Property
 
 

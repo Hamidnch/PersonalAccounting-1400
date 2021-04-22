@@ -36,31 +36,27 @@ namespace PersonalAccounting.BLL.Service
             return await _expenseDocuments.AsNoTracking().CountAsync<ExpenseDocument>();
         }
 
-        public async Task<IList<ExpenseDocument>> LoadAllAsync(bool containActives = true, int? createdBy = null)
+        public async Task<IList<ExpenseDocument>> LoadAllAsync(int userId, bool containActives = true)
         {
-            if (createdBy != null)
+            if (!containActives)
             {
-                if (!containActives)
-                    return await _expenseDocuments.Where(a => a.Status != "فعال" && a.CreatedBy == createdBy)
-                        .AsNoTracking().OrderByDescending(a => a.Id).ToListAsync();
-                return await _expenseDocuments.Where(a => a.CreatedBy == createdBy)
+                return await _expenseDocuments
+                    .Where(a => a.Status != DefaultConstants.ActiveOptionString && a.UserId == userId)
                     .AsNoTracking().OrderByDescending(a => a.Id).ToListAsync();
             }
             else
             {
-                if (!containActives)
-                    return await _expenseDocuments.Where(a => a.Status != "فعال")
-                        .AsNoTracking().OrderByDescending(a => a.Id).ToListAsync();
-                return await _expenseDocuments.AsNoTracking().OrderByDescending(a => a.Id).ToListAsync();
+                return await _expenseDocuments.Where(a => a.UserId == userId)
+                    .AsNoTracking().OrderByDescending(a => a.Id).ToListAsync();
             }
         }
 
-        public async Task<IList<ViewModelLoadAllExpenseDocument>> LoadAllViewModelAsync(int? createdBy = null)
+        public async Task<IList<ViewModelLoadAllExpenseDocument>> LoadAllViewModelAsync(int? userId)
         {
-            if (createdBy != null)
+            if (userId != null)
             {
                 var myQuery =
-                    from expenseDocument in _expenseDocuments.Where(a => a.CreatedBy == createdBy)
+                    from expenseDocument in _expenseDocuments.Where(a => a.UserId == userId)
                     orderby expenseDocument.Id descending
                     select
                         new ViewModelLoadAllExpenseDocument()
@@ -99,15 +95,15 @@ namespace PersonalAccounting.BLL.Service
             }
         }
 
-        public async Task<IList<ViewModelLoadAllExpense>> GetExpensesByDocumentIdAsync(int expenseDocumentId, int? createdBy = null)
+        public async Task<IList<ViewModelLoadAllExpense>> GetExpensesByDocumentIdAsync(int expenseDocumentId)
         {
             var expenseDocument = await _expenseDocuments
                 .FirstOrDefaultAsync(ed => ed.Id == expenseDocumentId);
             var expenses = _expenses.Where(e => e.DocumentId == expenseDocument.Id);
-            if (createdBy != null)
-            {
-                expenses = expenses.Where(e => e.CreatedBy == createdBy);
-            }
+            //if (createdBy != null)
+            //{
+            //    expenses = expenses.Where(e => e.CreatedBy == createdBy);
+            //}
             //var expenses = expenseDocument.Expense.ToList();
             var myQuery = from expense in expenses
                           select new ViewModelLoadAllExpense()
@@ -165,18 +161,18 @@ namespace PersonalAccounting.BLL.Service
                 "UpdateAsync", GetServiceName(), EntityNameNormal + $" جدید با موفقیت ویرایش گردید.");
         }
 
-        public async Task<ExpenseDocument> GetByIdAsync(int expenseDocumentId, int? createdBy = null)
+        public async Task<ExpenseDocument> GetByIdAsync(int expenseDocumentId, int userId)
         {
-            if (createdBy != null)
-            {
+            //if (createdBy != null)
+            //{
                 return await _expenseDocuments.Include(ex => ex.Expenses)
-                    .FirstOrDefaultAsync(ed => ed.Id == expenseDocumentId && ed.CreatedBy == createdBy);
-            }
-            else
-            {
-                return await _expenseDocuments.Include(ex => ex.Expenses)
-                    .FirstOrDefaultAsync(ed => ed.Id == expenseDocumentId);
-            }
+                    .FirstOrDefaultAsync(ed => ed.Id == expenseDocumentId && ed.UserId == userId);
+            //}
+            //else
+            //{
+            //    return await _expenseDocuments.Include(ex => ex.Expenses)
+            //        .FirstOrDefaultAsync(ed => ed.Id == expenseDocumentId);
+            //}
         }
 
         public async Task<bool> ExistAsync(ExpenseDocument expenseDocument)
