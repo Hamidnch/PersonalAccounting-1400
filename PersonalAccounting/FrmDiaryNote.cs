@@ -72,7 +72,7 @@ namespace PersonalAccounting.UI
                 new Point((rtb_Note.Width / 2) - 150, (rtb_Note.Height / 2) - 200),
                 CommonLibrary.Properties.Resources.LoadingNote, false,
                 PictureBoxSizeMode.StretchImage, BorderStyle.None);
-
+            _pictureBox.Click += _pictureBox_Click;
             //numberLabel.Font = new Font(richTextBox1.Font.FontFamily, richTextBox1.Font.Size + 1.019f);
             //numberLabel.Font = new Font(rtb_Note.Font.FontFamily, rtb_Note.Font.Size);
 
@@ -97,6 +97,12 @@ namespace PersonalAccounting.UI
             txt_diaryNoteDate.Text = _selectedDate;
 
             _isModify = false;
+        }
+
+        private void _pictureBox_Click(object sender, EventArgs e)
+        {
+            if (_backgroundWorker.WorkerSupportsCancellation)
+                _backgroundWorker.CancelAsync();
         }
 
         private async Task<int> GetSelectedUserId()
@@ -231,6 +237,8 @@ namespace PersonalAccounting.UI
                     break;
                 }
             }
+
+            _isModify = false;
         }
         //private void rtb_Note_KeyUp(object sender, KeyEventArgs e)
         //{
@@ -452,9 +460,11 @@ namespace PersonalAccounting.UI
                     //if (LoadingForm != null && LoadingForm.Visible)
                     //    LoadingForm.Dispose();
                     //}
+                    _isModify = false;
                 }
                 catch (Exception exception)
                 {
+                    _isModify = false;
                     await LoggerService.ErrorAsync(this.Name, "BackgroundWorker_RunWorkerCompleted", exception.Message,
                         exception.ToDetailedString());
                 }
@@ -587,9 +597,9 @@ namespace PersonalAccounting.UI
                 rtb_Note.ReadOnly = true;
                 rtb_Note.BackColor = SystemColors.Menu;
 
-
+                _isModify = false;
                 _backgroundWorker.RunWorkerAsync();
-
+                
                 //Task.Factory.StartNew(() =>
                 //{
                 //CommonHelper.IndicatorLoading(this, _pictureBox, true);
@@ -604,6 +614,7 @@ namespace PersonalAccounting.UI
             }
             catch (Exception exception)
             {
+                _isModify = false;
                 await LoggerService.ErrorAsync(this.Name, "Txt_diaryNoteDate_TextChanged", exception.Message,
                     exception.ToDetailedString());
             }
@@ -632,11 +643,11 @@ namespace PersonalAccounting.UI
             GetLineAndColumn(rtb_Note);
         }
 
-        private void Lbl_Loading_Click(object sender, EventArgs e)
-        {
-            if (_backgroundWorker.WorkerSupportsCancellation)
-                _backgroundWorker.CancelAsync();
-        }
+        //private void Lbl_Loading_Click(object sender, EventArgs e)
+        //{
+        //    if (_backgroundWorker.WorkerSupportsCancellation)
+        //        _backgroundWorker.CancelAsync();
+        //}
 
         private void Ts_DiaryNote_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -1440,7 +1451,8 @@ namespace PersonalAccounting.UI
         }
         private async void DiaryNotesSaveOrUpdate(bool onlyLoad = false)
         {
-            if(await GetSelectedUserId() <= 0) return;
+            var selectedUser = await GetSelectedUserId();
+            if (selectedUser <= 0) return;
             
             try
             {
@@ -1450,18 +1462,18 @@ namespace PersonalAccounting.UI
                 int? wcId = int.Parse(rddl_WeatherConditions.SelectedItem["Id"].ToString());
                 var currentUser = InitialHelper.CurrentUser;
                 var currentDateTime = InitialHelper.CurrentDateTime;
-
+                
                 //if (await currentUser.IsAdmin() ?
                 //    await _diaryNoteService.ExistAsync(currentDate, await GetSelectedUserId()):
                 //    await _diaryNoteService.ExistAsync(currentDate, currentUser.Id))
-                if(await _diaryNoteService.ExistAsync(currentDate, await GetSelectedUserId()))
+                if(await _diaryNoteService.ExistAsync(currentDate, selectedUser))
                 {
                     //var encryptNote = _cryption.Encrypt(rtb_Note.Rtf);
                     //var encryptNote = CryptoHelper.Encrypt(rtb_Note.Rtf, true, "1^Gandom&~");
                     //var encryptNote = CryptoHelper.EncryptDecrypt(rtb_Note.Rtf, 1231);
                     //var encryptNote = CryptoHelper.EncryptData(rtb_Note.Rtf, "1231");
 
-                    var diaryNote = await _diaryNoteService.LoadByDateAsync(currentDate, await GetSelectedUserId());
+                    var diaryNote = await _diaryNoteService.LoadByDateAsync(currentDate, selectedUser);
                     //await currentUser.IsAdmin() ?
                     //await _diaryNoteService.LoadByDateAsync(currentDate) :
                     //await _diaryNoteService.LoadByDateAsync(currentDate, currentUser.Id);
@@ -1472,20 +1484,19 @@ namespace PersonalAccounting.UI
                     diaryNote.Note = Utility.CompressString(encryptNote, Encoding.UTF8);
                     diaryNote.WeatherConditionId = wcId == 0 ? null : wcId;
                     diaryNote.MentalConditionId = mcId == 0 ? null : mcId;
+                    diaryNote.UserId = selectedUser;
                     diaryNote.UpdateBy = currentUser.Id;
                     diaryNote.LastUpdate = currentDateTime;
 
                     await _diaryNoteService.UpdateAsync(diaryNote);
-                    
-                    if (_isModify)
-                    {
-                        _isModify = false;
-                        rtb_Note.Focus();
-                        rtb_Note.Select(rtb_Note.Text.Length - 1, 0);
-                        rtb_Note.ScrollToCaret();
 
-                        CommonHelper.ShowNotificationMessage("یادداشت روزانه", "اطلاعات یادداشت روزانه بروز رسانی شد");
-                    }
+                    if (!_isModify) return;
+
+                    _isModify = false;
+                    rtb_Note.Focus();
+                    rtb_Note.Select(rtb_Note.Text.Length - 1, 0);
+                    rtb_Note.ScrollToCaret();
+                    CommonHelper.ShowNotificationMessage("یادداشت روزانه", "اطلاعات یادداشت روزانه بروز رسانی شد");
 
                     //dlg.Invoke("پیام", "تغییرات بروزرسانی شد.", CustomDialogs.ImageType.itEdit,
                     //    CustomDialogs.ButtonType.Ok, InitialHelper.BackColorCustom);
@@ -1506,11 +1517,11 @@ namespace PersonalAccounting.UI
                         Note = Utility.CompressString(encryptNote, Encoding.UTF8),
                         WeatherConditionId = wcId == 0 ? null : wcId,
                         MentalConditionId = mcId == 0 ? null : mcId,
-                        UserId =  await GetSelectedUserId(),
+                        UserId =  selectedUser,
                         CreatedBy = currentUser.Id,
-                        UpdateBy = currentUser.Id,
+                        UpdateBy = null,
                         CreatedOn = currentDateTime,
-                        LastUpdate = currentDateTime,
+                        LastUpdate = null,
                     };
 
                     var result = await _diaryNoteService.CreateAsync(diaryNote);
@@ -1649,15 +1660,17 @@ namespace PersonalAccounting.UI
                 if (diaryNote.MentalConditionId == null) diaryNote.MentalConditionId = 0;
                 if (diaryNote.WeatherConditionId == null) diaryNote.WeatherConditionId = 0;
 
+                _isModify = false;
+
                 return diaryNote;
             }
             catch (Exception exception)
             {
                 await LoggerService.ErrorAsync(this.Name, "ReturnDiaryNoteByDate", exception.Message,
                     exception.ToDetailedString());
+                _isModify = false;
                 return null;
             }
-
         }
         private void InitializeToday(string date)
         {
@@ -2088,6 +2101,13 @@ namespace PersonalAccounting.UI
             DiaryNotesSaveOrUpdate(true);
             Txt_diaryNoteDate_TextChanged(sender, e);
             //MessageBox.Show((await GetSelectedUserId()).ToString());
+        }
+
+        private void rddl_MentalConditions_SelectedValueChanged(object sender, EventArgs e)
+        {
+            //MessageBox.Show(rddl_MentalConditions.SelectedIndex.ToString());
+
+            _isModify = true;
         }
 
         #endregion

@@ -33,7 +33,7 @@ namespace PersonalAccounting.BLL.Service
             return res != null ? res.Note : "هیچ";
         }
 
-        public async Task<DiaryNote> LoadByDateAsync(DateTime date, int createdBy)
+        public async Task<DiaryNote> LoadByDateAsync(DateTime date, int userId)
         {
             //if (createdBy == null)
             //{
@@ -41,18 +41,18 @@ namespace PersonalAccounting.BLL.Service
             //}
 
             var res = await DiaryNotes.AsNoTracking()
-                .FirstOrDefaultAsync(dn => dn.Date == date && dn.CreatedBy == createdBy);
+                .FirstOrDefaultAsync(dn => dn.Date == date && dn.UserId == userId);
             return res;
         }
 
-        public DiaryNote LoadByDate(DateTime date, int createdBy)
+        public DiaryNote LoadByDate(DateTime date, int userId)
         {
             //if (createdBy == null)
             //{
             //    DiaryNotes.AsNoTracking().FirstOrDefault(dn => dn.Date == date);
             //}
 
-            return DiaryNotes.AsNoTracking().FirstOrDefault(dn => dn.Date == date && dn.CreatedBy == createdBy);
+            return DiaryNotes.AsNoTracking().FirstOrDefault(dn => dn.Date == date && dn.UserId == userId);
         }
 
         public async Task<CreateStatus> CreateAsync(DiaryNote diaryNote)
@@ -90,14 +90,14 @@ namespace PersonalAccounting.BLL.Service
                 "UpdateAsync", GetServiceName(), EntityNameNormal + $" با موفقیت ویرایش گردید.");
         }
 
-        public async Task<bool> ExistAsync(DateTime date, int createdBy)
+        public async Task<bool> ExistAsync(DateTime date, int userId)
         {
             //if (createdBy == null)
             //{
             //    return await DiaryNotes.AnyAsync(dn => dn.Date == date);
             //}
 
-            return await DiaryNotes.AnyAsync(dn => dn.Date == date && dn.CreatedBy == createdBy );
+            return await DiaryNotes.AnyAsync(dn => dn.Date == date && dn.UserId == userId);
         }
     }
 }

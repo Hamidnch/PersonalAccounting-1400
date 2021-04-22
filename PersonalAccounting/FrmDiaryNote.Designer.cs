@@ -307,6 +307,7 @@
             this.rddl_WeatherConditions.Name = "rddl_WeatherConditions";
             this.rddl_WeatherConditions.Size = new System.Drawing.Size(241, 66);
             this.rddl_WeatherConditions.TabIndex = 2;
+            this.rddl_WeatherConditions.SelectedValueChanged += new System.EventHandler(this.rddl_MentalConditions_SelectedValueChanged);
             this.rddl_WeatherConditions.ItemDataBound += new Telerik.WinControls.UI.ListItemDataBoundEventHandler(this.Rddl_WeatherConditions_ItemDataBound);
             // 
             // rddl_MentalConditions
@@ -325,6 +326,7 @@
             this.rddl_MentalConditions.NullText = "موردی یافت نشد";
             this.rddl_MentalConditions.Size = new System.Drawing.Size(241, 66);
             this.rddl_MentalConditions.TabIndex = 1;
+            this.rddl_MentalConditions.SelectedValueChanged += new System.EventHandler(this.rddl_MentalConditions_SelectedValueChanged);
             this.rddl_MentalConditions.ItemDataBound += new Telerik.WinControls.UI.ListItemDataBoundEventHandler(this.Rddl_MentalConditions_ItemDataBound);
             ((Telerik.WinControls.UI.RadDropDownListElement)(this.rddl_MentalConditions.GetChildAt(0))).RightToLeft = true;
             ((Telerik.WinControls.UI.RadDropDownListElement)(this.rddl_MentalConditions.GetChildAt(0))).DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
