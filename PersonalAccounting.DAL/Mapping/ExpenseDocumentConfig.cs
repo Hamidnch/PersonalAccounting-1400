@@ -13,16 +13,16 @@ namespace PersonalAccounting.DAL.Mapping
             Property(ed => ed.Id)
                 .HasColumnOrder(1)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            Property(ed => ed.UserId).IsRequired();
+            //Property(ed => ed.UserId).IsRequired();
             Property(ed => ed.RegisterDate).HasColumnType("datetime");
             Property(ed => ed.CreatedOn).HasColumnType("datetime");
             Property(ed => ed.LastUpdate).HasColumnType("datetime");
             Property(ed => ed.Concurrency).IsConcurrencyToken();//.IsRowVersion();
 
             //Relationship
-            HasRequired(u => u.User)
-                .WithMany(r => r.ExpenseDocuments)
-                .HasForeignKey(u => u.UserId);
+            //HasRequired(u => u.User)
+            //    .WithMany(r => r.ExpenseDocuments)
+            //    .HasForeignKey(u => u.UserId);
 
             HasOptional(p => p.SelfUser)
                 .WithMany()

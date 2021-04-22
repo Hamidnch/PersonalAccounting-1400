@@ -200,7 +200,7 @@
             // 
             this.rb_Save.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.rb_Save.Image = ((System.Drawing.Image)(resources.GetObject("rb_Save.Image")));
-            this.rb_Save.Location = new System.Drawing.Point(174, 76);
+            this.rb_Save.Location = new System.Drawing.Point(191, 76);
             this.rb_Save.Name = "rb_Save";
             this.rb_Save.Padding = new System.Windows.Forms.Padding(5);
             this.rb_Save.Size = new System.Drawing.Size(79, 26);
@@ -212,7 +212,7 @@
             // 
             this.rb_Exit.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.rb_Exit.Image = ((System.Drawing.Image)(resources.GetObject("rb_Exit.Image")));
-            this.rb_Exit.Location = new System.Drawing.Point(92, 76);
+            this.rb_Exit.Location = new System.Drawing.Point(109, 76);
             this.rb_Exit.Name = "rb_Exit";
             this.rb_Exit.Padding = new System.Windows.Forms.Padding(5);
             this.rb_Exit.Size = new System.Drawing.Size(79, 26);
@@ -303,9 +303,9 @@
             this.rddl_WeatherConditions.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.rddl_WeatherConditions.EnableAlternatingItemColor = true;
             this.rddl_WeatherConditions.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rddl_WeatherConditions.Location = new System.Drawing.Point(12, 6);
+            this.rddl_WeatherConditions.Location = new System.Drawing.Point(93, 6);
             this.rddl_WeatherConditions.Name = "rddl_WeatherConditions";
-            this.rddl_WeatherConditions.Size = new System.Drawing.Size(241, 66);
+            this.rddl_WeatherConditions.Size = new System.Drawing.Size(197, 66);
             this.rddl_WeatherConditions.TabIndex = 2;
             this.rddl_WeatherConditions.SelectedValueChanged += new System.EventHandler(this.rddl_MentalConditions_SelectedValueChanged);
             this.rddl_WeatherConditions.ItemDataBound += new Telerik.WinControls.UI.ListItemDataBoundEventHandler(this.Rddl_WeatherConditions_ItemDataBound);
@@ -321,10 +321,10 @@
             this.rddl_MentalConditions.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.rddl_MentalConditions.EnableAlternatingItemColor = true;
             this.rddl_MentalConditions.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rddl_MentalConditions.Location = new System.Drawing.Point(351, 6);
+            this.rddl_MentalConditions.Location = new System.Drawing.Point(395, 6);
             this.rddl_MentalConditions.Name = "rddl_MentalConditions";
             this.rddl_MentalConditions.NullText = "موردی یافت نشد";
-            this.rddl_MentalConditions.Size = new System.Drawing.Size(241, 66);
+            this.rddl_MentalConditions.Size = new System.Drawing.Size(197, 66);
             this.rddl_MentalConditions.TabIndex = 1;
             this.rddl_MentalConditions.SelectedValueChanged += new System.EventHandler(this.rddl_MentalConditions_SelectedValueChanged);
             this.rddl_MentalConditions.ItemDataBound += new Telerik.WinControls.UI.ListItemDataBoundEventHandler(this.Rddl_MentalConditions_ItemDataBound);
@@ -340,7 +340,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label2.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.label2.Location = new System.Drawing.Point(257, 51);
+            this.label2.Location = new System.Drawing.Point(296, 51);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 14);
             this.label2.TabIndex = 194;

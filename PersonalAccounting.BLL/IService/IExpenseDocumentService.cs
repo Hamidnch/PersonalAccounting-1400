@@ -14,7 +14,7 @@ namespace PersonalAccounting.BLL.IService
         Task<IList<ViewModelLoadAllExpenseDocument>> LoadAllViewModelAsync(int? userId);
         Task<CreateStatus> CreateAsync(ExpenseDocument expenseDocument);
         Task UpdateAsync(ExpenseDocument expenseDocument);
-        Task<ExpenseDocument> GetByIdAsync(int expenseDocumentId, int userId);
+        Task<ExpenseDocument> GetByIdAsync(int expenseDocumentId, int? userId);
         Task<IList<ViewModelLoadAllExpense>> GetExpensesByDocumentIdAsync(int expenseDocumentId);
         Task<bool> ExistAsync(ExpenseDocument expenseDocument);
         Task<int> RemoveAsync(ExpenseDocument expenseDocument);

@@ -28,27 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            Janus.Windows.ExplorerBar.ExplorerBarGroup explorerBarGroup1 = new Janus.Windows.ExplorerBar.ExplorerBarGroup();
-            Janus.Windows.ExplorerBar.ExplorerBarItem explorerBarItem1 = new Janus.Windows.ExplorerBar.ExplorerBarItem();
-            Janus.Windows.ExplorerBar.ExplorerBarItem explorerBarItem2 = new Janus.Windows.ExplorerBar.ExplorerBarItem();
-            Janus.Windows.ExplorerBar.ExplorerBarGroup explorerBarGroup2 = new Janus.Windows.ExplorerBar.ExplorerBarGroup();
-            Janus.Windows.ExplorerBar.ExplorerBarItem explorerBarItem3 = new Janus.Windows.ExplorerBar.ExplorerBarItem();
-            Janus.Windows.ExplorerBar.ExplorerBarItem explorerBarItem4 = new Janus.Windows.ExplorerBar.ExplorerBarItem();
-            Janus.Windows.ExplorerBar.ExplorerBarItem explorerBarItem5 = new Janus.Windows.ExplorerBar.ExplorerBarItem();
-            Janus.Windows.ExplorerBar.ExplorerBarItem explorerBarItem6 = new Janus.Windows.ExplorerBar.ExplorerBarItem();
-            Janus.Windows.ExplorerBar.ExplorerBarGroup explorerBarGroup3 = new Janus.Windows.ExplorerBar.ExplorerBarGroup();
-            Janus.Windows.ExplorerBar.ExplorerBarItem explorerBarItem7 = new Janus.Windows.ExplorerBar.ExplorerBarItem();
-            Janus.Windows.ExplorerBar.ExplorerBarItem explorerBarItem8 = new Janus.Windows.ExplorerBar.ExplorerBarItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.uiPanelManager1 = new Janus.Windows.UI.Dock.UIPanelManager(this.components);
-            this.MainPanel = new Janus.Windows.UI.Dock.UIPanel();
-            this.MainPanelContainer = new Janus.Windows.UI.Dock.UIPanelInnerContainer();
-            this.explorerBar_RightPanel = new Janus.Windows.ExplorerBar.ExplorerBar();
             this.rrb_Main = new Telerik.WinControls.UI.RadRibbonBar();
+            this.rt_PersonsAndUsers = new Telerik.WinControls.UI.RibbonTab();
+            this.rbg_PersonDetails = new Telerik.WinControls.UI.RadRibbonBarGroup();
+            this.rbe_PersonDetails = new Telerik.WinControls.UI.RadButtonElement();
+            this.rbg_RoleDetails = new Telerik.WinControls.UI.RadRibbonBarGroup();
+            this.rbe_RoleDetails = new Telerik.WinControls.UI.RadButtonElement();
+            this.rbg_UserDetails = new Telerik.WinControls.UI.RadRibbonBarGroup();
+            this.rbe_UserDetails = new Telerik.WinControls.UI.RadButtonElement();
             this.rt_PrimaryDefinitions = new Telerik.WinControls.UI.RibbonTab();
             this.rbg_MeasurementUnitDetails = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.rbe_MeasurementUnitDetails = new Telerik.WinControls.UI.RadButtonElement();
@@ -68,13 +59,6 @@
             this.rbe_MentalConditionDetails = new Telerik.WinControls.UI.RadButtonElement();
             this.rbg_WeatherConditionDetails = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.rbe_WeatherConditionDetails = new Telerik.WinControls.UI.RadButtonElement();
-            this.rt_PersonsAndUsers = new Telerik.WinControls.UI.RibbonTab();
-            this.rbg_PersonDetails = new Telerik.WinControls.UI.RadRibbonBarGroup();
-            this.rbe_PersonDetails = new Telerik.WinControls.UI.RadButtonElement();
-            this.rbg_RoleDetails = new Telerik.WinControls.UI.RadRibbonBarGroup();
-            this.rbe_RoleDetails = new Telerik.WinControls.UI.RadButtonElement();
-            this.rbg_UserDetails = new Telerik.WinControls.UI.RadRibbonBarGroup();
-            this.rbe_UserDetails = new Telerik.WinControls.UI.RadButtonElement();
             this.rt_FundAndAccount = new Telerik.WinControls.UI.RibbonTab();
             this.rbg_FundDetails = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.rbe_FundDetails = new Telerik.WinControls.UI.RadButtonElement();
@@ -98,11 +82,6 @@
             this.rbe_QuitDetails = new Telerik.WinControls.UI.RadButtonElement();
             this.rmi_Quit = new Telerik.WinControls.UI.RadMenuItem();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.uiPanelManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MainPanel)).BeginInit();
-            this.MainPanel.SuspendLayout();
-            this.MainPanelContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.explorerBar_RightPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rrb_Main)).BeginInit();
             this.SuspendLayout();
             // 
@@ -133,110 +112,6 @@
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
             this.toolStripStatusLabel3.Size = new System.Drawing.Size(0, 17);
             this.toolStripStatusLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // uiPanelManager1
-            // 
-            this.uiPanelManager1.ContainerControl = this;
-            this.MainPanel.Id = new System.Guid("a9116d57-8f2d-4b1b-a0ec-5aabb8380493");
-            this.uiPanelManager1.Panels.Add(this.MainPanel);
-            // 
-            // Design Time Panel Info:
-            // 
-            this.uiPanelManager1.BeginPanelInfo();
-            this.uiPanelManager1.AddDockPanelInfo(new System.Guid("a9116d57-8f2d-4b1b-a0ec-5aabb8380493"), Janus.Windows.UI.Dock.PanelDockStyle.Right, new System.Drawing.Size(232, 449), true);
-            this.uiPanelManager1.AddFloatingPanelInfo(new System.Guid("a9116d57-8f2d-4b1b-a0ec-5aabb8380493"), new System.Drawing.Point(-1, -1), new System.Drawing.Size(-1, -1), false);
-            this.uiPanelManager1.EndPanelInfo();
-            // 
-            // MainPanel
-            // 
-            this.MainPanel.InnerContainer = this.MainPanelContainer;
-            this.MainPanel.Location = new System.Drawing.Point(958, 171);
-            this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(232, 449);
-            this.MainPanel.TabIndex = 4;
-            this.MainPanel.Text = "پانل اصلی";
-            this.MainPanel.TextAlignment = Janus.Windows.UI.Dock.PanelTextAlignment.Center;
-            // 
-            // MainPanelContainer
-            // 
-            this.MainPanelContainer.Controls.Add(this.explorerBar_RightPanel);
-            this.MainPanelContainer.Location = new System.Drawing.Point(5, 23);
-            this.MainPanelContainer.Name = "MainPanelContainer";
-            this.MainPanelContainer.Size = new System.Drawing.Size(226, 425);
-            this.MainPanelContainer.TabIndex = 0;
-            // 
-            // explorerBar_RightPanel
-            // 
-            this.explorerBar_RightPanel.BackColorAlphaMode = Janus.Windows.ExplorerBar.AlphaMode.Transparent;
-            this.explorerBar_RightPanel.BackgroundFormatStyle.ForeColor = System.Drawing.Color.Black;
-            this.explorerBar_RightPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.explorerBar_RightPanel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.explorerBar_RightPanel.ForeColor = System.Drawing.Color.Black;
-            this.explorerBar_RightPanel.ForeColorAlphaMode = Janus.Windows.ExplorerBar.AlphaMode.Transparent;
-            explorerBarItem1.Key = "itmPersons";
-            explorerBarItem1.Text = "اشخاص";
-            explorerBarItem2.Key = "itmUsers";
-            explorerBarItem2.Text = "کاربران";
-            explorerBarGroup1.Items.AddRange(new Janus.Windows.ExplorerBar.ExplorerBarItem[] {
-            explorerBarItem1,
-            explorerBarItem2});
-            explorerBarGroup1.Key = "Group2";
-            explorerBarGroup1.Text = "اشخاص و کاربران";
-            explorerBarGroup1.TextAlignment = Janus.Windows.ExplorerBar.Alignment.Center;
-            explorerBarGroup2.ContainerHeight = 100;
-            explorerBarGroup2.Cursor = System.Windows.Forms.Cursors.Hand;
-            explorerBarItem3.Key = "itmBanks";
-            explorerBarItem3.Text = "بانک ها";
-            explorerBarItem4.Key = "itmBankAccounts";
-            explorerBarItem4.Text = "حسابهای بانکی";
-            explorerBarItem5.Key = "itmIncomeTypes";
-            explorerBarItem5.Text = "انواع درآمدها";
-            explorerBarItem6.Key = "itmMeasurementUnits";
-            explorerBarItem6.Text = "آحاد سنجش";
-            explorerBarGroup2.Items.AddRange(new Janus.Windows.ExplorerBar.ExplorerBarItem[] {
-            explorerBarItem3,
-            explorerBarItem4,
-            explorerBarItem5,
-            explorerBarItem6});
-            explorerBarGroup2.Key = "Group1";
-            explorerBarGroup2.ShowGroupBorder = Janus.Windows.ExplorerBar.TriState.True;
-            explorerBarGroup2.Text = "تعاریف پایه";
-            explorerBarGroup2.TextAlignment = Janus.Windows.ExplorerBar.Alignment.Center;
-            explorerBarItem7.Key = "itmArticleGroups";
-            explorerBarItem7.Text = "گروه های کالا";
-            explorerBarItem8.Key = "itmArticles";
-            explorerBarItem8.Text = "کالاها";
-            explorerBarGroup3.Items.AddRange(new Janus.Windows.ExplorerBar.ExplorerBarItem[] {
-            explorerBarItem7,
-            explorerBarItem8});
-            explorerBarGroup3.Key = "Group3";
-            explorerBarGroup3.Text = "طبقه بندی حساب";
-            explorerBarGroup3.TextAlignment = Janus.Windows.ExplorerBar.Alignment.Center;
-            this.explorerBar_RightPanel.Groups.AddRange(new Janus.Windows.ExplorerBar.ExplorerBarGroup[] {
-            explorerBarGroup1,
-            explorerBarGroup2,
-            explorerBarGroup3});
-            this.explorerBar_RightPanel.HeaderRoundedCorners = Janus.Windows.ExplorerBar.HeaderRoundCorners.Both;
-            this.explorerBar_RightPanel.ItemsStateStyles.HotFormatStyle.FontBold = Janus.Windows.ExplorerBar.TriState.True;
-            this.explorerBar_RightPanel.ItemsStateStyles.PressedFormatStyle.FontBold = Janus.Windows.ExplorerBar.TriState.False;
-            this.explorerBar_RightPanel.ItemsStateStyles.PressedFormatStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.explorerBar_RightPanel.KeepSelection = true;
-            this.explorerBar_RightPanel.Location = new System.Drawing.Point(0, 0);
-            this.explorerBar_RightPanel.Name = "explorerBar_RightPanel";
-            this.explorerBar_RightPanel.SettingsKey = "explorerBar_RightPanel";
-            this.explorerBar_RightPanel.ShowFocusRectangle = true;
-            this.explorerBar_RightPanel.Size = new System.Drawing.Size(226, 425);
-            this.explorerBar_RightPanel.TabIndex = 43;
-            this.explorerBar_RightPanel.TopMargin = -3;
-            this.explorerBar_RightPanel.UseCompatibleTextRendering = true;
-            this.explorerBar_RightPanel.VisualStyle = Janus.Windows.ExplorerBar.VisualStyle.Office2003;
-            this.explorerBar_RightPanel.VisualStyleAreas.BackgroundStyle = Janus.Windows.ExplorerBar.VisualStyle.Office2010;
-            this.explorerBar_RightPanel.VisualStyleAreas.BorderStyle = Janus.Windows.ExplorerBar.VisualStyle.Office2007;
-            this.explorerBar_RightPanel.VisualStyleAreas.GroupHeaderStyle = Janus.Windows.ExplorerBar.VisualStyle.Office2007;
-            this.explorerBar_RightPanel.VisualStyleAreas.HoverItemStyle = Janus.Windows.ExplorerBar.VisualStyle.Office2003;
-            this.explorerBar_RightPanel.VisualStyleAreas.ItemsStyle = Janus.Windows.ExplorerBar.VisualStyle.Office2003;
-            this.explorerBar_RightPanel.VisualStyleAreas.SelectedItemStyle = Janus.Windows.ExplorerBar.VisualStyle.Office2003;
-            this.explorerBar_RightPanel.ItemClick += new Janus.Windows.ExplorerBar.ItemEventHandler(this.explorerBar_RightPanel_ItemClick);
             // 
             // rrb_Main
             // 
@@ -347,6 +222,156 @@
             ((Telerik.WinControls.UI.RadImageButtonElement)(this.rrb_Main.GetChildAt(0).GetChildAt(6).GetChildAt(3))).Enabled = true;
             ((Telerik.WinControls.UI.RadImageButtonElement)(this.rrb_Main.GetChildAt(0).GetChildAt(6).GetChildAt(3))).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
             // 
+            // rt_PersonsAndUsers
+            // 
+            this.rt_PersonsAndUsers.Alignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rt_PersonsAndUsers.AutoEllipsis = false;
+            this.rt_PersonsAndUsers.AutoSize = true;
+            this.rt_PersonsAndUsers.EnableBorderHighlight = true;
+            this.rt_PersonsAndUsers.EnableFocusBorder = true;
+            this.rt_PersonsAndUsers.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.rt_PersonsAndUsers.IsSelected = true;
+            this.rt_PersonsAndUsers.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.rbg_PersonDetails,
+            this.rbg_RoleDetails,
+            this.rbg_UserDetails});
+            this.rt_PersonsAndUsers.Name = "rt_PersonsAndUsers";
+            this.rt_PersonsAndUsers.Padding = new System.Windows.Forms.Padding(0);
+            this.rt_PersonsAndUsers.RightToLeft = true;
+            this.rt_PersonsAndUsers.ShouldPaint = true;
+            this.rt_PersonsAndUsers.Text = "اشخاص و کاربران";
+            this.rt_PersonsAndUsers.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rt_PersonsAndUsers.Title = "ورود اطلاعات";
+            this.rt_PersonsAndUsers.UseMnemonic = false;
+            // 
+            // rbg_PersonDetails
+            // 
+            this.rbg_PersonDetails.Alignment = System.Drawing.ContentAlignment.TopLeft;
+            this.rbg_PersonDetails.AngleTransform = 0F;
+            this.rbg_PersonDetails.AutoSize = false;
+            this.rbg_PersonDetails.Bounds = new System.Drawing.Rectangle(0, 0, 115, 100);
+            this.rbg_PersonDetails.CanFocus = true;
+            this.rbg_PersonDetails.EnableBorderHighlight = false;
+            this.rbg_PersonDetails.EnableFocusBorder = false;
+            this.rbg_PersonDetails.EnableHighlight = false;
+            this.rbg_PersonDetails.EnableRippleAnimation = false;
+            this.rbg_PersonDetails.FlipText = false;
+            this.rbg_PersonDetails.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.rbg_PersonDetails.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.rbe_PersonDetails});
+            this.rbg_PersonDetails.Margin = new System.Windows.Forms.Padding(0);
+            this.rbg_PersonDetails.MaxSize = new System.Drawing.Size(0, 0);
+            this.rbg_PersonDetails.MinSize = new System.Drawing.Size(0, 0);
+            this.rbg_PersonDetails.Name = "rbg_PersonDetails";
+            this.rbg_PersonDetails.ShouldPaint = true;
+            this.rbg_PersonDetails.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            this.rbg_PersonDetails.StretchHorizontally = true;
+            this.rbg_PersonDetails.StretchVertically = true;
+            this.rbg_PersonDetails.Text = "اشخاص";
+            this.rbg_PersonDetails.TextOrientation = System.Windows.Forms.Orientation.Horizontal;
+            this.rbg_PersonDetails.ToolTipText = "تعریف اشخاص سیستم";
+            this.rbg_PersonDetails.UseCompatibleTextRendering = true;
+            this.rbg_PersonDetails.UseDefaultDisabledPaint = true;
+            // 
+            // rbe_PersonDetails
+            // 
+            this.rbe_PersonDetails.Alignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rbe_PersonDetails.AngleTransform = 0F;
+            this.rbe_PersonDetails.AutoSize = false;
+            this.rbe_PersonDetails.BackColor = System.Drawing.Color.Transparent;
+            this.rbe_PersonDetails.Bounds = new System.Drawing.Rectangle(0, 0, 107, 74);
+            this.rbe_PersonDetails.DisplayStyle = Telerik.WinControls.DisplayStyle.Image;
+            this.rbe_PersonDetails.EnableBorderHighlight = true;
+            this.rbe_PersonDetails.EnableElementShadow = false;
+            this.rbe_PersonDetails.EnableFocusBorder = true;
+            this.rbe_PersonDetails.EnableFocusBorderAnimation = true;
+            this.rbe_PersonDetails.EnableHighlight = true;
+            this.rbe_PersonDetails.EnableRippleAnimation = true;
+            this.rbe_PersonDetails.FlipText = false;
+            this.rbe_PersonDetails.Image = ((System.Drawing.Image)(resources.GetObject("rbe_PersonDetails.Image")));
+            this.rbe_PersonDetails.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rbe_PersonDetails.ImageIndex = -1;
+            this.rbe_PersonDetails.ImageKey = "";
+            this.rbe_PersonDetails.Margin = new System.Windows.Forms.Padding(0);
+            this.rbe_PersonDetails.Name = "rbe_PersonDetails";
+            this.rbe_PersonDetails.Padding = new System.Windows.Forms.Padding(0);
+            this.rbe_PersonDetails.RightToLeft = false;
+            this.rbe_PersonDetails.ShouldPaint = true;
+            this.rbe_PersonDetails.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.rbe_PersonDetails.Text = "شخص";
+            this.rbe_PersonDetails.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rbe_PersonDetails.TextOrientation = System.Windows.Forms.Orientation.Horizontal;
+            this.rbe_PersonDetails.UseCompatibleTextRendering = false;
+            this.rbe_PersonDetails.Click += new System.EventHandler(this.ShowFormDetails);
+            // 
+            // rbg_RoleDetails
+            // 
+            this.rbg_RoleDetails.AutoSize = false;
+            this.rbg_RoleDetails.Bounds = new System.Drawing.Rectangle(0, 0, 115, 100);
+            this.rbg_RoleDetails.CanFocus = true;
+            this.rbg_RoleDetails.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.rbg_RoleDetails.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.rbe_RoleDetails});
+            this.rbg_RoleDetails.Margin = new System.Windows.Forms.Padding(0);
+            this.rbg_RoleDetails.MaxSize = new System.Drawing.Size(0, 0);
+            this.rbg_RoleDetails.MinSize = new System.Drawing.Size(0, 0);
+            this.rbg_RoleDetails.Name = "rbg_RoleDetails";
+            this.rbg_RoleDetails.ShouldPaint = true;
+            this.rbg_RoleDetails.Text = "نقشهای  کاربری";
+            this.rbg_RoleDetails.ToolTipText = "تعریف نقشهای کاربری سیستم";
+            // 
+            // rbe_RoleDetails
+            // 
+            this.rbe_RoleDetails.AutoSize = false;
+            this.rbe_RoleDetails.BackColor = System.Drawing.Color.Transparent;
+            this.rbe_RoleDetails.Bounds = new System.Drawing.Rectangle(0, 0, 107, 74);
+            this.rbe_RoleDetails.DisplayStyle = Telerik.WinControls.DisplayStyle.Image;
+            this.rbe_RoleDetails.EnableBorderHighlight = true;
+            this.rbe_RoleDetails.EnableFocusBorder = true;
+            this.rbe_RoleDetails.EnableHighlight = true;
+            this.rbe_RoleDetails.EnableRippleAnimation = true;
+            this.rbe_RoleDetails.Image = ((System.Drawing.Image)(resources.GetObject("rbe_RoleDetails.Image")));
+            this.rbe_RoleDetails.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rbe_RoleDetails.Name = "rbe_RoleDetails";
+            this.rbe_RoleDetails.RightToLeft = false;
+            this.rbe_RoleDetails.ShouldPaint = true;
+            this.rbe_RoleDetails.Text = "نقشهای کاربری";
+            this.rbe_RoleDetails.Click += new System.EventHandler(this.ShowFormDetails);
+            // 
+            // rbg_UserDetails
+            // 
+            this.rbg_UserDetails.AutoSize = false;
+            this.rbg_UserDetails.Bounds = new System.Drawing.Rectangle(0, 0, 115, 100);
+            this.rbg_UserDetails.CanFocus = true;
+            this.rbg_UserDetails.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.rbg_UserDetails.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.rbe_UserDetails});
+            this.rbg_UserDetails.Margin = new System.Windows.Forms.Padding(0);
+            this.rbg_UserDetails.MaxSize = new System.Drawing.Size(0, 0);
+            this.rbg_UserDetails.MinSize = new System.Drawing.Size(0, 0);
+            this.rbg_UserDetails.Name = "rbg_UserDetails";
+            this.rbg_UserDetails.ShouldPaint = true;
+            this.rbg_UserDetails.Text = "کاربران";
+            this.rbg_UserDetails.ToolTipText = "تعریف کاربران سیستم";
+            // 
+            // rbe_UserDetails
+            // 
+            this.rbe_UserDetails.AutoSize = false;
+            this.rbe_UserDetails.BackColor = System.Drawing.Color.Transparent;
+            this.rbe_UserDetails.Bounds = new System.Drawing.Rectangle(0, 0, 107, 74);
+            this.rbe_UserDetails.DisplayStyle = Telerik.WinControls.DisplayStyle.Image;
+            this.rbe_UserDetails.EnableBorderHighlight = true;
+            this.rbe_UserDetails.EnableFocusBorder = true;
+            this.rbe_UserDetails.EnableHighlight = true;
+            this.rbe_UserDetails.EnableRippleAnimation = true;
+            this.rbe_UserDetails.Image = ((System.Drawing.Image)(resources.GetObject("rbe_UserDetails.Image")));
+            this.rbe_UserDetails.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rbe_UserDetails.Name = "rbe_UserDetails";
+            this.rbe_UserDetails.RightToLeft = false;
+            this.rbe_UserDetails.ShouldPaint = true;
+            this.rbe_UserDetails.Text = "کاربران";
+            this.rbe_UserDetails.Click += new System.EventHandler(this.ShowFormDetails);
+            // 
             // rt_PrimaryDefinitions
             // 
             this.rt_PrimaryDefinitions.Alignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -356,7 +381,7 @@
             this.rt_PrimaryDefinitions.EnableBorderHighlight = true;
             this.rt_PrimaryDefinitions.EnableFocusBorder = true;
             this.rt_PrimaryDefinitions.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.rt_PrimaryDefinitions.IsSelected = true;
+            this.rt_PrimaryDefinitions.IsSelected = false;
             this.rt_PrimaryDefinitions.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.rbg_MeasurementUnitDetails,
             this.rbg_BankDetails,
@@ -683,156 +708,6 @@
             this.rbe_WeatherConditionDetails.ShouldPaint = true;
             this.rbe_WeatherConditionDetails.Text = "شرایط آب و هوا";
             this.rbe_WeatherConditionDetails.Click += new System.EventHandler(this.ShowFormDetails);
-            // 
-            // rt_PersonsAndUsers
-            // 
-            this.rt_PersonsAndUsers.Alignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rt_PersonsAndUsers.AutoEllipsis = false;
-            this.rt_PersonsAndUsers.AutoSize = true;
-            this.rt_PersonsAndUsers.EnableBorderHighlight = true;
-            this.rt_PersonsAndUsers.EnableFocusBorder = true;
-            this.rt_PersonsAndUsers.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.rt_PersonsAndUsers.IsSelected = false;
-            this.rt_PersonsAndUsers.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.rbg_PersonDetails,
-            this.rbg_RoleDetails,
-            this.rbg_UserDetails});
-            this.rt_PersonsAndUsers.Name = "rt_PersonsAndUsers";
-            this.rt_PersonsAndUsers.Padding = new System.Windows.Forms.Padding(0);
-            this.rt_PersonsAndUsers.RightToLeft = true;
-            this.rt_PersonsAndUsers.ShouldPaint = true;
-            this.rt_PersonsAndUsers.Text = "اشخاص و کاربران";
-            this.rt_PersonsAndUsers.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rt_PersonsAndUsers.Title = "ورود اطلاعات";
-            this.rt_PersonsAndUsers.UseMnemonic = false;
-            // 
-            // rbg_PersonDetails
-            // 
-            this.rbg_PersonDetails.Alignment = System.Drawing.ContentAlignment.TopLeft;
-            this.rbg_PersonDetails.AngleTransform = 0F;
-            this.rbg_PersonDetails.AutoSize = false;
-            this.rbg_PersonDetails.Bounds = new System.Drawing.Rectangle(0, 0, 115, 100);
-            this.rbg_PersonDetails.CanFocus = true;
-            this.rbg_PersonDetails.EnableBorderHighlight = false;
-            this.rbg_PersonDetails.EnableFocusBorder = false;
-            this.rbg_PersonDetails.EnableHighlight = false;
-            this.rbg_PersonDetails.EnableRippleAnimation = false;
-            this.rbg_PersonDetails.FlipText = false;
-            this.rbg_PersonDetails.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.rbg_PersonDetails.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.rbe_PersonDetails});
-            this.rbg_PersonDetails.Margin = new System.Windows.Forms.Padding(0);
-            this.rbg_PersonDetails.MaxSize = new System.Drawing.Size(0, 0);
-            this.rbg_PersonDetails.MinSize = new System.Drawing.Size(0, 0);
-            this.rbg_PersonDetails.Name = "rbg_PersonDetails";
-            this.rbg_PersonDetails.ShouldPaint = true;
-            this.rbg_PersonDetails.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            this.rbg_PersonDetails.StretchHorizontally = true;
-            this.rbg_PersonDetails.StretchVertically = true;
-            this.rbg_PersonDetails.Text = "اشخاص";
-            this.rbg_PersonDetails.TextOrientation = System.Windows.Forms.Orientation.Horizontal;
-            this.rbg_PersonDetails.ToolTipText = "تعریف اشخاص سیستم";
-            this.rbg_PersonDetails.UseCompatibleTextRendering = true;
-            this.rbg_PersonDetails.UseDefaultDisabledPaint = true;
-            // 
-            // rbe_PersonDetails
-            // 
-            this.rbe_PersonDetails.Alignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rbe_PersonDetails.AngleTransform = 0F;
-            this.rbe_PersonDetails.AutoSize = false;
-            this.rbe_PersonDetails.BackColor = System.Drawing.Color.Transparent;
-            this.rbe_PersonDetails.Bounds = new System.Drawing.Rectangle(0, 0, 107, 74);
-            this.rbe_PersonDetails.DisplayStyle = Telerik.WinControls.DisplayStyle.Image;
-            this.rbe_PersonDetails.EnableBorderHighlight = true;
-            this.rbe_PersonDetails.EnableElementShadow = false;
-            this.rbe_PersonDetails.EnableFocusBorder = true;
-            this.rbe_PersonDetails.EnableFocusBorderAnimation = true;
-            this.rbe_PersonDetails.EnableHighlight = true;
-            this.rbe_PersonDetails.EnableRippleAnimation = true;
-            this.rbe_PersonDetails.FlipText = false;
-            this.rbe_PersonDetails.Image = ((System.Drawing.Image)(resources.GetObject("rbe_PersonDetails.Image")));
-            this.rbe_PersonDetails.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rbe_PersonDetails.ImageIndex = -1;
-            this.rbe_PersonDetails.ImageKey = "";
-            this.rbe_PersonDetails.Margin = new System.Windows.Forms.Padding(0);
-            this.rbe_PersonDetails.Name = "rbe_PersonDetails";
-            this.rbe_PersonDetails.Padding = new System.Windows.Forms.Padding(0);
-            this.rbe_PersonDetails.RightToLeft = false;
-            this.rbe_PersonDetails.ShouldPaint = true;
-            this.rbe_PersonDetails.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.rbe_PersonDetails.Text = "شخص";
-            this.rbe_PersonDetails.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rbe_PersonDetails.TextOrientation = System.Windows.Forms.Orientation.Horizontal;
-            this.rbe_PersonDetails.UseCompatibleTextRendering = false;
-            this.rbe_PersonDetails.Click += new System.EventHandler(this.ShowFormDetails);
-            // 
-            // rbg_RoleDetails
-            // 
-            this.rbg_RoleDetails.AutoSize = false;
-            this.rbg_RoleDetails.Bounds = new System.Drawing.Rectangle(0, 0, 115, 100);
-            this.rbg_RoleDetails.CanFocus = true;
-            this.rbg_RoleDetails.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.rbg_RoleDetails.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.rbe_RoleDetails});
-            this.rbg_RoleDetails.Margin = new System.Windows.Forms.Padding(0);
-            this.rbg_RoleDetails.MaxSize = new System.Drawing.Size(0, 0);
-            this.rbg_RoleDetails.MinSize = new System.Drawing.Size(0, 0);
-            this.rbg_RoleDetails.Name = "rbg_RoleDetails";
-            this.rbg_RoleDetails.ShouldPaint = true;
-            this.rbg_RoleDetails.Text = "نقشهای  کاربری";
-            this.rbg_RoleDetails.ToolTipText = "تعریف نقشهای کاربری سیستم";
-            // 
-            // rbe_RoleDetails
-            // 
-            this.rbe_RoleDetails.AutoSize = false;
-            this.rbe_RoleDetails.BackColor = System.Drawing.Color.Transparent;
-            this.rbe_RoleDetails.Bounds = new System.Drawing.Rectangle(0, 0, 107, 74);
-            this.rbe_RoleDetails.DisplayStyle = Telerik.WinControls.DisplayStyle.Image;
-            this.rbe_RoleDetails.EnableBorderHighlight = true;
-            this.rbe_RoleDetails.EnableFocusBorder = true;
-            this.rbe_RoleDetails.EnableHighlight = true;
-            this.rbe_RoleDetails.EnableRippleAnimation = true;
-            this.rbe_RoleDetails.Image = ((System.Drawing.Image)(resources.GetObject("rbe_RoleDetails.Image")));
-            this.rbe_RoleDetails.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rbe_RoleDetails.Name = "rbe_RoleDetails";
-            this.rbe_RoleDetails.RightToLeft = false;
-            this.rbe_RoleDetails.ShouldPaint = true;
-            this.rbe_RoleDetails.Text = "نقشهای کاربری";
-            this.rbe_RoleDetails.Click += new System.EventHandler(this.ShowFormDetails);
-            // 
-            // rbg_UserDetails
-            // 
-            this.rbg_UserDetails.AutoSize = false;
-            this.rbg_UserDetails.Bounds = new System.Drawing.Rectangle(0, 0, 115, 100);
-            this.rbg_UserDetails.CanFocus = true;
-            this.rbg_UserDetails.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.rbg_UserDetails.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.rbe_UserDetails});
-            this.rbg_UserDetails.Margin = new System.Windows.Forms.Padding(0);
-            this.rbg_UserDetails.MaxSize = new System.Drawing.Size(0, 0);
-            this.rbg_UserDetails.MinSize = new System.Drawing.Size(0, 0);
-            this.rbg_UserDetails.Name = "rbg_UserDetails";
-            this.rbg_UserDetails.ShouldPaint = true;
-            this.rbg_UserDetails.Text = "کاربران";
-            this.rbg_UserDetails.ToolTipText = "تعریف کاربران سیستم";
-            // 
-            // rbe_UserDetails
-            // 
-            this.rbe_UserDetails.AutoSize = false;
-            this.rbe_UserDetails.BackColor = System.Drawing.Color.Transparent;
-            this.rbe_UserDetails.Bounds = new System.Drawing.Rectangle(0, 0, 107, 74);
-            this.rbe_UserDetails.DisplayStyle = Telerik.WinControls.DisplayStyle.Image;
-            this.rbe_UserDetails.EnableBorderHighlight = true;
-            this.rbe_UserDetails.EnableFocusBorder = true;
-            this.rbe_UserDetails.EnableHighlight = true;
-            this.rbe_UserDetails.EnableRippleAnimation = true;
-            this.rbe_UserDetails.Image = ((System.Drawing.Image)(resources.GetObject("rbe_UserDetails.Image")));
-            this.rbe_UserDetails.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rbe_UserDetails.Name = "rbe_UserDetails";
-            this.rbe_UserDetails.RightToLeft = false;
-            this.rbe_UserDetails.ShouldPaint = true;
-            this.rbe_UserDetails.Text = "کاربران";
-            this.rbe_UserDetails.Click += new System.EventHandler(this.ShowFormDetails);
             // 
             // rt_FundAndAccount
             // 
@@ -1437,7 +1312,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1193, 645);
-            this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.rrb_Main);
             this.Controls.Add(this.statusStrip1);
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
@@ -1451,11 +1325,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.uiPanelManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MainPanel)).EndInit();
-            this.MainPanel.ResumeLayout(false);
-            this.MainPanelContainer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.explorerBar_RightPanel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rrb_Main)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1466,10 +1335,6 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
-        private Janus.Windows.UI.Dock.UIPanelManager uiPanelManager1;
-        private Janus.Windows.UI.Dock.UIPanel MainPanel;
-        private Janus.Windows.UI.Dock.UIPanelInnerContainer MainPanelContainer;
-        private Janus.Windows.ExplorerBar.ExplorerBar explorerBar_RightPanel;
         private Telerik.WinControls.UI.RadRibbonBar rrb_Main;
         private Telerik.WinControls.UI.RibbonTab rt_PrimaryDefinitions;
         private Telerik.WinControls.UI.RibbonTab rt_PersonsAndUsers;

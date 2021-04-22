@@ -246,6 +246,7 @@ namespace PersonalAccounting.DAL.Infrastructure
             modelBuilder.Entity<DiaryNote>().Property(b => b.Id)
                 .HasColumnOrder(1)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            modelBuilder.Entity<DiaryNote>().Property(b => b.UserId).IsRequired();
             modelBuilder.Entity<DiaryNote>().Property(b => b.Date).HasColumnType("datetime");
             modelBuilder.Entity<DiaryNote>().Property(b => b.Note).HasColumnType("ntext");
 
@@ -310,10 +311,11 @@ namespace PersonalAccounting.DAL.Infrastructure
             //modelBuilder.Entity<ExpenseDocument>().Property(ed => ed.RowVersion).IsRowVersion();
 
             //Relationship
-            modelBuilder.Entity<ExpenseDocument>().HasOptional(p => p.User)
-                .WithMany(p=> p.ExpenseDocuments)
-                .HasForeignKey(p => p.UserId)
-                .WillCascadeOnDelete(false);
+
+            //modelBuilder.Entity<ExpenseDocument>().HasOptional(p => p.User)
+            //    .WithMany(p=> p.ExpenseDocuments)
+            //    .HasForeignKey(p => p.UserId)
+            //    .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ExpenseDocument>().HasOptional(p => p.SelfUser)
                 .WithMany()

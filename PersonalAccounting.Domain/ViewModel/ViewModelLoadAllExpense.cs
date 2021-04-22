@@ -46,6 +46,10 @@
         /// </summary>
         public double Price { get; set; }
 
+        /// <summary>
+        /// موجودی جاری صندوق
+        /// </summary>
+        public double FundCurrentValue { get; set; }
         //public string PriceString
         //{
         //    get { return CommonHelper.AddSeparate(Convert.ToString(Price)); }

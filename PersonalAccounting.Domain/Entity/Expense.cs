@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PersonalAccounting.Domain.Entity
 {
@@ -19,7 +20,8 @@ namespace PersonalAccounting.Domain.Entity
 
         public Expense(int? row, int? articleId, int? fundId,
             double rate, double count, double price, int? personId,
-            int? measurementUnitId, int documentId)
+            int? measurementUnitId, int documentId,
+            DateTime createOn, int createBy)
         {
             Row = row;
             ArticleId = articleId;
@@ -31,11 +33,14 @@ namespace PersonalAccounting.Domain.Entity
             MeasurementUnitId = measurementUnitId;
             DocumentId = documentId;
             IsDeleted = false;
+            CreatedOn = createOn;
+            CreatedBy = createBy;
         }
 
         public Expense(int? row, int? articleId, int? fundId,
             int? byPersonId, int? forPersonId, int? measurementUnitId, double rate,
-            double count, double price, string description)
+            double count, double price, string description,
+            DateTime createOn, int createBy)
         {
             Row = row;
             ArticleId = articleId;
@@ -48,6 +53,8 @@ namespace PersonalAccounting.Domain.Entity
             MeasurementUnitId = measurementUnitId;
             Description = description;
             IsDeleted = false;
+            CreatedOn = createOn;
+            CreatedBy = createBy;
         }
         #endregion Ctor
 

@@ -37,7 +37,7 @@ namespace PersonalAccounting.UI
         private readonly IFundService _fundService;
         private readonly IExpenseDocumentService _expenseDocumentService;
         private readonly IExpenseService _expenseService;
-        private readonly IUserService _userService;
+        //private readonly IUserService _userService;
         //private int _articleId;
         private CurrentSelected _currentSelected = CurrentSelected.None;
         private int _documentId;
@@ -69,7 +69,9 @@ namespace PersonalAccounting.UI
             IRepositoryService<Person, ViewModelLoadAllPerson, ViewModelSimpleLoadPerson> personService, IFundService fundService,
             IRepositoryService<Article, ViewModelLoadAllArticle, ViewModelSimpleLoadArticle> articleService,
             IMeasurementUnitService measurementUnitService, IExpenseDocumentService expenseDocumentService,
-            IExpenseService expenseService, IUserService userService)
+            IExpenseService expenseService
+            //, IUserService userService
+            )
         {
             _personService = personService;
             _fundService = fundService;
@@ -77,7 +79,7 @@ namespace PersonalAccounting.UI
             _measurementUnitService = measurementUnitService;
             _expenseDocumentService = expenseDocumentService;
             _expenseService = expenseService;
-            _userService = userService;
+            //_userService = userService;
 
             InitializeComponent();
 
@@ -109,58 +111,37 @@ namespace PersonalAccounting.UI
             // _rgv.CellFormatting += _rgv_CellFormatting;
             _rgv.RowFormatting += _rgv_RowFormatting;
 
-            FillDropdownList(rddl_Users);
             BindGrid();
         }
 
-        private async Task<int> GetSelectedUserId()
-        {
-            var currentUser = InitialHelper.CurrentUser;
-            if (!await currentUser.IsAdmin())
-            {
-                return currentUser.Id;
-            }
+        //private async void FillDropdownList(RadDropDownList ddl)
+        //{
+        //    ddl.DisplayMember = "Title";
+        //    ddl.ValueMember = "Id";
+        //    //var which = (ddl.Name == "rddl_MentalConditions")
+        //    //    ? "mental" : (ddl.Name == "rddl_WeatherConditions")
+        //    //    ? "weather" : "";
 
-            try
-            {
-                return int.Parse(rddl_Users.SelectedValue.ToString());
-            }
-            catch (Exception exception)
-            {
-                await LoggerService.ErrorAsync(this.Name, "GetSelectedUserId", exception.Message,
-                    exception.ToDetailedString());
-                return currentUser.Id;
-            }
-        }
+        //    switch (ddl.Name)
+        //    {
+        //        case "rddl_Users":
+        //            {
+        //                ddl.DisplayMember = "UserName";
+        //                ddl.ValueMember = "UserId";
 
-        private async void FillDropdownList(RadDropDownList ddl)
-        {
-            ddl.DisplayMember = "Title";
-            ddl.ValueMember = "Id";
-            //var which = (ddl.Name == "rddl_MentalConditions")
-            //    ? "mental" : (ddl.Name == "rddl_WeatherConditions")
-            //    ? "weather" : "";
+        //                var defaultOption = new ViewModelLoadAllUser()
+        //                {
+        //                    UserId = 0,
+        //                    UserName = "انتخاب کنید ..."
+        //                };
 
-            switch (ddl.Name)
-            {
-                case "rddl_Users":
-                    {
-                        ddl.DisplayMember = "UserName";
-                        ddl.ValueMember = "UserId";
-
-                        var defaultOption = new ViewModelLoadAllUser()
-                        {
-                            UserId = 0,
-                            UserName = "انتخاب کنید ..."
-                        };
-
-                        var users = await _userService.LoadAllViewModelAsync();
-                        users.Insert(0, defaultOption);
-                        ddl.DataSource = users;
-                        break;
-                    }
-            }
-        }
+        //                var users = await _userService.LoadAllViewModelAsync();
+        //                users.Insert(0, defaultOption);
+        //                ddl.DataSource = users;
+        //                break;
+        //            }
+        //    }
+        //}
 
         private async void _rgv_RowFormatting(object sender, RowFormattingEventArgs e)
         {
@@ -831,11 +812,12 @@ namespace PersonalAccounting.UI
                 CommonHelper.ShowNotificationMessage(DefaultConstants.IllegalAccess, DefaultConstants.EditActionNotAllow);
                 return;
             }
-            
+
             _mode = CommonHelper.Mode.Update;
 
             CommonHelper.ModifyAction(_mode, pnl_Data, rgv_Expenses, btnInsert,
                 btnRegister, btnModify, btnDelete, btnCancel, btnClose);
+
             txt_ExpenseDocumentDate.Enabled = true;
 
         }
@@ -916,7 +898,8 @@ namespace PersonalAccounting.UI
             var persianRegisterDate = PersianHelper.GetGregorianDate(txt_ExpenseDocumentDate.Text);
             var currentUser = InitialHelper.CurrentUser;
             var currentDateTime = InitialHelper.CurrentDateTime;
-            var selectedUser = await GetSelectedUserId();
+            //var selectedUser = await GetSelectedUserId();
+
             switch (_mode)
             {
                 case CommonHelper.Mode.Insert:
@@ -936,81 +919,92 @@ namespace PersonalAccounting.UI
                         //    lastRow.Delete();
                         //}
 
-                        var document = new ExpenseDocument(persianRegisterDate, selectedUser,
+                        var document = new ExpenseDocument(persianRegisterDate,
                             currentUser.Id, currentDateTime, null, string.Empty);
-                        
-                        await _expenseDocumentService.CreateAsync(document);
 
-                        try
+                        var createstatus = await _expenseDocumentService.CreateAsync(document);
+
+                        switch (createstatus)
                         {
-                            var n = 0;
-                            foreach (var row in rgv_BuyList.Rows)
-                            {
-                                n += 1;
-                                var rowNumber = n;
-                                int? articleId = int.Parse(row.Cells[2].Value.ToString());
-                                int? fundId = int.Parse(row.Cells[4].Value.ToString());
-                                int? byPersonId = int.Parse(row.Cells[6].Value.ToString());
-                                int? forPersonId = int.Parse(row.Cells[8].Value.ToString());
-                                int? measurementUnitId = int.Parse(row.Cells[10].Value.ToString());
-                                var fi = double.Parse(row.Cells[12].Value.ToString());
-                                var count = double.Parse(row.Cells[13].Value.ToString());
-                                var price = double.Parse(row.Cells[14].Value.ToString());
-                                var comment = (row.Cells[15].Value == null) ? string.Empty : row.Cells[15].Value.ToString();
+                            case CreateStatus.Exist:
+                                break;
+                            case CreateStatus.Failure:
+                                break;
+                            case CreateStatus.Successful:
+                                try
+                                {
+                                    var n = 0;
+                                    foreach (var row in rgv_BuyList.Rows)
+                                    {
+                                        n += 1;
+                                        var rowNumber = n;
+                                        int? articleId = int.Parse(row.Cells[2].Value.ToString());
+                                        int? fundId = int.Parse(row.Cells[4].Value.ToString());
+                                        int? byPersonId = int.Parse(row.Cells[6].Value.ToString());
+                                        int? forPersonId = int.Parse(row.Cells[8].Value.ToString());
+                                        int? measurementUnitId = int.Parse(row.Cells[10].Value.ToString());
+                                        var fi = double.Parse(row.Cells[12].Value.ToString());
+                                        var count = double.Parse(row.Cells[13].Value.ToString());
+                                        var price = double.Parse(row.Cells[14].Value.ToString());
+                                        var comment = (row.Cells[15].Value == null) ? string.Empty : row.Cells[15].Value.ToString();
 
-                                var expense = new Expense(rowNumber, articleId, fundId, byPersonId, forPersonId,
-                                    measurementUnitId, fi, count, price, comment)
-                                { DocumentId = document.Id };
+                                        var expense = new Expense(rowNumber, articleId, fundId, byPersonId, forPersonId,
+                                            measurementUnitId, fi, count, price, comment, currentDateTime, currentUser.Id)
+                                        { DocumentId = document.Id };
 
-                                await _expenseService.InsertExpenseInToDocumentAsync(expense);
+                                        await _expenseService.InsertExpenseInToDocumentAsync(expense);
 
-                                await LoggerService.InformationAsync(this.Name, "btnRegister_Click(Insert Mode)",
-                                    $"این قلم هزینه با شماره {rowNumber} " +
-                                    " و شماره سند " + document.Id + " توسط کاربری با نام " +
-                                    currentUser.UserName + " ایجاد گردید.");
+                                        await LoggerService.InformationAsync(this.Name, "btnRegister_Click(Insert Mode)",
+                                            $"این قلم هزینه با شماره {rowNumber} " +
+                                            " و شماره سند " + document.Id + " توسط کاربری با نام " +
+                                            currentUser.UserName + " ایجاد گردید.");
 
-                                //var sumPrice = 0d;
-                                //sumPrice += price;
-                                var currentFundId = fundId.Value;
-                                await _fundService.SubValueFromFundAsync(currentFundId, price);
+                                        //var sumPrice = 0d;
+                                        //sumPrice += price;
+                                        var currentFundId = fundId.Value;
+                                        var fundStatus = await
+                                            _fundService.SubValueFromFundAsync(currentFundId, price);
 
-                                await LoggerService.InformationAsync(this.Name, "btnRegister_Click(Insert Mode)",
-                                    $"مبلغ " + price + " ریال از صندوق شماره " + currentFundId +
-                                    " جهت قلم هزینه شماره " + rowNumber +
-                                    " با شماره سند " + document.Id + " کسر گردید. ");
-                            }
+                                        await LoggerService.InformationAsync(this.Name, "btnRegister_Click(Insert Mode)",
+                                            $"مبلغ " + price + " ریال از صندوق شماره " + currentFundId +
+                                            " جهت قلم هزینه شماره " + rowNumber +
+                                            " با شماره سند " + document.Id + " کسر گردید. ");
+                                    }
+                                }
+                                catch (Exception exception)
+                                {
+                                    await _expenseDocumentService.RemoveAsync(document);
+                                    
+                                    var dlg = new CustomDialogs(320, 200);
+                                    dlg.Invoke("خطا در ثبت اطلاعات",
+                                        "خطای زیر به وقوع پیوست \n" + exception.Message,
+                                        CustomDialogs.ImageType.itError2, CustomDialogs.ButtonType.Ok,
+                                        InitialHelper.BackColorCustom);
+
+                                    await LoggerService.ErrorAsync(this.Name, "btnRegister_Click(Insert Mode)", exception.Message,
+                                        exception.ToDetailedString());
+                                    return;
+                                }
+
+                                CommonHelper.ShowNotificationMessage("ثبت سند هزینه", "این لیست هزینه با شماره سند "
+                                                                                      + document.Id + " ثبت گردید.");
+
+                                //dlg.Invoke("ثبت سند هزینه", "این لیست هزینه با شماره سند "
+                                //            + document.Id + " ثبت گردید.",
+                                //    CustomDialogs.ImageType.itInfo2, CustomDialogs.ButtonType.Ok,
+                                //    InitialHelper.BackColorCustom);
+
+
+                                //CommonHelper.ClearInputControls(pnl_Data);
+                                rgv_Expenses.Enabled = true;
+                                CommonHelper.EnableControls(pnl_Data, false);
+                                btnCancel.Enabled = false;
+                                btnInsert.Enabled = true;
+                                btnDelete.Enabled = true;
+                                break;
                         }
-                        catch (Exception exception)
-                        {
-                            await _expenseDocumentService.RemoveAsync(document);
-                            var dlg = new CustomDialogs(320, 200);
-                            dlg.Invoke("خطا در ثبت اطلاعات",
-                                "خطای زیر به وقوع پیوست \n" + exception.Message,
-                                CustomDialogs.ImageType.itError2, CustomDialogs.ButtonType.Ok,
-                                InitialHelper.BackColorCustom);
-
-                            await LoggerService.ErrorAsync(this.Name, "btnRegister_Click(Insert Mode)", exception.Message,
-                                exception.ToDetailedString());
-                            return;
-                        }
-
-                        CommonHelper.ShowNotificationMessage("ثبت سند هزینه", "این لیست هزینه با شماره سند "
-                                                                              + document.Id + " ثبت گردید.");
-
-                        //dlg.Invoke("ثبت سند هزینه", "این لیست هزینه با شماره سند "
-                        //            + document.Id + " ثبت گردید.",
-                        //    CustomDialogs.ImageType.itInfo2, CustomDialogs.ButtonType.Ok,
-                        //    InitialHelper.BackColorCustom);
-
-
-                        //CommonHelper.ClearInputControls(pnl_Data);
-                        rgv_Expenses.Enabled = true;
-                        CommonHelper.EnableControls(pnl_Data, false);
-                        btnCancel.Enabled = false;
-                        btnInsert.Enabled = true;
-                        btnDelete.Enabled = true;
-
                     }
+
                     catch (Exception exception)
                     {
                         var dlg = new CustomDialogs(320, 200);
@@ -1034,10 +1028,16 @@ namespace PersonalAccounting.UI
                             return;
                         }
 
-                        var currentDocument = 
+                        if (await IsNotValidExpenseList()) return;
+
+                        int? currentUserId = null;
+                        if (!await InitialHelper.CurrentUser.IsAdmin())
+                            currentUserId = InitialHelper.CurrentUser.Id;
+
+                        var currentDocument =
                             //await currentUser.IsAdmin()
                             //? await _expenseDocumentService.GetByIdAsync(int.Parse(lbl_DocumentId.Text)) :
-                            await _expenseDocumentService.GetByIdAsync(int.Parse(lbl_DocumentId.Text), selectedUser);
+                            await _expenseDocumentService.GetByIdAsync(int.Parse(lbl_DocumentId.Text), currentUserId);
 
                         //_expenseService.DeleteExpensesFromDocumentAsync(currentDocument);
 
@@ -1059,9 +1059,9 @@ namespace PersonalAccounting.UI
                         currentDocument.Expenses.Clear();
 
                         currentDocument.RegisterDate = persianRegisterDate;
-                        currentDocument.LastUpdate = currentDateTime;
                         currentDocument.Description = string.Empty; //Replace With EditBox
                         currentDocument.UpdateBy = currentUser.Id;
+                        currentDocument.LastUpdate = currentDateTime;
 
                         await _expenseDocumentService.UpdateAsync(currentDocument);
 
@@ -1092,7 +1092,7 @@ namespace PersonalAccounting.UI
                                 var currentDocumentId = currentDocument.Id;
 
                                 var expense = new Expense(rowNumber, articleId, fundId, byPersonId, forPersonId,
-                                    measurementUnitId, fi, count, price, comment)
+                                    measurementUnitId, fi, count, price, comment, currentDateTime, currentUser.Id)
                                 { DocumentId = currentDocumentId };
 
                                 await _expenseService.InsertExpenseInToDocumentAsync(expense);
@@ -1105,7 +1105,7 @@ namespace PersonalAccounting.UI
                                 //var sumPrice = 0d;
                                 //sumPrice += price;
                                 var currentFundId = fundId.Value;
-                                await _fundService.SubValueFromFundAsync(currentFundId, price);
+                                var fundStatus = await _fundService.SubValueFromFundAsync(currentFundId, price);
 
                                 await LoggerService.InformationAsync(this.Name, "btnRegister_Click(Update Mode)",
                                     $"مبلغ " + price + " ریال از صندوق شماره " + currentFundId +
@@ -1175,6 +1175,7 @@ namespace PersonalAccounting.UI
                     {
                         if (row.Cells[j].ColumnInfo.FieldName == "DeleteRow" ||
                             row.Cells[j].ColumnInfo.FieldName == "RowNumber" ||
+                            row.Cells[j].ColumnInfo.FieldName == "FundCurrentValue" ||
                             row.Cells[j].ColumnInfo.FieldName == "Comment")
                             continue;
 
@@ -1202,32 +1203,40 @@ namespace PersonalAccounting.UI
 
                 await LoggerService.ErrorAsync(this.Name, "IsNotValidExpenseList", exception.Message,
                     exception.ToDetailedString());
+                return true;
             }
-            return false;
+
+            return _error;
         }
 
         private async void rgv_BuyList_CellValidating(object sender, CellValidatingEventArgs e)
         {
             decimal fundCurrentValue = 0, price = 0;
 
-            if (e.Row?.Cells["FundCurrentValue"]?.Value != null)
-            {
-                fundCurrentValue = e.Row.Cells["FundCurrentValue"].Value.ToString().ClearSeparateEx();
-            }
-            if (e.Row?.Cells["Price"]?.Value != null)
-            {
-                price = e.Row.Cells["Price"].Value.ToString().ClearSeparateEx();
-            }
+            var fundCurrentValueCellValue = e.Row?.Cells["FundCurrentValue"]?.Value;
             var priceCell = e.Row?.Cells["Price"];
+            var priceCellValue = priceCell?.Value;
 
             if (priceCell == null) return;
+
+            if (fundCurrentValueCellValue != null)
+            {
+                fundCurrentValue = fundCurrentValueCellValue.ToString().ClearSeparateEx();
+            }
+            if (priceCellValue != null)
+            {
+                price = priceCellValue.ToString().ClearSeparateEx();
+            }
 
             if (price != 0 && fundCurrentValue != 0 && price > fundCurrentValue) //&& _mode != CommonHelper.Mode.Update)
             {
                 priceCell.ErrorText = "موجودی صندوق کافی نیست";
                 priceCell.Style.ForeColor = Color.Red;
-                e.Row.ErrorText = "Validation error!";
+                //priceCell.Style.BackColor = Color.Black;
+
+                e.Row.ErrorText = "قیمت بیشتر از موجودی صندوق می باشد.";
                 _error = true;
+
                 await LoggerService.WarningAsync(this.Name, "rgv_BuyList_CellValidating", "موجودی صندوق کافی نیست",
                     $" قیمت:{price}" + $", موجودی جاری صندوق: {fundCurrentValue}");
             }
@@ -1259,12 +1268,13 @@ namespace PersonalAccounting.UI
             //    _hasValidationError = true;
         }
 
-        private void txt_IncomeDate_TextChanged(object sender, EventArgs e)
+        private void txt_ExpenseDocumentDate_TextChanged(object sender, EventArgs e)
         {
             if (_mode == CommonHelper.Mode.Insert)
             {
                 btnRegister.Enabled = (txt_ExpenseDocumentDate.Text != string.Empty &&
-                    txt_ExpenseDocumentDate.Text != CommonLibrary.Properties.Resources.DateMaskFormat);
+                                       !_error &&
+                                       txt_ExpenseDocumentDate.Text != CommonLibrary.Properties.Resources.DateMaskFormat);
             }
         }
 
@@ -1318,7 +1328,7 @@ namespace PersonalAccounting.UI
 
                 _documentId = int.Parse(dataRow.Cells["ExpenseDocumentId"].Value.ToString());
                 _expenseDocumentDate = dataRow.Cells["ExpenseDocumentPersianDate"].Value.ToString();
-                
+
                 //int? currentUserId = null;
                 //if (!await InitialHelper.CurrentUser.IsAdmin())
                 //    currentUserId = InitialHelper.CurrentUser.Id;
@@ -1530,7 +1540,7 @@ namespace PersonalAccounting.UI
             if (!txt_ExpenseDocumentDate.Text.IsValidPersianDate()) return;
 
             ReturnExpenseDocumentDetailsById();
-            txt_IncomeDate_TextChanged(sender, e);
+            txt_ExpenseDocumentDate_TextChanged(sender, e);
         }
     }
 }

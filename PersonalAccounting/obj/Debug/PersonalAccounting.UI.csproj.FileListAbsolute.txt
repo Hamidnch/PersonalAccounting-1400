@@ -143,3 +143,4 @@ G:\Programming New\Best Projects\Win Forms\My Projects\Personal Accounting\Perso
 G:\Programming New\Best Projects\Win Forms\My Projects\Personal Accounting\PersonalAccounting-Source\PersonalAccounting\obj\Debug\PersonalAccounting.UI.exe
 G:\Programming New\Best Projects\Win Forms\My Projects\Personal Accounting\PersonalAccounting-Source\PersonalAccounting\obj\Debug\PersonalAccounting.UI.pdb
 G:\Programming New\Best Projects\Win Forms\My Projects\Personal Accounting\PersonalAccounting-Source\PersonalAccounting\bin\Debug\TTahoma.ttf
+D:\Programming New\Best Projects\Win Forms\My Projects\Personal Accounting\PersonalAccounting-Source\PersonalAccounting\bin\Debug\TTahoma.ttf

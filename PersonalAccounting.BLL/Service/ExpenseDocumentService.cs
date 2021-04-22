@@ -41,12 +41,12 @@ namespace PersonalAccounting.BLL.Service
             if (!containActives)
             {
                 return await _expenseDocuments
-                    .Where(a => a.Status != DefaultConstants.ActiveOptionString && a.UserId == userId)
+                    .Where(a => a.Status != DefaultConstants.ActiveOptionString && a.CreatedBy == userId)
                     .AsNoTracking().OrderByDescending(a => a.Id).ToListAsync();
             }
             else
             {
-                return await _expenseDocuments.Where(a => a.UserId == userId)
+                return await _expenseDocuments.Where(a => a.CreatedBy == userId)
                     .AsNoTracking().OrderByDescending(a => a.Id).ToListAsync();
             }
         }
@@ -56,7 +56,7 @@ namespace PersonalAccounting.BLL.Service
             if (userId != null)
             {
                 var myQuery =
-                    from expenseDocument in _expenseDocuments.Where(a => a.UserId == userId)
+                    from expenseDocument in _expenseDocuments.Where(a => a.CreatedBy == userId)
                     orderby expenseDocument.Id descending
                     select
                         new ViewModelLoadAllExpenseDocument()
@@ -99,6 +99,7 @@ namespace PersonalAccounting.BLL.Service
         {
             var expenseDocument = await _expenseDocuments
                 .FirstOrDefaultAsync(ed => ed.Id == expenseDocumentId);
+
             var expenses = _expenses.Where(e => e.DocumentId == expenseDocument.Id);
             //if (createdBy != null)
             //{
@@ -111,14 +112,15 @@ namespace PersonalAccounting.BLL.Service
                               ArticleName = expense.Article.Name,
                               Comment = expense.Description,
                               Count = expense.Count,
+                              FundId = expense.FundId,
                               FundName = expense.Fund.Title,
+                              FundCurrentValue = expense.Fund.CurrentValue,
                               MeasurementUnitName = expense.MeasurementUnit.Name,
                               ByPersonName = expense.ByPerson.FullName,
                               ForPersonName = expense.ForPerson.FullName,
                               Price = expense.Price,
                               Fi = expense.Rate,
                               ArticleId = expense.ArticleId,
-                              FundId = expense.FundId,
                               MeasurementUnitId = expense.MeasurementUnitId,
                               ByPersonId = expense.ByPersonId,
                               ForPersonId = expense.ForPersonId,
@@ -161,18 +163,18 @@ namespace PersonalAccounting.BLL.Service
                 "UpdateAsync", GetServiceName(), EntityNameNormal + $" جدید با موفقیت ویرایش گردید.");
         }
 
-        public async Task<ExpenseDocument> GetByIdAsync(int expenseDocumentId, int userId)
+        public async Task<ExpenseDocument> GetByIdAsync(int expenseDocumentId, int? userId)
         {
-            //if (createdBy != null)
-            //{
+            if (userId != null)
+            {
                 return await _expenseDocuments.Include(ex => ex.Expenses)
-                    .FirstOrDefaultAsync(ed => ed.Id == expenseDocumentId && ed.UserId == userId);
-            //}
-            //else
-            //{
-            //    return await _expenseDocuments.Include(ex => ex.Expenses)
-            //        .FirstOrDefaultAsync(ed => ed.Id == expenseDocumentId);
-            //}
+                    .FirstOrDefaultAsync(ed => ed.Id == expenseDocumentId && ed.CreatedBy == userId);
+            }
+            else
+            {
+                return await _expenseDocuments.Include(ex => ex.Expenses)
+                    .FirstOrDefaultAsync(ed => ed.Id == expenseDocumentId);
+            }
         }
 
         public async Task<bool> ExistAsync(ExpenseDocument expenseDocument)

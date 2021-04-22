@@ -56,7 +56,7 @@ namespace PersonalAccounting.UI
                 btnDelete, btnCancel, btnClose, rddl_BankAccountSubject);
 
             rddl_FundType.SelectedIndex = 0;
-            rddl_FundStatus.SelectedIndex = 0;
+            rddl_FundStatus.SelectedValue = 0;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -481,18 +481,20 @@ namespace PersonalAccounting.UI
 
         private void rddl_BankAccountSubject_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
         {
-            if (_mode == CommonHelper.Mode.Insert)
+            //if (_mode == CommonHelper.Mode.Insert)
             {
                 btnRegister.Enabled = (rddl_BankAccountSubject.Text != string.Empty &&
+                    //rddl_FundType.SelectedValue != null &&
                     txt_FundCurrentValue.Text != string.Empty);
             }
         }
 
         private void rddl_FundStatus_TextChanged(object sender, EventArgs e)
         {
-            if (_mode == CommonHelper.Mode.Insert)
+            //if (_mode == CommonHelper.Mode.Insert)
             {
                 btnRegister.Enabled = (rddl_BankAccountSubject.Text != string.Empty &&
+                                       //rddl_FundType.SelectedValue != null &&
                                        txt_FundCurrentValue.Text != string.Empty);
             }
         }
@@ -521,6 +523,13 @@ namespace PersonalAccounting.UI
             //    }
             //    e.FormatString = "Sum of all child rows: " + sum;
             //}
+        }
+
+        private void txt_FundCurrentValue_TextChanged(object sender, EventArgs e)
+        {
+            btnRegister.Enabled = (rddl_BankAccountSubject.Text != string.Empty &&
+                                   //rddl_FundType.SelectedValue != null &&
+                                   txt_FundCurrentValue.Text != string.Empty);
         }
     }
 }

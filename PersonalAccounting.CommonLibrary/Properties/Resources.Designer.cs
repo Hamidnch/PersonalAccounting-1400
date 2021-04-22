@@ -320,7 +320,7 @@ namespace PersonalAccounting.CommonLibrary.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1300/00/00.
+        ///   Looks up a localized string similar to 1000/00/00.
         /// </summary>
         public static string DateMaskFormat {
             get {
@@ -416,7 +416,7 @@ namespace PersonalAccounting.CommonLibrary.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 13  /  /.
+        ///   Looks up a localized string similar to 1   /  /.
         /// </summary>
         public static string FarsiDateFormat {
             get {

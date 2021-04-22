@@ -1,5 +1,4 @@
-﻿using Janus.Windows.ExplorerBar;
-using MessageBoxHamidNCH;
+﻿using MessageBoxHamidNCH;
 using PersonalAccounting.BLL.IService;
 using PersonalAccounting.CommonLibrary.Helper;
 using PersonalAccounting.Domain.Entity;
@@ -115,33 +114,33 @@ namespace PersonalAccounting.UI
                 e.Cancel = true;
             }
         }
-        private void explorerBar_RightPanel_ItemClick(object sender, ItemEventArgs e)
-        {
-            switch (e.Item.Key)
-            {
-                case "itmBanks":
-                    InitialHelper.ShowFormWithAccessLevel(this, FrmBank.Instance());
-                    break;
-                case "itmBankAccounts":
-                    InitialHelper.ShowFormWithAccessLevel(this, FrmBankAccount.Instance());
-                    break;
-                case "itmIncomeTypes":
-                    InitialHelper.ShowFormWithAccessLevel(this, FrmIncomeType.Instance());
-                    break;
-                case "itmMeasurementUnits":
-                    InitialHelper.ShowFormWithAccessLevel(this, FrmMeasurementUnit.Instance());
-                    break;
-                case "itmPersons":
-                    InitialHelper.ShowFormWithAccessLevel(this, FrmPerson.Instance());
-                    break;
-                case "itmArticleGroups":
-                    InitialHelper.ShowFormWithAccessLevel(this, FrmArticleGroup.Instance());
-                    break;
-                case "itmArticles":
-                    InitialHelper.ShowFormWithAccessLevel(this, FrmArticle.Instance());
-                    break;
-            }
-        }
+        //private void explorerBar_RightPanel_ItemClick(object sender, ItemEventArgs e)
+        //{
+        //    switch (e.Item.Key)
+        //    {
+        //        case "itmBanks":
+        //            InitialHelper.ShowFormWithAccessLevel(this, FrmBank.Instance());
+        //            break;
+        //        case "itmBankAccounts":
+        //            InitialHelper.ShowFormWithAccessLevel(this, FrmBankAccount.Instance());
+        //            break;
+        //        case "itmIncomeTypes":
+        //            InitialHelper.ShowFormWithAccessLevel(this, FrmIncomeType.Instance());
+        //            break;
+        //        case "itmMeasurementUnits":
+        //            InitialHelper.ShowFormWithAccessLevel(this, FrmMeasurementUnit.Instance());
+        //            break;
+        //        case "itmPersons":
+        //            InitialHelper.ShowFormWithAccessLevel(this, FrmPerson.Instance());
+        //            break;
+        //        case "itmArticleGroups":
+        //            InitialHelper.ShowFormWithAccessLevel(this, FrmArticleGroup.Instance());
+        //            break;
+        //        case "itmArticles":
+        //            InitialHelper.ShowFormWithAccessLevel(this, FrmArticle.Instance());
+        //            break;
+        //    }
+        //}
 
         private async void ShowFormDetails(object sender, EventArgs e)
         {

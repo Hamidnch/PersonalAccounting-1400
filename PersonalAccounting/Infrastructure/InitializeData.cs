@@ -131,7 +131,7 @@ namespace PersonalAccounting.UI.Infrastructure
             var personId2 = _personService.GetByNameAsync(DefaultConstants.AdminRole).Result.Id;
             var user2 = new User(personId2, DefaultConstants.DefaultAdminUserName,
                 Utility.HashPassword(DefaultConstants.DefaultAdminPassword),
-                DefaultConstants.DefaultAdminPassword,
+                DefaultConstants.DefaultAdminEmail,
                 true, false, 0, DateTime.Now,
                 DateTime.Now, null,
                 null, null, null,

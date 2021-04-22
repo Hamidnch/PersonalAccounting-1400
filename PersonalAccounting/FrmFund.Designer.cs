@@ -163,6 +163,7 @@
             this.txt_FundDescription.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
             this.txt_FundDescription.UseCompatibleTextRendering = true;
             this.txt_FundDescription.VisualStyle = Janus.Windows.GridEX.VisualStyle.VS2010;
+            this.txt_FundDescription.TextChanged += new System.EventHandler(this.txt_FundCurrentValue_TextChanged);
             this.txt_FundDescription.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rddl_FundType_KeyDown);
             // 
             // label3
@@ -222,6 +223,7 @@
             this.txt_FundCurrentValue.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.txt_FundCurrentValue.UseCompatibleTextRendering = true;
             this.txt_FundCurrentValue.VisualStyle = Janus.Windows.GridEX.VisualStyle.VS2010;
+            this.txt_FundCurrentValue.TextChanged += new System.EventHandler(this.txt_FundCurrentValue_TextChanged);
             this.txt_FundCurrentValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_FundPrimaryValue_KeyDown);
             this.txt_FundCurrentValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_FundPrimaryValue_KeyPress);
             this.txt_FundCurrentValue.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txt_FundPrimaryValue_KeyUp);
@@ -275,6 +277,7 @@
             this.rddl_FundStatus.TabIndex = 3;
             this.rddl_FundStatus.TextChanged += new System.EventHandler(this.rddl_FundStatus_TextChanged);
             this.rddl_FundStatus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rddl_FundType_KeyDown);
+            this.rddl_FundStatus.SelectedIndexChanged += new Telerik.WinControls.UI.Data.PositionChangedEventHandler(this.rddl_BankAccountSubject_SelectedIndexChanged);
             // 
             // rddl_FundType
             // 
@@ -301,6 +304,7 @@
             this.rddl_FundType.Name = "rddl_FundType";
             this.rddl_FundType.Size = new System.Drawing.Size(185, 29);
             this.rddl_FundType.TabIndex = 0;
+            this.rddl_FundType.TextChanged += new System.EventHandler(this.txt_FundCurrentValue_TextChanged);
             this.rddl_FundType.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rddl_FundType_KeyDown);
             this.rddl_FundType.SelectedIndexChanged += new Telerik.WinControls.UI.Data.PositionChangedEventHandler(this.rddl_FundType_SelectedIndexChanged);
             // 
@@ -319,6 +323,7 @@
             this.rddl_BankAccountSubject.Name = "rddl_BankAccountSubject";
             this.rddl_BankAccountSubject.Size = new System.Drawing.Size(185, 29);
             this.rddl_BankAccountSubject.TabIndex = 1;
+            this.rddl_BankAccountSubject.TextChanged += new System.EventHandler(this.txt_FundCurrentValue_TextChanged);
             this.rddl_BankAccountSubject.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rddl_FundType_KeyDown);
             this.rddl_BankAccountSubject.SelectedIndexChanged += new Telerik.WinControls.UI.Data.PositionChangedEventHandler(this.rddl_BankAccountSubject_SelectedIndexChanged);
             // 
