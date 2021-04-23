@@ -54,7 +54,7 @@ namespace PersonalAccounting.UI
 
         public FrmDiaryNote(IDiaryNoteService diaryNoteService,
             IRepositoryService<MentalCondition, ViewModelLoadAllMentalCondition, ViewModelSimpleLoadMentalCondition> mentalConditionService,
-            IRepositoryService<WeatherCondition, ViewModelLoadAllWeatherCondition, ViewModelSimpleLoadWeatherCondition> weatherConditionService, 
+            IRepositoryService<WeatherCondition, ViewModelLoadAllWeatherCondition, ViewModelSimpleLoadWeatherCondition> weatherConditionService,
             IUserService userService)
         {
             _diaryNoteService = diaryNoteService;
@@ -127,7 +127,15 @@ namespace PersonalAccounting.UI
 
         private async void FrmDiaryNote_Load(object sender, EventArgs e)
         {
-            rddl_Users.Visible = await InitialHelper.CurrentUser.IsAdmin();
+            var isAdmin = await InitialHelper.CurrentUser.IsAdmin();
+
+            if (isAdmin)
+            {
+                rddl_Users.Visible = true;
+                lbl_Users.Visible = true;
+
+                rddl_Users.SelectedItem = rddl_Users.FindItemExact(InitialHelper.CurrentUser.UserName, false);
+            }
         }
 
         //private void FrmDiaryNote_Load(object sender, EventArgs e)
@@ -221,21 +229,21 @@ namespace PersonalAccounting.UI
                         break;
                     }
                 case "rddl_Users":
-                {
-                    ddl.DisplayMember = "UserName";
-                    ddl.ValueMember = "UserId";
-
-                    var defaultOption = new ViewModelLoadAllUser()
                     {
-                        UserId = 0,
-                        UserName = "انتخاب کنید ..."
-                    };
+                        ddl.DisplayMember = "UserName";
+                        ddl.ValueMember = "UserId";
 
-                    var users = await _userService.LoadAllViewModelAsync();
-                    users.Insert(0, defaultOption);
-                    ddl.DataSource = users;
-                    break;
-                }
+                        var defaultOption = new ViewModelLoadAllUser()
+                        {
+                            UserId = 0,
+                            UserName = "انتخاب کنید ..."
+                        };
+
+                        var users = await _userService.LoadAllViewModelAsync();
+                        users.Insert(0, defaultOption);
+                        ddl.DataSource = users;
+                        break;
+                    }
             }
 
             _isModify = false;
@@ -599,7 +607,7 @@ namespace PersonalAccounting.UI
 
                 _isModify = false;
                 _backgroundWorker.RunWorkerAsync();
-                
+
                 //Task.Factory.StartNew(() =>
                 //{
                 //CommonHelper.IndicatorLoading(this, _pictureBox, true);
@@ -1453,7 +1461,7 @@ namespace PersonalAccounting.UI
         {
             var selectedUser = await GetSelectedUserId();
             if (selectedUser <= 0) return;
-            
+
             try
             {
                 var currentDate = PersianHelper.GetGregorianDateSimple(txt_diaryNoteDate.Text);
@@ -1462,11 +1470,11 @@ namespace PersonalAccounting.UI
                 int? wcId = int.Parse(rddl_WeatherConditions.SelectedItem["Id"].ToString());
                 var currentUser = InitialHelper.CurrentUser;
                 var currentDateTime = InitialHelper.CurrentDateTime;
-                
+
                 //if (await currentUser.IsAdmin() ?
                 //    await _diaryNoteService.ExistAsync(currentDate, await GetSelectedUserId()):
                 //    await _diaryNoteService.ExistAsync(currentDate, currentUser.Id))
-                if(await _diaryNoteService.ExistAsync(currentDate, selectedUser))
+                if (await _diaryNoteService.ExistAsync(currentDate, selectedUser))
                 {
                     //var encryptNote = _cryption.Encrypt(rtb_Note.Rtf);
                     //var encryptNote = CryptoHelper.Encrypt(rtb_Note.Rtf, true, "1^Gandom&~");
@@ -1479,7 +1487,7 @@ namespace PersonalAccounting.UI
                     //await _diaryNoteService.LoadByDateAsync(currentDate, currentUser.Id);
 
                     if (onlyLoad) return;
-                    
+
                     var encryptNote = CryptoHelper.EncryptNew(rtb_Note.Rtf);
                     diaryNote.Note = Utility.CompressString(encryptNote, Encoding.UTF8);
                     diaryNote.WeatherConditionId = wcId == 0 ? null : wcId;
@@ -1507,8 +1515,8 @@ namespace PersonalAccounting.UI
                     //var encryptNote = CryptoHelper.Encrypt(rtb_Note.Rtf, true, "1^Gandom&~");
                     //var encryptNote = CryptoHelper.EncryptDecrypt(rtb_Note.Rtf, 1231);
                     //var encryptNote = CryptoHelper.EncryptData(rtb_Note.Rtf, "1231");
-                    
-                    if(onlyLoad) return;
+
+                    if (onlyLoad) return;
 
                     var encryptNote = CryptoHelper.EncryptNew(rtb_Note.Rtf);
                     var diaryNote = new DiaryNote
@@ -1517,7 +1525,7 @@ namespace PersonalAccounting.UI
                         Note = Utility.CompressString(encryptNote, Encoding.UTF8),
                         WeatherConditionId = wcId == 0 ? null : wcId,
                         MentalConditionId = mcId == 0 ? null : mcId,
-                        UserId =  selectedUser,
+                        UserId = selectedUser,
                         CreatedBy = currentUser.Id,
                         UpdateBy = null,
                         CreatedOn = currentDateTime,
@@ -2096,8 +2104,8 @@ namespace PersonalAccounting.UI
 
         private void rddl_Users_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
         {
-            if(!txt_diaryNoteDate.Text.IsValidPersianDate()) return;
-            
+            if (!txt_diaryNoteDate.Text.IsValidPersianDate()) return;
+
             DiaryNotesSaveOrUpdate(true);
             Txt_diaryNoteDate_TextChanged(sender, e);
             //MessageBox.Show((await GetSelectedUserId()).ToString());

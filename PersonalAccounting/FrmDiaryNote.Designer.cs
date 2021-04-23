@@ -38,7 +38,7 @@
             this.btn_IncDate = new System.Windows.Forms.Button();
             this.btn_DecDate = new System.Windows.Forms.Button();
             this.txt_diaryNoteDate = new System.Windows.Forms.MaskedTextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lbl_Users = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.rddl_WeatherConditions = new Telerik.WinControls.UI.RadDropDownList();
             this.rddl_MentalConditions = new Telerik.WinControls.UI.RadDropDownList();
@@ -163,7 +163,7 @@
             this.pnl_TopData.Controls.Add(this.btn_IncDate);
             this.pnl_TopData.Controls.Add(this.btn_DecDate);
             this.pnl_TopData.Controls.Add(this.txt_diaryNoteDate);
-            this.pnl_TopData.Controls.Add(this.label3);
+            this.pnl_TopData.Controls.Add(this.lbl_Users);
             this.pnl_TopData.Controls.Add(this.label4);
             this.pnl_TopData.Controls.Add(this.rddl_WeatherConditions);
             this.pnl_TopData.Controls.Add(this.rddl_MentalConditions);
@@ -266,18 +266,18 @@
             this.txt_diaryNoteDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txt_diaryNoteDate.TextChanged += new System.EventHandler(this.Txt_diaryNoteDate_TextChanged);
             // 
-            // label3
+            // lbl_Users
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label3.Location = new System.Drawing.Point(842, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 14);
-            this.label3.TabIndex = 198;
-            this.label3.Text = "نام کاربر";
+            this.lbl_Users.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_Users.AutoSize = true;
+            this.lbl_Users.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Users.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lbl_Users.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lbl_Users.Location = new System.Drawing.Point(840, 14);
+            this.lbl_Users.Name = "lbl_Users";
+            this.lbl_Users.Size = new System.Drawing.Size(47, 14);
+            this.lbl_Users.TabIndex = 198;
+            this.lbl_Users.Text = "نام کاربر";
             // 
             // label4
             // 
@@ -294,7 +294,6 @@
             // 
             // rddl_WeatherConditions
             // 
-            this.rddl_WeatherConditions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rddl_WeatherConditions.AutoSize = false;
             this.rddl_WeatherConditions.AutoSizeItems = true;
             this.rddl_WeatherConditions.BackColor = System.Drawing.Color.White;
@@ -303,7 +302,7 @@
             this.rddl_WeatherConditions.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.rddl_WeatherConditions.EnableAlternatingItemColor = true;
             this.rddl_WeatherConditions.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rddl_WeatherConditions.Location = new System.Drawing.Point(93, 6);
+            this.rddl_WeatherConditions.Location = new System.Drawing.Point(103, 6);
             this.rddl_WeatherConditions.Name = "rddl_WeatherConditions";
             this.rddl_WeatherConditions.Size = new System.Drawing.Size(197, 66);
             this.rddl_WeatherConditions.TabIndex = 2;
@@ -312,7 +311,6 @@
             // 
             // rddl_MentalConditions
             // 
-            this.rddl_MentalConditions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rddl_MentalConditions.AutoSize = false;
             this.rddl_MentalConditions.AutoSizeItems = true;
             this.rddl_MentalConditions.BackColor = System.Drawing.Color.White;
@@ -321,7 +319,7 @@
             this.rddl_MentalConditions.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.rddl_MentalConditions.EnableAlternatingItemColor = true;
             this.rddl_MentalConditions.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rddl_MentalConditions.Location = new System.Drawing.Point(395, 6);
+            this.rddl_MentalConditions.Location = new System.Drawing.Point(397, 6);
             this.rddl_MentalConditions.Name = "rddl_MentalConditions";
             this.rddl_MentalConditions.NullText = "موردی یافت نشد";
             this.rddl_MentalConditions.Size = new System.Drawing.Size(197, 66);
@@ -335,12 +333,11 @@
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label2.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.label2.Location = new System.Drawing.Point(296, 51);
+            this.label2.Location = new System.Drawing.Point(306, 51);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 14);
             this.label2.TabIndex = 194;
@@ -348,12 +345,11 @@
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label1.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.label1.Location = new System.Drawing.Point(596, 51);
+            this.label1.Location = new System.Drawing.Point(598, 51);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 14);
             this.label1.TabIndex = 195;
@@ -397,6 +393,7 @@
             this.tsb_FullScreen});
             this.ts_DiaryNote.Location = new System.Drawing.Point(0, 79);
             this.ts_DiaryNote.Name = "ts_DiaryNote";
+            this.ts_DiaryNote.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.ts_DiaryNote.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ts_DiaryNote.Size = new System.Drawing.Size(1076, 27);
             this.ts_DiaryNote.TabIndex = 182;
@@ -706,7 +703,7 @@
             // 
             this.ts_DiaryNote2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.ts_DiaryNote2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ts_DiaryNote2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.ts_DiaryNote2.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.ts_DiaryNote2.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.ts_DiaryNote2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsb_ZoomOut,
@@ -735,9 +732,9 @@
             this.txt_SearchHighlight});
             this.ts_DiaryNote2.Location = new System.Drawing.Point(0, 106);
             this.ts_DiaryNote2.Name = "ts_DiaryNote2";
+            this.ts_DiaryNote2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.ts_DiaryNote2.Size = new System.Drawing.Size(1076, 27);
             this.ts_DiaryNote2.TabIndex = 183;
-            this.ts_DiaryNote2.Text = "toolStrip1";
             this.ts_DiaryNote2.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.Ts_DiaryNote2_ItemClicked);
             // 
             // tsb_ZoomOut
@@ -952,7 +949,7 @@
             // 
             this.lbl_MonthYear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_MonthYear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
-            this.lbl_MonthYear.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lbl_MonthYear.Font = new System.Drawing.Font("Tornado Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lbl_MonthYear.ForeColor = System.Drawing.Color.Brown;
             this.lbl_MonthYear.Location = new System.Drawing.Point(682, 42);
             this.lbl_MonthYear.Name = "lbl_MonthYear";
@@ -1471,7 +1468,7 @@
         private Telerik.WinControls.UI.RadDropDownList rddl_MentalConditions;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbl_Users;
         private Telerik.WinControls.UI.RadDropDownList rddl_Users;
         //private Telerik.WinControls.UI.RadDateTimePicker radDateTimePicker1;
     }

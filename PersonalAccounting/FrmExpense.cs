@@ -907,7 +907,8 @@ namespace PersonalAccounting.UI
                     {
                         if (!InitialHelper.HasPermissionFor(this.Name, PermissionMode.Add))
                         {
-                            CommonHelper.ShowNotificationMessage(DefaultConstants.IllegalAccess, DefaultConstants.CreateActionNotAllow);
+                            CommonHelper.ShowNotificationMessage(DefaultConstants.IllegalAccess,
+                                DefaultConstants.CreateActionNotAllow);
                             return;
                         }
 
@@ -974,7 +975,7 @@ namespace PersonalAccounting.UI
                                 catch (Exception exception)
                                 {
                                     await _expenseDocumentService.RemoveAsync(document);
-                                    
+
                                     var dlg = new CustomDialogs(320, 200);
                                     dlg.Invoke("خطا در ثبت اطلاعات",
                                         "خطای زیر به وقوع پیوست \n" + exception.Message,
@@ -1167,36 +1168,39 @@ namespace PersonalAccounting.UI
 
         private async Task<bool> IsNotValidExpenseList()
         {
+            var dlg = new CustomDialogs(320, 200);
+
             try
             {
-                foreach (var row in rgv_BuyList.Rows)
+                for (var i = 0; i < rgv_BuyList.Rows.Count; i++)
                 {
+                    var row = rgv_BuyList.Rows[i];
+
                     for (var j = 0; j < row.Cells.Count; j++)
                     {
                         if (row.Cells[j].ColumnInfo.FieldName == "DeleteRow" ||
                             row.Cells[j].ColumnInfo.FieldName == "RowNumber" ||
-                            row.Cells[j].ColumnInfo.FieldName == "FundCurrentValue" ||
                             row.Cells[j].ColumnInfo.FieldName == "Comment")
                             continue;
 
                         if (row.Cells[j].Value != null &&
                         !string.IsNullOrEmpty(row.Cells[j].Value.ToString()) &&
-                        !string.IsNullOrWhiteSpace(row.Cells[j].Value.ToString()) &&
-                        row.Cells[j].Value.ToString() != "0") continue;
+                        //!string.IsNullOrWhiteSpace(row.Cells[j].Value.ToString()) &&
+                        row.Cells[j].Value.ToString() != "0")
+                            continue;
 
-                        var dlg = new CustomDialogs(320, 200);
                         dlg.Invoke("خطا",
                             "خطا در " + "سطر: " + row.Index + " ستون: " +
                             row.Cells[j].ColumnInfo.FieldName,
                             CustomDialogs.ImageType.itError5, CustomDialogs.ButtonType.Ok,
                             InitialHelper.BackColorCustom);
+
                         return true;
                     }
                 }
             }
             catch (Exception exception)
             {
-                var dlg = new CustomDialogs(320, 200);
                 dlg.Invoke("خطا", exception.Message,
                     CustomDialogs.ImageType.itError5, CustomDialogs.ButtonType.Ok,
                     InitialHelper.BackColorCustom);
@@ -1219,14 +1223,13 @@ namespace PersonalAccounting.UI
 
             if (priceCell == null) return;
 
-            if (fundCurrentValueCellValue != null)
-            {
-                fundCurrentValue = fundCurrentValueCellValue.ToString().ClearSeparateEx();
-            }
-            if (priceCellValue != null)
-            {
-                price = priceCellValue.ToString().ClearSeparateEx();
-            }
+            if (fundCurrentValueCellValue == null) return;
+
+            fundCurrentValue = fundCurrentValueCellValue.ToString().ClearSeparateEx();
+
+            if (priceCellValue != null) return;
+
+            price = priceCellValue.ToString().ClearSeparateEx();
 
             if (price != 0 && fundCurrentValue != 0 && price > fundCurrentValue) //&& _mode != CommonHelper.Mode.Update)
             {
