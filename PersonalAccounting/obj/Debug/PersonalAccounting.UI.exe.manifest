@@ -235,7 +235,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>l1i/KyVDvqnqIGsSjjSJ6fCkDCrrmujgkAiLw0sQ2TU=</dsig:DigestValue>
+        <dsig:DigestValue>0+oDSFtoR4Mb2nhlUfOcv2ynG518UfLL6OJU+QyAGYw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -259,7 +259,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>rCZAkjJo7Lnb46sGF8lKFkYqvzga0V+Uc78dN2TMKgo=</dsig:DigestValue>
+        <dsig:DigestValue>4oRQjDnD5YC0YXYfPnQbIx+mJJe4H0KerLDQMtQV6Go=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -271,19 +271,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Mji3tBQA3e3AJ3ORfAnDQjT3mHHpJQUuJRqRPGz0f6k=</dsig:DigestValue>
+        <dsig:DigestValue>pr78hkFFyK/QTO120jcpgGBP1LEw7KOuS9D7QQwODCE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PersonalAccounting.UI.exe" size="1175552">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PersonalAccounting.UI.exe" size="1176064">
       <assemblyIdentity name="PersonalAccounting.UI" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>d3usOgWHIIhtHG1P4EoPsffPm/GgwOuQU61Su7OMOQo=</dsig:DigestValue>
+        <dsig:DigestValue>HinmO4vznk9TFH2b2klPLZihYSAYzm6ncN2L5DhZyTI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

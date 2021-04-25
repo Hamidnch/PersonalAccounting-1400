@@ -72,7 +72,9 @@ namespace PersonalAccounting.UI
                 new Point((rtb_Note.Width / 2) - 150, (rtb_Note.Height / 2) - 200),
                 CommonLibrary.Properties.Resources.LoadingNote, false,
                 PictureBoxSizeMode.StretchImage, BorderStyle.None);
+
             _pictureBox.Click += _pictureBox_Click;
+
             //numberLabel.Font = new Font(richTextBox1.Font.FontFamily, richTextBox1.Font.Size + 1.019f);
             //numberLabel.Font = new Font(rtb_Note.Font.FontFamily, rtb_Note.Font.Size);
 
@@ -129,13 +131,12 @@ namespace PersonalAccounting.UI
         {
             var isAdmin = await InitialHelper.CurrentUser.IsAdmin();
 
-            if (isAdmin)
-            {
-                rddl_Users.Visible = true;
-                lbl_Users.Visible = true;
+            if (!isAdmin) return;
 
-                rddl_Users.SelectedItem = rddl_Users.FindItemExact(InitialHelper.CurrentUser.UserName, false);
-            }
+            rddl_Users.Visible = true;
+            lbl_Users.Visible = true;
+            //rddl_Users.SelectedItem = rddl_Users.FindItemExact(InitialHelper.CurrentUser.UserName, false);
+            //await ReturnDiaryNoteByDate(_selectedDate);
         }
 
         //private void FrmDiaryNote_Load(object sender, EventArgs e)
@@ -1457,7 +1458,7 @@ namespace PersonalAccounting.UI
                 }
             }
         }
-        private async void DiaryNotesSaveOrUpdate(bool onlyLoad = false)
+        private async void DiaryNotesSaveOrUpdate()
         {
             var selectedUser = await GetSelectedUserId();
             if (selectedUser <= 0) return;
@@ -1485,8 +1486,6 @@ namespace PersonalAccounting.UI
                     //await currentUser.IsAdmin() ?
                     //await _diaryNoteService.LoadByDateAsync(currentDate) :
                     //await _diaryNoteService.LoadByDateAsync(currentDate, currentUser.Id);
-
-                    if (onlyLoad) return;
 
                     var encryptNote = CryptoHelper.EncryptNew(rtb_Note.Rtf);
                     diaryNote.Note = Utility.CompressString(encryptNote, Encoding.UTF8);
@@ -1516,7 +1515,7 @@ namespace PersonalAccounting.UI
                     //var encryptNote = CryptoHelper.EncryptDecrypt(rtb_Note.Rtf, 1231);
                     //var encryptNote = CryptoHelper.EncryptData(rtb_Note.Rtf, "1231");
 
-                    if (onlyLoad) return;
+                    //if (onlyLoad) return;
 
                     var encryptNote = CryptoHelper.EncryptNew(rtb_Note.Rtf);
                     var diaryNote = new DiaryNote
@@ -2102,12 +2101,14 @@ namespace PersonalAccounting.UI
             }
         }
 
-        private void rddl_Users_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
+        private async void rddl_Users_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
         {
             if (!txt_diaryNoteDate.Text.IsValidPersianDate()) return;
 
-            DiaryNotesSaveOrUpdate(true);
+            //DiaryNotesSaveOrUpdate(true);
+            await ReturnDiaryNoteByDate(_selectedDate);
             Txt_diaryNoteDate_TextChanged(sender, e);
+
             //MessageBox.Show((await GetSelectedUserId()).ToString());
         }
 
@@ -2116,6 +2117,12 @@ namespace PersonalAccounting.UI
             //MessageBox.Show(rddl_MentalConditions.SelectedIndex.ToString());
 
             _isModify = true;
+        }
+
+        private void FrmDiaryNote_Shown(object sender, EventArgs e)
+        {
+            rddl_Users.SelectedItem = rddl_Users.FindItemExact(InitialHelper.CurrentUser.UserName, false);
+            rddl_MentalConditions_SelectedValueChanged(sender, e);
         }
 
         #endregion

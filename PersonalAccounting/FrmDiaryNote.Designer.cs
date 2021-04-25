@@ -261,7 +261,7 @@
             this.txt_diaryNoteDate.Mask = "1000/00/00";
             this.txt_diaryNoteDate.Name = "txt_diaryNoteDate";
             this.txt_diaryNoteDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_diaryNoteDate.Size = new System.Drawing.Size(80, 23);
+            this.txt_diaryNoteDate.Size = new System.Drawing.Size(80, 27);
             this.txt_diaryNoteDate.TabIndex = 0;
             this.txt_diaryNoteDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txt_diaryNoteDate.TextChanged += new System.EventHandler(this.Txt_diaryNoteDate_TextChanged);
@@ -275,7 +275,7 @@
             this.lbl_Users.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lbl_Users.Location = new System.Drawing.Point(840, 14);
             this.lbl_Users.Name = "lbl_Users";
-            this.lbl_Users.Size = new System.Drawing.Size(47, 14);
+            this.lbl_Users.Size = new System.Drawing.Size(56, 18);
             this.lbl_Users.TabIndex = 198;
             this.lbl_Users.Text = "نام کاربر";
             // 
@@ -288,7 +288,7 @@
             this.label4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label4.Location = new System.Drawing.Point(1035, 12);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 14);
+            this.label4.Size = new System.Drawing.Size(36, 18);
             this.label4.TabIndex = 198;
             this.label4.Text = "تاريخ";
             // 
@@ -339,7 +339,7 @@
             this.label2.ForeColor = System.Drawing.SystemColors.InfoText;
             this.label2.Location = new System.Drawing.Point(306, 51);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 14);
+            this.label2.Size = new System.Drawing.Size(110, 18);
             this.label2.TabIndex = 194;
             this.label2.Text = "وضعیت آب و هوا";
             // 
@@ -351,7 +351,7 @@
             this.label1.ForeColor = System.Drawing.SystemColors.InfoText;
             this.label1.Location = new System.Drawing.Point(598, 51);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 14);
+            this.label1.Size = new System.Drawing.Size(89, 18);
             this.label1.TabIndex = 195;
             this.label1.Text = "شرایط روحی";
             // 
@@ -391,11 +391,11 @@
             this.tsc_FontName,
             this.toolStripSeparator2,
             this.tsb_FullScreen});
-            this.ts_DiaryNote.Location = new System.Drawing.Point(0, 79);
+            this.ts_DiaryNote.Location = new System.Drawing.Point(0, 78);
             this.ts_DiaryNote.Name = "ts_DiaryNote";
             this.ts_DiaryNote.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.ts_DiaryNote.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ts_DiaryNote.Size = new System.Drawing.Size(1076, 27);
+            this.ts_DiaryNote.Size = new System.Drawing.Size(1076, 28);
             this.ts_DiaryNote.TabIndex = 182;
             this.ts_DiaryNote.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.Ts_DiaryNote_ItemClicked);
             // 
@@ -405,7 +405,7 @@
             this.tsb_IndentIncrease.Image = ((System.Drawing.Image)(resources.GetObject("tsb_IndentIncrease.Image")));
             this.tsb_IndentIncrease.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_IndentIncrease.Name = "tsb_IndentIncrease";
-            this.tsb_IndentIncrease.Size = new System.Drawing.Size(24, 24);
+            this.tsb_IndentIncrease.Size = new System.Drawing.Size(29, 25);
             this.tsb_IndentIncrease.Text = "کاهش تورفتگی متن";
             this.tsb_IndentIncrease.ToolTipText = "کاهش تورفتگی متن";
             // 
@@ -415,7 +415,7 @@
             this.tsb_IndentDecrease.Image = ((System.Drawing.Image)(resources.GetObject("tsb_IndentDecrease.Image")));
             this.tsb_IndentDecrease.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_IndentDecrease.Name = "tsb_IndentDecrease";
-            this.tsb_IndentDecrease.Size = new System.Drawing.Size(24, 24);
+            this.tsb_IndentDecrease.Size = new System.Drawing.Size(29, 25);
             this.tsb_IndentDecrease.Text = "افزایش تورفتگی متن";
             this.tsb_IndentDecrease.ToolTipText = "افزایش تورفتگی متن";
             // 
@@ -426,14 +426,14 @@
             this.tsb_Bullet.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Bullet.Image")));
             this.tsb_Bullet.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Bullet.Name = "tsb_Bullet";
-            this.tsb_Bullet.Size = new System.Drawing.Size(24, 24);
+            this.tsb_Bullet.Size = new System.Drawing.Size(29, 25);
             this.tsb_Bullet.Text = "Bullet";
             this.tsb_Bullet.ToolTipText = "Bullet";
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 28);
             // 
             // tsb_AlignRight
             // 
@@ -442,7 +442,7 @@
             this.tsb_AlignRight.Image = ((System.Drawing.Image)(resources.GetObject("tsb_AlignRight.Image")));
             this.tsb_AlignRight.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_AlignRight.Name = "tsb_AlignRight";
-            this.tsb_AlignRight.Size = new System.Drawing.Size(24, 24);
+            this.tsb_AlignRight.Size = new System.Drawing.Size(29, 25);
             this.tsb_AlignRight.Text = "ترازبندی راست";
             this.tsb_AlignRight.ToolTipText = "ترازبندی راست";
             // 
@@ -453,7 +453,7 @@
             this.tsb_AlignCenter.Image = ((System.Drawing.Image)(resources.GetObject("tsb_AlignCenter.Image")));
             this.tsb_AlignCenter.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_AlignCenter.Name = "tsb_AlignCenter";
-            this.tsb_AlignCenter.Size = new System.Drawing.Size(24, 24);
+            this.tsb_AlignCenter.Size = new System.Drawing.Size(29, 25);
             this.tsb_AlignCenter.Text = "ترازبندی وسط";
             this.tsb_AlignCenter.ToolTipText = "ترازبندی وسط";
             // 
@@ -464,14 +464,14 @@
             this.tsb_AlignLeft.Image = ((System.Drawing.Image)(resources.GetObject("tsb_AlignLeft.Image")));
             this.tsb_AlignLeft.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_AlignLeft.Name = "tsb_AlignLeft";
-            this.tsb_AlignLeft.Size = new System.Drawing.Size(24, 24);
+            this.tsb_AlignLeft.Size = new System.Drawing.Size(29, 25);
             this.tsb_AlignLeft.Text = "ترازبندی چپ";
             this.tsb_AlignLeft.ToolTipText = "ترازبندی چپ";
             // 
             // toolStripSeparator10
             // 
             this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator10.Size = new System.Drawing.Size(6, 28);
             // 
             // tsb_Bold
             // 
@@ -480,7 +480,7 @@
             this.tsb_Bold.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Bold.Image")));
             this.tsb_Bold.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Bold.Name = "tsb_Bold";
-            this.tsb_Bold.Size = new System.Drawing.Size(24, 24);
+            this.tsb_Bold.Size = new System.Drawing.Size(29, 25);
             this.tsb_Bold.Text = "ضخیم کردن متن انتخابی";
             this.tsb_Bold.ToolTipText = "ضخیم کردن متن انتخابی";
             // 
@@ -491,7 +491,7 @@
             this.tsb_Italic.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Italic.Image")));
             this.tsb_Italic.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Italic.Name = "tsb_Italic";
-            this.tsb_Italic.Size = new System.Drawing.Size(24, 24);
+            this.tsb_Italic.Size = new System.Drawing.Size(29, 25);
             this.tsb_Italic.Text = "مورب کردن متن انتخابی";
             // 
             // tsb_Underline
@@ -501,7 +501,7 @@
             this.tsb_Underline.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Underline.Image")));
             this.tsb_Underline.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Underline.Name = "tsb_Underline";
-            this.tsb_Underline.Size = new System.Drawing.Size(24, 24);
+            this.tsb_Underline.Size = new System.Drawing.Size(29, 25);
             this.tsb_Underline.Text = "زیرخط دار کردن متن انتخابی";
             // 
             // tsb_Strikeout
@@ -511,13 +511,13 @@
             this.tsb_Strikeout.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Strikeout.Image")));
             this.tsb_Strikeout.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Strikeout.Name = "tsb_Strikeout";
-            this.tsb_Strikeout.Size = new System.Drawing.Size(24, 24);
+            this.tsb_Strikeout.Size = new System.Drawing.Size(29, 25);
             this.tsb_Strikeout.Text = "خط زدن متن انتخابی";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
             // 
             // tsb_SelectAll
             // 
@@ -525,7 +525,7 @@
             this.tsb_SelectAll.Image = ((System.Drawing.Image)(resources.GetObject("tsb_SelectAll.Image")));
             this.tsb_SelectAll.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_SelectAll.Name = "tsb_SelectAll";
-            this.tsb_SelectAll.Size = new System.Drawing.Size(24, 24);
+            this.tsb_SelectAll.Size = new System.Drawing.Size(29, 25);
             this.tsb_SelectAll.Text = "انتخاب همه";
             // 
             // tsb_Paste
@@ -534,7 +534,7 @@
             this.tsb_Paste.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Paste.Image")));
             this.tsb_Paste.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Paste.Name = "tsb_Paste";
-            this.tsb_Paste.Size = new System.Drawing.Size(24, 24);
+            this.tsb_Paste.Size = new System.Drawing.Size(29, 25);
             this.tsb_Paste.Text = "الصاق";
             // 
             // tsb_Copy
@@ -543,7 +543,7 @@
             this.tsb_Copy.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Copy.Image")));
             this.tsb_Copy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Copy.Name = "tsb_Copy";
-            this.tsb_Copy.Size = new System.Drawing.Size(24, 24);
+            this.tsb_Copy.Size = new System.Drawing.Size(29, 25);
             this.tsb_Copy.Text = "کپی";
             // 
             // tsb_Cut
@@ -552,13 +552,13 @@
             this.tsb_Cut.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Cut.Image")));
             this.tsb_Cut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Cut.Name = "tsb_Cut";
-            this.tsb_Cut.Size = new System.Drawing.Size(24, 24);
+            this.tsb_Cut.Size = new System.Drawing.Size(29, 25);
             this.tsb_Cut.ToolTipText = "برش";
             // 
             // toolStripSeparator9
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 28);
             // 
             // tsb_Redo
             // 
@@ -566,7 +566,7 @@
             this.tsb_Redo.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Redo.Image")));
             this.tsb_Redo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Redo.Name = "tsb_Redo";
-            this.tsb_Redo.Size = new System.Drawing.Size(24, 24);
+            this.tsb_Redo.Size = new System.Drawing.Size(29, 25);
             this.tsb_Redo.ToolTipText = "Redo";
             // 
             // tsb_Undo
@@ -575,13 +575,13 @@
             this.tsb_Undo.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Undo.Image")));
             this.tsb_Undo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Undo.Name = "tsb_Undo";
-            this.tsb_Undo.Size = new System.Drawing.Size(24, 24);
+            this.tsb_Undo.Size = new System.Drawing.Size(29, 25);
             this.tsb_Undo.ToolTipText = "Undo";
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 28);
             // 
             // tsb_PrintPreview
             // 
@@ -589,7 +589,7 @@
             this.tsb_PrintPreview.Image = ((System.Drawing.Image)(resources.GetObject("tsb_PrintPreview.Image")));
             this.tsb_PrintPreview.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_PrintPreview.Name = "tsb_PrintPreview";
-            this.tsb_PrintPreview.Size = new System.Drawing.Size(24, 24);
+            this.tsb_PrintPreview.Size = new System.Drawing.Size(29, 25);
             this.tsb_PrintPreview.Text = "پیش نمایش چاپ";
             // 
             // tsb_Print
@@ -598,13 +598,13 @@
             this.tsb_Print.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Print.Image")));
             this.tsb_Print.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Print.Name = "tsb_Print";
-            this.tsb_Print.Size = new System.Drawing.Size(24, 24);
+            this.tsb_Print.Size = new System.Drawing.Size(29, 25);
             this.tsb_Print.Text = "چاپ یادداشت";
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 28);
             // 
             // tsb_FontDialog
             // 
@@ -612,7 +612,7 @@
             this.tsb_FontDialog.Image = ((System.Drawing.Image)(resources.GetObject("tsb_FontDialog.Image")));
             this.tsb_FontDialog.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_FontDialog.Name = "tsb_FontDialog";
-            this.tsb_FontDialog.Size = new System.Drawing.Size(24, 24);
+            this.tsb_FontDialog.Size = new System.Drawing.Size(29, 25);
             this.tsb_FontDialog.ToolTipText = "انتخاب فونت";
             // 
             // tsc_FontSize
@@ -672,7 +672,7 @@
             "98",
             "100"});
             this.tsc_FontSize.Name = "tsc_FontSize";
-            this.tsc_FontSize.Size = new System.Drawing.Size(75, 27);
+            this.tsc_FontSize.Size = new System.Drawing.Size(75, 28);
             this.tsc_FontSize.Text = "10";
             this.tsc_FontSize.ToolTipText = "اندازه متن";
             this.tsc_FontSize.TextChanged += new System.EventHandler(this.Tsc_FontSize_TextChanged);
@@ -681,13 +681,13 @@
             // 
             this.tsc_FontName.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.tsc_FontName.Name = "tsc_FontName";
-            this.tsc_FontName.Size = new System.Drawing.Size(150, 27);
+            this.tsc_FontName.Size = new System.Drawing.Size(150, 28);
             this.tsc_FontName.SelectedIndexChanged += new System.EventHandler(this.Tsc_FontName_SelectedIndexChanged);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
             // 
             // tsb_FullScreen
             // 
@@ -696,7 +696,7 @@
             this.tsb_FullScreen.Image = ((System.Drawing.Image)(resources.GetObject("tsb_FullScreen.Image")));
             this.tsb_FullScreen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_FullScreen.Name = "tsb_FullScreen";
-            this.tsb_FullScreen.Size = new System.Drawing.Size(24, 24);
+            this.tsb_FullScreen.Size = new System.Drawing.Size(29, 25);
             this.tsb_FullScreen.Text = "تمام صفحه";
             // 
             // ts_DiaryNote2
@@ -744,7 +744,7 @@
             this.tsb_ZoomOut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_ZoomOut.Name = "tsb_ZoomOut";
             this.tsb_ZoomOut.RightToLeftAutoMirrorImage = true;
-            this.tsb_ZoomOut.Size = new System.Drawing.Size(24, 24);
+            this.tsb_ZoomOut.Size = new System.Drawing.Size(29, 24);
             this.tsb_ZoomOut.Text = "کم کردن زوم";
             this.tsb_ZoomOut.ToolTipText = "کم کردن زوم";
             // 
@@ -755,7 +755,7 @@
             this.tsb_ZoomIn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_ZoomIn.Name = "tsb_ZoomIn";
             this.tsb_ZoomIn.RightToLeftAutoMirrorImage = true;
-            this.tsb_ZoomIn.Size = new System.Drawing.Size(24, 24);
+            this.tsb_ZoomIn.Size = new System.Drawing.Size(29, 24);
             this.tsb_ZoomIn.Text = "زیاد کردن زوم";
             this.tsb_ZoomIn.ToolTipText = "زیاد کردن زوم";
             // 
@@ -779,7 +779,7 @@
             this.tsb_InsertPicture.Image = ((System.Drawing.Image)(resources.GetObject("tsb_InsertPicture.Image")));
             this.tsb_InsertPicture.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_InsertPicture.Name = "tsb_InsertPicture";
-            this.tsb_InsertPicture.Size = new System.Drawing.Size(24, 24);
+            this.tsb_InsertPicture.Size = new System.Drawing.Size(29, 24);
             this.tsb_InsertPicture.Text = "افزودن عکس";
             this.tsb_InsertPicture.ToolTipText = "افزودن عکس";
             // 
@@ -790,7 +790,7 @@
             this.tsb_Stamp.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Stamp.Name = "tsb_Stamp";
             this.tsb_Stamp.RightToLeftAutoMirrorImage = true;
-            this.tsb_Stamp.Size = new System.Drawing.Size(24, 24);
+            this.tsb_Stamp.Size = new System.Drawing.Size(29, 24);
             this.tsb_Stamp.Text = "چاپ اتوماتیک تاریخ جاری";
             // 
             // toolStripSeparator13
@@ -804,7 +804,7 @@
             this.tsb_Replace.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Replace.Image")));
             this.tsb_Replace.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Replace.Name = "tsb_Replace";
-            this.tsb_Replace.Size = new System.Drawing.Size(24, 24);
+            this.tsb_Replace.Size = new System.Drawing.Size(29, 24);
             this.tsb_Replace.Text = "جستجو و جایگزین";
             this.tsb_Replace.ToolTipText = "جستجو و جایگزین";
             // 
@@ -814,7 +814,7 @@
             this.tsb_Find.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Find.Image")));
             this.tsb_Find.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Find.Name = "tsb_Find";
-            this.tsb_Find.Size = new System.Drawing.Size(24, 24);
+            this.tsb_Find.Size = new System.Drawing.Size(29, 24);
             this.tsb_Find.Text = "جستجو";
             this.tsb_Find.ToolTipText = "جستجو";
             // 
@@ -830,7 +830,7 @@
             this.tsb_Subscript.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Subscript.Image")));
             this.tsb_Subscript.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Subscript.Name = "tsb_Subscript";
-            this.tsb_Subscript.Size = new System.Drawing.Size(24, 24);
+            this.tsb_Subscript.Size = new System.Drawing.Size(29, 24);
             this.tsb_Subscript.Text = "پایین انداختن متن";
             // 
             // tsb_Superscript
@@ -840,7 +840,7 @@
             this.tsb_Superscript.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Superscript.Image")));
             this.tsb_Superscript.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Superscript.Name = "tsb_Superscript";
-            this.tsb_Superscript.Size = new System.Drawing.Size(24, 24);
+            this.tsb_Superscript.Size = new System.Drawing.Size(29, 24);
             this.tsb_Superscript.Text = "بالا بردن متن";
             // 
             // toolStripSeparator16
@@ -854,7 +854,7 @@
             this.tsb_ShrinkFont.Image = ((System.Drawing.Image)(resources.GetObject("tsb_ShrinkFont.Image")));
             this.tsb_ShrinkFont.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_ShrinkFont.Name = "tsb_ShrinkFont";
-            this.tsb_ShrinkFont.Size = new System.Drawing.Size(24, 24);
+            this.tsb_ShrinkFont.Size = new System.Drawing.Size(29, 24);
             this.tsb_ShrinkFont.Text = "کوچک کردن فونت";
             // 
             // tsb_GrowFont
@@ -863,7 +863,7 @@
             this.tsb_GrowFont.Image = ((System.Drawing.Image)(resources.GetObject("tsb_GrowFont.Image")));
             this.tsb_GrowFont.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_GrowFont.Name = "tsb_GrowFont";
-            this.tsb_GrowFont.Size = new System.Drawing.Size(24, 24);
+            this.tsb_GrowFont.Size = new System.Drawing.Size(29, 24);
             this.tsb_GrowFont.Text = "بزرگ کردن فونت";
             // 
             // toolStripSeparator14
@@ -877,7 +877,7 @@
             this.tsb_FontColor.Image = ((System.Drawing.Image)(resources.GetObject("tsb_FontColor.Image")));
             this.tsb_FontColor.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_FontColor.Name = "tsb_FontColor";
-            this.tsb_FontColor.Size = new System.Drawing.Size(24, 24);
+            this.tsb_FontColor.Size = new System.Drawing.Size(29, 24);
             this.tsb_FontColor.Text = "تغییر رنگ متن انتخابی";
             this.tsb_FontColor.ToolTipText = "تغییر رنگ متن انتخابی";
             // 
@@ -887,7 +887,7 @@
             this.tsb_BackColor.Image = ((System.Drawing.Image)(resources.GetObject("tsb_BackColor.Image")));
             this.tsb_BackColor.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_BackColor.Name = "tsb_BackColor";
-            this.tsb_BackColor.Size = new System.Drawing.Size(24, 24);
+            this.tsb_BackColor.Size = new System.Drawing.Size(29, 24);
             this.tsb_BackColor.Text = "تغییر پس زمینه متن انتخابی";
             this.tsb_BackColor.ToolTipText = "تغییر پس زمینه متن انتخابی";
             // 
@@ -897,7 +897,7 @@
             this.tsb_FillColor.Image = ((System.Drawing.Image)(resources.GetObject("tsb_FillColor.Image")));
             this.tsb_FillColor.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_FillColor.Name = "tsb_FillColor";
-            this.tsb_FillColor.Size = new System.Drawing.Size(24, 24);
+            this.tsb_FillColor.Size = new System.Drawing.Size(29, 24);
             this.tsb_FillColor.Text = "تغییر رنگ پس زمینه";
             // 
             // tsb_WordWrap
@@ -907,7 +907,7 @@
             this.tsb_WordWrap.Image = ((System.Drawing.Image)(resources.GetObject("tsb_WordWrap.Image")));
             this.tsb_WordWrap.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_WordWrap.Name = "tsb_WordWrap";
-            this.tsb_WordWrap.Size = new System.Drawing.Size(24, 24);
+            this.tsb_WordWrap.Size = new System.Drawing.Size(29, 24);
             this.tsb_WordWrap.Text = "شکستن خط";
             this.tsb_WordWrap.ToolTipText = "با رسیدن نوشته به انتهای یک خط، مکان نما به طور خودکار به خط بعدی پرش می کند";
             // 
@@ -922,7 +922,7 @@
             this.tsb_SearchClear.Image = ((System.Drawing.Image)(resources.GetObject("tsb_SearchClear.Image")));
             this.tsb_SearchClear.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_SearchClear.Name = "tsb_SearchClear";
-            this.tsb_SearchClear.Size = new System.Drawing.Size(24, 24);
+            this.tsb_SearchClear.Size = new System.Drawing.Size(29, 24);
             this.tsb_SearchClear.Text = "حذف جستجوی برجسته شده";
             // 
             // tsb_SearchHighlight
@@ -931,7 +931,7 @@
             this.tsb_SearchHighlight.Image = ((System.Drawing.Image)(resources.GetObject("tsb_SearchHighlight.Image")));
             this.tsb_SearchHighlight.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_SearchHighlight.Name = "tsb_SearchHighlight";
-            this.tsb_SearchHighlight.Size = new System.Drawing.Size(24, 24);
+            this.tsb_SearchHighlight.Size = new System.Drawing.Size(29, 24);
             this.tsb_SearchHighlight.Text = "برجسته کردن جستجو";
             this.tsb_SearchHighlight.ToolTipText = "برجسته کردن جستجو";
             // 
@@ -966,7 +966,7 @@
             this.numberLabel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.numberLabel.Location = new System.Drawing.Point(9, 4);
             this.numberLabel.Name = "numberLabel";
-            this.numberLabel.Size = new System.Drawing.Size(15, 16);
+            this.numberLabel.Size = new System.Drawing.Size(20, 21);
             this.numberLabel.TabIndex = 14;
             this.numberLabel.Text = "1";
             this.numberLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -980,7 +980,7 @@
             this.rtb_Note.HideSelection = false;
             this.rtb_Note.Location = new System.Drawing.Point(0, 0);
             this.rtb_Note.Name = "rtb_Note";
-            this.rtb_Note.Size = new System.Drawing.Size(1038, 502);
+            this.rtb_Note.Size = new System.Drawing.Size(1038, 498);
             this.rtb_Note.TabIndex = 0;
             this.rtb_Note.Text = "";
             this.rtb_Note.HScroll += new System.EventHandler(this.rtb_Note_Click);
@@ -1029,7 +1029,7 @@
             this.tsm_ZoomOut});
             this.cms_DiaryNote.Name = "contextMenu";
             this.cms_DiaryNote.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.cms_DiaryNote.Size = new System.Drawing.Size(147, 366);
+            this.cms_DiaryNote.Size = new System.Drawing.Size(170, 366);
             this.cms_DiaryNote.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.Cms_DiaryNote_ItemClicked);
             // 
             // tsm_Cut
@@ -1037,7 +1037,7 @@
             this.tsm_Cut.Image = ((System.Drawing.Image)(resources.GetObject("tsm_Cut.Image")));
             this.tsm_Cut.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsm_Cut.Name = "tsm_Cut";
-            this.tsm_Cut.Size = new System.Drawing.Size(146, 26);
+            this.tsm_Cut.Size = new System.Drawing.Size(169, 26);
             this.tsm_Cut.Text = "برش";
             // 
             // tsm_Copy
@@ -1045,7 +1045,7 @@
             this.tsm_Copy.Image = ((System.Drawing.Image)(resources.GetObject("tsm_Copy.Image")));
             this.tsm_Copy.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsm_Copy.Name = "tsm_Copy";
-            this.tsm_Copy.Size = new System.Drawing.Size(146, 26);
+            this.tsm_Copy.Size = new System.Drawing.Size(169, 26);
             this.tsm_Copy.Text = "کپی";
             // 
             // tsm_Paste
@@ -1053,7 +1053,7 @@
             this.tsm_Paste.Image = ((System.Drawing.Image)(resources.GetObject("tsm_Paste.Image")));
             this.tsm_Paste.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsm_Paste.Name = "tsm_Paste";
-            this.tsm_Paste.Size = new System.Drawing.Size(146, 26);
+            this.tsm_Paste.Size = new System.Drawing.Size(169, 26);
             this.tsm_Paste.Text = "الصاق";
             // 
             // tsm_Delete
@@ -1061,7 +1061,7 @@
             this.tsm_Delete.Image = ((System.Drawing.Image)(resources.GetObject("tsm_Delete.Image")));
             this.tsm_Delete.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsm_Delete.Name = "tsm_Delete";
-            this.tsm_Delete.Size = new System.Drawing.Size(146, 26);
+            this.tsm_Delete.Size = new System.Drawing.Size(169, 26);
             this.tsm_Delete.Text = "پاک کردن";
             // 
             // tsm_SelectAll
@@ -1069,20 +1069,20 @@
             this.tsm_SelectAll.Image = ((System.Drawing.Image)(resources.GetObject("tsm_SelectAll.Image")));
             this.tsm_SelectAll.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsm_SelectAll.Name = "tsm_SelectAll";
-            this.tsm_SelectAll.Size = new System.Drawing.Size(146, 26);
+            this.tsm_SelectAll.Size = new System.Drawing.Size(169, 26);
             this.tsm_SelectAll.Text = "انتخاب همه";
             // 
             // toolStripSeparator12
             // 
             this.toolStripSeparator12.Name = "toolStripSeparator12";
-            this.toolStripSeparator12.Size = new System.Drawing.Size(143, 6);
+            this.toolStripSeparator12.Size = new System.Drawing.Size(166, 6);
             // 
             // tsm_Undo
             // 
             this.tsm_Undo.Image = ((System.Drawing.Image)(resources.GetObject("tsm_Undo.Image")));
             this.tsm_Undo.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsm_Undo.Name = "tsm_Undo";
-            this.tsm_Undo.Size = new System.Drawing.Size(146, 26);
+            this.tsm_Undo.Size = new System.Drawing.Size(169, 26);
             this.tsm_Undo.Text = "Undo";
             // 
             // tsm_Redo
@@ -1090,13 +1090,13 @@
             this.tsm_Redo.Image = ((System.Drawing.Image)(resources.GetObject("tsm_Redo.Image")));
             this.tsm_Redo.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsm_Redo.Name = "tsm_Redo";
-            this.tsm_Redo.Size = new System.Drawing.Size(146, 26);
+            this.tsm_Redo.Size = new System.Drawing.Size(169, 26);
             this.tsm_Redo.Text = "Redo";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(143, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(166, 6);
             // 
             // tsm_Alignment
             // 
@@ -1106,7 +1106,7 @@
             this.tsmi_AlignRight});
             this.tsm_Alignment.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsm_Alignment.Name = "tsm_Alignment";
-            this.tsm_Alignment.Size = new System.Drawing.Size(146, 26);
+            this.tsm_Alignment.Size = new System.Drawing.Size(169, 26);
             this.tsm_Alignment.Text = "ترازبندی";
             // 
             // tsmi_AlignLeft
@@ -1115,7 +1115,7 @@
             this.tsmi_AlignLeft.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_AlignLeft.Image")));
             this.tsmi_AlignLeft.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsmi_AlignLeft.Name = "tsmi_AlignLeft";
-            this.tsmi_AlignLeft.Size = new System.Drawing.Size(144, 22);
+            this.tsmi_AlignLeft.Size = new System.Drawing.Size(181, 26);
             this.tsmi_AlignLeft.Text = "ترازبندی چپ";
             this.tsmi_AlignLeft.Click += new System.EventHandler(this.Tsmi_AlignLeft_Click);
             // 
@@ -1125,7 +1125,7 @@
             this.tsmi_AlignCenter.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_AlignCenter.Image")));
             this.tsmi_AlignCenter.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsmi_AlignCenter.Name = "tsmi_AlignCenter";
-            this.tsmi_AlignCenter.Size = new System.Drawing.Size(144, 22);
+            this.tsmi_AlignCenter.Size = new System.Drawing.Size(181, 26);
             this.tsmi_AlignCenter.Text = "ترازبندی راست";
             this.tsmi_AlignCenter.Click += new System.EventHandler(this.Tsmi_AlignCenter_Click);
             // 
@@ -1135,7 +1135,7 @@
             this.tsmi_AlignRight.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_AlignRight.Image")));
             this.tsmi_AlignRight.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsmi_AlignRight.Name = "tsmi_AlignRight";
-            this.tsmi_AlignRight.Size = new System.Drawing.Size(144, 22);
+            this.tsmi_AlignRight.Size = new System.Drawing.Size(181, 26);
             this.tsmi_AlignRight.Text = "ترازبندی راست";
             this.tsmi_AlignRight.Click += new System.EventHandler(this.Tsmi_AlignRight_Click);
             // 
@@ -1148,7 +1148,7 @@
             this.tsmi_Strikeout});
             this.tsm_Style.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsm_Style.Name = "tsm_Style";
-            this.tsm_Style.Size = new System.Drawing.Size(146, 26);
+            this.tsm_Style.Size = new System.Drawing.Size(169, 26);
             this.tsm_Style.Text = "سبک متن";
             // 
             // tsmi_Bold
@@ -1156,7 +1156,7 @@
             this.tsmi_Bold.CheckOnClick = true;
             this.tsmi_Bold.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_Bold.Image")));
             this.tsmi_Bold.Name = "tsmi_Bold";
-            this.tsmi_Bold.Size = new System.Drawing.Size(126, 22);
+            this.tsmi_Bold.Size = new System.Drawing.Size(158, 26);
             this.tsmi_Bold.Text = "ضخیم";
             this.tsmi_Bold.Click += new System.EventHandler(this.Tsmi_Bold_Click);
             // 
@@ -1165,7 +1165,7 @@
             this.tsmi_Italic.CheckOnClick = true;
             this.tsmi_Italic.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_Italic.Image")));
             this.tsmi_Italic.Name = "tsmi_Italic";
-            this.tsmi_Italic.Size = new System.Drawing.Size(126, 22);
+            this.tsmi_Italic.Size = new System.Drawing.Size(158, 26);
             this.tsmi_Italic.Text = "مورب";
             this.tsmi_Italic.Click += new System.EventHandler(this.Tsmi_Italic_Click);
             // 
@@ -1174,7 +1174,7 @@
             this.tsmi_Underline.CheckOnClick = true;
             this.tsmi_Underline.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_Underline.Image")));
             this.tsmi_Underline.Name = "tsmi_Underline";
-            this.tsmi_Underline.Size = new System.Drawing.Size(126, 22);
+            this.tsmi_Underline.Size = new System.Drawing.Size(158, 26);
             this.tsmi_Underline.Text = "زیر خط دار";
             this.tsmi_Underline.Click += new System.EventHandler(this.Tsmi_Underline_Click);
             // 
@@ -1183,7 +1183,7 @@
             this.tsmi_Strikeout.CheckOnClick = true;
             this.tsmi_Strikeout.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_Strikeout.Image")));
             this.tsmi_Strikeout.Name = "tsmi_Strikeout";
-            this.tsmi_Strikeout.Size = new System.Drawing.Size(126, 22);
+            this.tsmi_Strikeout.Size = new System.Drawing.Size(158, 26);
             this.tsmi_Strikeout.Text = "خط خورده";
             this.tsmi_Strikeout.Click += new System.EventHandler(this.Tsmi_Strikeout_Click);
             // 
@@ -1195,7 +1195,7 @@
             this.tsmi_Bullets});
             this.tsm_Indentation.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsm_Indentation.Name = "tsm_Indentation";
-            this.tsm_Indentation.Size = new System.Drawing.Size(146, 26);
+            this.tsm_Indentation.Size = new System.Drawing.Size(169, 26);
             this.tsm_Indentation.Text = "تو رفتگی";
             // 
             // tsmi_IndentIncrease
@@ -1203,7 +1203,7 @@
             this.tsmi_IndentIncrease.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_IndentIncrease.Image")));
             this.tsmi_IndentIncrease.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsmi_IndentIncrease.Name = "tsmi_IndentIncrease";
-            this.tsmi_IndentIncrease.Size = new System.Drawing.Size(154, 22);
+            this.tsmi_IndentIncrease.Size = new System.Drawing.Size(196, 26);
             this.tsmi_IndentIncrease.Text = "افزایش تو رفتگی";
             this.tsmi_IndentIncrease.Click += new System.EventHandler(this.tsmi_IndentIncrease_Click);
             // 
@@ -1212,7 +1212,7 @@
             this.tsmi_IndentDecrease.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_IndentDecrease.Image")));
             this.tsmi_IndentDecrease.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsmi_IndentDecrease.Name = "tsmi_IndentDecrease";
-            this.tsmi_IndentDecrease.Size = new System.Drawing.Size(154, 22);
+            this.tsmi_IndentDecrease.Size = new System.Drawing.Size(196, 26);
             this.tsmi_IndentDecrease.Text = "کاهش تو رفتگی";
             this.tsmi_IndentDecrease.Click += new System.EventHandler(this.tsmi_IndentDecrease_Click);
             // 
@@ -1222,34 +1222,34 @@
             this.tsmi_Bullets.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_Bullets.Image")));
             this.tsmi_Bullets.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsmi_Bullets.Name = "tsmi_Bullets";
-            this.tsmi_Bullets.Size = new System.Drawing.Size(154, 22);
+            this.tsmi_Bullets.Size = new System.Drawing.Size(196, 26);
             this.tsmi_Bullets.Text = "Bullets";
             this.tsmi_Bullets.Click += new System.EventHandler(this.tsmi_Bullets_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(143, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(166, 6);
             // 
             // tsm_InsertPicture
             // 
             this.tsm_InsertPicture.Image = ((System.Drawing.Image)(resources.GetObject("tsm_InsertPicture.Image")));
             this.tsm_InsertPicture.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsm_InsertPicture.Name = "tsm_InsertPicture";
-            this.tsm_InsertPicture.Size = new System.Drawing.Size(146, 26);
+            this.tsm_InsertPicture.Size = new System.Drawing.Size(169, 26);
             this.tsm_InsertPicture.Text = "افزودن تصویر";
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(143, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(166, 6);
             // 
             // tsm_ZoomIn
             // 
             this.tsm_ZoomIn.Image = ((System.Drawing.Image)(resources.GetObject("tsm_ZoomIn.Image")));
             this.tsm_ZoomIn.ImageTransparentColor = System.Drawing.Color.White;
             this.tsm_ZoomIn.Name = "tsm_ZoomIn";
-            this.tsm_ZoomIn.Size = new System.Drawing.Size(146, 26);
+            this.tsm_ZoomIn.Size = new System.Drawing.Size(169, 26);
             this.tsm_ZoomIn.Text = "افزایش زوم";
             // 
             // tsm_ZoomOut
@@ -1257,7 +1257,7 @@
             this.tsm_ZoomOut.Image = ((System.Drawing.Image)(resources.GetObject("tsm_ZoomOut.Image")));
             this.tsm_ZoomOut.ImageTransparentColor = System.Drawing.Color.White;
             this.tsm_ZoomOut.Name = "tsm_ZoomOut";
-            this.tsm_ZoomOut.Size = new System.Drawing.Size(146, 26);
+            this.tsm_ZoomOut.Size = new System.Drawing.Size(169, 26);
             this.tsm_ZoomOut.Text = "کاهش زوم";
             // 
             // splitContainer1
@@ -1292,22 +1292,22 @@
             this.ss_RowColumn.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tssl_Row,
             this.tssl_Column});
-            this.ss_RowColumn.Location = new System.Drawing.Point(0, 502);
+            this.ss_RowColumn.Location = new System.Drawing.Point(0, 498);
             this.ss_RowColumn.Name = "ss_RowColumn";
-            this.ss_RowColumn.Size = new System.Drawing.Size(1038, 22);
+            this.ss_RowColumn.Size = new System.Drawing.Size(1038, 26);
             this.ss_RowColumn.TabIndex = 180;
             this.ss_RowColumn.Text = "statusStrip1";
             // 
             // tssl_Row
             // 
             this.tssl_Row.Name = "tssl_Row";
-            this.tssl_Row.Size = new System.Drawing.Size(22, 17);
+            this.tssl_Row.Size = new System.Drawing.Size(27, 20);
             this.tssl_Row.Text = "---";
             // 
             // tssl_Column
             // 
             this.tssl_Column.Name = "tssl_Column";
-            this.tssl_Column.Size = new System.Drawing.Size(22, 17);
+            this.tssl_Column.Size = new System.Drawing.Size(27, 20);
             this.tssl_Column.Text = "---";
             // 
             // pd_DiaryNote
@@ -1326,7 +1326,7 @@
             // 
             // FrmDiaryNote
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1076, 684);
             this.Controls.Add(this.splitContainer1);
@@ -1336,6 +1336,7 @@
             this.ShowInTaskbar = false;
             this.Text = "یادداشت های روزانه";
             this.Load += new System.EventHandler(this.FrmDiaryNote_Load);
+            this.Shown += new System.EventHandler(this.FrmDiaryNote_Shown);
             this.Controls.SetChildIndex(this.pnl_TopData, 0);
             this.Controls.SetChildIndex(this.splitContainer1, 0);
             ((System.ComponentModel.ISupportInitialize)(this._errorProvider)).EndInit();

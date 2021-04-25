@@ -276,14 +276,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PersonalAccounting.UI.exe" size="1187840">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PersonalAccounting.UI.exe" size="1188352">
       <assemblyIdentity name="PersonalAccounting.UI" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>knaq/dczppAlVF1Qm4xzndKfcw/FembbR3VjT+lQMBo=</dsig:DigestValue>
+        <dsig:DigestValue>qOb+08oc5+4uYU5crDhggJimz22XlvE7ibvHn5YTnj8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
