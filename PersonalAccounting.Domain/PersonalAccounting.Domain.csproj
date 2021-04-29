@@ -110,6 +110,7 @@
     <Compile Include="ViewModel\ViewModelLoadAllBankAccount.cs" />
     <Compile Include="ViewModel\ViewModelLoadAllCommodity.cs" />
     <Compile Include="ViewModel\ViewModelLoadAllCommodityType.cs" />
+    <Compile Include="ViewModel\ViewModelLoadAllExpenseReport.cs" />
     <Compile Include="ViewModel\ViewModelLoadAllMentalCondition.cs" />
     <Compile Include="ViewModel\ViewModelLoadAllTransferMoney.cs" />
     <Compile Include="ViewModel\ViewModelPermissionsForFormEntityByUserRoles.cs" />

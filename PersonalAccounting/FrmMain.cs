@@ -203,6 +203,9 @@ namespace PersonalAccounting.UI
                 case prefix + "WeatherCondition" + postfix:
                     InitialHelper.ShowFormWithAccessLevel(this, FrmWeatherCondition.Instance());
                     break;
+                case prefix + "ExpenseReport" + postfix:
+                    InitialHelper.ShowFormWithAccessLevel(this, FrmExpenseReport.Instance());
+                    break;
                 case prefix + "About" + postfix:
                     var frmAbout = new FrmAbout();
                     frmAbout.ShowDialog();

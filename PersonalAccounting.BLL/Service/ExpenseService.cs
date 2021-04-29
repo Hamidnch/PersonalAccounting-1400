@@ -39,6 +39,80 @@ namespace PersonalAccounting.BLL.Service
                 .AsNoTracking().CountAsync();
         }
 
+        public IList<ViewModelLoadAllExpenseReport> LoadAllExpenses(
+            DateTime? startDateTime = null, DateTime? endDateTime = null, 
+            int? documentId = null, int? articleGroupId = null, int? articleId = null, 
+            int? byPersonId = null, int? forPersonId = null, int? fundId = null, string comment = null)
+        {
+            var expenseList = _expenses.AsNoTracking();
+
+            if (startDateTime != null)
+            {
+                expenseList = expenseList.Where(el => el.ExpenseDocument.RegisterDate == startDateTime);
+            }
+            if (endDateTime != null)
+            {
+                expenseList = expenseList.Where(el => el.ExpenseDocument.RegisterDate == endDateTime);
+            }
+            if (documentId != null)
+            {
+                expenseList = expenseList.Where(ex => ex.DocumentId == documentId);
+            }
+            if (articleGroupId != null)
+            {
+                expenseList = expenseList.Where(ex => ex.Article.GroupId == articleGroupId);
+            }
+            if (articleId != null)
+            {
+                expenseList = expenseList.Where(ex => ex.ArticleId == articleId);
+            }
+            if (byPersonId != null)
+            {
+                expenseList = expenseList.Where(ex => ex.ByPersonId == byPersonId);
+            }
+            if (forPersonId != null)
+            {
+                expenseList = expenseList.Where(ex => ex.ForPersonId == forPersonId);
+            }
+            if (fundId != null)
+            {
+                expenseList = expenseList.Where(ex => ex.FundId == fundId);
+            }
+            if (comment != null)
+            {
+                expenseList = expenseList.Where(ex => ex.Description == comment);
+            }
+
+            var myQuery = from expense in expenseList
+                select
+                    new ViewModelLoadAllExpenseReport()
+                    {
+                        ExpenseDate = expense.ExpenseDocument.RegisterDate,
+                        DocumentId = expense.DocumentId,
+                        ArticleGroupId = expense.Article.GroupId,
+                        ArticleGroupSubject = expense.Article.ArticleGroup.Name,
+                        ArticleId = expense.ArticleId,
+                        ArticleName = expense.Article.Name,
+                        FundId = expense.FundId,
+                        FundName = expense.Fund.Title,
+                        ByPersonId = expense.ByPersonId,
+                        ByPersonName = expense.ByPerson.FullName,
+                        ForPersonId = expense.ForPersonId,
+                        ForPersonName = expense.ForPerson.FullName,
+                        Fi = expense.Rate,
+                        Count = expense.Count,
+                        Price = expense.Price,
+                        MeasurementUnitId = expense.MeasurementUnitId,
+                        MeasurementUnitName = expense.MeasurementUnit.Name,
+                        CreatedBy = expense.CreatedBy,
+                        UpdateBy = expense.UpdateBy,
+                        CreatedOn = expense.CreatedOn,
+                        UpdateOn = expense.LastUpdate,
+                        Comment = expense.Description
+                    };
+            return myQuery.ToList();
+        }
+
         public async Task<IList<Expense>> GetExpensesByDocumentAsync(ExpenseDocument document)
         {
             return await _expenses.Where(ex => ex.DocumentId == document.Id).ToListAsync();

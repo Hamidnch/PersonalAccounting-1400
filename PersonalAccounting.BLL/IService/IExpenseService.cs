@@ -10,6 +10,9 @@ namespace PersonalAccounting.BLL.IService
     {
         Task<int> GetExpenseCountInDocumentAsync(ExpenseDocument document);
         Task<int> GetExpenseCountInDocumentAsync(int documentId);
+        IList<ViewModelLoadAllExpenseReport> LoadAllExpenses(DateTime? startDateTime = null, DateTime? endDateTime = null, 
+            int? documentId = null, int? articleGroupId = null, int? articleId = null,
+            int? byPersonId = null, int? forPersonId = null, int? fundId = null, string comment = null);
         Task<IList<Expense>> GetExpensesByDocumentAsync(ExpenseDocument document);
         Task<IList<Expense>> GetExpensesByDocumentIdAsync(int documentId);
         Task<IList<ViewModelLoadAllExpense>> LoadAllExpensesByDocumentAsync(ExpenseDocument document);

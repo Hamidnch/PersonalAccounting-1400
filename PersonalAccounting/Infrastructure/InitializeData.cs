@@ -205,6 +205,9 @@ namespace PersonalAccounting.UI.Infrastructure
                 case "FrmWeatherCondition":
                     formName = "شرایط آب و هوا";
                     break;
+                case "FrmExpenseReport":
+                    formName = "گزارش هزینه ها";
+                    break;
                 case "FrmBackup":
                     formName = "پشتیبان از دیتابیس";
                     break;
