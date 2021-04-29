@@ -1,4 +1,7 @@
-﻿namespace PersonalAccounting.UI
+﻿using System.Windows.Forms;
+using PersonalAccounting.UI.Helper;
+
+namespace PersonalAccounting.UI
 {
     partial class FrmDiaryNote
     {
@@ -100,8 +103,6 @@
             this.tsb_SearchHighlight = new System.Windows.Forms.ToolStripButton();
             this.txt_SearchHighlight = new System.Windows.Forms.ToolStripTextBox();
             this.lbl_MonthYear = new System.Windows.Forms.Label();
-            this.numberLabel = new System.Windows.Forms.Label();
-            this.rtb_Note = new System.Windows.Forms.RichTextBox();
             this.cms_DiaryNote = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsm_Cut = new System.Windows.Forms.ToolStripMenuItem();
             this.tsm_Copy = new System.Windows.Forms.ToolStripMenuItem();
@@ -130,12 +131,14 @@
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             this.tsm_ZoomIn = new System.Windows.Forms.ToolStripMenuItem();
             this.tsm_ZoomOut = new System.Windows.Forms.ToolStripMenuItem();
+            this.pd_DiaryNote = new System.Drawing.Printing.PrintDocument();
+            this.ppd_DiaryNote = new System.Windows.Forms.PrintPreviewDialog();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.numberLabel = new System.Windows.Forms.Label();
+            this.rtb_Note = new RichTextBox();
             this.ss_RowColumn = new System.Windows.Forms.StatusStrip();
             this.tssl_Row = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssl_Column = new System.Windows.Forms.ToolStripStatusLabel();
-            this.pd_DiaryNote = new System.Drawing.Printing.PrintDocument();
-            this.ppd_DiaryNote = new System.Windows.Forms.PrintPreviewDialog();
             ((System.ComponentModel.ISupportInitialize)(this._errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnl_TopData)).BeginInit();
             this.pnl_TopData.SuspendLayout();
@@ -960,54 +963,6 @@
             this.lbl_MonthYear.Text = "مهر 1387";
             this.lbl_MonthYear.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // numberLabel
-            // 
-            this.numberLabel.AutoSize = true;
-            this.numberLabel.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.numberLabel.Font = new System.Drawing.Font("Tornado Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.numberLabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.numberLabel.Location = new System.Drawing.Point(9, 4);
-            this.numberLabel.Name = "numberLabel";
-            this.numberLabel.Size = new System.Drawing.Size(15, 16);
-            this.numberLabel.TabIndex = 14;
-            this.numberLabel.Text = "1";
-            this.numberLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // rtb_Note
-            // 
-            this.rtb_Note.BackColor = System.Drawing.SystemColors.Window;
-            this.rtb_Note.ContextMenuStrip = this.cms_DiaryNote;
-            this.rtb_Note.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtb_Note.Font = new System.Drawing.Font("Tornado Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.rtb_Note.HideSelection = false;
-            this.rtb_Note.Location = new System.Drawing.Point(0, 0);
-            this.rtb_Note.Name = "rtb_Note";
-            this.rtb_Note.Size = new System.Drawing.Size(1038, 502);
-            this.rtb_Note.TabIndex = 0;
-            this.rtb_Note.Text = "";
-            this.rtb_Note.HScroll += new System.EventHandler(this.rtb_Note_Click);
-            this.rtb_Note.SelectionChanged += new System.EventHandler(this.Rtb_Note_SelectionChanged);
-            this.rtb_Note.VScroll += new System.EventHandler(this.rtb_Note_VScroll);
-            this.rtb_Note.Click += new System.EventHandler(this.rtb_Note_Click);
-            this.rtb_Note.CursorChanged += new System.EventHandler(this.rtb_Note_Click);
-            this.rtb_Note.EnabledChanged += new System.EventHandler(this.rtb_Note_Click);
-            this.rtb_Note.FontChanged += new System.EventHandler(this.rtb_Note_FontChanged);
-            this.rtb_Note.ForeColorChanged += new System.EventHandler(this.rtb_Note_Click);
-            this.rtb_Note.RightToLeftChanged += new System.EventHandler(this.rtb_Note_Click);
-            this.rtb_Note.SizeChanged += new System.EventHandler(this.rtb_Note_Click);
-            this.rtb_Note.TabIndexChanged += new System.EventHandler(this.rtb_Note_Click);
-            this.rtb_Note.TabStopChanged += new System.EventHandler(this.rtb_Note_Click);
-            this.rtb_Note.TextChanged += new System.EventHandler(this.rtb_Note_TextChanged);
-            this.rtb_Note.VisibleChanged += new System.EventHandler(this.rtb_Note_Click);
-            this.rtb_Note.DoubleClick += new System.EventHandler(this.rtb_Note_Click);
-            this.rtb_Note.Enter += new System.EventHandler(this.rtb_Note_Click);
-            this.rtb_Note.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Rtb_Note_KeyDown);
-            this.rtb_Note.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rtb_Note_KeyPress);
-            this.rtb_Note.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.rtb_Note_PreviewKeyDown);
-            this.rtb_Note.Resize += new System.EventHandler(this.rtb_Note_Resize);
-            this.rtb_Note.StyleChanged += new System.EventHandler(this.rtb_Note_Click);
-            this.rtb_Note.Validated += new System.EventHandler(this.rtb_Note_Click);
-            // 
             // cms_DiaryNote
             // 
             this.cms_DiaryNote.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -1262,6 +1217,20 @@
             this.tsm_ZoomOut.Size = new System.Drawing.Size(146, 26);
             this.tsm_ZoomOut.Text = "کاهش زوم";
             // 
+            // pd_DiaryNote
+            // 
+            this.pd_DiaryNote.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.Pd_DiaryNote_PrintPage);
+            // 
+            // ppd_DiaryNote
+            // 
+            this.ppd_DiaryNote.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.ppd_DiaryNote.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.ppd_DiaryNote.ClientSize = new System.Drawing.Size(400, 300);
+            this.ppd_DiaryNote.Enabled = true;
+            this.ppd_DiaryNote.Icon = ((System.Drawing.Icon)(resources.GetObject("ppd_DiaryNote.Icon")));
+            this.ppd_DiaryNote.Name = "ppd_DiaryNote";
+            this.ppd_DiaryNote.Visible = false;
+            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1288,6 +1257,54 @@
             this.splitContainer1.SplitterDistance = 34;
             this.splitContainer1.TabIndex = 15;
             // 
+            // numberLabel
+            // 
+            this.numberLabel.AutoSize = true;
+            this.numberLabel.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.numberLabel.Font = new System.Drawing.Font("Tornado Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.numberLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.numberLabel.Location = new System.Drawing.Point(9, 4);
+            this.numberLabel.Name = "numberLabel";
+            this.numberLabel.Size = new System.Drawing.Size(15, 16);
+            this.numberLabel.TabIndex = 14;
+            this.numberLabel.Text = "1";
+            this.numberLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // rtb_Note
+            // 
+            this.rtb_Note.BackColor = System.Drawing.SystemColors.Window;
+            this.rtb_Note.ContextMenuStrip = this.cms_DiaryNote;
+            this.rtb_Note.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtb_Note.Font = new System.Drawing.Font("Tornado Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.rtb_Note.HideSelection = false;
+            this.rtb_Note.Location = new System.Drawing.Point(0, 0);
+            this.rtb_Note.Name = "rtb_Note";
+            this.rtb_Note.Size = new System.Drawing.Size(1038, 502);
+            this.rtb_Note.TabIndex = 0;
+            this.rtb_Note.Text = "";
+            this.rtb_Note.HScroll += new System.EventHandler(this.rtb_Note_Click);
+            this.rtb_Note.SelectionChanged += new System.EventHandler(this.Rtb_Note_SelectionChanged);
+            this.rtb_Note.VScroll += new System.EventHandler(this.rtb_Note_VScroll);
+            this.rtb_Note.Click += new System.EventHandler(this.rtb_Note_Click);
+            this.rtb_Note.CursorChanged += new System.EventHandler(this.rtb_Note_Click);
+            this.rtb_Note.EnabledChanged += new System.EventHandler(this.rtb_Note_Click);
+            this.rtb_Note.FontChanged += new System.EventHandler(this.rtb_Note_FontChanged);
+            this.rtb_Note.ForeColorChanged += new System.EventHandler(this.rtb_Note_Click);
+            this.rtb_Note.RightToLeftChanged += new System.EventHandler(this.rtb_Note_Click);
+            this.rtb_Note.SizeChanged += new System.EventHandler(this.rtb_Note_Click);
+            this.rtb_Note.TabIndexChanged += new System.EventHandler(this.rtb_Note_Click);
+            this.rtb_Note.TabStopChanged += new System.EventHandler(this.rtb_Note_Click);
+            this.rtb_Note.TextChanged += new System.EventHandler(this.rtb_Note_TextChanged);
+            this.rtb_Note.VisibleChanged += new System.EventHandler(this.rtb_Note_Click);
+            this.rtb_Note.DoubleClick += new System.EventHandler(this.rtb_Note_Click);
+            this.rtb_Note.Enter += new System.EventHandler(this.rtb_Note_Click);
+            this.rtb_Note.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Rtb_Note_KeyDown);
+            this.rtb_Note.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rtb_Note_KeyPress);
+            this.rtb_Note.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.rtb_Note_PreviewKeyDown);
+            this.rtb_Note.Resize += new System.EventHandler(this.rtb_Note_Resize);
+            this.rtb_Note.StyleChanged += new System.EventHandler(this.rtb_Note_Click);
+            this.rtb_Note.Validated += new System.EventHandler(this.rtb_Note_Click);
+            // 
             // ss_RowColumn
             // 
             this.ss_RowColumn.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -1311,20 +1328,6 @@
             this.tssl_Column.Name = "tssl_Column";
             this.tssl_Column.Size = new System.Drawing.Size(22, 17);
             this.tssl_Column.Text = "---";
-            // 
-            // pd_DiaryNote
-            // 
-            this.pd_DiaryNote.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.Pd_DiaryNote_PrintPage);
-            // 
-            // ppd_DiaryNote
-            // 
-            this.ppd_DiaryNote.AutoScrollMargin = new System.Drawing.Size(0, 0);
-            this.ppd_DiaryNote.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-            this.ppd_DiaryNote.ClientSize = new System.Drawing.Size(400, 300);
-            this.ppd_DiaryNote.Enabled = true;
-            this.ppd_DiaryNote.Icon = ((System.Drawing.Icon)(resources.GetObject("ppd_DiaryNote.Icon")));
-            this.ppd_DiaryNote.Name = "ppd_DiaryNote";
-            this.ppd_DiaryNote.Visible = false;
             // 
             // FrmDiaryNote
             // 
@@ -1371,7 +1374,7 @@
         private Telerik.WinControls.UI.RadPanel pnl_TopData;
         private System.Windows.Forms.Label lbl_MonthYear;
         private System.Windows.Forms.Label numberLabel;
-        private System.Windows.Forms.RichTextBox rtb_Note;
+        private RichTextBox rtb_Note;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ContextMenuStrip cms_DiaryNote;
         private System.Windows.Forms.ToolStripMenuItem tsm_Cut;
@@ -1473,6 +1476,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbl_Users;
         private Telerik.WinControls.UI.RadDropDownList rddl_Users;
+
         //private Telerik.WinControls.UI.RadDateTimePicker radDateTimePicker1;
     }
 }

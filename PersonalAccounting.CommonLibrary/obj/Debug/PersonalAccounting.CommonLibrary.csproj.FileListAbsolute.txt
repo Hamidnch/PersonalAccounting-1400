@@ -34,7 +34,6 @@ G:\Programming New\Best Projects\Win Forms\My Projects\Personal Accounting\Perso
 G:\Programming New\Best Projects\Win Forms\My Projects\Personal Accounting\PersonalAccounting-Source\PersonalAccounting.CommonLibrary\bin\Debug\Janus.Data.v4.dll
 G:\Programming New\Best Projects\Win Forms\My Projects\Personal Accounting\PersonalAccounting-Source\PersonalAccounting.CommonLibrary\bin\Debug\TelerikCommon.dll
 G:\Programming New\Best Projects\Win Forms\My Projects\Personal Accounting\PersonalAccounting-Source\PersonalAccounting.CommonLibrary\bin\Debug\Janus.Windows.GridEX.v4.xml
-G:\Programming New\Best Projects\Win Forms\My Projects\Personal Accounting\PersonalAccounting-Source\PersonalAccounting.CommonLibrary\obj\Debug\PersonalAccounting.CommonLibrary.csprojAssemblyReference.cache
 G:\Programming New\Best Projects\Win Forms\My Projects\Personal Accounting\PersonalAccounting-Source\PersonalAccounting.CommonLibrary\obj\Debug\PersonalAccounting.CommonLibrary.Properties.Resources.resources
 G:\Programming New\Best Projects\Win Forms\My Projects\Personal Accounting\PersonalAccounting-Source\PersonalAccounting.CommonLibrary\obj\Debug\PersonalAccounting.CommonLibrary.csproj.GenerateResource.cache
 G:\Programming New\Best Projects\Win Forms\My Projects\Personal Accounting\PersonalAccounting-Source\PersonalAccounting.CommonLibrary\obj\Debug\PersonalAccounting.CommonLibrary.csproj.CoreCompileInputs.cache
@@ -42,3 +41,4 @@ G:\Programming New\Best Projects\Win Forms\My Projects\Personal Accounting\Perso
 G:\Programming New\Best Projects\Win Forms\My Projects\Personal Accounting\PersonalAccounting-Source\PersonalAccounting.CommonLibrary\obj\Debug\PersonalAccounting.CommonLibrary.dll
 G:\Programming New\Best Projects\Win Forms\My Projects\Personal Accounting\PersonalAccounting-Source\PersonalAccounting.CommonLibrary\obj\Debug\PersonalAccounting.CommonLibrary.pdb
 D:\Programming New\Best Projects\Win Forms\My Projects\Personal Accounting\PersonalAccounting-Source\PersonalAccounting.CommonLibrary\obj\Debug\PersonalAccounting.CommonLibrary.csprojAssemblyReference.cache
+G:\Programming New\Best Projects\Win Forms\My Projects\Personal Accounting\PersonalAccounting-Source\PersonalAccounting.CommonLibrary\obj\Debug\PersonalAccounting.CommonLibrary.csprojAssemblyReference.cache

@@ -68,6 +68,10 @@ namespace PersonalAccounting.UI
 
             InitializeComponent();
 
+            rtb_Note.AllowDrop = true;
+            rtb_Note.DragEnter += Rtb_Note_DragEnter;
+            rtb_Note.DragDrop += Rtb_Note_DragDrop;
+
             _pictureBox = CommonHelper.CreateIndicatorLoading(rtb_Note, new Size(500, 100),
                 new Point((rtb_Note.Width / 2) - 150, (rtb_Note.Height / 2) - 200),
                 CommonLibrary.Properties.Resources.LoadingNote, false,
@@ -101,6 +105,34 @@ namespace PersonalAccounting.UI
             _isModify = false;
         }
 
+        private void Rtb_Note_DragDrop(object sender, DragEventArgs e)
+        {
+            _isModify = true;
+            var arrayFileName = (Array)e.Data.GetData(DataFormats.FileDrop);
+
+            var strFileName = arrayFileName.GetValue(0).ToString();
+
+            var sr = new StreamReader(strFileName, System.Text.Encoding.Default);
+            rtb_Note.Text = sr.ReadToEnd();
+            sr.Close();
+        }
+
+        private void Rtb_Note_DragEnter(object sender, DragEventArgs e)
+        {
+            //if (e.Data.GetDataPresent(DataFormats.Text))
+            //{
+            //    e.Effect = DragDropEffects.Copy;
+            //}
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Link;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
         private void _pictureBox_Click(object sender, EventArgs e)
         {
             if (_backgroundWorker.WorkerSupportsCancellation)
@@ -129,12 +161,16 @@ namespace PersonalAccounting.UI
 
         private async void FrmDiaryNote_Load(object sender, EventArgs e)
         {
+            //rtb_Note.SelectionParagraphSpacingBefore = 150;
+            //rtb_Note.SelectionParagraphSpacingAfter = 150;
+
             var isAdmin = await InitialHelper.CurrentUser.IsAdmin();
 
             if (!isAdmin) return;
 
             rddl_Users.Visible = true;
             lbl_Users.Visible = true;
+
             //rddl_Users.SelectedItem = rddl_Users.FindItemExact(InitialHelper.CurrentUser.UserName, false);
             //await ReturnDiaryNoteByDate(_selectedDate);
         }
@@ -2124,6 +2160,7 @@ namespace PersonalAccounting.UI
             rddl_Users.SelectedItem = rddl_Users.FindItemExact(InitialHelper.CurrentUser.UserName, false);
             rddl_MentalConditions_SelectedValueChanged(sender, e);
         }
+
 
         #endregion
         //private void RadDateTimePicker1_ValueChanged(object sender, EventArgs e)

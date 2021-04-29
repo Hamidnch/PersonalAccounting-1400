@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Drawing.Printing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -13,6 +14,25 @@ namespace PersonalAccounting.CommonLibrary.Helper
             var pr = new PrintRichTextBox(control);
             pr.PrintRtf();
         }
+
+        /// <summary>
+        /// Set the RichTextBox control to set the line color according to the conditions
+        /// </summary>
+        /// <param name="rTxt">RichTextBox control</param>
+        /// <param name="bl">Conditions</param>
+        /// <param name="yes">condition true display color</param>
+        /// <param name="no">conditional false display color</param>
+        public static void SetRichTextBoxLineColor(this RichTextBox rTxt, bool bl, Color yes, Color no)
+        {
+            for (var i = 0; i < rTxt.Lines.Length; i++)
+            {
+                rTxt.Select(rTxt.GetFirstCharIndexFromLine(i), rTxt.Lines[i].Length);
+                rTxt.SelectionColor = bl ? yes : no;
+            }
+        }
+
+
+
     }
 
     public class PrintRichTextBox

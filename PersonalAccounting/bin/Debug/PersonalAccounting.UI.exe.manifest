@@ -235,7 +235,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>0+oDSFtoR4Mb2nhlUfOcv2ynG518UfLL6OJU+QyAGYw=</dsig:DigestValue>
+        <dsig:DigestValue>XbbBnca2abYx4nUzH/O6pLqAGpEs1lKzHlyD6ZjQbd8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -247,7 +247,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Q13+whNJ9IriFRHuM4OJJFofsiKtSvKBTu8abs5wcEM=</dsig:DigestValue>
+        <dsig:DigestValue>n6+C6wTMSgpPvRWwjwrczCyXxt50DR6h86jRFVa4fcs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -259,7 +259,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>4oRQjDnD5YC0YXYfPnQbIx+mJJe4H0KerLDQMtQV6Go=</dsig:DigestValue>
+        <dsig:DigestValue>JoJ/fju3nD/QvzJ3ikFLBM9ngSSL3sT5c2wpbjtR5oA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -271,19 +271,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>pr78hkFFyK/QTO120jcpgGBP1LEw7KOuS9D7QQwODCE=</dsig:DigestValue>
+        <dsig:DigestValue>y7IW5c7YpkGU9+DkYvlNCieudfqyqwsAkP7j1BNcjE0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PersonalAccounting.UI.exe" size="1176064">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PersonalAccounting.UI.exe" size="1177088">
       <assemblyIdentity name="PersonalAccounting.UI" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>HinmO4vznk9TFH2b2klPLZihYSAYzm6ncN2L5DhZyTI=</dsig:DigestValue>
+        <dsig:DigestValue>1U124Kbk/5xv8OuTRZnuzquhMm7givjnu67SDmNsf4I=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
