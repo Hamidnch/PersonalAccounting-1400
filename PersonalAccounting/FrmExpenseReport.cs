@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Drawing;
-using System.IO;
-using System.Windows.Forms;
-using PersonalAccounting.BLL.IService;
+﻿using PersonalAccounting.BLL.IService;
 using PersonalAccounting.CommonLibrary.Helper;
 using PersonalAccounting.UI.Infrastructure;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
+using System.Windows.Forms;
 using Telerik.WinControls;
 using Telerik.WinControls.Data;
 using Telerik.WinControls.UI;
-using Telerik.WinControls.UI.Export;
 
 namespace PersonalAccounting.UI
 {
@@ -34,57 +31,6 @@ namespace PersonalAccounting.UI
 
             BindGrid();
         }
-
-        private void RunExportToExcelML(string fileName, ref bool openExportFile)
-        {
-            var excelExporter = new ExportToExcelML(this.rgv_Expenses);
-
-            //switch (this.radComboBoxSummaries.SelectedIndex)
-            //{
-            //    case 0:
-            //        excelExporter.SummariesExportOption = SummariesOption.ExportAll;
-            //        break;
-            //    case 1:
-            //        excelExporter.SummariesExportOption = SummariesOption.ExportOnlyTop;
-            //        break;
-            //    case 2:
-            //        excelExporter.SummariesExportOption = SummariesOption.ExportOnlyBottom;
-            //        break;
-            //    case 3:
-            //        excelExporter.SummariesExportOption = SummariesOption.DoNotExport;
-            //        break;
-            //}
-
-            //set export settings 
-            excelExporter.ExportVisualSettings = true;
-            excelExporter.ExportHierarchy = false;
-            excelExporter.HiddenColumnOption = HiddenOption.ExportAsHidden;
-
-            try
-            {
-                this.Cursor = Cursors.WaitCursor;
-
-                excelExporter.RunExport(fileName);
-
-                RadMessageBox.SetThemeName(this.rgv_Expenses.ThemeName);
-                var dr = RadMessageBox.Show("The data in the grid was exported successfully. Do you want to open the file?",
-                    "Export to Excel", MessageBoxButtons.YesNo, RadMessageIcon.Question);
-                if (dr == DialogResult.Yes)
-                {
-                    openExportFile = true;
-                }
-            }
-            catch (IOException ex)
-            {
-                RadMessageBox.SetThemeName(this.rgv_Expenses.ThemeName);
-                RadMessageBox.Show(this, ex.Message, "I/O Error", MessageBoxButtons.OK, RadMessageIcon.Error);
-            }
-            finally
-            {
-                this.Cursor = Cursors.Default;
-            }
-        }
-
         private void BindGrid()
         {
             //int? currentUserId = null;
@@ -99,7 +45,7 @@ namespace PersonalAccounting.UI
 
             //rgv_Expenses.MasterView.SummaryRows[0].PinPosition = PinnedRowPosition.Bottom;
             //rgv_Expenses.MasterTemplate.BottomPinnedRowsMode = GridViewBottomPinnedRowsMode.Fixed;
-            
+
             rgv_Expenses.MasterTemplate.ShowTotals = true;
             rgv_Expenses.MasterTemplate.ShowSubTotals = true;
             rgv_Expenses.MasterTemplate.ShowParentGroupSummaries = true;
@@ -180,22 +126,19 @@ namespace PersonalAccounting.UI
 
         private void btn_Print_Click(object sender, EventArgs e)
         {
-            if (saveFileDialog1.ShowDialog() != DialogResult.OK)
-            {
-                return;
-            }
+            if (saveFileDialog1.ShowDialog() != DialogResult.OK) return;
 
             if (saveFileDialog1.FileName.Equals(string.Empty))
             {
                 RadMessageBox.SetThemeName(this.rgv_Expenses.ThemeName);
-                RadMessageBox.Show("Please enter a file name.");
+                RadMessageBox.Show("لطفا نام فایل را وارد نمایید");
                 return;
             }
 
-            var fileName = this.saveFileDialog1.FileName;
+            var fileName = saveFileDialog1.FileName;
             var openExportFile = false;
 
-            RunExportToExcelML(fileName, ref openExportFile);
+            rgv_Expenses.ExportToExcel(fileName, ref openExportFile, this);
 
             if (!openExportFile) return;
 
@@ -208,23 +151,6 @@ namespace PersonalAccounting.UI
                 var message = $"The file cannot be opened on your system.\nError message: {ex.Message}";
                 RadMessageBox.Show(message, "Open File", MessageBoxButtons.OK, RadMessageIcon.Error);
             }
-
-
-            //Telerik.WinControls.Export.GridViewPdfExport pdfExporter = new Telerik.WinControls.Export.GridViewPdfExport(this.rgv_Expenses);
-            //pdfExporter.FileExtension = "pdf";
-            //pdfExporter.SummariesExportOption = Telerik.WinControls.UI.Export.SummariesOption.ExportAll;
-            //string fileName = @"..\..\export" + DateTime.Now.ToLongTimeString().Replace(":", "_") + ".pdf";
-
-            //foreach (var row in this.rgv_Expenses.Rows)
-            //{
-            //    if (row is GridViewDataRowInfo)
-            //    {
-            //        row.IsVisible = false;
-            //    }
-            //}
-            //pdfExporter.HiddenRowOption = Telerik.WinControls.UI.Export.HiddenOption.DoNotExport;
-            //pdfExporter.RunExport(fileName, new Telerik.WinControls.Export.PdfExportRenderer());
-            //Process.Start(fileName);
         }
 
         //private void rgv_Expenses_GroupSummaryEvaluate(object sender, GroupSummaryEvaluationEventArgs e)

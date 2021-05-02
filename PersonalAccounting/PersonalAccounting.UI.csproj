@@ -359,6 +359,7 @@
     <Compile Include="FrmUser.Designer.cs">
       <DependentUpon>FrmUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\ExcelHelper.cs" />
     <Compile Include="Helper\InitialHelper.cs" />
     <Compile Include="FrmIncomeType.cs">
       <SubType>Form</SubType>
