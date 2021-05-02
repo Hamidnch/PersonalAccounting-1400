@@ -44,6 +44,10 @@ namespace PersonalAccounting.UI
             //BindToCombo(ddl_FundTitles, await _fundService.LoadAllViewModelAsync(),
             //    "FundTitle", "FundId");
 
+            //this.rgv_Income.Columns["IncomePrice"].FormatString = "{0:n0}";
+            //this.rgv_Income.Columns["FundCurrentValue"].FormatString = "{0:n0}";
+            //this.rgv_Income.Columns["FundOldValue"].FormatString = "{0:n0}";
+
             BindGrid();
             FillDropdownList(rddl_IncomeTypes);
             FillDropdownList(rddl_Funds);
@@ -151,7 +155,8 @@ namespace PersonalAccounting.UI
                 //_incomePrice = double.Parse(dataRow.Cells["IncomePrice"].Value.ToString());
                 txt_ReceivedBy.Text = dataRow.Cells["ReceivedBy"].Value?.ToString();
                 txt_IncomeDate.Text = dataRow.Cells["IncomePersianDate"].Value?.ToString();
-                txt_IncomePrice.Text = dataRow.Cells["IncomeSeparateDigitPrice"].Value?.ToString();
+                //txt_IncomePrice.Text = dataRow.Cells["IncomeSeparateDigitPrice"].Value?.ToString();
+                txt_IncomePrice.Text = dataRow.Cells["IncomePrice"].Value?.ToString();
                 txt_IncomeDescription.Text = dataRow.Cells["Description"].Value?.ToString();
 
                 rddl_IncomeTypes.SelectedValue = dataRow.Cells["IncomeTypeId"].Value;

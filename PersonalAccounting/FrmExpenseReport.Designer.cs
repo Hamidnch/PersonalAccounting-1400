@@ -52,13 +52,16 @@ namespace PersonalAccounting.UI
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn20 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn21 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn22 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn23 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn24 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.rgv_Expenses = new Telerik.WinControls.UI.RadGridView();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.pnl_Data = new System.Windows.Forms.Panel();
+            this.btn_ExportToExcel = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this._errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgv_Expenses)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgv_Expenses.MasterTemplate)).BeginInit();
+            this.pnl_Data.SuspendLayout();
             this.SuspendLayout();
             // 
             // rgv_Expenses
@@ -67,13 +70,13 @@ namespace PersonalAccounting.UI
             this.rgv_Expenses.BackColor = System.Drawing.SystemColors.Control;
             this.rgv_Expenses.Cursor = System.Windows.Forms.Cursors.Default;
             this.rgv_Expenses.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rgv_Expenses.EnableHotTracking = false;
+            this.rgv_Expenses.EnableCustomGrouping = true;
             this.rgv_Expenses.EnterKeyMode = Telerik.WinControls.UI.RadGridViewEnterKeyMode.EnterMovesToNextRow;
             this.rgv_Expenses.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.rgv_Expenses.ForeColor = System.Drawing.SystemColors.ControlText;
             this.rgv_Expenses.GroupExpandAnimationType = Telerik.WinControls.UI.GridExpandAnimationType.Slide;
             this.rgv_Expenses.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.rgv_Expenses.Location = new System.Drawing.Point(0, 27);
+            this.rgv_Expenses.Location = new System.Drawing.Point(0, 65);
             this.rgv_Expenses.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             // 
             // 
@@ -85,26 +88,27 @@ namespace PersonalAccounting.UI
             this.rgv_Expenses.MasterTemplate.AllowRowResize = false;
             this.rgv_Expenses.MasterTemplate.AutoExpandGroups = true;
             this.rgv_Expenses.MasterTemplate.AutoGenerateColumns = false;
-            gridViewTextBoxColumn1.FieldName = "ExpenseDate";
-            gridViewTextBoxColumn1.HeaderText = "تاریخ هزینه";
-            gridViewTextBoxColumn1.Name = "ExpenseDate";
+            gridViewTextBoxColumn1.FieldName = "DocumentId";
+            gridViewTextBoxColumn1.HeaderText = "کد سند";
+            gridViewTextBoxColumn1.Name = "DocumentId";
             gridViewTextBoxColumn1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn1.Width = 150;
-            gridViewTextBoxColumn2.FieldName = "DocumentId";
-            gridViewTextBoxColumn2.HeaderText = "کد سند";
-            gridViewTextBoxColumn2.Name = "DocumentId";
+            gridViewTextBoxColumn1.Width = 70;
+            gridViewTextBoxColumn2.FieldName = "ExpensePersianDate";
+            gridViewTextBoxColumn2.HeaderText = "تاریخ هزینه";
+            gridViewTextBoxColumn2.Name = "ExpensePersianDate";
             gridViewTextBoxColumn2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn2.Width = 90;
+            gridViewTextBoxColumn2.Width = 180;
             gridViewTextBoxColumn3.FieldName = "ArticleGroupId";
             gridViewTextBoxColumn3.HeaderText = "کد دسته کالا";
             gridViewTextBoxColumn3.IsVisible = false;
             gridViewTextBoxColumn3.Name = "ArticleGroupId";
             gridViewTextBoxColumn3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn3.Width = 20;
             gridViewTextBoxColumn4.FieldName = "ArticleGroupSubject";
             gridViewTextBoxColumn4.HeaderText = "دسته کالا";
             gridViewTextBoxColumn4.Name = "ArticleGroupSubject";
             gridViewTextBoxColumn4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn4.Width = 150;
+            gridViewTextBoxColumn4.Width = 180;
             gridViewTextBoxColumn5.FieldName = "ArticleId";
             gridViewTextBoxColumn5.HeaderText = "کد کالا";
             gridViewTextBoxColumn5.IsVisible = false;
@@ -114,102 +118,93 @@ namespace PersonalAccounting.UI
             gridViewTextBoxColumn6.HeaderText = "عنوان کالا";
             gridViewTextBoxColumn6.Name = "ArticleName";
             gridViewTextBoxColumn6.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn6.Width = 150;
-            gridViewTextBoxColumn7.FieldName = "FundId";
-            gridViewTextBoxColumn7.HeaderText = "کد صندوق";
+            gridViewTextBoxColumn6.Width = 180;
+            gridViewTextBoxColumn7.FieldName = "ByPerson";
+            gridViewTextBoxColumn7.HeaderText = "کد شخص هزینه کننده";
             gridViewTextBoxColumn7.IsVisible = false;
-            gridViewTextBoxColumn7.Name = "FundId";
+            gridViewTextBoxColumn7.Name = "ByPersonId";
             gridViewTextBoxColumn7.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn7.Width = 90;
-            gridViewTextBoxColumn8.FieldName = "FundName";
-            gridViewTextBoxColumn8.HeaderText = "نام صندوق";
-            gridViewTextBoxColumn8.Name = "FundName";
+            gridViewTextBoxColumn7.Width = 20;
+            gridViewTextBoxColumn8.FieldName = "ByPersonName";
+            gridViewTextBoxColumn8.HeaderText = "هزینه کننده";
+            gridViewTextBoxColumn8.Name = "ByPersonName";
             gridViewTextBoxColumn8.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             gridViewTextBoxColumn8.Width = 150;
-            gridViewTextBoxColumn9.FieldName = "ByPerson";
-            gridViewTextBoxColumn9.HeaderText = "کد شخص هزینه کننده";
+            gridViewTextBoxColumn9.FieldName = "ForPersonId";
+            gridViewTextBoxColumn9.HeaderText = "کد هزینه شده برای";
             gridViewTextBoxColumn9.IsVisible = false;
-            gridViewTextBoxColumn9.Name = "ByPersonId";
+            gridViewTextBoxColumn9.Name = "ForPersonId";
             gridViewTextBoxColumn9.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn9.Width = 90;
-            gridViewTextBoxColumn10.FieldName = "ByPersonName";
-            gridViewTextBoxColumn10.HeaderText = "نام شخص هزینه کننده";
-            gridViewTextBoxColumn10.Name = "ByPersonName";
+            gridViewTextBoxColumn9.Width = 20;
+            gridViewTextBoxColumn10.FieldName = "ForPersonName";
+            gridViewTextBoxColumn10.HeaderText = "هزینه شده برای";
+            gridViewTextBoxColumn10.Name = "ForPersonName";
             gridViewTextBoxColumn10.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             gridViewTextBoxColumn10.Width = 150;
-            gridViewTextBoxColumn11.FieldName = "ForPersonId";
-            gridViewTextBoxColumn11.HeaderText = "کد هزینه شده برای";
+            gridViewTextBoxColumn11.FieldName = "FundId";
+            gridViewTextBoxColumn11.HeaderText = "کد صندوق";
             gridViewTextBoxColumn11.IsVisible = false;
-            gridViewTextBoxColumn11.Name = "ForPersonId";
+            gridViewTextBoxColumn11.Name = "FundId";
             gridViewTextBoxColumn11.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             gridViewTextBoxColumn11.Width = 90;
-            gridViewTextBoxColumn12.FieldName = "ForPersonName";
-            gridViewTextBoxColumn12.HeaderText = "هزینه شده برای";
-            gridViewTextBoxColumn12.Name = "ForPersonName";
+            gridViewTextBoxColumn12.FieldName = "FundName";
+            gridViewTextBoxColumn12.HeaderText = "هزینه شده از صندوق";
+            gridViewTextBoxColumn12.Name = "FundName";
             gridViewTextBoxColumn12.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             gridViewTextBoxColumn12.Width = 150;
             gridViewTextBoxColumn13.FieldName = "Fi";
+            gridViewTextBoxColumn13.FormatString = "{0:n0}";
             gridViewTextBoxColumn13.HeaderText = "فی";
             gridViewTextBoxColumn13.Name = "Fi";
             gridViewTextBoxColumn13.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn13.Width = 150;
+            gridViewTextBoxColumn13.Width = 200;
             gridViewTextBoxColumn14.FieldName = "Count";
             gridViewTextBoxColumn14.HeaderText = "تعداد";
             gridViewTextBoxColumn14.Name = "Count";
             gridViewTextBoxColumn14.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn14.Width = 120;
+            gridViewTextBoxColumn14.Width = 90;
             gridViewTextBoxColumn15.FieldName = "Price";
+            gridViewTextBoxColumn15.FormatString = "{0:n0}";
             gridViewTextBoxColumn15.HeaderText = "قیمت";
-            gridViewTextBoxColumn15.IsVisible = false;
             gridViewTextBoxColumn15.Name = "Price";
             gridViewTextBoxColumn15.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn16.FieldName = "PriceString";
-            gridViewTextBoxColumn16.HeaderText = "قیمت";
-            gridViewTextBoxColumn16.Name = "PriceString";
+            gridViewTextBoxColumn15.Width = 200;
+            gridViewTextBoxColumn16.FieldName = "MeasurementUnitId";
+            gridViewTextBoxColumn16.HeaderText = "کد واحد سنجش";
+            gridViewTextBoxColumn16.IsVisible = false;
+            gridViewTextBoxColumn16.Name = "MeasurementUnitId";
             gridViewTextBoxColumn16.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn16.Width = 150;
-            gridViewTextBoxColumn17.FieldName = "MeasurementUnitId";
-            gridViewTextBoxColumn17.HeaderText = "کد واحد سنجش";
-            gridViewTextBoxColumn17.IsVisible = false;
-            gridViewTextBoxColumn17.Name = "MeasurementUnitId";
+            gridViewTextBoxColumn16.Width = 90;
+            gridViewTextBoxColumn17.FieldName = "MeasurementUnitName";
+            gridViewTextBoxColumn17.HeaderText = "واحد سنجش";
+            gridViewTextBoxColumn17.Name = "MeasurementUnitName";
             gridViewTextBoxColumn17.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn17.Width = 90;
-            gridViewTextBoxColumn18.FieldName = "MeasurementUnitName";
-            gridViewTextBoxColumn18.HeaderText = "واحد سنجش";
-            gridViewTextBoxColumn18.Name = "MeasurementUnitName";
+            gridViewTextBoxColumn17.Width = 150;
+            gridViewTextBoxColumn18.FieldName = "ExpenseCreatedOnPersian";
+            gridViewTextBoxColumn18.HeaderText = "تاریخ ایجاد";
+            gridViewTextBoxColumn18.Name = "ExpenseCreatedOnPersian";
             gridViewTextBoxColumn18.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             gridViewTextBoxColumn18.Width = 150;
-            gridViewTextBoxColumn19.FieldName = "CreatedBy";
+            gridViewTextBoxColumn19.FieldName = "CreationUserName";
             gridViewTextBoxColumn19.HeaderText = "کاربر ثبت کننده";
-            gridViewTextBoxColumn19.Name = "CreatedBy";
+            gridViewTextBoxColumn19.Name = "CreationUserName";
             gridViewTextBoxColumn19.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             gridViewTextBoxColumn19.Width = 150;
-            gridViewTextBoxColumn20.FieldName = "UpdateBy";
-            gridViewTextBoxColumn20.HeaderText = "کاربر ویرایش کننده";
-            gridViewTextBoxColumn20.Name = "UpdateBy";
+            gridViewTextBoxColumn20.FieldName = "UpdateOnPersian";
+            gridViewTextBoxColumn20.HeaderText = "تاریخ آخرین ویرایش";
+            gridViewTextBoxColumn20.Name = "UpdateOnPersian";
             gridViewTextBoxColumn20.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             gridViewTextBoxColumn20.Width = 150;
-            gridViewTextBoxColumn21.FieldName = "CreatedOn";
-            gridViewTextBoxColumn21.HeaderText = "تاریخ ایجاد";
-            gridViewTextBoxColumn21.IsVisible = false;
-            gridViewTextBoxColumn21.Name = "CreatedOn";
+            gridViewTextBoxColumn21.FieldName = "UpdateUserName";
+            gridViewTextBoxColumn21.HeaderText = "کاربر ویرایش کننده";
+            gridViewTextBoxColumn21.Name = "UpdateUserName";
             gridViewTextBoxColumn21.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn21.Width = 90;
-            gridViewTextBoxColumn22.FieldName = "CreatedOnPersian";
-            gridViewTextBoxColumn22.HeaderText = "تاریخ ایجاد";
-            gridViewTextBoxColumn22.Name = "CreatedOnPersian";
+            gridViewTextBoxColumn21.Width = 150;
+            gridViewTextBoxColumn22.FieldName = "Comment";
+            gridViewTextBoxColumn22.HeaderText = "توضیحات";
+            gridViewTextBoxColumn22.Name = "Comment";
             gridViewTextBoxColumn22.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn22.Width = 150;
-            gridViewTextBoxColumn23.FieldName = "UpdateOnPersian";
-            gridViewTextBoxColumn23.HeaderText = "تاریخ آخرین ویرایش";
-            gridViewTextBoxColumn23.Name = "UpdateOnPersian";
-            gridViewTextBoxColumn23.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn23.Width = 150;
-            gridViewTextBoxColumn24.FieldName = "Comment";
-            gridViewTextBoxColumn24.HeaderText = "توضیحات";
-            gridViewTextBoxColumn24.Name = "Comment";
-            gridViewTextBoxColumn24.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn24.Width = 200;
+            gridViewTextBoxColumn22.Width = 200;
             this.rgv_Expenses.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
@@ -232,10 +227,9 @@ namespace PersonalAccounting.UI
             gridViewTextBoxColumn19,
             gridViewTextBoxColumn20,
             gridViewTextBoxColumn21,
-            gridViewTextBoxColumn22,
-            gridViewTextBoxColumn23,
-            gridViewTextBoxColumn24});
+            gridViewTextBoxColumn22});
             this.rgv_Expenses.MasterTemplate.EnableAlternatingRowColor = true;
+            this.rgv_Expenses.MasterTemplate.EnableCustomGrouping = true;
             this.rgv_Expenses.MasterTemplate.EnableFiltering = true;
             this.rgv_Expenses.MasterTemplate.ReadOnly = true;
             this.rgv_Expenses.MasterTemplate.ShowGroupedColumns = true;
@@ -243,25 +237,71 @@ namespace PersonalAccounting.UI
             this.rgv_Expenses.Name = "rgv_Expenses";
             this.rgv_Expenses.ReadOnly = true;
             this.rgv_Expenses.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.rgv_Expenses.Size = new System.Drawing.Size(969, 538);
+            this.rgv_Expenses.Size = new System.Drawing.Size(969, 525);
             this.rgv_Expenses.TabIndex = 3;
+            this.rgv_Expenses.CreateCell += new Telerik.WinControls.UI.GridViewCreateCellEventHandler(this.rgv_Expenses_CreateCell);
+            this.rgv_Expenses.ViewCellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.rgv_Expenses_ViewCellFormatting);
+            this.rgv_Expenses.GroupSummaryEvaluate += new Telerik.WinControls.UI.GroupSummaryEvaluateEventHandler(this.rgv_Expenses_GroupSummaryEvaluate);
+            this.rgv_Expenses.GroupByChanged += new Telerik.WinControls.UI.GridViewCollectionChangedEventHandler(this.rgv_Expenses_GroupByChanged);
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnClose.Location = new System.Drawing.Point(3, 3);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(76, 29);
+            this.btnClose.TabIndex = 6;
+            this.btnClose.Text = "بستن";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // pnl_Data
+            // 
+            this.pnl_Data.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.pnl_Data.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnl_Data.Controls.Add(this.btn_ExportToExcel);
+            this.pnl_Data.Controls.Add(this.btnClose);
+            this.pnl_Data.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnl_Data.Location = new System.Drawing.Point(0, 27);
+            this.pnl_Data.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pnl_Data.Name = "pnl_Data";
+            this.pnl_Data.Size = new System.Drawing.Size(969, 38);
+            this.pnl_Data.TabIndex = 8;
+            // 
+            // btn_ExportToExcel
+            // 
+            this.btn_ExportToExcel.BackColor = System.Drawing.Color.Transparent;
+            this.btn_ExportToExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_ExportToExcel.Location = new System.Drawing.Point(99, 3);
+            this.btn_ExportToExcel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_ExportToExcel.Name = "btn_ExportToExcel";
+            this.btn_ExportToExcel.Size = new System.Drawing.Size(129, 29);
+            this.btn_ExportToExcel.TabIndex = 6;
+            this.btn_ExportToExcel.Text = "ارسال به اکسل";
+            this.btn_ExportToExcel.UseVisualStyleBackColor = false;
+            this.btn_ExportToExcel.Click += new System.EventHandler(this.btn_Print_Click);
             // 
             // FrmExpenseReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(969, 565);
+            this.ClientSize = new System.Drawing.Size(969, 590);
             this.ControlBox = false;
             this.Controls.Add(this.rgv_Expenses);
+            this.Controls.Add(this.pnl_Data);
             this.Font = new System.Drawing.Font("Tornado Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmExpenseReport";
             this.ShowInTaskbar = false;
             this.Text = "گزارش هزینه ها";
+            this.Controls.SetChildIndex(this.pnl_Data, 0);
             this.Controls.SetChildIndex(this.rgv_Expenses, 0);
             ((System.ComponentModel.ISupportInitialize)(this._errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgv_Expenses.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgv_Expenses)).EndInit();
+            this.pnl_Data.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -270,5 +310,9 @@ namespace PersonalAccounting.UI
 
          
         private Telerik.WinControls.UI.RadGridView rgv_Expenses;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Panel pnl_Data;
+        private System.Windows.Forms.Button btn_ExportToExcel;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

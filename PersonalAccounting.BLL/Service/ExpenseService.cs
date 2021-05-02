@@ -105,7 +105,9 @@ namespace PersonalAccounting.BLL.Service
                         MeasurementUnitId = expense.MeasurementUnitId,
                         MeasurementUnitName = expense.MeasurementUnit.Name,
                         CreatedBy = expense.CreatedBy,
+                        CreationUserName = expense.SelfUser.UserName,
                         UpdateBy = expense.UpdateBy,
+                        UpdateUserName = expense.UpdateUser.UserName,
                         CreatedOn = expense.CreatedOn,
                         UpdateOn = expense.LastUpdate,
                         Comment = expense.Description

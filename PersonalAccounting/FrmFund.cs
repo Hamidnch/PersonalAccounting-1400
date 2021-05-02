@@ -110,7 +110,7 @@ namespace PersonalAccounting.UI
                 _fundId = int.Parse(dataRow.Cells["FundId"].Value.ToString());
 
                 //rddl_FundType.SelectedValue = dataRow.Cells["FundTypeName"].Value?.ToString();
-                txt_FundCurrentValue.Text = dataRow.Cells["FundCurrentValueSeparateDigit"].Value?.ToString();
+                txt_FundCurrentValue.Text = dataRow.Cells["FundCurrentValue"].Value?.ToString().AddSeparateEx();
                 rddl_FundStatus.Text = dataRow.Cells["FundStatus"].Value?.ToString();
                 txt_FundDescription.Text = dataRow.Cells["FundDescription"].Value?.ToString();
 

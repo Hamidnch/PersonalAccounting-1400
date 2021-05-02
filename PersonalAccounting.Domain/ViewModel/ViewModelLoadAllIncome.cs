@@ -27,10 +27,10 @@ namespace PersonalAccounting.Domain.ViewModel
         //public int? BankAccountId { get; set; }
 
         public double FundOldValue { get; set; }
-        public string FundOldValueSeparateDigit => Convert.ToString(FundOldValue, CultureInfo.InvariantCulture).AddSeparateEx();
+        //public string FundOldValueSeparateDigit => Convert.ToString(FundOldValue, CultureInfo.InvariantCulture).AddSeparateEx();
 
         public double FundCurrentValue { get; set; }
-        public string FundCurrentValueSeparateDigit => Convert.ToString(FundCurrentValue, CultureInfo.InvariantCulture).AddSeparateEx();
+        //public string FundCurrentValueSeparateDigit => Convert.ToString(FundCurrentValue, CultureInfo.InvariantCulture).AddSeparateEx();
 
         /// <summary>
         /// تاریخ درآمد
@@ -43,7 +43,7 @@ namespace PersonalAccounting.Domain.ViewModel
         /// </summary>
         public double IncomePrice { get; set; }
 
-        public string IncomeSeparateDigitPrice => Convert.ToString(IncomePrice, CultureInfo.InvariantCulture).AddSeparateEx();
+        //public string IncomeSeparateDigitPrice => Convert.ToString(IncomePrice, CultureInfo.InvariantCulture).AddSeparateEx();
 
         /// <summary>
         /// کاربر ثبت کننده رکورد

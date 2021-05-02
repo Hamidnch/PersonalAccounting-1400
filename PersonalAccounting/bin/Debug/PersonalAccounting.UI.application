@@ -7,14 +7,14 @@
     <framework targetVersion="4.8" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="PersonalAccounting.UI.exe.manifest" size="27313">
+    <dependentAssembly dependencyType="install" codebase="PersonalAccounting.UI.exe.manifest" size="37107">
       <assemblyIdentity name="PersonalAccounting.UI.exe" version="1.0.0.10" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>caL0Zv3cWLQXUis+05bBmR0d97dSn5H4vPHmdrUuQ0A=</dsig:DigestValue>
+        <dsig:DigestValue>Mb+PhQRImHIn0g18DkvK0x5zi0PWXHilsv+LMRO0UBA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

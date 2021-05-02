@@ -149,9 +149,9 @@ namespace PersonalAccounting.UI
             {
                 if (_currentSelected != CurrentSelected.Fund) return;
 
-                if (e.RowElement.RowInfo.Cells["FundCurrentValueSeparateDigit"] == null) return;
+                if (e.RowElement.RowInfo.Cells["FundCurrentValue"] == null) return;
 
-                if (e.RowElement.RowInfo.Cells["FundCurrentValueSeparateDigit"].Value.ToString().ClearSeparateEx() < Value)
+                if (decimal.Parse(e.RowElement.RowInfo.Cells["FundCurrentValue"].Value.ToString()) < Value)
                 {
                     e.RowElement.Enabled = false;
                     e.RowElement.BackColor = Color.Gray;
@@ -227,7 +227,7 @@ namespace PersonalAccounting.UI
                             //SendKeys.Send("{left}");
                             break;
                         case CurrentSelected.Fund:
-                            if (currentRow.Cells["FundCurrentValueSeparateDigit"].Value.ToString().ClearSeparateEx() > Value)
+                            if (decimal.Parse(currentRow.Cells["FundCurrentValue"].Value.ToString()) > Value) //.ToString().ClearSeparateEx()
                             {
                                 rgv_BuyList.BeginUpdate();
                                 rgv_BuyList.CurrentRow.Cells[4].Value = _rgv.CurrentRow.Cells[0].Value.ToString();
@@ -350,7 +350,7 @@ namespace PersonalAccounting.UI
                         _ds = await _articleService.LoadAllViewModelAsync();
                         break;
                     case CurrentSelected.Fund:
-                        _fileNames.AddRange(new[] { "FundId", "FundTypeName", "FundTitle", "FundCurrentValueSeparateDigit" });
+                        _fileNames.AddRange(new[] { "FundId", "FundTypeName", "FundTitle", "FundCurrentValue" });
                         _headerTexts.AddRange(new[] { "شناسه صندوق", "نوع صندوق", "عنوان صندوق", "مانده جاری" });
                         _columnWidths.AddRange(new[] { 84, 100, 157, 136 });
                         _visibleFields.AddRange(new[] { false, true, true, true });
@@ -433,6 +433,12 @@ namespace PersonalAccounting.UI
                     ((rgv_BuyList.Height / 2) - (_pnlFloating.Width / 5)));
                 _pnlFloating.Visible = true;
                 _rgv.DataSource = _ds;
+
+                if (_currentSelected == CurrentSelected.Fund)
+                {
+                    _rgv.Columns["FundCurrentValue"].FormatString = "{0:n0}";
+                }
+
                 _pnlFloating.BringToFront();
                 _rgv.Focus();
                 if (_mode != CommonHelper.Mode.Cancel)
@@ -835,7 +841,8 @@ namespace PersonalAccounting.UI
                 var price = fi * count;
                 e.Row.Cells["Price"].Value = $"{price:N0}";
 
-                lbl_SumPrice.Text = "هزینه کل: " + GetSumPrice().Result.ToString("N0") + " ریال";
+                var sumPrice = await GetSumPrice();
+                lbl_SumPrice.Text = "هزینه کل: " + sumPrice.ToString("N0") + DefaultConstants.MoneyUnit;
             }
             catch (Exception exception)
             {
@@ -1225,11 +1232,11 @@ namespace PersonalAccounting.UI
 
             if (fundCurrentValueCellValue == null) return;
 
-            fundCurrentValue = fundCurrentValueCellValue.ToString().ClearSeparateEx();
+            fundCurrentValue = decimal.Parse(fundCurrentValueCellValue.ToString()); //.ClearSeparateEx();
 
-            if (priceCellValue != null) return;
+            if (priceCellValue == null) return;
 
-            price = priceCellValue.ToString().ClearSeparateEx();
+            price = decimal.Parse(priceCellValue.ToString()); //.ClearSeparateEx();
 
             if (price != 0 && fundCurrentValue != 0 && price > fundCurrentValue) //&& _mode != CommonHelper.Mode.Update)
             {
@@ -1290,7 +1297,7 @@ namespace PersonalAccounting.UI
                 {
                     if (row.Cells["Price"].Value == null) continue;
                     var sum = sumPrice;
-                    var currentPrice = row.Cells["Price"].Value.ToString().ClearSeparateEx();
+                    var currentPrice = decimal.Parse(row.Cells["Price"].Value.ToString()); //.ClearSeparateEx();
                     sum += currentPrice;
                     sumPrice = sum;
                 }
@@ -1311,7 +1318,7 @@ namespace PersonalAccounting.UI
                 foreach (var field in list)
                 {
                     var sum = sumPrice;
-                    var currentPrice = Convert.ToString(field.Price, CultureInfo.InvariantCulture).ClearSeparateEx();
+                    var currentPrice = decimal.Parse(field.Price.ToString(CultureInfo.InvariantCulture));// Convert.ToString(field.Price, CultureInfo.InvariantCulture).ClearSeparateEx();
                     sum += currentPrice;
                     sumPrice = sum;
                 }

@@ -29,13 +29,13 @@ namespace PersonalAccounting.Domain.ViewModel
         /// </summary>
         public double FundPrimaryValue { get; set; }
 
-        public string FundPrimaryValueSeparateDigit => Convert.ToString(FundPrimaryValue, CultureInfo.InvariantCulture).AddSeparateEx();
+        //public string FundPrimaryValueSeparateDigit => Convert.ToString(FundPrimaryValue, CultureInfo.InvariantCulture).AddSeparateEx();
 
         /// <summary>
         /// مانده جاری صندوق
         /// </summary>
         public double FundCurrentValue { get; set; }
-        public string FundCurrentValueSeparateDigit => Convert.ToString(FundCurrentValue, CultureInfo.InvariantCulture).AddSeparateEx();
+        //public string FundCurrentValueSeparateDigit => Convert.ToString(FundCurrentValue, CultureInfo.InvariantCulture).AddSeparateEx();
 
         /// <summary>
         /// تاریخ ایجاد رکورد

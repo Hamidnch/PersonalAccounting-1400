@@ -29,13 +29,13 @@ namespace PersonalAccounting.Domain.ViewModel
         /// مبلغ قابل انتقال
         /// </summary>
         public double Amount { get; set; }
-        public string AmountSeparateDigit => Convert.ToString(Amount, CultureInfo.InvariantCulture).AddSeparateEx();
+        //public string AmountSeparateDigit => Convert.ToString(Amount, CultureInfo.InvariantCulture).AddSeparateEx();
 
         /// <summary>
         /// کارمزد بانکی
         /// </summary>
         public double BankCommission { get; set; }
-        public string BankCommissionSeparateDigit => Convert.ToString(BankCommission, CultureInfo.InvariantCulture).AddSeparateEx();
+        //public string BankCommissionSeparateDigit => Convert.ToString(BankCommission, CultureInfo.InvariantCulture).AddSeparateEx();
 
         public DateTime? TransferMoneyDate { get; set; }
         public string TransferMoneyPersianDate => TransferMoneyDate != null ? PersianHelper.GetPersiaDateSimple(TransferMoneyDate) : "";

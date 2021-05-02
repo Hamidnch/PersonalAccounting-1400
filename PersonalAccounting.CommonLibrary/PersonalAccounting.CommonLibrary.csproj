@@ -83,13 +83,13 @@
       <HintPath>..\PersonalAccounting\bin\Debug\Janus.Windows.UI.v4.dll</HintPath>
     </Reference>
     <Reference Include="Klik.Windows.Forms.EntryLib.V2.2008">
-      <HintPath>..\PersonalAccounting\bin\Debug\Klik.Windows.Forms.EntryLib.V2.2008.dll</HintPath>
+      <HintPath>..\..\Archive\PersonalAccounting\PersonalAccounting\bin\Debug\Klik.Windows.Forms.EntryLib.V2.2008.dll</HintPath>
     </Reference>
     <Reference Include="MessageBoxHamidNCH">
-      <HintPath>..\PersonalAccounting\bin\Debug\MessageBoxHamidNCH.dll</HintPath>
+      <HintPath>..\..\Archive\PersonalAccounting\PersonalAccounting\bin\Debug\MessageBoxHamidNCH.dll</HintPath>
     </Reference>
     <Reference Include="Persia">
-      <HintPath>..\PersonalAccounting\bin\Debug\Persia.dll</HintPath>
+      <HintPath>..\..\Archive\PersonalAccounting\PersonalAccounting\bin\Debug\Persia.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -99,17 +99,17 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="Telerik.WinControls, Version=2020.3.915.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+    <Reference Include="Telerik.WinControls, Version=2021.1.223.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\PersonalAccounting\bin\Debug\Telerik.WinControls.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WinForms R3 2020\Bin\Telerik.WinControls.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.WinControls.GridView, Version=2020.3.915.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+    <Reference Include="Telerik.WinControls.GridView, Version=2021.1.223.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\PersonalAccounting\bin\Debug\Telerik.WinControls.GridView.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WinForms R3 2020\Bin\Telerik.WinControls.GridView.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.WinControls.UI, Version=2020.3.915.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+    <Reference Include="Telerik.WinControls.UI, Version=2021.1.223.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\PersonalAccounting\bin\Debug\Telerik.WinControls.UI.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WinForms R3 2020\Bin\Telerik.WinControls.UI.dll</HintPath>
     </Reference>
     <Reference Include="Tulpep.NotificationWindow, Version=1.1.38.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Tulpep.NotificationWindow.1.1.38\lib\net40\Tulpep.NotificationWindow.dll</HintPath>

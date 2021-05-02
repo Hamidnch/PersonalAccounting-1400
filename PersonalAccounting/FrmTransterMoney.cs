@@ -41,7 +41,6 @@ namespace PersonalAccounting.UI
             BindFundNames(rddl_DestFund);
             //ReturnTransferMoniesDetails();
         }
-
         private async void BindGrid()
         {
             int? currentUserId = null;
@@ -137,8 +136,8 @@ namespace PersonalAccounting.UI
                 _transferMoneyId = int.Parse(dataRow.Cells["TransferMoneyId"].Value.ToString());
                 var transferMoneyPersianDate = dataRow.Cells["TransferMoneyPersianDate"].Value.ToString();
                 txt_TransferMoneyDate.Text = transferMoneyPersianDate;
-                txt_TransferValue.Text = dataRow.Cells["AmountSeparateDigit"].Value?.ToString();
-                txt_BankCommission.Text = dataRow.Cells["BankCommissionSeparateDigit"].Value?.ToString();
+                txt_TransferValue.Text = dataRow.Cells["Amount"].Value?.ToString().AddSeparateEx();
+                txt_BankCommission.Text = dataRow.Cells["BankCommission"].Value?.ToString().AddSeparateEx();
                 //ddl_FundStatus.Text = dataRow.Cells["TransferMoneyStatus"].Value.ToString();
                 txt_TransferDescription.Text = dataRow.Cells["TransferMoneyDescription"].Value?.ToString();
 

@@ -31,25 +31,25 @@ namespace PersonalAccounting.UI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTransferMoney));
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn33 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn34 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn35 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn36 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn37 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn38 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn39 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn40 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn41 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn42 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn43 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn44 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn45 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn46 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn47 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn48 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.Data.SortDescriptor sortDescriptor3 = new Telerik.WinControls.Data.SortDescriptor();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn9 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn10 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn11 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn12 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn13 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn14 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.Data.SortDescriptor sortDescriptor1 = new Telerik.WinControls.Data.SortDescriptor();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.pnl_Data = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.txt_TransferMoneyDate = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -75,8 +75,6 @@ namespace PersonalAccounting.UI
             this.btnRegister = new System.Windows.Forms.Button();
             this.btnInsert = new System.Windows.Forms.Button();
             this.rgv_TransferMoney = new Telerik.WinControls.UI.RadGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this._errorProvider)).BeginInit();
             this.pnl_Data.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rddl_DestFund)).BeginInit();
@@ -116,6 +114,28 @@ namespace PersonalAccounting.UI
             this.pnl_Data.Name = "pnl_Data";
             this.pnl_Data.Size = new System.Drawing.Size(813, 199);
             this.pnl_Data.TabIndex = 2;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(56, 12);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(24, 13);
+            this.label4.TabIndex = 135;
+            this.label4.Text = "ریال";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(461, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(24, 13);
+            this.label2.TabIndex = 134;
+            this.label2.Text = "ریال";
             // 
             // txt_TransferMoneyDate
             // 
@@ -491,136 +511,122 @@ namespace PersonalAccounting.UI
             this.rgv_TransferMoney.MasterTemplate.AllowRowResize = false;
             this.rgv_TransferMoney.MasterTemplate.AutoExpandGroups = true;
             this.rgv_TransferMoney.MasterTemplate.AutoGenerateColumns = false;
-            gridViewTextBoxColumn33.EnableExpressionEditor = false;
-            gridViewTextBoxColumn33.FieldName = "TransferMoneyId";
-            gridViewTextBoxColumn33.HeaderText = "شناسه";
-            gridViewTextBoxColumn33.IsVisible = false;
-            gridViewTextBoxColumn33.Name = "TransferMoneyId";
-            gridViewTextBoxColumn33.ReadOnly = true;
-            gridViewTextBoxColumn33.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn33.Width = 62;
-            gridViewTextBoxColumn34.FieldName = "TransferMoneyPersianDate";
-            gridViewTextBoxColumn34.HeaderText = "تاریخ  انتقال";
-            gridViewTextBoxColumn34.Name = "TransferMoneyPersianDate";
-            gridViewTextBoxColumn34.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn34.Width = 150;
-            gridViewTextBoxColumn35.EnableExpressionEditor = false;
-            gridViewTextBoxColumn35.FieldName = "OriginFundId";
-            gridViewTextBoxColumn35.HeaderText = "کد حساب مبدا";
-            gridViewTextBoxColumn35.IsVisible = false;
-            gridViewTextBoxColumn35.Name = "OriginFundId";
-            gridViewTextBoxColumn35.ReadOnly = true;
-            gridViewTextBoxColumn35.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn35.Width = 84;
-            gridViewTextBoxColumn36.EnableExpressionEditor = false;
-            gridViewTextBoxColumn36.FieldName = "OriginFundName";
-            gridViewTextBoxColumn36.HeaderText = "حساب مبدا";
-            gridViewTextBoxColumn36.Name = "OriginFundName";
-            gridViewTextBoxColumn36.ReadOnly = true;
-            gridViewTextBoxColumn36.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn36.Width = 200;
-            gridViewTextBoxColumn37.EnableExpressionEditor = false;
-            gridViewTextBoxColumn37.FieldName = "DestinationFundId";
-            gridViewTextBoxColumn37.HeaderText = "کد حساب مقصد";
-            gridViewTextBoxColumn37.IsVisible = false;
-            gridViewTextBoxColumn37.Name = "DestinationFundId";
-            gridViewTextBoxColumn37.ReadOnly = true;
-            gridViewTextBoxColumn37.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn37.Width = 93;
-            gridViewTextBoxColumn38.EnableExpressionEditor = false;
-            gridViewTextBoxColumn38.FieldName = "DestinationFundName";
-            gridViewTextBoxColumn38.HeaderText = "حساب مقصد";
-            gridViewTextBoxColumn38.Name = "DestinationFundName";
-            gridViewTextBoxColumn38.ReadOnly = true;
-            gridViewTextBoxColumn38.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn38.Width = 200;
-            gridViewTextBoxColumn39.FieldName = "Amount";
-            gridViewTextBoxColumn39.HeaderText = "مبلغ";
-            gridViewTextBoxColumn39.IsVisible = false;
-            gridViewTextBoxColumn39.Name = "Amount";
-            gridViewTextBoxColumn39.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn39.Width = 81;
-            gridViewTextBoxColumn40.FieldName = "AmountSeparateDigit";
-            gridViewTextBoxColumn40.HeaderText = "مبلغ";
-            gridViewTextBoxColumn40.Name = "AmountSeparateDigit";
-            gridViewTextBoxColumn40.ReadOnly = true;
-            gridViewTextBoxColumn40.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn40.Width = 150;
-            gridViewTextBoxColumn41.FieldName = "BankCommission";
-            gridViewTextBoxColumn41.HeaderText = "کارمزد بانکی";
-            gridViewTextBoxColumn41.IsVisible = false;
-            gridViewTextBoxColumn41.Name = "BankCommission";
-            gridViewTextBoxColumn41.ReadOnly = true;
-            gridViewTextBoxColumn41.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn41.Width = 81;
-            gridViewTextBoxColumn42.FieldName = "BankCommissionSeparateDigit";
-            gridViewTextBoxColumn42.HeaderText = "کارمزد بانکی";
-            gridViewTextBoxColumn42.Name = "BankCommissionSeparateDigit";
-            gridViewTextBoxColumn42.ReadOnly = true;
-            gridViewTextBoxColumn42.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn42.Width = 120;
-            gridViewTextBoxColumn43.FieldName = "TransferMoneyPersianRegisterDate";
-            gridViewTextBoxColumn43.HeaderText = "تاریخ ثبت";
-            gridViewTextBoxColumn43.Name = "TransferMoneyPersianRegisterDate";
-            gridViewTextBoxColumn43.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn43.Width = 150;
-            gridViewTextBoxColumn44.EnableExpressionEditor = false;
-            gridViewTextBoxColumn44.FieldName = "TransferMoneyCreationUserName";
-            gridViewTextBoxColumn44.HeaderText = "کاربر ثبت کننده";
-            gridViewTextBoxColumn44.Name = "TransferMoneyCreationUserName";
-            gridViewTextBoxColumn44.ReadOnly = true;
-            gridViewTextBoxColumn44.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn44.Width = 85;
-            gridViewTextBoxColumn45.EnableExpressionEditor = false;
-            gridViewTextBoxColumn45.FieldName = "TransferMoneyPersianLastUpdate";
-            gridViewTextBoxColumn45.HeaderText = "تاریخ آخرین ویرایش";
-            gridViewTextBoxColumn45.Name = "TransferMoneyPersianLastUpdate";
-            gridViewTextBoxColumn45.ReadOnly = true;
-            gridViewTextBoxColumn45.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn45.Width = 120;
-            gridViewTextBoxColumn46.FieldName = "TransferMoneyUpdateByUserName";
-            gridViewTextBoxColumn46.HeaderText = "کاربر ویرایش کننده";
-            gridViewTextBoxColumn46.Name = "TransferMoneyUpdateByUserName";
-            gridViewTextBoxColumn46.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn47.EnableExpressionEditor = false;
-            gridViewTextBoxColumn47.FieldName = "TransferMoneyStatus";
-            gridViewTextBoxColumn47.HeaderText = "وضعیت";
-            gridViewTextBoxColumn47.Name = "TransferMoneyStatus";
-            gridViewTextBoxColumn47.ReadOnly = true;
-            gridViewTextBoxColumn47.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn47.Width = 81;
-            gridViewTextBoxColumn48.FieldName = "TransferMoneyDescription";
-            gridViewTextBoxColumn48.HeaderText = "توضیحات";
-            gridViewTextBoxColumn48.Name = "TransferMoneyDescription";
-            gridViewTextBoxColumn48.ReadOnly = true;
-            gridViewTextBoxColumn48.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn48.Width = 120;
+            gridViewTextBoxColumn1.EnableExpressionEditor = false;
+            gridViewTextBoxColumn1.FieldName = "TransferMoneyId";
+            gridViewTextBoxColumn1.HeaderText = "شناسه";
+            gridViewTextBoxColumn1.IsVisible = false;
+            gridViewTextBoxColumn1.Name = "TransferMoneyId";
+            gridViewTextBoxColumn1.ReadOnly = true;
+            gridViewTextBoxColumn1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn1.Width = 62;
+            gridViewTextBoxColumn2.FieldName = "TransferMoneyPersianDate";
+            gridViewTextBoxColumn2.HeaderText = "تاریخ  انتقال";
+            gridViewTextBoxColumn2.Name = "TransferMoneyPersianDate";
+            gridViewTextBoxColumn2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn2.Width = 150;
+            gridViewTextBoxColumn3.EnableExpressionEditor = false;
+            gridViewTextBoxColumn3.FieldName = "OriginFundId";
+            gridViewTextBoxColumn3.HeaderText = "کد حساب مبدا";
+            gridViewTextBoxColumn3.IsVisible = false;
+            gridViewTextBoxColumn3.Name = "OriginFundId";
+            gridViewTextBoxColumn3.ReadOnly = true;
+            gridViewTextBoxColumn3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn3.Width = 84;
+            gridViewTextBoxColumn4.EnableExpressionEditor = false;
+            gridViewTextBoxColumn4.FieldName = "OriginFundName";
+            gridViewTextBoxColumn4.HeaderText = "حساب مبدا";
+            gridViewTextBoxColumn4.Name = "OriginFundName";
+            gridViewTextBoxColumn4.ReadOnly = true;
+            gridViewTextBoxColumn4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn4.Width = 200;
+            gridViewTextBoxColumn5.EnableExpressionEditor = false;
+            gridViewTextBoxColumn5.FieldName = "DestinationFundId";
+            gridViewTextBoxColumn5.HeaderText = "کد حساب مقصد";
+            gridViewTextBoxColumn5.IsVisible = false;
+            gridViewTextBoxColumn5.Name = "DestinationFundId";
+            gridViewTextBoxColumn5.ReadOnly = true;
+            gridViewTextBoxColumn5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn5.Width = 93;
+            gridViewTextBoxColumn6.EnableExpressionEditor = false;
+            gridViewTextBoxColumn6.FieldName = "DestinationFundName";
+            gridViewTextBoxColumn6.HeaderText = "حساب مقصد";
+            gridViewTextBoxColumn6.Name = "DestinationFundName";
+            gridViewTextBoxColumn6.ReadOnly = true;
+            gridViewTextBoxColumn6.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn6.Width = 200;
+            gridViewTextBoxColumn7.FieldName = "Amount";
+            gridViewTextBoxColumn7.FormatString = "{0:n0}";
+            gridViewTextBoxColumn7.HeaderText = "مبلغ";
+            gridViewTextBoxColumn7.Name = "Amount";
+            gridViewTextBoxColumn7.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn7.Width = 150;
+            gridViewTextBoxColumn8.FieldName = "BankCommission";
+            gridViewTextBoxColumn8.FormatString = "{0:n0}";
+            gridViewTextBoxColumn8.HeaderText = "کارمزد بانکی";
+            gridViewTextBoxColumn8.Name = "BankCommission";
+            gridViewTextBoxColumn8.ReadOnly = true;
+            gridViewTextBoxColumn8.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn8.Width = 150;
+            gridViewTextBoxColumn9.FieldName = "TransferMoneyPersianRegisterDate";
+            gridViewTextBoxColumn9.HeaderText = "تاریخ ثبت";
+            gridViewTextBoxColumn9.Name = "TransferMoneyPersianRegisterDate";
+            gridViewTextBoxColumn9.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn9.Width = 150;
+            gridViewTextBoxColumn10.EnableExpressionEditor = false;
+            gridViewTextBoxColumn10.FieldName = "TransferMoneyCreationUserName";
+            gridViewTextBoxColumn10.HeaderText = "کاربر ثبت کننده";
+            gridViewTextBoxColumn10.Name = "TransferMoneyCreationUserName";
+            gridViewTextBoxColumn10.ReadOnly = true;
+            gridViewTextBoxColumn10.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn10.Width = 85;
+            gridViewTextBoxColumn11.EnableExpressionEditor = false;
+            gridViewTextBoxColumn11.FieldName = "TransferMoneyPersianLastUpdate";
+            gridViewTextBoxColumn11.HeaderText = "تاریخ آخرین ویرایش";
+            gridViewTextBoxColumn11.Name = "TransferMoneyPersianLastUpdate";
+            gridViewTextBoxColumn11.ReadOnly = true;
+            gridViewTextBoxColumn11.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn11.Width = 120;
+            gridViewTextBoxColumn12.FieldName = "TransferMoneyUpdateByUserName";
+            gridViewTextBoxColumn12.HeaderText = "کاربر ویرایش کننده";
+            gridViewTextBoxColumn12.Name = "TransferMoneyUpdateByUserName";
+            gridViewTextBoxColumn12.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn13.EnableExpressionEditor = false;
+            gridViewTextBoxColumn13.FieldName = "TransferMoneyStatus";
+            gridViewTextBoxColumn13.HeaderText = "وضعیت";
+            gridViewTextBoxColumn13.Name = "TransferMoneyStatus";
+            gridViewTextBoxColumn13.ReadOnly = true;
+            gridViewTextBoxColumn13.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn13.Width = 81;
+            gridViewTextBoxColumn14.FieldName = "TransferMoneyDescription";
+            gridViewTextBoxColumn14.HeaderText = "توضیحات";
+            gridViewTextBoxColumn14.Name = "TransferMoneyDescription";
+            gridViewTextBoxColumn14.ReadOnly = true;
+            gridViewTextBoxColumn14.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn14.Width = 120;
             this.rgv_TransferMoney.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn33,
-            gridViewTextBoxColumn34,
-            gridViewTextBoxColumn35,
-            gridViewTextBoxColumn36,
-            gridViewTextBoxColumn37,
-            gridViewTextBoxColumn38,
-            gridViewTextBoxColumn39,
-            gridViewTextBoxColumn40,
-            gridViewTextBoxColumn41,
-            gridViewTextBoxColumn42,
-            gridViewTextBoxColumn43,
-            gridViewTextBoxColumn44,
-            gridViewTextBoxColumn45,
-            gridViewTextBoxColumn46,
-            gridViewTextBoxColumn47,
-            gridViewTextBoxColumn48});
+            gridViewTextBoxColumn1,
+            gridViewTextBoxColumn2,
+            gridViewTextBoxColumn3,
+            gridViewTextBoxColumn4,
+            gridViewTextBoxColumn5,
+            gridViewTextBoxColumn6,
+            gridViewTextBoxColumn7,
+            gridViewTextBoxColumn8,
+            gridViewTextBoxColumn9,
+            gridViewTextBoxColumn10,
+            gridViewTextBoxColumn11,
+            gridViewTextBoxColumn12,
+            gridViewTextBoxColumn13,
+            gridViewTextBoxColumn14});
             this.rgv_TransferMoney.MasterTemplate.EnableAlternatingRowColor = true;
             this.rgv_TransferMoney.MasterTemplate.EnableFiltering = true;
             this.rgv_TransferMoney.MasterTemplate.ReadOnly = true;
             this.rgv_TransferMoney.MasterTemplate.ShowGroupedColumns = true;
-            sortDescriptor3.Direction = System.ComponentModel.ListSortDirection.Descending;
-            sortDescriptor3.PropertyName = "BankAccountSubject";
+            sortDescriptor1.Direction = System.ComponentModel.ListSortDirection.Descending;
+            sortDescriptor1.PropertyName = "BankAccountSubject";
             this.rgv_TransferMoney.MasterTemplate.SortDescriptors.AddRange(new Telerik.WinControls.Data.SortDescriptor[] {
-            sortDescriptor3});
-            this.rgv_TransferMoney.MasterTemplate.ViewDefinition = tableViewDefinition3;
+            sortDescriptor1});
+            this.rgv_TransferMoney.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.rgv_TransferMoney.Name = "rgv_TransferMoney";
             this.rgv_TransferMoney.ReadOnly = true;
             this.rgv_TransferMoney.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -629,28 +635,6 @@ namespace PersonalAccounting.UI
             this.rgv_TransferMoney.CurrentRowChanged += new Telerik.WinControls.UI.CurrentRowChangedEventHandler(this.rgv_TransferMoney_CurrentRowChanged);
             this.rgv_TransferMoney.CellClick += new Telerik.WinControls.UI.GridViewCellEventHandler(this.rgv_TransferMoney_CellClick);
             this.rgv_TransferMoney.Click += new System.EventHandler(this.rgv_TransferMoney_Click);
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(461, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(24, 13);
-            this.label2.TabIndex = 134;
-            this.label2.Text = "ریال";
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(56, 12);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(24, 13);
-            this.label4.TabIndex = 135;
-            this.label4.Text = "ریال";
             // 
             // FrmTransferMoney
             // 

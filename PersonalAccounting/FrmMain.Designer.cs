@@ -75,11 +75,12 @@ namespace PersonalAccounting.UI
             this.rbe_ExpenseDetails = new Telerik.WinControls.UI.RadButtonElement();
             this.rbg_DiaryNoteDetails = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.rbe_DiaryNoteDetails = new Telerik.WinControls.UI.RadButtonElement();
+            this.rt_ReportCollection = new Telerik.WinControls.UI.RibbonTab();
+            this.rbg_ExpenseReportDetails = new Telerik.WinControls.UI.RadRibbonBarGroup();
+            this.rbe_ExpenseReportDetails = new Telerik.WinControls.UI.RadButtonElement();
             this.rt_System = new Telerik.WinControls.UI.RibbonTab();
             this.rbg_BackupDetails = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.rbe_BackupDetails = new Telerik.WinControls.UI.RadButtonElement();
-            this.rbg_ExpenseReportDetails = new Telerik.WinControls.UI.RadRibbonBarGroup();
-            this.rbe_ExpenseReportDetails = new Telerik.WinControls.UI.RadButtonElement();
             this.rbg_AboutDetails = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.rbe_AboutDetails = new Telerik.WinControls.UI.RadButtonElement();
             this.rbg_QuitDetails = new Telerik.WinControls.UI.RadRibbonBarGroup();
@@ -128,6 +129,7 @@ namespace PersonalAccounting.UI
             this.rt_PrimaryDefinitions,
             this.rt_FundAndAccount,
             this.rt_ExpenseAndNote,
+            this.rt_ReportCollection,
             this.rt_System});
             this.rrb_Main.EnableCodedUITests = true;
             this.rrb_Main.EnableTabScrollingOnMouseWheel = true;
@@ -144,6 +146,7 @@ namespace PersonalAccounting.UI
             this.rrb_Main.ExitButton.Visibility = Telerik.WinControls.ElementVisibility.Hidden;
             this.rrb_Main.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.rrb_Main.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.rrb_Main.LocalizationSettings.LayoutModeText = "Simplified Layout";
             this.rrb_Main.Location = new System.Drawing.Point(0, 0);
             this.rrb_Main.MaximizeButton = false;
             this.rrb_Main.MinimizeButton = false;
@@ -234,7 +237,7 @@ namespace PersonalAccounting.UI
             this.rt_PersonsAndUsers.EnableBorderHighlight = true;
             this.rt_PersonsAndUsers.EnableFocusBorder = true;
             this.rt_PersonsAndUsers.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.rt_PersonsAndUsers.IsSelected = true;
+            this.rt_PersonsAndUsers.IsSelected = false;
             this.rt_PersonsAndUsers.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.rbg_PersonDetails,
             this.rbg_RoleDetails,
@@ -1100,6 +1103,80 @@ namespace PersonalAccounting.UI
             this.rbe_DiaryNoteDetails.UseCompatibleTextRendering = false;
             this.rbe_DiaryNoteDetails.Click += new System.EventHandler(this.ShowFormDetails);
             // 
+            // rt_ReportCollection
+            // 
+            this.rt_ReportCollection.Alignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rt_ReportCollection.AutoSize = true;
+            this.rt_ReportCollection.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rt_ReportCollection.IsSelected = true;
+            this.rt_ReportCollection.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.rbg_ExpenseReportDetails});
+            this.rt_ReportCollection.Name = "rt_ReportCollection";
+            this.rt_ReportCollection.Text = "گزارشات";
+            this.rt_ReportCollection.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rt_ReportCollection.Title = "گزارشات متنوع سیستم";
+            this.rt_ReportCollection.UseMnemonic = false;
+            // 
+            // rbg_ExpenseReportDetails
+            // 
+            this.rbg_ExpenseReportDetails.Alignment = System.Drawing.ContentAlignment.TopLeft;
+            this.rbg_ExpenseReportDetails.AngleTransform = 0F;
+            this.rbg_ExpenseReportDetails.AutoSize = false;
+            this.rbg_ExpenseReportDetails.Bounds = new System.Drawing.Rectangle(0, 0, 115, 100);
+            this.rbg_ExpenseReportDetails.CanFocus = true;
+            this.rbg_ExpenseReportDetails.EnableBorderHighlight = false;
+            this.rbg_ExpenseReportDetails.EnableFocusBorder = false;
+            this.rbg_ExpenseReportDetails.EnableHighlight = false;
+            this.rbg_ExpenseReportDetails.EnableRippleAnimation = false;
+            this.rbg_ExpenseReportDetails.FlipText = false;
+            this.rbg_ExpenseReportDetails.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.rbg_ExpenseReportDetails.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.rbe_ExpenseReportDetails});
+            this.rbg_ExpenseReportDetails.Margin = new System.Windows.Forms.Padding(0);
+            this.rbg_ExpenseReportDetails.MaxSize = new System.Drawing.Size(0, 0);
+            this.rbg_ExpenseReportDetails.MinSize = new System.Drawing.Size(0, 0);
+            this.rbg_ExpenseReportDetails.Name = "rbg_ExpenseReportDetails";
+            this.rbg_ExpenseReportDetails.ShouldPaint = true;
+            this.rbg_ExpenseReportDetails.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            this.rbg_ExpenseReportDetails.StretchHorizontally = true;
+            this.rbg_ExpenseReportDetails.StretchVertically = true;
+            this.rbg_ExpenseReportDetails.Text = "گزارش هزینه ها";
+            this.rbg_ExpenseReportDetails.TextOrientation = System.Windows.Forms.Orientation.Horizontal;
+            this.rbg_ExpenseReportDetails.ToolTipText = "تهیه گزارش از هزینه ها";
+            this.rbg_ExpenseReportDetails.UseCompatibleTextRendering = true;
+            this.rbg_ExpenseReportDetails.UseDefaultDisabledPaint = true;
+            // 
+            // rbe_ExpenseReportDetails
+            // 
+            this.rbe_ExpenseReportDetails.Alignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rbe_ExpenseReportDetails.AngleTransform = 0F;
+            this.rbe_ExpenseReportDetails.AutoSize = false;
+            this.rbe_ExpenseReportDetails.BackColor = System.Drawing.Color.Transparent;
+            this.rbe_ExpenseReportDetails.Bounds = new System.Drawing.Rectangle(0, 0, 107, 74);
+            this.rbe_ExpenseReportDetails.DisplayStyle = Telerik.WinControls.DisplayStyle.Image;
+            this.rbe_ExpenseReportDetails.EnableBorderHighlight = true;
+            this.rbe_ExpenseReportDetails.EnableElementShadow = false;
+            this.rbe_ExpenseReportDetails.EnableFocusBorder = true;
+            this.rbe_ExpenseReportDetails.EnableFocusBorderAnimation = true;
+            this.rbe_ExpenseReportDetails.EnableHighlight = true;
+            this.rbe_ExpenseReportDetails.EnableRippleAnimation = true;
+            this.rbe_ExpenseReportDetails.FlipText = false;
+            this.rbe_ExpenseReportDetails.Image = ((System.Drawing.Image)(resources.GetObject("rbe_ExpenseReportDetails.Image")));
+            this.rbe_ExpenseReportDetails.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rbe_ExpenseReportDetails.ImageIndex = -1;
+            this.rbe_ExpenseReportDetails.ImageKey = "";
+            this.rbe_ExpenseReportDetails.Margin = new System.Windows.Forms.Padding(0);
+            this.rbe_ExpenseReportDetails.Name = "rbe_ExpenseReportDetails";
+            this.rbe_ExpenseReportDetails.Padding = new System.Windows.Forms.Padding(0);
+            this.rbe_ExpenseReportDetails.RightToLeft = false;
+            this.rbe_ExpenseReportDetails.ShouldPaint = true;
+            this.rbe_ExpenseReportDetails.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.rbe_ExpenseReportDetails.Text = "گزارش هزینه ها";
+            this.rbe_ExpenseReportDetails.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rbe_ExpenseReportDetails.TextOrientation = System.Windows.Forms.Orientation.Horizontal;
+            this.rbe_ExpenseReportDetails.UseCompatibleTextRendering = false;
+            this.rbe_ExpenseReportDetails.Click += new System.EventHandler(this.ShowFormDetails);
+            // 
             // rt_System
             // 
             this.rt_System.Alignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1107,7 +1184,6 @@ namespace PersonalAccounting.UI
             this.rt_System.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.rt_System.IsSelected = false;
             this.rt_System.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.rbg_ExpenseReportDetails,
             this.rbg_BackupDetails,
             this.rbg_AboutDetails,
             this.rbg_QuitDetails});
@@ -1144,66 +1220,6 @@ namespace PersonalAccounting.UI
             this.rbg_BackupDetails.ToolTipText = "تهیه پشتیبان از بانک اطلاعاتی برنامه";
             this.rbg_BackupDetails.UseCompatibleTextRendering = true;
             this.rbg_BackupDetails.UseDefaultDisabledPaint = true;
-            // 
-            // rbe_ExpenseReportDetails
-            // 
-            this.rbe_ExpenseReportDetails.Alignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rbe_ExpenseReportDetails.AngleTransform = 0F;
-            this.rbe_ExpenseReportDetails.AutoSize = false;
-            this.rbe_ExpenseReportDetails.BackColor = System.Drawing.Color.Transparent;
-            this.rbe_ExpenseReportDetails.Bounds = new System.Drawing.Rectangle(0, 0, 107, 74);
-            this.rbe_ExpenseReportDetails.DisplayStyle = Telerik.WinControls.DisplayStyle.Image;
-            this.rbe_ExpenseReportDetails.EnableBorderHighlight = true;
-            this.rbe_ExpenseReportDetails.EnableElementShadow = false;
-            this.rbe_ExpenseReportDetails.EnableFocusBorder = true;
-            this.rbe_ExpenseReportDetails.EnableFocusBorderAnimation = true;
-            this.rbe_ExpenseReportDetails.EnableHighlight = true;
-            this.rbe_ExpenseReportDetails.EnableRippleAnimation = true;
-            this.rbe_ExpenseReportDetails.FlipText = false;
-            this.rbe_ExpenseReportDetails.Image = Resources.Report;
-            this.rbe_ExpenseReportDetails.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rbe_ExpenseReportDetails.ImageIndex = -1;
-            this.rbe_ExpenseReportDetails.ImageKey = "";
-            this.rbe_ExpenseReportDetails.Margin = new System.Windows.Forms.Padding(0);
-            this.rbe_ExpenseReportDetails.Name = "rbe_ExpenseReportDetails";
-            this.rbe_ExpenseReportDetails.Padding = new System.Windows.Forms.Padding(0);
-            this.rbe_ExpenseReportDetails.RightToLeft = false;
-            this.rbe_ExpenseReportDetails.ShouldPaint = true;
-            this.rbe_ExpenseReportDetails.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.rbe_ExpenseReportDetails.Text = "گزارش هزینه ها";
-            this.rbe_ExpenseReportDetails.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rbe_ExpenseReportDetails.TextOrientation = System.Windows.Forms.Orientation.Horizontal;
-            this.rbe_ExpenseReportDetails.UseCompatibleTextRendering = false;
-            this.rbe_ExpenseReportDetails.Click += new System.EventHandler(this.ShowFormDetails);
-            // 
-            // rbg_ExpenseReportDetails
-            // 
-            this.rbg_ExpenseReportDetails.Alignment = System.Drawing.ContentAlignment.TopLeft;
-            this.rbg_ExpenseReportDetails.AngleTransform = 0F;
-            this.rbg_ExpenseReportDetails.AutoSize = false;
-            this.rbg_ExpenseReportDetails.Bounds = new System.Drawing.Rectangle(0, 0, 115, 100);
-            this.rbg_ExpenseReportDetails.CanFocus = true;
-            this.rbg_ExpenseReportDetails.EnableBorderHighlight = false;
-            this.rbg_ExpenseReportDetails.EnableFocusBorder = false;
-            this.rbg_ExpenseReportDetails.EnableHighlight = false;
-            this.rbg_ExpenseReportDetails.EnableRippleAnimation = false;
-            this.rbg_ExpenseReportDetails.FlipText = false;
-            this.rbg_ExpenseReportDetails.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.rbg_ExpenseReportDetails.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.rbe_ExpenseReportDetails});
-            this.rbg_ExpenseReportDetails.Margin = new System.Windows.Forms.Padding(0);
-            this.rbg_ExpenseReportDetails.MaxSize = new System.Drawing.Size(0, 0);
-            this.rbg_ExpenseReportDetails.MinSize = new System.Drawing.Size(0, 0);
-            this.rbg_ExpenseReportDetails.Name = "rbg_ExpenseReportDetails";
-            this.rbg_ExpenseReportDetails.ShouldPaint = true;
-            this.rbg_ExpenseReportDetails.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            this.rbg_ExpenseReportDetails.StretchHorizontally = true;
-            this.rbg_ExpenseReportDetails.StretchVertically = true;
-            this.rbg_ExpenseReportDetails.Text = "گزارش هزینه ها";
-            this.rbg_ExpenseReportDetails.TextOrientation = System.Windows.Forms.Orientation.Horizontal;
-            this.rbg_ExpenseReportDetails.ToolTipText = "تهیه گزارش از هزینه ها";
-            this.rbg_ExpenseReportDetails.UseCompatibleTextRendering = true;
-            this.rbg_ExpenseReportDetails.UseDefaultDisabledPaint = true;
             // 
             // rbe_BackupDetails
             // 
@@ -1456,6 +1472,7 @@ namespace PersonalAccounting.UI
         private Telerik.WinControls.UI.RadButtonElement rbe_QuitDetails;
         private Telerik.WinControls.UI.RibbonTab rt_ExpenseAndNote;
         private Telerik.WinControls.UI.RibbonTab rt_FundAndAccount;
+        private Telerik.WinControls.UI.RibbonTab rt_ReportCollection;
         private Telerik.WinControls.UI.RibbonTab rt_System;
         private Telerik.WinControls.UI.RadMenuItem rmi_Quit;
     }

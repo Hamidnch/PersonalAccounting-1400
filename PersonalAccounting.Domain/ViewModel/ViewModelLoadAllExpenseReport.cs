@@ -14,7 +14,7 @@ namespace PersonalAccounting.Domain.ViewModel
         /// تاریخ ثبت هزینه
         /// </summary>
         public DateTime? ExpenseDate { get; set; }
-        public string ExpensePersianDate => ExpenseDate != null ? PersianHelper.CreatePersianDate(ExpenseDate) : "";
+        public string ExpensePersianDate => ExpenseDate != null ? PersianHelper.GetPersiaDateSimple(ExpenseDate) : "";
 
         public int? DocumentId { get; set; }
         public int? ArticleGroupId { get; set; }
@@ -77,7 +77,7 @@ namespace PersonalAccounting.Domain.ViewModel
         /// </summary>
         public double Price { get; set; }
 
-        public string PriceString => Convert.ToString(Price, CultureInfo.InvariantCulture).AddSeparateEx();
+        //public string PriceString => Convert.ToString(Price, CultureInfo.InvariantCulture).AddSeparateEx();
 
         /// <summary>
         /// تاریخ ثبت هزینه

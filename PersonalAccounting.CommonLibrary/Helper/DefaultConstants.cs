@@ -48,6 +48,9 @@
         public const string GenderMaleOptionString = "مذکر";
         public const string GenderFemaleOptionString = "مونث";
 
+        public const string MoneyUnit = " ریال";
+        public const string MoneyCount = " قلم";
+
 
     }
 }

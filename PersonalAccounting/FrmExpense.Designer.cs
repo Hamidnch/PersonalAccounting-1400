@@ -444,6 +444,7 @@ namespace PersonalAccounting.UI
             gridViewDecimalColumn1.ExcelExportType = Telerik.WinControls.UI.Export.DisplayFormatType.Currency;
             gridViewDecimalColumn1.FieldName = "Fi";
             gridViewDecimalColumn1.FormatInfo = new System.Globalization.CultureInfo("fa-IR");
+            gridViewDecimalColumn1.FormatString = "{0:n0}";
             gridViewDecimalColumn1.HeaderText = "فی";
             gridViewDecimalColumn1.Minimum = new decimal(new int[] {
             0,
@@ -478,6 +479,7 @@ namespace PersonalAccounting.UI
             gridViewDecimalColumn3.EnableExpressionEditor = false;
             gridViewDecimalColumn3.FieldName = "Price";
             gridViewDecimalColumn3.FormatInfo = new System.Globalization.CultureInfo("fa-IR");
+            gridViewDecimalColumn3.FormatString = "{0:n0}";
             gridViewDecimalColumn3.HeaderText = "مبلغ";
             gridViewDecimalColumn3.Minimum = new decimal(new int[] {
             0,
@@ -507,6 +509,7 @@ namespace PersonalAccounting.UI
             gridViewTextBoxColumn13.DisableHTMLRendering = false;
             gridViewTextBoxColumn13.EnableExpressionEditor = false;
             gridViewTextBoxColumn13.FieldName = "FundCurrentValue";
+            gridViewTextBoxColumn13.FormatString = "{0:n0}";
             gridViewTextBoxColumn13.HeaderText = "مانده صندوق";
             gridViewTextBoxColumn13.Name = "FundCurrentValue";
             gridViewTextBoxColumn13.ReadOnly = true;
