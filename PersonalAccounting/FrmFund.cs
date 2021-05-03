@@ -43,6 +43,17 @@ namespace PersonalAccounting.UI
 
             //CommonHelper.SetFont(CommonHelper.BaseFont, pnl_Data, rgv_Fund);
 
+            rgv_Fund.MasterTemplate.ShowTotals = true;
+            rgv_Fund.EnableAlternatingRowColor = true;
+
+            var summaryFiItem = new GridViewSummaryItem("FundCurrentValue", "{0:n0}" + DefaultConstants.MoneyUnit,
+                GridAggregateFunction.Sum);
+
+            var summaryRowItem = new GridViewSummaryRowItem { summaryFiItem };
+            rgv_Fund.SummaryRowsBottom.Add(summaryRowItem);
+            rgv_Fund.MasterView.SummaryRows[0].PinPosition = PinnedRowPosition.Bottom;
+            rgv_Fund.MasterTemplate.BottomPinnedRowsMode = GridViewBottomPinnedRowsMode.Float;
+
             rddl_FundStatus.SetEnableDisableStatusDropdownList();
             BindGrid();
         }
@@ -94,16 +105,6 @@ namespace PersonalAccounting.UI
                 currentUserId = InitialHelper.CurrentUser.Id;
 
             rgv_Fund.BeginUpdate();
-            rgv_Fund.MasterTemplate.ShowTotals = true;
-            rgv_Fund.EnableAlternatingRowColor = true;
-
-            var summaryFiItem = new GridViewSummaryItem("FundCurrentValue", "{0:n0}" + DefaultConstants.MoneyUnit,
-                GridAggregateFunction.Sum);
-
-            var summaryRowItem = new GridViewSummaryRowItem { summaryFiItem };
-            rgv_Fund.SummaryRowsBottom.Add(summaryRowItem);
-            rgv_Fund.MasterView.SummaryRows[0].PinPosition = PinnedRowPosition.Bottom;
-            rgv_Fund.MasterTemplate.BottomPinnedRowsMode = GridViewBottomPinnedRowsMode.Float;
             rgv_Fund.DataSource = await _fundService.LoadAllViewModelAsync(currentUserId);
             rgv_Fund.EndUpdate();
 

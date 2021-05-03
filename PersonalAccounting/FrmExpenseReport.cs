@@ -7,7 +7,6 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 using Telerik.WinControls;
-using Telerik.WinControls.Data;
 using Telerik.WinControls.UI;
 
 namespace PersonalAccounting.UI
@@ -28,15 +27,6 @@ namespace PersonalAccounting.UI
             _expenseService = expenseService;
             InitializeComponent();
 
-            BindGrid();
-        }
-        private void BindGrid()
-        {
-            //int? currentUserId = null;
-            //if (!await InitialHelper.CurrentUser.IsAdmin())
-            //int? currentUserId = InitialHelper.CurrentUser.Id;
-
-            rgv_Expenses.BeginUpdate();
             //// Group By
             //var descriptor = new GroupDescriptor();
             //descriptor.GroupNames.Add("Price", ListSortDirection.Ascending);
@@ -55,12 +45,22 @@ namespace PersonalAccounting.UI
             //rgv_Expenses.GroupDescriptors.Add(new GridGroupByExpression("ArticleGroupId Group By ArticleGroupId"));
 
             var summaryFiItem = new GridViewSummaryItem("Fi", "{0:n0}" + DefaultConstants.MoneyUnit, GridAggregateFunction.Sum);
-            var summaryCountItem = new GridViewSummaryItem("Count", "{0:n0}" + DefaultConstants.MoneyCount, GridAggregateFunction.Sum);
+            var summaryCountItem = new GridViewSummaryItem("Count", "{0:n0}" + DefaultConstants.MoneyCount, GridAggregateFunction.Count);
             var summaryPriceItem = new GridViewSummaryItem("Price", "{0:n0}" + DefaultConstants.MoneyUnit, GridAggregateFunction.Sum);
             var summaryRowItem = new GridViewSummaryRowItem { summaryFiItem, summaryCountItem, summaryPriceItem };
             rgv_Expenses.SummaryRowsBottom.Add(summaryRowItem);
             rgv_Expenses.MasterView.SummaryRows[0].PinPosition = PinnedRowPosition.Bottom;
             rgv_Expenses.MasterTemplate.BottomPinnedRowsMode = GridViewBottomPinnedRowsMode.Float;
+
+            BindGrid();
+        }
+        private void BindGrid()
+        {
+            //int? currentUserId = null;
+            //if (!await InitialHelper.CurrentUser.IsAdmin())
+            //int? currentUserId = InitialHelper.CurrentUser.Id;
+
+            rgv_Expenses.BeginUpdate();
             rgv_Expenses.DataSource = _expenseService.LoadAllExpenses();
             rgv_Expenses.EndUpdate();
         }
