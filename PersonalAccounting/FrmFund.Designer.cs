@@ -536,6 +536,7 @@
             this.rgv_Fund.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.rgv_Fund.Size = new System.Drawing.Size(867, 441);
             this.rgv_Fund.TabIndex = 2;
+            this.rgv_Fund.ViewCellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.rgv_Fund_ViewCellFormatting);
             this.rgv_Fund.CurrentRowChanged += new Telerik.WinControls.UI.CurrentRowChangedEventHandler(this.rgv_Fund_CurrentRowChanged);
             this.rgv_Fund.CellClick += new Telerik.WinControls.UI.GridViewCellEventHandler(this.rgv_Fund_CellClick);
             this.rgv_Fund.GroupSummaryEvaluate += new Telerik.WinControls.UI.GroupSummaryEvaluateEventHandler(this.rgv_Fund_GroupSummaryEvaluate);

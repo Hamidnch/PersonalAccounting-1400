@@ -27,7 +27,6 @@ namespace PersonalAccounting.UI
         {
             _expenseService = expenseService;
             InitializeComponent();
-            saveFileDialog1.Filter = "Excel (*.xls)|*.xls";
 
             BindGrid();
         }
@@ -43,14 +42,11 @@ namespace PersonalAccounting.UI
             //descriptor.GroupNames.Add("Price", ListSortDirection.Ascending);
             //this.rgv_Expenses.GroupDescriptors.Add(descriptor);
 
-            //rgv_Expenses.MasterView.SummaryRows[0].PinPosition = PinnedRowPosition.Bottom;
-            //rgv_Expenses.MasterTemplate.BottomPinnedRowsMode = GridViewBottomPinnedRowsMode.Fixed;
-
             rgv_Expenses.MasterTemplate.ShowTotals = true;
-            rgv_Expenses.MasterTemplate.ShowSubTotals = true;
-            rgv_Expenses.MasterTemplate.ShowParentGroupSummaries = true;
             rgv_Expenses.EnableAlternatingRowColor = true;
-            rgv_Expenses.EnableGrouping = false;
+            //rgv_Expenses.MasterTemplate.ShowSubTotals = true;
+            //rgv_Expenses.MasterTemplate.ShowParentGroupSummaries = true;
+            //rgv_Expenses.EnableGrouping = false;
 
             //rgv_Expenses.MasterTemplate.AutoExpandGroups = true;
             //rgv_Expenses.MasterTemplate.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
@@ -63,6 +59,8 @@ namespace PersonalAccounting.UI
             var summaryPriceItem = new GridViewSummaryItem("Price", "{0:n0}" + DefaultConstants.MoneyUnit, GridAggregateFunction.Sum);
             var summaryRowItem = new GridViewSummaryRowItem { summaryFiItem, summaryCountItem, summaryPriceItem };
             rgv_Expenses.SummaryRowsBottom.Add(summaryRowItem);
+            rgv_Expenses.MasterView.SummaryRows[0].PinPosition = PinnedRowPosition.Bottom;
+            rgv_Expenses.MasterTemplate.BottomPinnedRowsMode = GridViewBottomPinnedRowsMode.Float;
             rgv_Expenses.DataSource = _expenseService.LoadAllExpenses();
             rgv_Expenses.EndUpdate();
         }
@@ -70,19 +68,6 @@ namespace PersonalAccounting.UI
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void rgv_Expenses_GroupByChanged(object sender, GridViewCollectionChangedEventArgs e)
-        {
-            rgv_Expenses.MasterTemplate.Refresh();
-        }
-
-        private void rgv_Expenses_CreateCell(object sender, GridViewCreateCellEventArgs e)
-        {
-            if (e.CellType == typeof(GridGroupContentCellElement))
-            {
-                e.CellElement = new MyGridGroupContentCellElement(e.Column, e.Row);
-            }
         }
 
         private void rgv_Expenses_ViewCellFormatting(object sender, CellFormattingEventArgs e)
@@ -114,14 +99,6 @@ namespace PersonalAccounting.UI
                 summaryCell.RowElement.ResetValue(LightVisualElement.GradientStyleProperty, ValueResetFlags.Local);
                 summaryCell.RowElement.ResetValue(VisualElement.BackColorProperty, ValueResetFlags.Local);
             }
-        }
-
-        private void rgv_Expenses_GroupSummaryEvaluate(object sender, GroupSummaryEvaluationEventArgs e)
-        {
-            //if (e.Parent != rgv_Expenses.MasterTemplate)
-            //{
-            //    e.FormatString = string.Format("{0} - " + e.Group.ItemCount + " records found.", e.Value);
-            //}
         }
 
         private void btn_Print_Click(object sender, EventArgs e)
@@ -201,230 +178,5 @@ namespace PersonalAccounting.UI
         //    //this.rgv_Expenses.MasterTemplate.ShowParentGroupSummaries = true;
 
         //}
-    }
-}
-
-
-public class MyGridGroupContentCellElement : GridGroupContentCellElement
-{
-    private StackLayoutElement stack;
-    private bool showSummaryCells_Renamed = true;
-
-    public MyGridGroupContentCellElement(GridViewColumn column, GridRowElement row) : base(column, row)
-    {
-        // creating the elements here in order to have a valid insance of a row
-        if (stack == null)
-            CreateStackElement(row);
-
-        ClipDrawing = true;
-        row.GridControl.TableElement.HScrollBar.Scroll += HScrollBar_Scroll;
-        row.GridControl.ColumnWidthChanged += GridControl_ColumnWidthChanged;
-        row.GridControl.GroupDescriptors.CollectionChanged += GroupDescriptors_CollectionChanged;
-    }
-
-    private void GroupDescriptors_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-    {
-        if (RowInfo.Parent is GridViewGroupRowInfo && ((GridViewGroupRowInfo)RowInfo.Parent).IsExpanded)
-            InvalidateArrange();
-    }
-
-    private void HScrollBar_Scroll(object sender, ScrollEventArgs e)
-    {
-        if (e.NewValue != e.OldValue)
-            stack.PositionOffset = new SizeF(0 - e.NewValue, 0);
-    }
-
-    private void CreateStackElement(GridRowElement row)
-    {
-        stack = new StackLayoutElement();
-        stack.AutoSizeMode = RadAutoSizeMode.FitToAvailableSize;
-        stack.AutoSize = true;
-        stack.StretchHorizontally = true;
-        stack.Alignment = ContentAlignment.BottomCenter;
-        stack.DrawFill = true;
-        stack.BackColor = Color.White;
-        int i = 0;
-        while (i < row.RowInfo.Cells.Count)
-        {
-            SummaryCellElement element = new SummaryCellElement();
-            element.ColumnName = row.RowInfo.Cells[i].ColumnInfo.Name;
-            element.StretchHorizontally = false;
-            element.StretchVertically = true;
-            element.DrawBorder = true;
-            element.BorderGradientStyle = GradientStyles.Solid;
-            element.BorderColor = Color.LightBlue;
-            element.ForeColor = Color.Black;
-            element.GradientStyle = GradientStyles.Solid;
-            stack.Children.Add(element);
-            i += 1;
-        }
-
-        Children.Add(stack);
-    }
-
-    public override void Initialize(GridViewColumn column, GridRowElement row)
-    {
-        base.Initialize(column, row);
-        ShowSummaryCells = (!row.Data.IsExpanded) || row.Data.Group.Groups.Count > 0;
-    }
-
-    protected override void DisposeManagedResources()
-    {
-        if (GridControl != null)
-        {
-            GridControl.ColumnWidthChanged -= GridControl_ColumnWidthChanged;
-            GridControl.GroupDescriptors.CollectionChanged -= GroupDescriptors_CollectionChanged;
-        }
-
-        base.DisposeManagedResources();
-    }
-
-    public bool ShowSummaryCells
-    {
-        get
-        {
-            return showSummaryCells_Renamed;
-        }
-        set
-        {
-            if (showSummaryCells_Renamed != value)
-            {
-                showSummaryCells_Renamed = value;
-
-                if (stack == null)
-                    CreateStackElement(RowElement);
-
-                if (showSummaryCells_Renamed)
-                    stack.Visibility = ElementVisibility.Visible;
-                else
-                    stack.Visibility = ElementVisibility.Hidden;
-            }
-        }
-    }
-
-    private void GridControl_ColumnWidthChanged(object sender, ColumnWidthChangedEventArgs e)
-    {
-        InvalidateArrange();
-    }
-
-    protected override SizeF ArrangeOverride(SizeF finalSize)
-    {
-        SizeF size = base.ArrangeOverride(finalSize);
-
-        float x = GridControl.TableElement.GroupIndent * (GridControl.GroupDescriptors.Count - RowInfo.Group.Level - 1);
-        float y = size.Height - stack.DesiredSize.Height - 2.0F;
-        float width = size.Width - x;
-        float height = stack.DesiredSize.Height;
-
-        stack.Arrange(new RectangleF(x, y, width, height));
-
-        foreach (SummaryCellElement element in stack.Children)
-        {
-            Size elementSize = new Size(RowInfo.Cells[element.ColumnName].ColumnInfo.Width + GridControl.TableElement.CellSpacing, 30);
-            Console.WriteLine(RowInfo.Cells[element.ColumnName].ColumnInfo.Width + " " + RowInfo.Cells[element.ColumnName].ColumnInfo.Name);
-            element.MinSize = elementSize;
-            element.MaxSize = elementSize;
-        }
-
-        return size;
-    }
-
-    public override void SetContent()
-    {
-        base.SetContent();
-        TextAlignment = ContentAlignment.TopLeft;
-        ShowSummaryCells = (!RowInfo.Group.IsExpanded) || RowInfo.Group.Groups.Count > 0;
-
-        GridViewGroupRowInfo rowInfo = (GridViewGroupRowInfo)RowInfo;
-
-        if (rowInfo.Parent is GridViewGroupRowInfo && !((GridViewGroupRowInfo)rowInfo.Parent).IsExpanded)
-            return;
-
-        Dictionary<string, string> values = GetSummaryValues();
-        int index = 0;
-
-        foreach (KeyValuePair<string, string> column in values)
-        {
-            SummaryCellElement element = ((SummaryCellElement)stack.Children[index]);
-            index += 1;
-
-            if (ViewTemplate.Columns[column.Key].IsGrouped && ViewTemplate.ShowGroupedColumns == false)
-                element.Visibility = ElementVisibility.Collapsed;
-            else
-            {
-                element.Visibility = ElementVisibility.Visible;
-                element.Text = column.Value;
-            }
-        }
-    }
-
-    public virtual Dictionary<string, string> GetSummaryValues()
-    {
-        if (ElementTree == null)
-            return new Dictionary<string, string>();
-
-        Dictionary<string, string> result = new Dictionary<string, string>();
-        if (GridControl.SummaryRowsTop.Count > 0)
-        {
-            foreach (SummaryCellElement cell in stack.Children)
-            {
-                if (GridControl.SummaryRowsTop[0][cell.ColumnName] == null)
-                    result.Add(cell.ColumnName, string.Empty);
-                else
-                {
-                    GridViewSummaryItem summaryItem = GridControl.SummaryRowsTop[0][cell.ColumnName][0];
-                    object value = ViewTemplate.DataView.Evaluate(summaryItem.GetSummaryExpression(), GetDataRows());
-                    string text = string.Format(summaryItem.FormatString, value);
-                    result.Add(summaryItem.Name, text);
-                }
-            }
-        }
-        return result;
-    }
-
-    private IEnumerable<GridViewRowInfo> GetDataRows()
-    {
-        Queue<GridViewRowInfo> queue = new Queue<GridViewRowInfo>();
-        queue.Enqueue(RowInfo);
-
-        List<GridViewRowInfo> list = new List<GridViewRowInfo>();
-
-        while (queue.Count != 0)
-        {
-            GridViewRowInfo currentRow = queue.Dequeue();
-
-            if (currentRow is GridViewDataRowInfo)
-                list.Add(currentRow);
-
-            foreach (GridViewRowInfo row in currentRow.ChildRows)
-                queue.Enqueue(row);
-        }
-
-        return list;
-    }
-
-    protected override Type ThemeEffectiveType
-    {
-        get
-        {
-            return typeof(GridGroupContentCellElement);
-        }
-    }
-}
-
-public class SummaryCellElement : LightVisualElement
-{
-    private string columnName_Renamed;
-
-    public string ColumnName
-    {
-        get
-        {
-            return columnName_Renamed;
-        }
-        set
-        {
-            columnName_Renamed = value;
-        }
     }
 }

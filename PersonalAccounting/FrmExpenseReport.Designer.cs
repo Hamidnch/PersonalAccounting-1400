@@ -231,6 +231,7 @@ namespace PersonalAccounting.UI
             this.rgv_Expenses.MasterTemplate.EnableAlternatingRowColor = true;
             this.rgv_Expenses.MasterTemplate.EnableCustomGrouping = true;
             this.rgv_Expenses.MasterTemplate.EnableFiltering = true;
+            this.rgv_Expenses.MasterTemplate.EnableGrouping = false;
             this.rgv_Expenses.MasterTemplate.ReadOnly = true;
             this.rgv_Expenses.MasterTemplate.ShowGroupedColumns = true;
             this.rgv_Expenses.MasterTemplate.ViewDefinition = tableViewDefinition1;
@@ -239,10 +240,7 @@ namespace PersonalAccounting.UI
             this.rgv_Expenses.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.rgv_Expenses.Size = new System.Drawing.Size(969, 525);
             this.rgv_Expenses.TabIndex = 3;
-            this.rgv_Expenses.CreateCell += new Telerik.WinControls.UI.GridViewCreateCellEventHandler(this.rgv_Expenses_CreateCell);
             this.rgv_Expenses.ViewCellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.rgv_Expenses_ViewCellFormatting);
-            this.rgv_Expenses.GroupSummaryEvaluate += new Telerik.WinControls.UI.GroupSummaryEvaluateEventHandler(this.rgv_Expenses_GroupSummaryEvaluate);
-            this.rgv_Expenses.GroupByChanged += new Telerik.WinControls.UI.GridViewCollectionChangedEventHandler(this.rgv_Expenses_GroupByChanged);
             // 
             // btnClose
             // 
@@ -274,7 +272,7 @@ namespace PersonalAccounting.UI
             // 
             this.btn_ExportToExcel.BackColor = System.Drawing.Color.Transparent;
             this.btn_ExportToExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_ExportToExcel.Location = new System.Drawing.Point(99, 3);
+            this.btn_ExportToExcel.Location = new System.Drawing.Point(82, 3);
             this.btn_ExportToExcel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_ExportToExcel.Name = "btn_ExportToExcel";
             this.btn_ExportToExcel.Size = new System.Drawing.Size(129, 29);
@@ -282,6 +280,10 @@ namespace PersonalAccounting.UI
             this.btn_ExportToExcel.Text = "ارسال به اکسل";
             this.btn_ExportToExcel.UseVisualStyleBackColor = false;
             this.btn_ExportToExcel.Click += new System.EventHandler(this.btn_Print_Click);
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.Filter = "Excel (*.xls)|*.xls";
             // 
             // FrmExpenseReport
             // 
@@ -308,7 +310,7 @@ namespace PersonalAccounting.UI
 
         #endregion
 
-         
+
         private Telerik.WinControls.UI.RadGridView rgv_Expenses;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Panel pnl_Data;

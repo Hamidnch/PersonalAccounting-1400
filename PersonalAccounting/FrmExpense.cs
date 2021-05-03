@@ -9,6 +9,7 @@ using PersonalAccounting.UI.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -30,6 +31,7 @@ namespace PersonalAccounting.UI
             ByPerson = 4,
             ForPerson = 5
         }
+
         private readonly IRepositoryService<Person, ViewModelLoadAllPerson, ViewModelSimpleLoadPerson> _personService;
         private readonly
             IRepositoryService<Article, ViewModelLoadAllArticle, ViewModelSimpleLoadArticle> _articleService;
@@ -43,7 +45,7 @@ namespace PersonalAccounting.UI
         private int _documentId;
         private string _expenseDocumentDate;
         private IList<ViewModelLoadAllExpense> _expenses;
-        private decimal _sumPrice;
+        //private decimal _sumPrice;
         private bool _lock;
         private object _ds;
         private readonly RadGridView _rgv;
@@ -59,17 +61,20 @@ namespace PersonalAccounting.UI
         private const decimal Value = 500;
         //public bool PriceOverflow = false;
 
+        private readonly HashSet<GridViewRowInfo> _rows = new HashSet<GridViewRowInfo>();
+
         private static FrmExpense _aFrmExpense;
+
         public static FrmExpense Instance()
         {
             return _aFrmExpense ?? (_aFrmExpense = IocConfig.Container.GetInstance<FrmExpense>());
         }
 
         public FrmExpense(
-            IRepositoryService<Person, ViewModelLoadAllPerson, ViewModelSimpleLoadPerson> personService, IFundService fundService,
-            IRepositoryService<Article, ViewModelLoadAllArticle, ViewModelSimpleLoadArticle> articleService,
-            IMeasurementUnitService measurementUnitService, IExpenseDocumentService expenseDocumentService,
-            IExpenseService expenseService
+            IRepositoryService<Person, ViewModelLoadAllPerson, ViewModelSimpleLoadPerson> personService, 
+            IFundService fundService, IRepositoryService<Article, ViewModelLoadAllArticle,
+            ViewModelSimpleLoadArticle> articleService, IMeasurementUnitService measurementUnitService,
+            IExpenseDocumentService expenseDocumentService, IExpenseService expenseService
             //, IUserService userService
             )
         {
@@ -110,6 +115,16 @@ namespace PersonalAccounting.UI
             _rgv.CellDoubleClick += _rgv_CellDoubleClick;
             // _rgv.CellFormatting += _rgv_CellFormatting;
             _rgv.RowFormatting += _rgv_RowFormatting;
+
+            rgv_Expenses.MasterTemplate.ShowTotals = true;
+            rgv_Expenses.EnableAlternatingRowColor = true;
+            var summaryFiItem = new GridViewSummaryItem("Fi", "{0:n0}" + DefaultConstants.MoneyUnit, GridAggregateFunction.Sum);
+            var summaryCountItem = new GridViewSummaryItem("Count", "{0:n0}" + DefaultConstants.MoneyCount, GridAggregateFunction.Sum);
+            var summaryPriceItem = new GridViewSummaryItem("Price", "{0:n0}" + DefaultConstants.MoneyUnit, GridAggregateFunction.Sum);
+            var summaryRowItem = new GridViewSummaryRowItem { summaryFiItem, summaryCountItem, summaryPriceItem };
+            rgv_BuyList.SummaryRowsBottom.Add(summaryRowItem);
+            rgv_BuyList.MasterView.SummaryRows[0].PinPosition = PinnedRowPosition.Bottom;
+            rgv_BuyList.MasterTemplate.BottomPinnedRowsMode = GridViewBottomPinnedRowsMode.Float;
 
             BindGrid();
         }
@@ -232,7 +247,7 @@ namespace PersonalAccounting.UI
                                 rgv_BuyList.BeginUpdate();
                                 rgv_BuyList.CurrentRow.Cells[4].Value = _rgv.CurrentRow.Cells[0].Value.ToString();
                                 rgv_BuyList.CurrentRow.Cells[5].Value = _rgv.CurrentRow.Cells[2].Value.ToString();
-                                rgv_BuyList.CurrentRow.Cells[16].Value = _rgv.CurrentRow.Cells[3].Value.ToString();
+                                rgv_BuyList.CurrentRow.Cells[16].Value = _rgv.CurrentRow.Cells[3].Value.ToString().AddSeparateEx();
                                 _currentSelected = CurrentSelected.ByPerson;
                                 rgv_BuyList.EndUpdate();
                                 //CommonHelper.IndicatorLoading(_picLoading, true);
@@ -764,7 +779,7 @@ namespace PersonalAccounting.UI
                 btnModify, btnDelete, btnCancel, btnClose, txt_ExpenseDocumentDate);
 
             lbl_DocumentId.Text = string.Empty;
-            lbl_SumPrice.Text = string.Empty;
+            //lbl_SumPrice.Text = string.Empty;
 
             //rgv_BuyList.BeginUpdate();
             //rgv_BuyList.DataSource = null;
@@ -841,8 +856,8 @@ namespace PersonalAccounting.UI
                 var price = fi * count;
                 e.Row.Cells["Price"].Value = $"{price:N0}";
 
-                var sumPrice = await GetSumPrice();
-                lbl_SumPrice.Text = "هزینه کل: " + sumPrice.ToString("N0") + DefaultConstants.MoneyUnit;
+                //var sumPrice = await GetSumPrice();
+                //lbl_SumPrice.Text = "هزینه کل: " + sumPrice.ToString("N0") + DefaultConstants.MoneyUnit;
             }
             catch (Exception exception)
             {
@@ -930,9 +945,9 @@ namespace PersonalAccounting.UI
                         var document = new ExpenseDocument(persianRegisterDate,
                             currentUser.Id, currentDateTime, null, string.Empty);
 
-                        var createstatus = await _expenseDocumentService.CreateAsync(document);
+                        var createStatus = await _expenseDocumentService.CreateAsync(document);
 
-                        switch (createstatus)
+                        switch (createStatus)
                         {
                             case CreateStatus.Exist:
                                 break;
@@ -1222,8 +1237,6 @@ namespace PersonalAccounting.UI
 
         private async void rgv_BuyList_CellValidating(object sender, CellValidatingEventArgs e)
         {
-            decimal fundCurrentValue = 0, price = 0;
-
             var fundCurrentValueCellValue = e.Row?.Cells["FundCurrentValue"]?.Value;
             var priceCell = e.Row?.Cells["Price"];
             var priceCellValue = priceCell?.Value;
@@ -1232,11 +1245,11 @@ namespace PersonalAccounting.UI
 
             if (fundCurrentValueCellValue == null) return;
 
-            fundCurrentValue = decimal.Parse(fundCurrentValueCellValue.ToString()); //.ClearSeparateEx();
+            var fundCurrentValue = decimal.Parse(fundCurrentValueCellValue.ToString());
 
             if (priceCellValue == null) return;
 
-            price = decimal.Parse(priceCellValue.ToString()); //.ClearSeparateEx();
+            var price = decimal.Parse(priceCellValue.ToString());
 
             if (price != 0 && fundCurrentValue != 0 && price > fundCurrentValue) //&& _mode != CommonHelper.Mode.Update)
             {
@@ -1288,48 +1301,48 @@ namespace PersonalAccounting.UI
             }
         }
 
-        private async Task<decimal> GetSumPrice()
-        {
-            var sumPrice = 0.0m;
-            try
-            {
-                foreach (var row in rgv_BuyList.Rows)
-                {
-                    if (row.Cells["Price"].Value == null) continue;
-                    var sum = sumPrice;
-                    var currentPrice = decimal.Parse(row.Cells["Price"].Value.ToString()); //.ClearSeparateEx();
-                    sum += currentPrice;
-                    sumPrice = sum;
-                }
-            }
-            catch (Exception exception)
-            {
-                await LoggerService.ErrorAsync(this.Name, "GetSumPrice", exception.Message,
-                    exception.ToDetailedString());
-            }
-            return sumPrice;
-        }
+        //private async Task<decimal> GetSumPrice()
+        //{
+        //    var sumPrice = 0.0m;
+        //    try
+        //    {
+        //        foreach (var row in rgv_BuyList.Rows)
+        //        {
+        //            if (row.Cells["Price"].Value == null) continue;
+        //            var sum = sumPrice;
+        //            var currentPrice = decimal.Parse(row.Cells["Price"].Value.ToString()); //.ClearSeparateEx();
+        //            sum += currentPrice;
+        //            sumPrice = sum;
+        //        }
+        //    }
+        //    catch (Exception exception)
+        //    {
+        //        await LoggerService.ErrorAsync(this.Name, "GetSumPrice", exception.Message,
+        //            exception.ToDetailedString());
+        //    }
+        //    return sumPrice;
+        //}
 
-        private static decimal GetSumPrice(IEnumerable<ViewModelLoadAllExpense> list)
-        {
-            try
-            {
-                var sumPrice = 0.0m;
-                foreach (var field in list)
-                {
-                    var sum = sumPrice;
-                    var currentPrice = decimal.Parse(field.Price.ToString(CultureInfo.InvariantCulture));// Convert.ToString(field.Price, CultureInfo.InvariantCulture).ClearSeparateEx();
-                    sum += currentPrice;
-                    sumPrice = sum;
-                }
-                return sumPrice;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                return 0;
-            }
-        }
+        //private static decimal GetSumPrice(IEnumerable<ViewModelLoadAllExpense> list)
+        //{
+        //    try
+        //    {
+        //        var sumPrice = 0.0m;
+        //        foreach (var field in list)
+        //        {
+        //            var sum = sumPrice;
+        //            var currentPrice = decimal.Parse(field.Price.ToString(CultureInfo.InvariantCulture));// Convert.ToString(field.Price, CultureInfo.InvariantCulture).ClearSeparateEx();
+        //            sum += currentPrice;
+        //            sumPrice = sum;
+        //        }
+        //        return sumPrice;
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.WriteLine(e);
+        //        return 0;
+        //    }
+        //}
         private async void ReturnExpenseDocumentDetailsById()
         {
             try
@@ -1344,7 +1357,7 @@ namespace PersonalAccounting.UI
                 //    currentUserId = InitialHelper.CurrentUser.Id;
 
                 _expenses = await _expenseDocumentService.GetExpensesByDocumentIdAsync(_documentId);
-                _sumPrice = GetSumPrice(_expenses);
+                //_sumPrice = GetSumPrice(_expenses);
             }
             catch (Exception exception)
             {
@@ -1364,7 +1377,7 @@ namespace PersonalAccounting.UI
             lbl_DocumentId.Text = Convert.ToString(_documentId);
             txt_ExpenseDocumentDate.Text = _expenseDocumentDate;
             rgv_BuyList.DataSource = _expenses;
-            lbl_SumPrice.Text = "هزینه کل: " + _sumPrice.ToString("N0") + " ریال";
+            //lbl_SumPrice.Text = "هزینه کل: " + _sumPrice.ToString("N0") + " ریال";
             CommonHelper.IndicatorLoading(_pictureBox, false);
             _backgroundWorker.Dispose();
             _lock = false;
@@ -1378,38 +1391,33 @@ namespace PersonalAccounting.UI
         }
         private void rgv_BuyList_ViewCellFormatting(object sender, CellFormattingEventArgs e)
         {
-            if (e.CellElement.RowInfo.Group != null || !(e.CellElement is GridSummaryCellElement)) return;
+            if (!(e.CellElement is GridSummaryCellElement summaryCell))
+                return;
 
-            //if (e.CellElement.ColumnInfo.FieldName == "CurrentFundValue")
-            //{
-            //    e.CellElement.ForeColor = Color.Purple;
-            //    e.CellElement.TextAlignment = ContentAlignment.MiddleCenter;
-            //    e.CellElement.Font = CommonHelper.SummaryFont;
-            //    e.CellElement.DrawBorder = true;
-            //    e.CellElement.DrawFill = true;
-            //    e.CellElement.NumberOfColors = 1;
-            //    e.CellElement.BackColor = Color.BurlyWood;
-            //}
-            //else
+            if (!string.IsNullOrEmpty(summaryCell.Text))
             {
-                e.CellElement.ForeColor = Color.White;
-                e.CellElement.TextAlignment = ContentAlignment.MiddleCenter;
-                e.CellElement.Font = CommonHelper.SummaryFont;
-                e.CellElement.DrawBorder = true;
-                e.CellElement.DrawFill = true;
-                e.CellElement.NumberOfColors = 1;
-                e.CellElement.BackColor = Color.DimGray;
-            }
-            //lbl_sum.Text = e.CellElement.Text;
+                _rows.Add(summaryCell.RowInfo);
+                summaryCell.RowElement.DrawFill = true;
+                summaryCell.RowElement.GradientStyle = GradientStyles.Solid;
+                summaryCell.RowElement.BackColor = Color.LightBlue;
+                summaryCell.RowElement.ForeColor = Color.Indigo;
+                summaryCell.RowElement.Font = new Font(summaryCell.RowElement.Font, FontStyle.Bold);
 
-            //    e.CellElement.Text = CommonHelper.AddSeparate(e.CellElement.Text) + " ریال";
-            //string.Format("{0:N0}", e.CellElement.Text);
-            //else
-            //{
-            //    e.CellElement.ResetValue(LightVisualElement.ForeColorProperty, ValueResetFlags.Local);
-            //    e.CellElement.ResetValue(LightVisualElement.TextAlignmentProperty, ValueResetFlags.Local);
-            //    e.CellElement.ResetValue(LightVisualElement.FontProperty, ValueResetFlags.Local);
-            //}
+                //summaryCell.RowElement.DrawBorder = true;
+                //summaryCell.RowElement.BorderBoxStyle = BorderBoxStyle.FourBorders;
+                //summaryCell.RowElement.BorderLeftWidth = 0;
+                //summaryCell.RowElement.BorderRightWidth = 0;
+                //summaryCell.RowElement.BorderBottomWidth = 0;
+                //summaryCell.RowElement.BorderTopWidth = 1;
+                //summaryCell.RowElement.BorderTopColor = Color.Black;
+                //summaryCell.RowElement.TextAlignment = ContentAlignment.MiddleCenter;
+            }
+            else if (!_rows.Contains(summaryCell.RowInfo))
+            {
+                summaryCell.RowElement.ResetValue(LightVisualElement.DrawFillProperty, ValueResetFlags.Local);
+                summaryCell.RowElement.ResetValue(LightVisualElement.GradientStyleProperty, ValueResetFlags.Local);
+                summaryCell.RowElement.ResetValue(VisualElement.BackColorProperty, ValueResetFlags.Local);
+            }
         }
 
         //private void rgv_BuyList_Initialized(object sender, EventArgs e)
@@ -1462,12 +1470,12 @@ namespace PersonalAccounting.UI
         //    //}  
         //}
 
-        private void rgv_BuyList_UserDeletedRow(object sender, GridViewRowEventArgs e)
-        {
-            var val = GetSumPrice();
-            lbl_SumPrice.Text = "هزینه کل: " + val.Result.ToString("N0") + " ریال";
-            //+ "   معادل: " + NumToStr.ToString(Convert.ToString(val)) + " ریال";
-        }
+        //private void rgv_BuyList_UserDeletedRow(object sender, GridViewRowEventArgs e)
+        //{
+        //    //var val = GetSumPrice();
+        //    //lbl_SumPrice.Text = "هزینه کل: " + val.Result.ToString("N0") + " ریال";
+        //    //+ "   معادل: " + NumToStr.ToString(Convert.ToString(val)) + " ریال";
+        //}
 
         private void rgv_Expenses_CellClick(object sender, GridViewCellEventArgs e)
         {
@@ -1545,12 +1553,41 @@ namespace PersonalAccounting.UI
             BindGrid();
         }
 
-        private void rddl_Users_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
-        {
-            if (!txt_ExpenseDocumentDate.Text.IsValidPersianDate()) return;
+        //private void rddl_Users_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
+        //{
+        //    if (!txt_ExpenseDocumentDate.Text.IsValidPersianDate()) return;
 
-            ReturnExpenseDocumentDetailsById();
-            txt_ExpenseDocumentDate_TextChanged(sender, e);
+        //    ReturnExpenseDocumentDetailsById();
+        //    txt_ExpenseDocumentDate_TextChanged(sender, e);
+        //}
+
+        private void btn_ExportToExcel_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() != DialogResult.OK) return;
+
+            if (saveFileDialog1.FileName.Equals(string.Empty))
+            {
+                RadMessageBox.SetThemeName(this.rgv_BuyList.ThemeName);
+                RadMessageBox.Show("لطفا نام فایل را وارد نمایید");
+                return;
+            }
+
+            var fileName = saveFileDialog1.FileName;
+            var openExportFile = false;
+
+            rgv_BuyList.ExportToExcel(fileName, ref openExportFile, this);
+
+            if (!openExportFile) return;
+
+            try
+            {
+                Process.Start(fileName);
+            }
+            catch (Exception ex)
+            {
+                var message = $"The file cannot be opened on your system.\nError message: {ex.Message}";
+                RadMessageBox.Show(message, "Open File", MessageBoxButtons.OK, RadMessageIcon.Error);
+            }
         }
     }
 }

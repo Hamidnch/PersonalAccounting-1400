@@ -7,6 +7,8 @@ using PersonalAccounting.Domain.ViewModel;
 using PersonalAccounting.UI.Helper;
 using PersonalAccounting.UI.Infrastructure;
 using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
 using Telerik.WinControls;
@@ -19,6 +21,8 @@ namespace PersonalAccounting.UI
         private readonly IFundService _fundService;
         private readonly IRepositoryService<BankAccount, ViewModelLoadAllBankAccount,
             ViewModelSimpleLoadBankAccount> _bankAccountService;
+
+        private readonly HashSet<GridViewRowInfo> _rows = new HashSet<GridViewRowInfo>();
 
         private int _fundId;
         private bool _done;
@@ -90,6 +94,16 @@ namespace PersonalAccounting.UI
                 currentUserId = InitialHelper.CurrentUser.Id;
 
             rgv_Fund.BeginUpdate();
+            rgv_Fund.MasterTemplate.ShowTotals = true;
+            rgv_Fund.EnableAlternatingRowColor = true;
+
+            var summaryFiItem = new GridViewSummaryItem("FundCurrentValue", "{0:n0}" + DefaultConstants.MoneyUnit,
+                GridAggregateFunction.Sum);
+
+            var summaryRowItem = new GridViewSummaryRowItem { summaryFiItem };
+            rgv_Fund.SummaryRowsBottom.Add(summaryRowItem);
+            rgv_Fund.MasterView.SummaryRows[0].PinPosition = PinnedRowPosition.Bottom;
+            rgv_Fund.MasterTemplate.BottomPinnedRowsMode = GridViewBottomPinnedRowsMode.Float;
             rgv_Fund.DataSource = await _fundService.LoadAllViewModelAsync(currentUserId);
             rgv_Fund.EndUpdate();
 
@@ -530,6 +544,29 @@ namespace PersonalAccounting.UI
             btnRegister.Enabled = (rddl_BankAccountSubject.Text != string.Empty &&
                                    //rddl_FundType.SelectedValue != null &&
                                    txt_FundCurrentValue.Text != string.Empty);
+        }
+
+        private void rgv_Fund_ViewCellFormatting(object sender, CellFormattingEventArgs e)
+        {
+            if (!(e.CellElement is GridSummaryCellElement summaryCell))
+                return;
+
+            if (!string.IsNullOrEmpty(summaryCell.Text))
+            {
+                _rows.Add(summaryCell.RowInfo);
+                summaryCell.RowElement.DrawFill = true;
+                summaryCell.RowElement.GradientStyle = GradientStyles.Solid;
+                summaryCell.RowElement.BackColor = Color.LightBlue;
+                summaryCell.RowElement.ForeColor = Color.Indigo;
+                summaryCell.RowElement.Font = new Font(summaryCell.RowElement.Font, FontStyle.Bold);
+
+            }
+            else if (!_rows.Contains(summaryCell.RowInfo))
+            {
+                summaryCell.RowElement.ResetValue(LightVisualElement.DrawFillProperty, ValueResetFlags.Local);
+                summaryCell.RowElement.ResetValue(LightVisualElement.GradientStyleProperty, ValueResetFlags.Local);
+                summaryCell.RowElement.ResetValue(VisualElement.BackColorProperty, ValueResetFlags.Local);
+            }
         }
     }
 }

@@ -156,7 +156,7 @@ namespace PersonalAccounting.UI
                 txt_ReceivedBy.Text = dataRow.Cells["ReceivedBy"].Value?.ToString();
                 txt_IncomeDate.Text = dataRow.Cells["IncomePersianDate"].Value?.ToString();
                 //txt_IncomePrice.Text = dataRow.Cells["IncomeSeparateDigitPrice"].Value?.ToString();
-                txt_IncomePrice.Text = dataRow.Cells["IncomePrice"].Value?.ToString();
+                txt_IncomePrice.Text = dataRow.Cells["IncomePrice"].Value?.ToString().AddSeparateEx();
                 txt_IncomeDescription.Text = dataRow.Cells["Description"].Value?.ToString();
 
                 rddl_IncomeTypes.SelectedValue = dataRow.Cells["IncomeTypeId"].Value;

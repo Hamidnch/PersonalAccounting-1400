@@ -70,9 +70,8 @@ namespace PersonalAccounting.UI
             this.pnlTopContainer = new Janus.Windows.UI.Dock.UIPanelInnerContainer();
             this.pnl_Data = new System.Windows.Forms.Panel();
             this.rgv_BuyList = new Telerik.WinControls.UI.RadGridView();
-            this.status_Summary = new System.Windows.Forms.StatusStrip();
-            this.lbl_SumPrice = new System.Windows.Forms.ToolStripStatusLabel();
             this.pnl_TopData = new Telerik.WinControls.UI.RadPanel();
+            this.btn_ExportToExcel = new System.Windows.Forms.Button();
             this.txt_ExpenseDocumentDate = new System.Windows.Forms.MaskedTextBox();
             this.lbl_DocumentId = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -85,6 +84,7 @@ namespace PersonalAccounting.UI
             this.btnRegister = new System.Windows.Forms.Button();
             this.btnInsert = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this._errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanelManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnl_ExpenseDocuments)).BeginInit();
@@ -98,7 +98,6 @@ namespace PersonalAccounting.UI
             this.pnl_Data.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rgv_BuyList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgv_BuyList.MasterTemplate)).BeginInit();
-            this.status_Summary.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnl_TopData)).BeginInit();
             this.pnl_TopData.SuspendLayout();
             this.pnl_Action.SuspendLayout();
@@ -116,20 +115,20 @@ namespace PersonalAccounting.UI
             // Design Time Panel Info:
             // 
             this.uiPanelManager1.BeginPanelInfo();
-            this.uiPanelManager1.AddDockPanelInfo(new System.Guid("01e8259e-715c-48cb-a865-5da501cd96ee"), Janus.Windows.UI.Dock.PanelDockStyle.Fill, new System.Drawing.Size(916, 394), true);
-            this.uiPanelManager1.AddDockPanelInfo(new System.Guid("8e74b61a-6571-434b-b4bf-d7669b29989a"), Janus.Windows.UI.Dock.PanelDockStyle.Bottom, new System.Drawing.Size(916, 249), true);
+            this.uiPanelManager1.AddDockPanelInfo(new System.Guid("01e8259e-715c-48cb-a865-5da501cd96ee"), Janus.Windows.UI.Dock.PanelDockStyle.Fill, new System.Drawing.Size(916, 438), true);
+            this.uiPanelManager1.AddDockPanelInfo(new System.Guid("8e74b61a-6571-434b-b4bf-d7669b29989a"), Janus.Windows.UI.Dock.PanelDockStyle.Bottom, new System.Drawing.Size(916, 205), true);
             this.uiPanelManager1.AddFloatingPanelInfo(new System.Guid("01e8259e-715c-48cb-a865-5da501cd96ee"), new System.Drawing.Point(422, 186), new System.Drawing.Size(200, 200), false);
-            this.uiPanelManager1.AddFloatingPanelInfo(new System.Guid("8e74b61a-6571-434b-b4bf-d7669b29989a"), new System.Drawing.Point(431, 786), new System.Drawing.Size(200, 200), false);
+            this.uiPanelManager1.AddFloatingPanelInfo(new System.Guid("8e74b61a-6571-434b-b4bf-d7669b29989a"), new System.Drawing.Point(425, 690), new System.Drawing.Size(200, 200), false);
             this.uiPanelManager1.EndPanelInfo();
             // 
             // pnl_ExpenseDocuments
             // 
             this.pnl_ExpenseDocuments.CloseButtonVisible = Janus.Windows.UI.InheritableBoolean.False;
-            this.pnl_ExpenseDocuments.FloatingLocation = new System.Drawing.Point(431, 786);
+            this.pnl_ExpenseDocuments.FloatingLocation = new System.Drawing.Point(425, 690);
             this.pnl_ExpenseDocuments.InnerContainer = this.uiPanel0Container;
-            this.pnl_ExpenseDocuments.Location = new System.Drawing.Point(3, 424);
+            this.pnl_ExpenseDocuments.Location = new System.Drawing.Point(3, 468);
             this.pnl_ExpenseDocuments.Name = "pnl_ExpenseDocuments";
-            this.pnl_ExpenseDocuments.Size = new System.Drawing.Size(916, 249);
+            this.pnl_ExpenseDocuments.Size = new System.Drawing.Size(916, 205);
             this.pnl_ExpenseDocuments.TabIndex = 4;
             this.pnl_ExpenseDocuments.Text = "اسناد هزینه";
             this.pnl_ExpenseDocuments.TextAlignment = Janus.Windows.UI.Dock.PanelTextAlignment.Far;
@@ -140,7 +139,7 @@ namespace PersonalAccounting.UI
             this.uiPanel0Container.Controls.Add(this.rgv_Expenses);
             this.uiPanel0Container.Location = new System.Drawing.Point(1, 25);
             this.uiPanel0Container.Name = "uiPanel0Container";
-            this.uiPanel0Container.Size = new System.Drawing.Size(914, 223);
+            this.uiPanel0Container.Size = new System.Drawing.Size(914, 179);
             this.uiPanel0Container.TabIndex = 0;
             // 
             // rgv_Expenses
@@ -244,7 +243,7 @@ namespace PersonalAccounting.UI
             this.rgv_Expenses.Name = "rgv_Expenses";
             this.rgv_Expenses.ReadOnly = true;
             this.rgv_Expenses.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.rgv_Expenses.Size = new System.Drawing.Size(914, 223);
+            this.rgv_Expenses.Size = new System.Drawing.Size(914, 179);
             this.rgv_Expenses.TabIndex = 5;
             this.rgv_Expenses.CurrentRowChanged += new Telerik.WinControls.UI.CurrentRowChangedEventHandler(this.rgvExpenses_CurrentRowChanged);
             this.rgv_Expenses.CellClick += new Telerik.WinControls.UI.GridViewCellEventHandler(this.rgv_Expenses_CellClick);
@@ -263,7 +262,7 @@ namespace PersonalAccounting.UI
             this.pnlTop.InnerContainer = this.pnlTopContainer;
             this.pnlTop.Location = new System.Drawing.Point(3, 30);
             this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(916, 394);
+            this.pnlTop.Size = new System.Drawing.Size(916, 438);
             this.pnlTop.TabIndex = 4;
             this.pnlTop.Text = "ورود هزینه ها";
             this.pnlTop.TextAlignment = Janus.Windows.UI.Dock.PanelTextAlignment.Far;
@@ -275,7 +274,7 @@ namespace PersonalAccounting.UI
             this.pnlTopContainer.Controls.Add(this.pnl_Action);
             this.pnlTopContainer.Location = new System.Drawing.Point(0, 20);
             this.pnlTopContainer.Name = "pnlTopContainer";
-            this.pnlTopContainer.Size = new System.Drawing.Size(916, 374);
+            this.pnlTopContainer.Size = new System.Drawing.Size(916, 418);
             this.pnlTopContainer.TabIndex = 0;
             // 
             // pnl_Data
@@ -283,14 +282,13 @@ namespace PersonalAccounting.UI
             this.pnl_Data.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.pnl_Data.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnl_Data.Controls.Add(this.rgv_BuyList);
-            this.pnl_Data.Controls.Add(this.status_Summary);
             this.pnl_Data.Controls.Add(this.pnl_TopData);
             this.pnl_Data.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_Data.Enabled = false;
             this.pnl_Data.Location = new System.Drawing.Point(0, 39);
             this.pnl_Data.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnl_Data.Name = "pnl_Data";
-            this.pnl_Data.Size = new System.Drawing.Size(916, 335);
+            this.pnl_Data.Size = new System.Drawing.Size(916, 379);
             this.pnl_Data.TabIndex = 1;
             this.pnl_Data.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnl_Data_MouseClick);
             // 
@@ -455,12 +453,13 @@ namespace PersonalAccounting.UI
             gridViewDecimalColumn1.ShowUpDownButtons = false;
             gridViewDecimalColumn1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             gridViewDecimalColumn1.ThousandsSeparator = true;
-            gridViewDecimalColumn1.Width = 76;
+            gridViewDecimalColumn1.Width = 120;
             gridViewDecimalColumn2.AllowGroup = false;
             gridViewDecimalColumn2.AllowSort = false;
             gridViewDecimalColumn2.EnableExpressionEditor = false;
             gridViewDecimalColumn2.FieldName = "Count";
             gridViewDecimalColumn2.FormatInfo = new System.Globalization.CultureInfo("fa-IR");
+            gridViewDecimalColumn2.FormatString = "{0:n0}";
             gridViewDecimalColumn2.HeaderText = "تعداد";
             gridViewDecimalColumn2.Minimum = new decimal(new int[] {
             0,
@@ -491,7 +490,7 @@ namespace PersonalAccounting.UI
             gridViewDecimalColumn3.ShowUpDownButtons = false;
             gridViewDecimalColumn3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             gridViewDecimalColumn3.ThousandsSeparator = true;
-            gridViewDecimalColumn3.Width = 127;
+            gridViewDecimalColumn3.Width = 150;
             gridViewTextBoxColumn12.AcceptsReturn = true;
             gridViewTextBoxColumn12.AcceptsTab = true;
             gridViewTextBoxColumn12.AllowGroup = false;
@@ -509,6 +508,7 @@ namespace PersonalAccounting.UI
             gridViewTextBoxColumn13.DisableHTMLRendering = false;
             gridViewTextBoxColumn13.EnableExpressionEditor = false;
             gridViewTextBoxColumn13.FieldName = "FundCurrentValue";
+            gridViewTextBoxColumn13.FormatInfo = new System.Globalization.CultureInfo("fa-IR");
             gridViewTextBoxColumn13.FormatString = "{0:n0}";
             gridViewTextBoxColumn13.HeaderText = "مانده صندوق";
             gridViewTextBoxColumn13.Name = "FundCurrentValue";
@@ -543,7 +543,7 @@ namespace PersonalAccounting.UI
             this.rgv_BuyList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.rgv_BuyList.ShowGroupPanel = false;
             this.rgv_BuyList.ShowHeaderCellButtons = true;
-            this.rgv_BuyList.Size = new System.Drawing.Size(914, 273);
+            this.rgv_BuyList.Size = new System.Drawing.Size(914, 346);
             this.rgv_BuyList.TabIndex = 171;
             this.rgv_BuyList.CellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.rgv_BuyList_CellFormatting);
             this.rgv_BuyList.ViewCellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.rgv_BuyList_ViewCellFormatting);
@@ -551,7 +551,7 @@ namespace PersonalAccounting.UI
             this.rgv_BuyList.CellValidating += new Telerik.WinControls.UI.CellValidatingEventHandler(this.rgv_BuyList_CellValidating);
             this.rgv_BuyList.UserAddingRow += new Telerik.WinControls.UI.GridViewRowCancelEventHandler(this.rgv_BuyList_UserAddingRow);
             this.rgv_BuyList.UserDeletingRow += new Telerik.WinControls.UI.GridViewRowCancelEventHandler(this.rgv_BuyList_UserDeletingRow);
-            this.rgv_BuyList.UserDeletedRow += new Telerik.WinControls.UI.GridViewRowEventHandler(this.rgv_BuyList_UserDeletedRow);
+            //this.rgv_BuyList.UserDeletedRow += new Telerik.WinControls.UI.GridViewRowEventHandler(this.rgv_BuyList_UserDeletedRow);
             this.rgv_BuyList.CellClick += new Telerik.WinControls.UI.GridViewCellEventHandler(this.rgv_BuyList_CellClick);
             this.rgv_BuyList.CellDoubleClick += new Telerik.WinControls.UI.GridViewCellEventHandler(this.rgv_BuyList_CellDoubleClick);
             this.rgv_BuyList.CellValueChanged += new Telerik.WinControls.UI.GridViewCellEventHandler(this.rgv_BuyList_CellValueChanged);
@@ -559,31 +559,10 @@ namespace PersonalAccounting.UI
             this.rgv_BuyList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnl_Data_MouseClick);
             this.rgv_BuyList.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.rgv_BuyList_PreviewKeyDown);
             // 
-            // status_Summary
-            // 
-            this.status_Summary.AutoSize = false;
-            this.status_Summary.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.status_Summary.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.status_Summary.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lbl_SumPrice});
-            this.status_Summary.Location = new System.Drawing.Point(0, 304);
-            this.status_Summary.Name = "status_Summary";
-            this.status_Summary.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.status_Summary.Size = new System.Drawing.Size(914, 29);
-            this.status_Summary.TabIndex = 1;
-            // 
-            // lbl_SumPrice
-            // 
-            this.lbl_SumPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lbl_SumPrice.ForeColor = System.Drawing.Color.Black;
-            this.lbl_SumPrice.Name = "lbl_SumPrice";
-            this.lbl_SumPrice.Size = new System.Drawing.Size(899, 24);
-            this.lbl_SumPrice.Spring = true;
-            this.lbl_SumPrice.Text = "0";
-            // 
             // pnl_TopData
             // 
             this.pnl_TopData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.pnl_TopData.Controls.Add(this.btn_ExportToExcel);
             this.pnl_TopData.Controls.Add(this.txt_ExpenseDocumentDate);
             this.pnl_TopData.Controls.Add(this.lbl_DocumentId);
             this.pnl_TopData.Controls.Add(this.label3);
@@ -594,6 +573,19 @@ namespace PersonalAccounting.UI
             this.pnl_TopData.Name = "pnl_TopData";
             this.pnl_TopData.Size = new System.Drawing.Size(914, 31);
             this.pnl_TopData.TabIndex = 1;
+            // 
+            // btn_ExportToExcel
+            // 
+            this.btn_ExportToExcel.BackColor = System.Drawing.Color.Transparent;
+            this.btn_ExportToExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_ExportToExcel.Location = new System.Drawing.Point(393, 2);
+            this.btn_ExportToExcel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_ExportToExcel.Name = "btn_ExportToExcel";
+            this.btn_ExportToExcel.Size = new System.Drawing.Size(106, 24);
+            this.btn_ExportToExcel.TabIndex = 171;
+            this.btn_ExportToExcel.Text = "ارسال به اکسل";
+            this.btn_ExportToExcel.UseVisualStyleBackColor = false;
+            this.btn_ExportToExcel.Click += new System.EventHandler(this.btn_ExportToExcel_Click);
             // 
             // txt_ExpenseDocumentDate
             // 
@@ -770,6 +762,10 @@ namespace PersonalAccounting.UI
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.Filter = "Excel (*.xls)|*.xls";
+            // 
             // FrmExpense
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -800,8 +796,6 @@ namespace PersonalAccounting.UI
             this.pnl_Data.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.rgv_BuyList.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgv_BuyList)).EndInit();
-            this.status_Summary.ResumeLayout(false);
-            this.status_Summary.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnl_TopData)).EndInit();
             this.pnl_TopData.ResumeLayout(false);
             this.pnl_TopData.PerformLayout();
@@ -832,8 +826,8 @@ namespace PersonalAccounting.UI
         private Janus.Windows.UI.Dock.UIPanelInnerContainer uiPanel0Container;
         private System.Windows.Forms.Panel pnl_Data;
         private Telerik.WinControls.UI.RadPanel pnl_TopData;
-        private System.Windows.Forms.StatusStrip status_Summary;
-        private System.Windows.Forms.ToolStripStatusLabel lbl_SumPrice;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button btn_ExportToExcel;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
