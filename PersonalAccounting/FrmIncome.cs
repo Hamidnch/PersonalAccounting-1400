@@ -7,9 +7,12 @@ using PersonalAccounting.Domain.ViewModel;
 using PersonalAccounting.UI.Helper;
 using PersonalAccounting.UI.Infrastructure;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
+using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace PersonalAccounting.UI
@@ -19,6 +22,8 @@ namespace PersonalAccounting.UI
         private readonly IRepositoryService<Income, ViewModelLoadAllIncome, Income> _incomeService;
         private readonly IRepositoryService<IncomeType, ViewModelLoadAllIncomeType, IncomeType> _incomeTypeService;
         private readonly IFundService _fundService;
+
+        private readonly HashSet<GridViewRowInfo> _rows = new HashSet<GridViewRowInfo>();
 
         private int _incomeId;
         private bool _done;
@@ -585,6 +590,33 @@ namespace PersonalAccounting.UI
         private void rgv_Income_Click(object sender, EventArgs e)
         {
             ReturnIncomeDetails();
+        }
+
+        private void rgv_Income_CellFormatting(object sender, CellFormattingEventArgs e)
+        {
+            e.CellElement.Font = CommonHelper.BaseFont;
+        }
+
+        private void rgv_Income_ViewCellFormatting(object sender, CellFormattingEventArgs e)
+        {
+            if (!(e.CellElement is GridSummaryCellElement summaryCell))
+                return;
+
+            if (!string.IsNullOrEmpty(summaryCell.Text))
+            {
+                _rows.Add(summaryCell.RowInfo);
+                summaryCell.RowElement.DrawFill = true;
+                summaryCell.RowElement.GradientStyle = GradientStyles.Solid;
+                summaryCell.RowElement.BackColor = Color.LightBlue;
+                summaryCell.RowElement.ForeColor = Color.Indigo;
+                summaryCell.RowElement.Font = CommonHelper.BaseBoldFont;
+            }
+            else if (!_rows.Contains(summaryCell.RowInfo))
+            {
+                summaryCell.RowElement.ResetValue(LightVisualElement.DrawFillProperty, ValueResetFlags.Local);
+                summaryCell.RowElement.ResetValue(LightVisualElement.GradientStyleProperty, ValueResetFlags.Local);
+                summaryCell.RowElement.ResetValue(VisualElement.BackColorProperty, ValueResetFlags.Local);
+            }
         }
     }
 }

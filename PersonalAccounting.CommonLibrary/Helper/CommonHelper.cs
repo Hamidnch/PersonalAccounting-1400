@@ -43,10 +43,13 @@ namespace PersonalAccounting.CommonLibrary.Helper
         private const int OleHeaderSize = 78;
 
         public static Font SummaryFont { get; set; } =
-            new Font("Tornado Tahoma", 10, FontStyle.Bold);
+            new Font("Tahoma", 10, FontStyle.Regular);
 
         public static Font BaseFont { get; set; } =
             new Font("Tornado Tahoma", 8, FontStyle.Regular); //Microsoft Sans Serif
+
+        public static Font BaseBoldFont { get; set; } =
+            new Font("Tornado Tahoma", 10, FontStyle.Bold);
 
         public enum Mode
         {
@@ -1154,6 +1157,25 @@ namespace PersonalAccounting.CommonLibrary.Helper
             defaultTextBox.Focus();
             defaultTextBox.SelectAll();
         }
+
+        public static void InsertActionExpense(Panel pnlData, RadGridView rgv, Button btnInsert,
+            Button btnRegister, Button btnModify, Button btnDelete, Button btnCancel,
+            Button btnClose, Button btnExportToExcel,
+            MaskedTextBox defaultTextBox)
+        {
+            rgv.Enabled = false;
+            btnInsert.Enabled = false;
+            btnRegister.Enabled = false;
+            btnModify.Enabled = false;
+            btnDelete.Enabled = false;
+            btnCancel.Enabled = true;
+            btnClose.Enabled = false;
+            btnExportToExcel.Enabled = false;
+            ClearInputControls(pnlData);
+            defaultTextBox.Focus();
+            defaultTextBox.SelectAll();
+        }
+
         //public static void CancelAction(Mode mode, ELGroupBox pnlData, RadGridView rgv, Button btnInsert,
         //    Button btnRegister, Button btnModify, Button btnDelete, Button btnCancel, Button btnClose)
         //{
@@ -1180,6 +1202,18 @@ namespace PersonalAccounting.CommonLibrary.Helper
             //txt_PersonCode.ReadOnly = true;
             //txt_PersonCode.BackColor = Color.FromArgb(229, 237, 251);
             //txt_PersonCode.ForeColor = Color.White;
+        }
+        public static void CancelActionExpense(RadGridView rgv, Button btnInsert,
+            Button btnRegister, Button btnDelete, Button btnCancel, Button btnClose,
+            Button btnExportToExcel)
+        {
+            rgv.Enabled = true;
+            btnCancel.Enabled = false;
+            btnInsert.Enabled = true;
+            btnRegister.Enabled = false;
+            btnDelete.Enabled = true;
+            btnClose.Enabled = true;
+            btnExportToExcel.Enabled = true;
         }
         //public static void CancelAction(Mode mode, UIPanelInnerContainer pnlData, RadGridView rgv,
         //    Button btnInsert, Button btnRegister, Button btnModify, Button btnDelete, Button btnCancel,
@@ -1230,6 +1264,20 @@ namespace PersonalAccounting.CommonLibrary.Helper
             btnDelete.Enabled = false;
             btnClose.Enabled = false;
             rgv.Enabled = false;
+        }
+        public static void ModifyActionExpense(RadGridView rgv, Button btnInsert,
+            Button btnRegister, Button btnModify, Button btnDelete, Button btnCancel,
+            Button btnClose, Button btnExportToExcel)
+        {
+            //mode = TMode.mUpdate;
+            rgv.Enabled = false;
+            btnRegister.Enabled = true;
+            btnCancel.Enabled = true;
+            btnInsert.Enabled = false;
+            btnModify.Enabled = false;
+            btnDelete.Enabled = false;
+            btnClose.Enabled = false;
+            btnExportToExcel.Enabled = false;
         }
         //public static void ModifyAction(Mode mode, UIPanelInnerContainer pnlData, RadGridView rgv,
         //    Button btnInsert, Button btnRegister, Button btnModify, Button btnDelete,

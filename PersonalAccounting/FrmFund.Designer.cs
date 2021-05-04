@@ -99,7 +99,7 @@
             this.label6.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label6.Location = new System.Drawing.Point(176, 14);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 14);
+            this.label6.Size = new System.Drawing.Size(52, 18);
             this.label6.TabIndex = 131;
             this.label6.Text = "وضعیت";
             // 
@@ -139,7 +139,7 @@
             this.label9.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(493, 54);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(47, 13);
+            this.label9.Size = new System.Drawing.Size(59, 17);
             this.label9.TabIndex = 125;
             this.label9.Text = "توضیحات";
             // 
@@ -173,7 +173,7 @@
             this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(471, 15);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 13);
+            this.label3.Size = new System.Drawing.Size(89, 17);
             this.label3.TabIndex = 123;
             this.label3.Text = "موجودی جاری";
             // 
@@ -218,7 +218,7 @@
             this.txt_FundCurrentValue.Location = new System.Drawing.Point(273, 8);
             this.txt_FundCurrentValue.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_FundCurrentValue.Name = "txt_FundCurrentValue";
-            this.txt_FundCurrentValue.Size = new System.Drawing.Size(192, 23);
+            this.txt_FundCurrentValue.Size = new System.Drawing.Size(192, 27);
             this.txt_FundCurrentValue.TabIndex = 2;
             this.txt_FundCurrentValue.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.txt_FundCurrentValue.UseCompatibleTextRendering = true;
@@ -273,7 +273,7 @@
             this.rddl_FundStatus.Location = new System.Drawing.Point(19, 9);
             this.rddl_FundStatus.MaxDropDownItems = 10;
             this.rddl_FundStatus.Name = "rddl_FundStatus";
-            this.rddl_FundStatus.Size = new System.Drawing.Size(151, 22);
+            this.rddl_FundStatus.Size = new System.Drawing.Size(151, 26);
             this.rddl_FundStatus.TabIndex = 3;
             this.rddl_FundStatus.TextChanged += new System.EventHandler(this.rddl_FundStatus_TextChanged);
             this.rddl_FundStatus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rddl_FundType_KeyDown);
@@ -335,7 +335,7 @@
             this.label2.ForeColor = System.Drawing.Color.MediumBlue;
             this.label2.Location = new System.Drawing.Point(241, 16);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(26, 14);
+            this.label2.Size = new System.Drawing.Size(31, 18);
             this.label2.TabIndex = 131;
             this.label2.Text = "ریال";
             // 
@@ -346,7 +346,7 @@
             this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(796, 15);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 13);
+            this.label4.Size = new System.Drawing.Size(72, 17);
             this.label4.TabIndex = 123;
             this.label4.Text = "نوع صندوق";
             // 
@@ -357,7 +357,7 @@
             this.lbl_FundName.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_FundName.Location = new System.Drawing.Point(790, 54);
             this.lbl_FundName.Name = "lbl_FundName";
-            this.lbl_FundName.Size = new System.Drawing.Size(67, 13);
+            this.lbl_FundName.Size = new System.Drawing.Size(82, 17);
             this.lbl_FundName.TabIndex = 123;
             this.lbl_FundName.Text = "عنوان حساب";
             // 
@@ -468,7 +468,7 @@
             gridViewTextBoxColumn7.Name = "FundPrimaryValue";
             gridViewTextBoxColumn7.ReadOnly = true;
             gridViewTextBoxColumn7.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn7.Width = 137;
+            gridViewTextBoxColumn7.Width = 160;
             gridViewTextBoxColumn8.EnableExpressionEditor = false;
             gridViewTextBoxColumn8.FieldName = "FundCurrentValue";
             gridViewTextBoxColumn8.FormatString = "{0:n0}";
@@ -476,7 +476,7 @@
             gridViewTextBoxColumn8.Name = "FundCurrentValue";
             gridViewTextBoxColumn8.ReadOnly = true;
             gridViewTextBoxColumn8.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn8.Width = 103;
+            gridViewTextBoxColumn8.Width = 160;
             gridViewTextBoxColumn9.EnableExpressionEditor = false;
             gridViewTextBoxColumn9.FieldName = "FundPersianRegisterDate";
             gridViewTextBoxColumn9.HeaderText = "تاریخ ثبت";
@@ -536,6 +536,7 @@
             this.rgv_Fund.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.rgv_Fund.Size = new System.Drawing.Size(867, 441);
             this.rgv_Fund.TabIndex = 2;
+            this.rgv_Fund.CellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.rgv_Fund_CellFormatting);
             this.rgv_Fund.ViewCellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.rgv_Fund_ViewCellFormatting);
             this.rgv_Fund.CurrentRowChanged += new Telerik.WinControls.UI.CurrentRowChangedEventHandler(this.rgv_Fund_CurrentRowChanged);
             this.rgv_Fund.CellClick += new Telerik.WinControls.UI.GridViewCellEventHandler(this.rgv_Fund_CellClick);
@@ -543,7 +544,7 @@
             // 
             // FrmFund
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(867, 602);
             this.Controls.Add(this.rgv_Fund);

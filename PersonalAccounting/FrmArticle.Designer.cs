@@ -31,10 +31,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmArticle));
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.Data.SortDescriptor sortDescriptor3 = new Telerik.WinControls.Data.SortDescriptor();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.Data.SortDescriptor sortDescriptor2 = new Telerik.WinControls.Data.SortDescriptor();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
             this.pnl_Action = new System.Windows.Forms.Panel();
             this._picLoading = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
@@ -242,7 +242,7 @@
             this.rddl_ArticleStatus.Location = new System.Drawing.Point(8, 5);
             this.rddl_ArticleStatus.MaxDropDownItems = 10;
             this.rddl_ArticleStatus.Name = "rddl_ArticleStatus";
-            this.rddl_ArticleStatus.Size = new System.Drawing.Size(131, 22);
+            this.rddl_ArticleStatus.Size = new System.Drawing.Size(131, 26);
             this.rddl_ArticleStatus.TabIndex = 2;
             this.rddl_ArticleStatus.TextChanged += new System.EventHandler(this.txt_ArticleName_TextChanged);
             // 
@@ -284,7 +284,7 @@
             this.lbl_TitleID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lbl_TitleID.Location = new System.Drawing.Point(836, 10);
             this.lbl_TitleID.Name = "lbl_TitleID";
-            this.lbl_TitleID.Size = new System.Drawing.Size(67, 13);
+            this.lbl_TitleID.Size = new System.Drawing.Size(84, 17);
             this.lbl_TitleID.TabIndex = 136;
             this.lbl_TitleID.Text = "شناسه كالا";
             // 
@@ -294,7 +294,7 @@
             this.txt_ArticleId.Location = new System.Drawing.Point(767, 6);
             this.txt_ArticleId.Name = "txt_ArticleId";
             this.txt_ArticleId.ReadOnly = true;
-            this.txt_ArticleId.Size = new System.Drawing.Size(66, 21);
+            this.txt_ArticleId.Size = new System.Drawing.Size(66, 24);
             this.txt_ArticleId.TabIndex = 135;
             this.txt_ArticleId.TabStop = false;
             // 
@@ -319,7 +319,7 @@
             this.txt_ArticleLatinName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_ArticleLatinName.Location = new System.Drawing.Point(203, 6);
             this.txt_ArticleLatinName.Name = "txt_ArticleLatinName";
-            this.txt_ArticleLatinName.Size = new System.Drawing.Size(189, 21);
+            this.txt_ArticleLatinName.Size = new System.Drawing.Size(189, 24);
             this.txt_ArticleLatinName.TabIndex = 1;
             this.txt_ArticleLatinName.TextChanged += new System.EventHandler(this.txt_ArticleName_TextChanged);
             this.txt_ArticleLatinName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_ArticleName_KeyDown);
@@ -331,7 +331,7 @@
             this.txt_ArticleName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_ArticleName.Location = new System.Drawing.Point(461, 6);
             this.txt_ArticleName.Name = "txt_ArticleName";
-            this.txt_ArticleName.Size = new System.Drawing.Size(256, 21);
+            this.txt_ArticleName.Size = new System.Drawing.Size(256, 24);
             this.txt_ArticleName.TabIndex = 0;
             this.txt_ArticleName.TextChanged += new System.EventHandler(this.txt_ArticleName_TextChanged);
             this.txt_ArticleName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_ArticleName_KeyDown);
@@ -342,7 +342,7 @@
             this.label6.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label6.Location = new System.Drawing.Point(145, 7);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 14);
+            this.label6.Size = new System.Drawing.Size(52, 18);
             this.label6.TabIndex = 131;
             this.label6.Text = "وضعیت";
             // 
@@ -353,7 +353,7 @@
             this.label9.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(372, 53);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(47, 13);
+            this.label9.Size = new System.Drawing.Size(59, 17);
             this.label9.TabIndex = 125;
             this.label9.Text = "توضیحات";
             // 
@@ -363,7 +363,7 @@
             this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(398, 10);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 13);
+            this.label3.Size = new System.Drawing.Size(57, 17);
             this.label3.TabIndex = 123;
             this.label3.Text = "نام لاتین";
             // 
@@ -374,7 +374,7 @@
             this.label5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(838, 53);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 13);
+            this.label5.Size = new System.Drawing.Size(85, 17);
             this.label5.TabIndex = 123;
             this.label5.Text = "واحد سنجش";
             // 
@@ -385,7 +385,7 @@
             this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(721, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.Size = new System.Drawing.Size(48, 17);
             this.label1.TabIndex = 123;
             this.label1.Text = "نام کالا";
             // 
@@ -572,32 +572,32 @@
             this.rgv_ArticleGroup.MasterTemplate.AllowRowResize = false;
             this.rgv_ArticleGroup.MasterTemplate.AutoExpandGroups = true;
             this.rgv_ArticleGroup.MasterTemplate.AutoGenerateColumns = false;
-            gridViewTextBoxColumn5.EnableExpressionEditor = false;
-            gridViewTextBoxColumn5.FieldName = "ArticleGroupId";
-            gridViewTextBoxColumn5.HeaderText = "شناسه";
-            gridViewTextBoxColumn5.Name = "ArticleGroupId";
-            gridViewTextBoxColumn5.ReadOnly = true;
-            gridViewTextBoxColumn5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn5.Width = 70;
-            gridViewTextBoxColumn6.EnableExpressionEditor = false;
-            gridViewTextBoxColumn6.FieldName = "ArticleGroupName";
-            gridViewTextBoxColumn6.HeaderText = "نام گروه";
-            gridViewTextBoxColumn6.Name = "ArticleGroupName";
-            gridViewTextBoxColumn6.ReadOnly = true;
-            gridViewTextBoxColumn6.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn6.Width = 198;
+            gridViewTextBoxColumn3.EnableExpressionEditor = false;
+            gridViewTextBoxColumn3.FieldName = "ArticleGroupId";
+            gridViewTextBoxColumn3.HeaderText = "شناسه";
+            gridViewTextBoxColumn3.Name = "ArticleGroupId";
+            gridViewTextBoxColumn3.ReadOnly = true;
+            gridViewTextBoxColumn3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn3.Width = 70;
+            gridViewTextBoxColumn4.EnableExpressionEditor = false;
+            gridViewTextBoxColumn4.FieldName = "ArticleGroupName";
+            gridViewTextBoxColumn4.HeaderText = "نام گروه";
+            gridViewTextBoxColumn4.Name = "ArticleGroupName";
+            gridViewTextBoxColumn4.ReadOnly = true;
+            gridViewTextBoxColumn4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn4.Width = 198;
             this.rgv_ArticleGroup.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn5,
-            gridViewTextBoxColumn6});
+            gridViewTextBoxColumn3,
+            gridViewTextBoxColumn4});
             this.rgv_ArticleGroup.MasterTemplate.EnableAlternatingRowColor = true;
             this.rgv_ArticleGroup.MasterTemplate.EnableFiltering = true;
             this.rgv_ArticleGroup.MasterTemplate.EnableGrouping = false;
             this.rgv_ArticleGroup.MasterTemplate.ReadOnly = true;
             this.rgv_ArticleGroup.MasterTemplate.ShowGroupedColumns = true;
-            sortDescriptor3.PropertyName = "column1";
+            sortDescriptor2.PropertyName = "column1";
             this.rgv_ArticleGroup.MasterTemplate.SortDescriptors.AddRange(new Telerik.WinControls.Data.SortDescriptor[] {
-            sortDescriptor3});
-            this.rgv_ArticleGroup.MasterTemplate.ViewDefinition = tableViewDefinition3;
+            sortDescriptor2});
+            this.rgv_ArticleGroup.MasterTemplate.ViewDefinition = tableViewDefinition2;
             this.rgv_ArticleGroup.Name = "rgv_ArticleGroup";
             this.rgv_ArticleGroup.ReadOnly = true;
             this.rgv_ArticleGroup.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -640,7 +640,7 @@
             // 
             // FrmArticle
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(907, 653);
             this.Controls.Add(this.radSplitContainer1);

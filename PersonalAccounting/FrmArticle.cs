@@ -65,9 +65,9 @@ namespace PersonalAccounting.UI
             _backgroundWorker.DoWork += _backgroundWorker_DoWork;
             _backgroundWorker.RunWorkerCompleted += _backgroundWorker_RunWorkerCompleted;
 
+            _pnlFloating = new Panel();
             _rgv = new RadGridView();
             _btn = new Button();
-            _pnlFloating = new Panel();
             _btn.Click += btn_Click;
 
             BindGrid();
@@ -305,6 +305,12 @@ namespace PersonalAccounting.UI
             var dlg = new CustomDialogs(400, 200);
 
             var articleGroupId = GetSelectedArticleGroupId();
+            if (articleGroupId <= 0)
+            {
+                dlg.Invoke("خطا", "دسته کالا را انتخاب کنید", CustomDialogs.ImageType.itError3,
+                    CustomDialogs.ButtonType.Ok, InitialHelper.BackColorCustom);
+                return;
+            }
             var articleStatus = rddl_ArticleStatus.Text;
             var currentUser = InitialHelper.CurrentUser;
             var currentDateTime = InitialHelper.CurrentDateTime;
@@ -598,6 +604,9 @@ namespace PersonalAccounting.UI
                     break;
                 case "ArticleCreationUserName":
                     e.Column.HeaderText = "کاربر ثبت کننده";
+                    break;
+                case "ArticleUpdateByUserName":
+                    e.Column.HeaderText = "کاربر ویرایش کننده";
                     break;
                 case "ArticleStatus":
                     e.Column.HeaderText = "وضعیت";

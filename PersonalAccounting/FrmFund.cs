@@ -559,7 +559,7 @@ namespace PersonalAccounting.UI
                 summaryCell.RowElement.GradientStyle = GradientStyles.Solid;
                 summaryCell.RowElement.BackColor = Color.LightBlue;
                 summaryCell.RowElement.ForeColor = Color.Indigo;
-                summaryCell.RowElement.Font = new Font(summaryCell.RowElement.Font, FontStyle.Bold);
+                summaryCell.RowElement.Font = CommonHelper.BaseBoldFont;
 
             }
             else if (!_rows.Contains(summaryCell.RowInfo))
@@ -567,6 +567,14 @@ namespace PersonalAccounting.UI
                 summaryCell.RowElement.ResetValue(LightVisualElement.DrawFillProperty, ValueResetFlags.Local);
                 summaryCell.RowElement.ResetValue(LightVisualElement.GradientStyleProperty, ValueResetFlags.Local);
                 summaryCell.RowElement.ResetValue(VisualElement.BackColorProperty, ValueResetFlags.Local);
+            }
+        }
+
+        private void rgv_Fund_CellFormatting(object sender, CellFormattingEventArgs e)
+        {
+            //if(e.CellElement.Name == "FundCurrentValue")
+            {
+                e.CellElement.Font = CommonHelper.BaseFont;
             }
         }
     }

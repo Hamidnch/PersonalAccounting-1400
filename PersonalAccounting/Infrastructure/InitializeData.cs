@@ -208,6 +208,9 @@ namespace PersonalAccounting.UI.Infrastructure
                 case "FrmExpenseReport":
                     formName = "گزارش هزینه ها";
                     break;
+                case "FrmDiaryNoteReport":
+                    formName = "گزارش یادداشتهای روزانه";
+                    break;
                 case "FrmBackup":
                     formName = "پشتیبان از دیتابیس";
                     break;

@@ -144,6 +144,7 @@
     <None Include="packages.config" />
     <None Include="Resources\CommodityType.png" />
     <None Include="Resources\Commodity.png" />
+    <None Include="Resources\DiaryNoteReport.png" />
     <Content Include="Resources\ExpandAll.bmp" />
     <None Include="Resources\TransferMoney.png" />
     <None Include="Resources\LoadingNote.gif" />

@@ -122,7 +122,7 @@ namespace PersonalAccounting.UI
             this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(56, 12);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(24, 13);
+            this.label4.Size = new System.Drawing.Size(30, 17);
             this.label4.TabIndex = 135;
             this.label4.Text = "ریال";
             // 
@@ -133,7 +133,7 @@ namespace PersonalAccounting.UI
             this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(461, 12);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(24, 13);
+            this.label2.Size = new System.Drawing.Size(30, 17);
             this.label2.TabIndex = 134;
             this.label2.Text = "ریال";
             // 
@@ -147,7 +147,7 @@ namespace PersonalAccounting.UI
             this.txt_TransferMoneyDate.Mask = "1000/00/00";
             this.txt_TransferMoneyDate.Name = "txt_TransferMoneyDate";
             this.txt_TransferMoneyDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_TransferMoneyDate.Size = new System.Drawing.Size(83, 20);
+            this.txt_TransferMoneyDate.Size = new System.Drawing.Size(83, 23);
             this.txt_TransferMoneyDate.TabIndex = 131;
             this.txt_TransferMoneyDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txt_TransferMoneyDate.TextChanged += new System.EventHandler(this.rddl_OriginAccount_TextChanged);
@@ -159,7 +159,7 @@ namespace PersonalAccounting.UI
             this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(709, 54);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.Size = new System.Drawing.Size(71, 17);
             this.label1.TabIndex = 132;
             this.label1.Text = "تاریخ انتقال";
             // 
@@ -219,7 +219,7 @@ namespace PersonalAccounting.UI
             this.txt_DestFundRemain.Location = new System.Drawing.Point(83, 6);
             this.txt_DestFundRemain.Name = "txt_DestFundRemain";
             this.txt_DestFundRemain.ReadOnly = true;
-            this.txt_DestFundRemain.Size = new System.Drawing.Size(168, 24);
+            this.txt_DestFundRemain.Size = new System.Drawing.Size(168, 28);
             this.txt_DestFundRemain.TabIndex = 128;
             this.txt_DestFundRemain.Text = "0";
             this.txt_DestFundRemain.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -232,7 +232,7 @@ namespace PersonalAccounting.UI
             this.txt_OriginFundRemain.Location = new System.Drawing.Point(488, 6);
             this.txt_OriginFundRemain.Name = "txt_OriginFundRemain";
             this.txt_OriginFundRemain.ReadOnly = true;
-            this.txt_OriginFundRemain.Size = new System.Drawing.Size(168, 24);
+            this.txt_OriginFundRemain.Size = new System.Drawing.Size(168, 28);
             this.txt_OriginFundRemain.TabIndex = 128;
             this.txt_OriginFundRemain.Text = "0";
             this.txt_OriginFundRemain.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -248,7 +248,7 @@ namespace PersonalAccounting.UI
             this.txt_BankCommission.Location = new System.Drawing.Point(39, 114);
             this.txt_BankCommission.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_BankCommission.Name = "txt_BankCommission";
-            this.txt_BankCommission.Size = new System.Drawing.Size(241, 23);
+            this.txt_BankCommission.Size = new System.Drawing.Size(241, 27);
             this.txt_BankCommission.TabIndex = 126;
             this.txt_BankCommission.Text = "0";
             this.txt_BankCommission.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
@@ -266,7 +266,7 @@ namespace PersonalAccounting.UI
             this.lbl_BankCommission.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_BankCommission.Location = new System.Drawing.Point(286, 119);
             this.lbl_BankCommission.Name = "lbl_BankCommission";
-            this.lbl_BankCommission.Size = new System.Drawing.Size(90, 13);
+            this.lbl_BankCommission.Size = new System.Drawing.Size(116, 17);
             this.lbl_BankCommission.TabIndex = 127;
             this.lbl_BankCommission.Text = "کارمزد بانک به ریال";
             // 
@@ -281,7 +281,7 @@ namespace PersonalAccounting.UI
             this.txt_TransferValue.Location = new System.Drawing.Point(450, 114);
             this.txt_TransferValue.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_TransferValue.Name = "txt_TransferValue";
-            this.txt_TransferValue.Size = new System.Drawing.Size(241, 23);
+            this.txt_TransferValue.Size = new System.Drawing.Size(241, 27);
             this.txt_TransferValue.TabIndex = 126;
             this.txt_TransferValue.Text = "0";
             this.txt_TransferValue.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
@@ -299,7 +299,7 @@ namespace PersonalAccounting.UI
             this.lbl_TransferValue.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_TransferValue.Location = new System.Drawing.Point(712, 119);
             this.lbl_TransferValue.Name = "lbl_TransferValue";
-            this.lbl_TransferValue.Size = new System.Drawing.Size(59, 13);
+            this.lbl_TransferValue.Size = new System.Drawing.Size(75, 17);
             this.lbl_TransferValue.TabIndex = 127;
             this.lbl_TransferValue.Text = "مبلغ به ریال";
             // 
@@ -332,7 +332,7 @@ namespace PersonalAccounting.UI
             this.lbl_TransferDescription.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_TransferDescription.Location = new System.Drawing.Point(721, 157);
             this.lbl_TransferDescription.Name = "lbl_TransferDescription";
-            this.lbl_TransferDescription.Size = new System.Drawing.Size(47, 13);
+            this.lbl_TransferDescription.Size = new System.Drawing.Size(59, 17);
             this.lbl_TransferDescription.TabIndex = 125;
             this.lbl_TransferDescription.Text = "توضیحات";
             // 
@@ -343,7 +343,7 @@ namespace PersonalAccounting.UI
             this.lbl_SecondAccount.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_SecondAccount.Location = new System.Drawing.Point(308, 84);
             this.lbl_SecondAccount.Name = "lbl_SecondAccount";
-            this.lbl_SecondAccount.Size = new System.Drawing.Size(68, 13);
+            this.lbl_SecondAccount.Size = new System.Drawing.Size(84, 17);
             this.lbl_SecondAccount.TabIndex = 123;
             this.lbl_SecondAccount.Text = "حساب مقصد";
             // 
@@ -355,7 +355,7 @@ namespace PersonalAccounting.UI
             this.lbl_DestFundRemain.ForeColor = System.Drawing.Color.Navy;
             this.lbl_DestFundRemain.Location = new System.Drawing.Point(281, 12);
             this.lbl_DestFundRemain.Name = "lbl_DestFundRemain";
-            this.lbl_DestFundRemain.Size = new System.Drawing.Size(102, 13);
+            this.lbl_DestFundRemain.Size = new System.Drawing.Size(129, 17);
             this.lbl_DestFundRemain.TabIndex = 123;
             this.lbl_DestFundRemain.Text = "مانده حساب مبدا: ";
             // 
@@ -367,7 +367,7 @@ namespace PersonalAccounting.UI
             this.lbl_OriginFundRemain.ForeColor = System.Drawing.Color.Navy;
             this.lbl_OriginFundRemain.Location = new System.Drawing.Point(671, 12);
             this.lbl_OriginFundRemain.Name = "lbl_OriginFundRemain";
-            this.lbl_OriginFundRemain.Size = new System.Drawing.Size(108, 13);
+            this.lbl_OriginFundRemain.Size = new System.Drawing.Size(138, 17);
             this.lbl_OriginFundRemain.TabIndex = 123;
             this.lbl_OriginFundRemain.Text = "مانده حساب مقصد:";
             // 
@@ -378,7 +378,7 @@ namespace PersonalAccounting.UI
             this.lbl_FirstAccount.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_FirstAccount.Location = new System.Drawing.Point(711, 84);
             this.lbl_FirstAccount.Name = "lbl_FirstAccount";
-            this.lbl_FirstAccount.Size = new System.Drawing.Size(60, 13);
+            this.lbl_FirstAccount.Size = new System.Drawing.Size(74, 17);
             this.lbl_FirstAccount.TabIndex = 123;
             this.lbl_FirstAccount.Text = "حساب مبدا";
             // 
@@ -632,13 +632,15 @@ namespace PersonalAccounting.UI
             this.rgv_TransferMoney.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.rgv_TransferMoney.Size = new System.Drawing.Size(813, 365);
             this.rgv_TransferMoney.TabIndex = 4;
+            this.rgv_TransferMoney.CellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.rgv_TransferMoney_CellFormatting);
+            this.rgv_TransferMoney.ViewCellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.rgv_TransferMoney_ViewCellFormatting);
             this.rgv_TransferMoney.CurrentRowChanged += new Telerik.WinControls.UI.CurrentRowChangedEventHandler(this.rgv_TransferMoney_CurrentRowChanged);
             this.rgv_TransferMoney.CellClick += new Telerik.WinControls.UI.GridViewCellEventHandler(this.rgv_TransferMoney_CellClick);
             this.rgv_TransferMoney.Click += new System.EventHandler(this.rgv_TransferMoney_Click);
             // 
             // FrmTransferMoney
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(813, 632);
             this.Controls.Add(this.rgv_TransferMoney);

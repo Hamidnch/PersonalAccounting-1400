@@ -36,7 +36,7 @@ namespace PersonalAccounting.UI
             rgv_Expenses.EnableAlternatingRowColor = true;
             //rgv_Expenses.MasterTemplate.ShowSubTotals = true;
             //rgv_Expenses.MasterTemplate.ShowParentGroupSummaries = true;
-            //rgv_Expenses.EnableGrouping = false;
+            //rgv_Expenses.EnableGrouping = true;
 
             //rgv_Expenses.MasterTemplate.AutoExpandGroups = true;
             //rgv_Expenses.MasterTemplate.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;

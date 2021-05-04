@@ -251,3 +251,4 @@ G:\Programming New\Best Projects\Win Forms\My Projects\Personal Accounting\Perso
 G:\Programming New\Best Projects\Win Forms\My Projects\Personal Accounting\PersonalAccounting-Source\PersonalAccounting\obj\Release\PersonalAccounting.UI.csproj.CopyComplete
 G:\Programming New\Best Projects\Win Forms\My Projects\Personal Accounting\PersonalAccounting-Source\PersonalAccounting\obj\Release\PersonalAccounting.UI.exe
 G:\Programming New\Best Projects\Win Forms\My Projects\Personal Accounting\PersonalAccounting-Source\PersonalAccounting\obj\Release\PersonalAccounting.UI.pdb
+D:\Programming New\Best Projects\Win Forms\My Projects\Personal Accounting\PersonalAccounting-Source\PersonalAccounting\obj\Release\PersonalAccounting.UI.ReportForms.FrmDiaryNoteReport.resources

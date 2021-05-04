@@ -61,6 +61,8 @@ namespace PersonalAccounting.UI
         private const decimal Value = 500;
         //public bool PriceOverflow = false;
 
+        public double expenseItemPrice = 0;
+
         private readonly HashSet<GridViewRowInfo> _rows = new HashSet<GridViewRowInfo>();
 
         private static FrmExpense _aFrmExpense;
@@ -71,7 +73,7 @@ namespace PersonalAccounting.UI
         }
 
         public FrmExpense(
-            IRepositoryService<Person, ViewModelLoadAllPerson, ViewModelSimpleLoadPerson> personService, 
+            IRepositoryService<Person, ViewModelLoadAllPerson, ViewModelSimpleLoadPerson> personService,
             IFundService fundService, IRepositoryService<Article, ViewModelLoadAllArticle,
             ViewModelSimpleLoadArticle> articleService, IMeasurementUnitService measurementUnitService,
             IExpenseDocumentService expenseDocumentService, IExpenseService expenseService
@@ -115,6 +117,7 @@ namespace PersonalAccounting.UI
             _rgv.CellDoubleClick += _rgv_CellDoubleClick;
             // _rgv.CellFormatting += _rgv_CellFormatting;
             _rgv.RowFormatting += _rgv_RowFormatting;
+            _rgv.CellFormatting += _rgv_CellFormatting;
 
             rgv_Expenses.MasterTemplate.ShowTotals = true;
             rgv_Expenses.EnableAlternatingRowColor = true;
@@ -125,8 +128,13 @@ namespace PersonalAccounting.UI
             rgv_BuyList.SummaryRowsBottom.Add(summaryRowItem);
             rgv_BuyList.MasterView.SummaryRows[0].PinPosition = PinnedRowPosition.Bottom;
             rgv_BuyList.MasterTemplate.BottomPinnedRowsMode = GridViewBottomPinnedRowsMode.Float;
-
+            rgv_BuyList.TableElement.BackColor = InitialHelper.GridBackColor;
             BindGrid();
+        }
+
+        private void _rgv_CellFormatting(object sender, CellFormattingEventArgs e)
+        {
+            e.CellElement.Font = CommonHelper.BaseFont;
         }
 
         //private async void FillDropdownList(RadDropDownList ddl)
@@ -169,9 +177,10 @@ namespace PersonalAccounting.UI
                 if (decimal.Parse(e.RowElement.RowInfo.Cells["FundCurrentValue"].Value.ToString()) < Value)
                 {
                     e.RowElement.Enabled = false;
-                    e.RowElement.BackColor = Color.Gray;
+                    e.RowElement.TableElement.BackColor = Color.Gray;
                     e.RowElement.GradientStyle = GradientStyles.Solid;
                     e.RowElement.DrawFill = true;
+                    //e.RowElement.Font = CommonHelper.BaseFont;
                 }
                 else
                 {
@@ -216,6 +225,7 @@ namespace PersonalAccounting.UI
 
         private void _rgv_CellDoubleClick(object sender, GridViewCellEventArgs e)
         {
+            if (rgv_BuyList.ReadOnly) return;
             SubmitSelectedValue();
         }
 
@@ -244,10 +254,12 @@ namespace PersonalAccounting.UI
                         case CurrentSelected.Fund:
                             if (decimal.Parse(currentRow.Cells["FundCurrentValue"].Value.ToString()) > Value) //.ToString().ClearSeparateEx()
                             {
+                                //expenseItemPrice += double.Parse(rgv_BuyList.CurrentRow.Cells[14].Value?.ToString());
+                                //var fundCurrentValue = double.Parse(_rgv.CurrentRow?.Cells[3].Value.ToString()) - expenseItemPrice;
                                 rgv_BuyList.BeginUpdate();
                                 rgv_BuyList.CurrentRow.Cells[4].Value = _rgv.CurrentRow.Cells[0].Value.ToString();
                                 rgv_BuyList.CurrentRow.Cells[5].Value = _rgv.CurrentRow.Cells[2].Value.ToString();
-                                rgv_BuyList.CurrentRow.Cells[16].Value = _rgv.CurrentRow.Cells[3].Value.ToString().AddSeparateEx();
+                                rgv_BuyList.CurrentRow.Cells[16].Value = _rgv.CurrentRow?.Cells[3].Value.ToString();
                                 _currentSelected = CurrentSelected.ByPerson;
                                 rgv_BuyList.EndUpdate();
                                 //CommonHelper.IndicatorLoading(_picLoading, true);
@@ -307,7 +319,7 @@ namespace PersonalAccounting.UI
                 {
                     var dlg = new CustomDialogs(320, 200);
                     dlg.Invoke("خطا", exception.ToDetailedString(), CustomDialogs.ImageType.itError5,
-                        CustomDialogs.ButtonType.Ok, InitialHelper.BackColorCustom);
+                        CustomDialogs.ButtonType.Ok, InitialHelper.GridBackColor);
 
                     await LoggerService.ErrorAsync(this.Name, "SubmitSelectedValue", exception.Message,
                         exception.ToDetailedString());
@@ -348,6 +360,8 @@ namespace PersonalAccounting.UI
         //}
         private async void _backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
+            if (rgv_BuyList.ReadOnly) return;
+
             try
             {
                 _fileNames = new List<string>();
@@ -412,6 +426,8 @@ namespace PersonalAccounting.UI
 
         private async void _backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            if (rgv_BuyList.ReadOnly) return;
+
             try
             {
                 var headerTitle = string.Empty;
@@ -482,6 +498,8 @@ namespace PersonalAccounting.UI
         }
         private async void rgv_BuyList_KeyDown(object sender, KeyEventArgs e)
         {
+            if (rgv_BuyList.ReadOnly) return;
+
             switch (e.KeyData)
             {
                 case Keys.Insert:
@@ -567,6 +585,8 @@ namespace PersonalAccounting.UI
 
         private void rgv_BuyList_CellClick(object sender, GridViewCellEventArgs e)
         {
+            if (rgv_BuyList.ReadOnly) return;
+
             if (sender is GridHeaderCellElement) return;
             if (!(sender is GridDataCellElement cell)) return;
 
@@ -653,19 +673,23 @@ namespace PersonalAccounting.UI
             if (e.CellElement.ColumnInfo is GridViewDecimalColumn)
             {
                 if (e.CellElement.ColumnInfo.Name != "Count")
+                {
                     e.CellElement.Text = $@"{((GridDataCellElement)e.CellElement).Value:#,###}";
+                    e.CellElement.Font = CommonHelper.BaseFont;
+                }
             }
 
             if (e.CellElement.ColumnInfo.ReadOnly)
             {
-                if (e.CellElement.ColumnInfo is GridViewDecimalColumn)
-                    return;
+                if (e.CellElement.ColumnInfo is GridViewDecimalColumn) return;
+
                 if (e.CellElement.Value != null)
                     e.CellElement.Text = e.CellElement.Value.ToString();
                 var s = e.CellElement.Text;
                 s = "<html><color=purple><b>" + s + "</b></html>";
                 e.CellElement.Text = s;
             }
+            e.CellElement.Font = CommonHelper.BaseFont;
             //if (e.CellElement.ColumnInfo.Name == "Fi" && e.CellElement.Value != null)
             //{
             //    e.CellElement.Text = e.CellElement.Value.ToString();
@@ -695,6 +719,8 @@ namespace PersonalAccounting.UI
 
         private async void rgv_BuyList_CellDoubleClick(object sender, GridViewCellEventArgs e)
         {
+            if (rgv_BuyList.ReadOnly) return;
+
             try
             {
                 if (sender is GridHeaderCellElement) return;
@@ -740,6 +766,8 @@ namespace PersonalAccounting.UI
 
         private void rgv_BuyList_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
+            if (rgv_BuyList.ReadOnly) return;
+
             if (e.KeyData != Keys.Down) return;
 
             if (IsNotReadyForAddNewRow()) return;
@@ -775,9 +803,11 @@ namespace PersonalAccounting.UI
 
             _mode = CommonHelper.Mode.Insert;
 
-            CommonHelper.InsertAction(_mode, pnl_Data, rgv_Expenses, btnInsert, btnRegister,
-                btnModify, btnDelete, btnCancel, btnClose, txt_ExpenseDocumentDate);
+            CommonHelper.InsertActionExpense(pnl_Data, rgv_Expenses, btnInsert, btnRegister,
+                btnModify, btnDelete, btnCancel, btnClose, btn_ExportToExcel, txt_ExpenseDocumentDate);
 
+            rgv_BuyList.ReadOnly = false;
+            rgv_BuyList.TableElement.BackColor = Color.White;
             lbl_DocumentId.Text = string.Empty;
             //lbl_SumPrice.Text = string.Empty;
 
@@ -805,16 +835,21 @@ namespace PersonalAccounting.UI
 
         private void rgv_BuyList_UserDeletingRow(object sender, GridViewRowCancelEventArgs e)
         {
+            if (rgv_BuyList.ReadOnly) return;
+
             if (rgv_BuyList.Rows.Count <= 1)
                 e.Cancel = true;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            CommonHelper.CancelAction(_mode, pnl_Data, rgv_Expenses, btnInsert,
-                btnRegister, btnModify, btnDelete, btnCancel, btnClose);
             _mode = CommonHelper.Mode.Cancel;
 
+            CommonHelper.CancelActionExpense(rgv_Expenses, btnInsert,
+                btnRegister, btnDelete, btnCancel, btnClose, btn_ExportToExcel);
+
+            rgv_BuyList.ReadOnly = true;
+            rgv_BuyList.TableElement.BackColor = InitialHelper.GridBackColor;
             //ReturnExpenseDocumentDetailsById();
             //CommonHelper.IndicatorLoading(_pictureBox, true);
             //_backgroundWorker.RunWorkerAsync();
@@ -836,15 +871,19 @@ namespace PersonalAccounting.UI
 
             _mode = CommonHelper.Mode.Update;
 
-            CommonHelper.ModifyAction(_mode, pnl_Data, rgv_Expenses, btnInsert,
-                btnRegister, btnModify, btnDelete, btnCancel, btnClose);
+            CommonHelper.ModifyActionExpense(rgv_Expenses, btnInsert,
+                btnRegister, btnModify, btnDelete, btnCancel, btnClose, btn_ExportToExcel);
 
+            rgv_BuyList.ReadOnly = false;
+            rgv_BuyList.TableElement.BackColor = Color.White;
             txt_ExpenseDocumentDate.Enabled = true;
 
         }
 
         private async void rgv_BuyList_CellValueChanged(object sender, GridViewCellEventArgs e)
         {
+            if (rgv_BuyList.ReadOnly) return;
+
             if (e.Column.Name != "Fi" && e.Column.Name != "Count") return;
 
             if (e.Row.Cells["Fi"].Value == null || e.Row.Cells["Count"].Value == null) return;
@@ -876,6 +915,8 @@ namespace PersonalAccounting.UI
 
         private void rgv_BuyList_CellEndEdit(object sender, GridViewCellEventArgs e)
         {
+            if (rgv_BuyList.ReadOnly) return;
+
             switch (e.Column.FieldName)
             {
                 //case "Comment" when !(IsNotReadyForAddNewRow()):
@@ -908,12 +949,13 @@ namespace PersonalAccounting.UI
 
         private async void btnRegister_Click(object sender, EventArgs e)
         {
+            if (rgv_BuyList.ReadOnly) return;
             //if (PriceOverflow)
             //{
             //    dlg.Invoke("خطا در مبلغ هزینه نسبت به مانده",
             //        "مبلغ هزینه یک یا چندتا از سطرها از مانده صندوق آن بیشتر است.",
             //        CustomDialogs.ImageType.itError2, CustomDialogs.ButtonType.Ok,
-            //        InitialHelper.BackColorCustom);
+            //        InitialHelper.GridBackColor);
             //    return;
             //}
 
@@ -1002,7 +1044,7 @@ namespace PersonalAccounting.UI
                                     dlg.Invoke("خطا در ثبت اطلاعات",
                                         "خطای زیر به وقوع پیوست \n" + exception.Message,
                                         CustomDialogs.ImageType.itError2, CustomDialogs.ButtonType.Ok,
-                                        InitialHelper.BackColorCustom);
+                                        InitialHelper.GridBackColor);
 
                                     await LoggerService.ErrorAsync(this.Name, "btnRegister_Click(Insert Mode)", exception.Message,
                                         exception.ToDetailedString());
@@ -1015,12 +1057,14 @@ namespace PersonalAccounting.UI
                                 //dlg.Invoke("ثبت سند هزینه", "این لیست هزینه با شماره سند "
                                 //            + document.Id + " ثبت گردید.",
                                 //    CustomDialogs.ImageType.itInfo2, CustomDialogs.ButtonType.Ok,
-                                //    InitialHelper.BackColorCustom);
+                                //    InitialHelper.GridBackColor);
 
 
                                 //CommonHelper.ClearInputControls(pnl_Data);
                                 rgv_Expenses.Enabled = true;
-                                CommonHelper.EnableControls(pnl_Data, false);
+                                //CommonHelper.EnableControls(pnl_Data, false);
+                                rgv_BuyList.ReadOnly = true;
+                                rgv_BuyList.TableElement.BackColor = InitialHelper.GridBackColor;
                                 btnCancel.Enabled = false;
                                 btnInsert.Enabled = true;
                                 btnDelete.Enabled = true;
@@ -1034,7 +1078,7 @@ namespace PersonalAccounting.UI
                         dlg.Invoke("خطا در ثبت اطلاعات",
                             "خطای زیر به وقوع پیوست \n" + exception.Message,
                             CustomDialogs.ImageType.itError2, CustomDialogs.ButtonType.Ok,
-                            InitialHelper.BackColorCustom);
+                            InitialHelper.GridBackColor);
 
                         await LoggerService.ErrorAsync(this.Name, "btnRegister_Click(Insert Mode)", exception.Message,
                             exception.ToDetailedString());
@@ -1144,7 +1188,7 @@ namespace PersonalAccounting.UI
                             dlg.Invoke("خطا در ثبت اطلاعات",
                                 "خطای زیر به وقوع پیوست \n" + exception.Message,
                                 CustomDialogs.ImageType.itError2, CustomDialogs.ButtonType.Ok,
-                                InitialHelper.BackColorCustom);
+                                InitialHelper.GridBackColor);
 
                             await LoggerService.ErrorAsync(this.Name, "btnRegister_Click(Update Mode)", exception.Message,
                                 exception.ToDetailedString());
@@ -1152,7 +1196,9 @@ namespace PersonalAccounting.UI
                         }
 
                         //CommonHelper.ClearInputControls(pnl_Data, false, false);
-                        CommonHelper.EnableControls(pnl_Data, false);
+                        //CommonHelper.EnableControls(pnl_Data, false);
+                        rgv_BuyList.ReadOnly = true;
+                        rgv_BuyList.TableElement.BackColor = InitialHelper.GridBackColor;
                         btnCancel.Enabled = false;
                         btnInsert.Enabled = true;
                         btnDelete.Enabled = true;
@@ -1166,7 +1212,7 @@ namespace PersonalAccounting.UI
                         dlg.Invoke("خطا در ثبت اطلاعات",
                             "خطای زیر به وقوع پیوست \n" + exception.Message,
                             CustomDialogs.ImageType.itError2, CustomDialogs.ButtonType.Ok,
-                            InitialHelper.BackColorCustom);
+                            InitialHelper.GridBackColor);
 
                         await LoggerService.ErrorAsync(this.Name, "btnRegister_Click(Update Mode)", exception.Message,
                             exception.ToDetailedString());
@@ -1190,6 +1236,8 @@ namespace PersonalAccounting.UI
 
         private async Task<bool> IsNotValidExpenseList()
         {
+            if (rgv_BuyList.ReadOnly) return false;
+
             var dlg = new CustomDialogs(320, 200);
 
             try
@@ -1202,6 +1250,7 @@ namespace PersonalAccounting.UI
                     {
                         if (row.Cells[j].ColumnInfo.FieldName == "DeleteRow" ||
                             row.Cells[j].ColumnInfo.FieldName == "RowNumber" ||
+                            row.Cells[j].ColumnInfo.FieldName == "FundCurrentValue" ||
                             row.Cells[j].ColumnInfo.FieldName == "Comment")
                             continue;
 
@@ -1215,7 +1264,7 @@ namespace PersonalAccounting.UI
                             "خطا در " + "سطر: " + row.Index + " ستون: " +
                             row.Cells[j].ColumnInfo.FieldName,
                             CustomDialogs.ImageType.itError5, CustomDialogs.ButtonType.Ok,
-                            InitialHelper.BackColorCustom);
+                            InitialHelper.GridBackColor);
 
                         return true;
                     }
@@ -1225,7 +1274,7 @@ namespace PersonalAccounting.UI
             {
                 dlg.Invoke("خطا", exception.Message,
                     CustomDialogs.ImageType.itError5, CustomDialogs.ButtonType.Ok,
-                    InitialHelper.BackColorCustom);
+                    InitialHelper.GridBackColor);
 
                 await LoggerService.ErrorAsync(this.Name, "IsNotValidExpenseList", exception.Message,
                     exception.ToDetailedString());
@@ -1237,6 +1286,8 @@ namespace PersonalAccounting.UI
 
         private async void rgv_BuyList_CellValidating(object sender, CellValidatingEventArgs e)
         {
+            if (rgv_BuyList.ReadOnly) return;
+
             var fundCurrentValueCellValue = e.Row?.Cells["FundCurrentValue"]?.Value;
             var priceCell = e.Row?.Cells["Price"];
             var priceCellValue = priceCell?.Value;
@@ -1391,8 +1442,7 @@ namespace PersonalAccounting.UI
         }
         private void rgv_BuyList_ViewCellFormatting(object sender, CellFormattingEventArgs e)
         {
-            if (!(e.CellElement is GridSummaryCellElement summaryCell))
-                return;
+            if (!(e.CellElement is GridSummaryCellElement summaryCell)) return;
 
             if (!string.IsNullOrEmpty(summaryCell.Text))
             {
@@ -1401,7 +1451,7 @@ namespace PersonalAccounting.UI
                 summaryCell.RowElement.GradientStyle = GradientStyles.Solid;
                 summaryCell.RowElement.BackColor = Color.LightBlue;
                 summaryCell.RowElement.ForeColor = Color.Indigo;
-                summaryCell.RowElement.Font = new Font(summaryCell.RowElement.Font, FontStyle.Bold);
+                summaryCell.RowElement.Font = CommonHelper.BaseBoldFont;
 
                 //summaryCell.RowElement.DrawBorder = true;
                 //summaryCell.RowElement.BorderBoxStyle = BorderBoxStyle.FourBorders;
@@ -1517,6 +1567,8 @@ namespace PersonalAccounting.UI
 
         private void rgv_BuyList_UserAddingRow(object sender, GridViewRowCancelEventArgs e)
         {
+            if (rgv_BuyList.ReadOnly) return;
+
             rgv_BuyList.MasterView.TableAddNewRow.Cells[2].BeginEdit();
         }
 
@@ -1533,7 +1585,7 @@ namespace PersonalAccounting.UI
             var dialog = new CustomDialogs(350, 200);
             dialog.Invoke("هشدار حذف", "آيا میخواهید این سند هزینه را حذف کنید؟",
                 CustomDialogs.ImageType.itQuestion2,
-                CustomDialogs.ButtonType.YesNo, InitialHelper.BackColorCustom);
+                CustomDialogs.ButtonType.YesNo, InitialHelper.GridBackColor);
 
             if (!dialog.Yes) return;
 
@@ -1547,9 +1599,7 @@ namespace PersonalAccounting.UI
 
             btnRegister.Enabled = false;
             btnClose.Enabled = true;
-            BindGrid();
             _mode = CommonHelper.Mode.None;
-
             BindGrid();
         }
 

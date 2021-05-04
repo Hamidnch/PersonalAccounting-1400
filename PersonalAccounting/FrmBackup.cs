@@ -18,7 +18,7 @@ namespace PersonalAccounting.UI
             Invalid,
             Fail
         }
-    
+
         private BackgroundWorker _backgroundWorker;
         private PictureBox _pictureBox;
         private JobStatus _jobStatus;
@@ -41,7 +41,7 @@ namespace PersonalAccounting.UI
 
             txt_Path.Text = backupFolderPath;
 
-            _pictureBox = CommonHelper.CreateIndicatorLoading(this, new Size(475, 19), 
+            _pictureBox = CommonHelper.CreateIndicatorLoading(this, new Size(475, 19),
                 new Point(25, 140), Resources.Loadingvvv, false);
         }
 
@@ -85,6 +85,7 @@ namespace PersonalAccounting.UI
         {
             CommonHelper.IndicatorLoading(_pictureBox, true);
             btn_Backup.Enabled = false;
+            btn_Cancel.Enabled = false;
             _backgroundWorker.RunWorkerAsync();
         }
         private void _backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -95,7 +96,7 @@ namespace PersonalAccounting.UI
             }
             try
             {
-                InitialHelper.Backup(txt_Path.Text, txt_BackupFolderName.Text, true);
+                InitialHelper.Backup(txt_Path.Text, txt_BackupFolderName.Text, rcb_IsCompressed.IsChecked);
                 _jobStatus = JobStatus.Success;
             }
             catch (Exception exception)
@@ -106,19 +107,20 @@ namespace PersonalAccounting.UI
         }
         private void _backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if(_jobStatus == JobStatus.Invalid)
+            if (_jobStatus == JobStatus.Invalid)
             {
                 txt_BackupFolderName.SelectAll();
                 txt_BackupFolderName.Focus();
                 return;
             }
-            if(_jobStatus == JobStatus.Success)
+            if (_jobStatus == JobStatus.Success)
             {
                 CommonHelper.ShowNotificationMessage("پیام", "بکاپ با موفقیت انجام شد.");
             }
-            
+
             CommonHelper.IndicatorLoading(_pictureBox, false);
             btn_Backup.Enabled = true;
+            btn_Cancel.Enabled = true;
             _backgroundWorker.Dispose();
         }
     }

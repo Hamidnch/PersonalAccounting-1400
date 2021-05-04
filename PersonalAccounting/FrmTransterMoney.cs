@@ -7,9 +7,12 @@ using PersonalAccounting.Domain.ViewModel;
 using PersonalAccounting.UI.Helper;
 using PersonalAccounting.UI.Infrastructure;
 using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace PersonalAccounting.UI
@@ -19,6 +22,8 @@ namespace PersonalAccounting.UI
     {
         private readonly IFundService _fundService;
         private readonly ITransferMoneyService _transferMoneyService;
+
+        private readonly HashSet<GridViewRowInfo> _rows = new HashSet<GridViewRowInfo>();
 
         private int _transferMoneyId;
         private bool _done;
@@ -409,8 +414,8 @@ namespace PersonalAccounting.UI
 
         private async void btnDelete_Click(object sender, EventArgs e)
         {
-            if(rgv_TransferMoney.Rows.Count <= 0) return;
-            
+            if (rgv_TransferMoney.Rows.Count <= 0) return;
+
             if (!InitialHelper.HasPermissionFor(this.Name, PermissionMode.Delete))
             {
                 CommonHelper.ShowNotificationMessage(DefaultConstants.IllegalAccess, DefaultConstants.DeleteActionNotAllow);
@@ -534,6 +539,34 @@ namespace PersonalAccounting.UI
         private void rgv_TransferMoney_Click(object sender, EventArgs e)
         {
             ReturnTransferMoniesDetails();
+        }
+
+        private void rgv_TransferMoney_CellFormatting(object sender, CellFormattingEventArgs e)
+        {
+            e.CellElement.Font = CommonHelper.BaseFont;
+        }
+
+        private void rgv_TransferMoney_ViewCellFormatting(object sender, CellFormattingEventArgs e)
+        {
+            if (!(e.CellElement is GridSummaryCellElement summaryCell))
+                return;
+
+            if (!string.IsNullOrEmpty(summaryCell.Text))
+            {
+                _rows.Add(summaryCell.RowInfo);
+                summaryCell.RowElement.DrawFill = true;
+                summaryCell.RowElement.GradientStyle = GradientStyles.Solid;
+                summaryCell.RowElement.BackColor = Color.LightBlue;
+                summaryCell.RowElement.ForeColor = Color.Indigo;
+                summaryCell.RowElement.Font = CommonHelper.BaseBoldFont;
+
+            }
+            else if (!_rows.Contains(summaryCell.RowInfo))
+            {
+                summaryCell.RowElement.ResetValue(LightVisualElement.DrawFillProperty, ValueResetFlags.Local);
+                summaryCell.RowElement.ResetValue(LightVisualElement.GradientStyleProperty, ValueResetFlags.Local);
+                summaryCell.RowElement.ResetValue(VisualElement.BackColorProperty, ValueResetFlags.Local);
+            }
         }
     }
 }

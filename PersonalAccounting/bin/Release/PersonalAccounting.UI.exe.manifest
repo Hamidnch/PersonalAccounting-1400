@@ -264,26 +264,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PersonalAccounting.BLL.dll" size="358912">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PersonalAccounting.BLL.dll" size="361472">
       <assemblyIdentity name="PersonalAccounting.BLL" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>6Pt4WV0dbAw4E3i2rGgRWrUNjOq+VBppWns7aRAPP+g=</dsig:DigestValue>
+        <dsig:DigestValue>TV60SGVQL307+RtLJYzQhHBeIPQey3atFsjOo/se2uI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PersonalAccounting.CommonLibrary.dll" size="908288">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PersonalAccounting.CommonLibrary.dll" size="918016">
       <assemblyIdentity name="PersonalAccounting.CommonLibrary" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>+8Y4QtGJsdW/gCqVZZosDBt72uPTpfUB58XoEZ7bQM8=</dsig:DigestValue>
+        <dsig:DigestValue>/6KY/RAVgYOJ67TqKpNSOieSjqvICjT/4JILhIMOFns=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -295,31 +295,31 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Srloa45yekXPYMSde4KDP3My3eI5knbdyyDVZS3E6y8=</dsig:DigestValue>
+        <dsig:DigestValue>9kJ5Yz/MOttAozKRkjry/INnrgj5CQUvj1LELQCp1YY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PersonalAccounting.Domain.dll" size="75264">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PersonalAccounting.Domain.dll" size="77312">
       <assemblyIdentity name="PersonalAccounting.Domain" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Kw+zz8XyVmdQw7DCXbNzQ63T2FDeei89yFS5NN2kBDc=</dsig:DigestValue>
+        <dsig:DigestValue>dzXHA8rPRBS8VqPr1ltzMerH7DaPPaUZ+qJ83atvgGA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PersonalAccounting.UI.exe" size="1142272">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PersonalAccounting.UI.exe" size="1166848">
       <assemblyIdentity name="PersonalAccounting.UI" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>LbRDWww+ZKQJPMsPYYp+4BqEYeX6uXp0pQkcMSOP4uo=</dsig:DigestValue>
+        <dsig:DigestValue>yjZidxtrZfXX44GA4+CCRTEr5qIGgcXnzkDo03+uxoE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

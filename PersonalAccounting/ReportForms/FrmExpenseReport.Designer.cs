@@ -70,7 +70,6 @@ namespace PersonalAccounting.UI
             this.rgv_Expenses.BackColor = System.Drawing.SystemColors.Control;
             this.rgv_Expenses.Cursor = System.Windows.Forms.Cursors.Default;
             this.rgv_Expenses.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rgv_Expenses.EnableCustomGrouping = true;
             this.rgv_Expenses.EnterKeyMode = Telerik.WinControls.UI.RadGridViewEnterKeyMode.EnterMovesToNextRow;
             this.rgv_Expenses.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.rgv_Expenses.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -229,9 +228,7 @@ namespace PersonalAccounting.UI
             gridViewTextBoxColumn21,
             gridViewTextBoxColumn22});
             this.rgv_Expenses.MasterTemplate.EnableAlternatingRowColor = true;
-            this.rgv_Expenses.MasterTemplate.EnableCustomGrouping = true;
             this.rgv_Expenses.MasterTemplate.EnableFiltering = true;
-            this.rgv_Expenses.MasterTemplate.EnableGrouping = false;
             this.rgv_Expenses.MasterTemplate.ReadOnly = true;
             this.rgv_Expenses.MasterTemplate.ShowGroupedColumns = true;
             this.rgv_Expenses.MasterTemplate.ViewDefinition = tableViewDefinition1;
@@ -287,7 +284,7 @@ namespace PersonalAccounting.UI
             // 
             // FrmExpenseReport
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(969, 590);
             this.ControlBox = false;

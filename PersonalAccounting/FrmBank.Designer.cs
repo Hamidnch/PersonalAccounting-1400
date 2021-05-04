@@ -37,6 +37,7 @@
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn9 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBank));
             this.rgv_Bank = new Telerik.WinControls.UI.RadGridView();
@@ -115,35 +116,36 @@
             gridViewTextBoxColumn4.Name = "BankPersianRegisterDate";
             gridViewTextBoxColumn4.ReadOnly = true;
             gridViewTextBoxColumn4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn4.Width = 121;
+            gridViewTextBoxColumn4.Width = 130;
             gridViewTextBoxColumn5.EnableExpressionEditor = false;
-            gridViewTextBoxColumn5.FieldName = "BankPersianLastUpdate";
-            gridViewTextBoxColumn5.HeaderText = "تاریخ آخرین ویرایش";
-            gridViewTextBoxColumn5.Name = "BankPersianLastUpdate";
+            gridViewTextBoxColumn5.FieldName = "BankCreationUserName";
+            gridViewTextBoxColumn5.HeaderText = "کاربر ثبت کننده";
+            gridViewTextBoxColumn5.Name = "BankCreationUserName";
             gridViewTextBoxColumn5.ReadOnly = true;
             gridViewTextBoxColumn5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn5.Width = 126;
+            gridViewTextBoxColumn5.Width = 124;
             gridViewTextBoxColumn6.EnableExpressionEditor = false;
-            gridViewTextBoxColumn6.FieldName = "BankCreationUserName";
-            gridViewTextBoxColumn6.HeaderText = "کاربر ثبت کننده";
-            gridViewTextBoxColumn6.Name = "BankCreationUserName";
+            gridViewTextBoxColumn6.FieldName = "BankPersianLastUpdate";
+            gridViewTextBoxColumn6.HeaderText = "تاریخ آخرین ویرایش";
+            gridViewTextBoxColumn6.Name = "BankPersianLastUpdate";
             gridViewTextBoxColumn6.ReadOnly = true;
             gridViewTextBoxColumn6.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn6.Width = 124;
-            gridViewTextBoxColumn7.EnableExpressionEditor = false;
-            gridViewTextBoxColumn7.FieldName = "BankStatus";
-            gridViewTextBoxColumn7.HeaderText = "وضعیت";
-            gridViewTextBoxColumn7.Name = "BankStatus";
-            gridViewTextBoxColumn7.ReadOnly = true;
+            gridViewTextBoxColumn6.Width = 130;
+            gridViewTextBoxColumn7.FieldName = "BankUpdateByUserName";
+            gridViewTextBoxColumn7.HeaderText = "کاربر ویرایش کننده";
+            gridViewTextBoxColumn7.Name = "BankUpdateByUserName";
             gridViewTextBoxColumn7.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn7.Width = 105;
-            gridViewTextBoxColumn8.EnableExpressionEditor = false;
-            gridViewTextBoxColumn8.FieldName = "BankDescription";
-            gridViewTextBoxColumn8.HeaderText = "توضیحات";
-            gridViewTextBoxColumn8.Name = "BankDescription";
-            gridViewTextBoxColumn8.ReadOnly = true;
+            gridViewTextBoxColumn7.Width = 124;
+            gridViewTextBoxColumn8.FieldName = "BankStatus";
+            gridViewTextBoxColumn8.HeaderText = "وضعیت";
+            gridViewTextBoxColumn8.Name = "BankStatus";
             gridViewTextBoxColumn8.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn8.Width = 423;
+            gridViewTextBoxColumn8.Width = 70;
+            gridViewTextBoxColumn9.FieldName = "BankDescription";
+            gridViewTextBoxColumn9.HeaderText = "توضیحات";
+            gridViewTextBoxColumn9.Name = "BankDescription";
+            gridViewTextBoxColumn9.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn9.Width = 150;
             this.rgv_Bank.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
@@ -152,7 +154,8 @@
             gridViewTextBoxColumn5,
             gridViewTextBoxColumn6,
             gridViewTextBoxColumn7,
-            gridViewTextBoxColumn8});
+            gridViewTextBoxColumn8,
+            gridViewTextBoxColumn9});
             this.rgv_Bank.MasterTemplate.EnableAlternatingRowColor = true;
             this.rgv_Bank.MasterTemplate.EnableFiltering = true;
             this.rgv_Bank.MasterTemplate.ReadOnly = true;
@@ -181,7 +184,7 @@
             this.pnl_Data.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_Data.Enabled = false;
             this.pnl_Data.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.pnl_Data.Location = new System.Drawing.Point(0, 0);
+            this.pnl_Data.Location = new System.Drawing.Point(0, 27);
             this.pnl_Data.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnl_Data.Name = "pnl_Data";
             this.pnl_Data.Size = new System.Drawing.Size(857, 95);
@@ -195,7 +198,7 @@
             this.rddl_BankStatus.Location = new System.Drawing.Point(651, 45);
             this.rddl_BankStatus.MaxDropDownItems = 10;
             this.rddl_BankStatus.Name = "rddl_BankStatus";
-            this.rddl_BankStatus.Size = new System.Drawing.Size(131, 22);
+            this.rddl_BankStatus.Size = new System.Drawing.Size(131, 26);
             this.rddl_BankStatus.TabIndex = 2;
             this.rddl_BankStatus.TextChanged += new System.EventHandler(this.txt_BankName_TextChanged);
             this.rddl_BankStatus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_BankName_KeyDown);
@@ -206,7 +209,7 @@
             this.txt_BankDepartment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_BankDepartment.Location = new System.Drawing.Point(11, 6);
             this.txt_BankDepartment.Name = "txt_BankDepartment";
-            this.txt_BankDepartment.Size = new System.Drawing.Size(276, 22);
+            this.txt_BankDepartment.Size = new System.Drawing.Size(276, 26);
             this.txt_BankDepartment.TabIndex = 1;
             this.txt_BankDepartment.TextChanged += new System.EventHandler(this.txt_BankName_TextChanged);
             this.txt_BankDepartment.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_BankName_KeyDown);
@@ -217,7 +220,7 @@
             this.txt_BankName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_BankName.Location = new System.Drawing.Point(540, 6);
             this.txt_BankName.Name = "txt_BankName";
-            this.txt_BankName.Size = new System.Drawing.Size(242, 22);
+            this.txt_BankName.Size = new System.Drawing.Size(242, 26);
             this.txt_BankName.TabIndex = 0;
             this.txt_BankName.TextChanged += new System.EventHandler(this.txt_BankName_TextChanged);
             this.txt_BankName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_BankName_KeyDown);
@@ -243,7 +246,7 @@
             this.label6.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label6.Location = new System.Drawing.Point(798, 48);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 14);
+            this.label6.Size = new System.Drawing.Size(52, 18);
             this.label6.TabIndex = 131;
             this.label6.Text = "وضعیت";
             // 
@@ -254,7 +257,7 @@
             this.label9.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(549, 49);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(47, 13);
+            this.label9.Size = new System.Drawing.Size(59, 17);
             this.label9.TabIndex = 125;
             this.label9.Text = "توضیحات";
             // 
@@ -265,7 +268,7 @@
             this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(300, 10);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 13);
+            this.label3.Size = new System.Drawing.Size(82, 17);
             this.label3.TabIndex = 123;
             this.label3.Text = "نام/کد شعبه";
             // 
@@ -276,7 +279,7 @@
             this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(796, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.Size = new System.Drawing.Size(54, 17);
             this.label1.TabIndex = 123;
             this.label1.Text = "نام بانک";
             // 
@@ -379,7 +382,7 @@
             this.pnl_Action.Controls.Add(this.btnInsert);
             this.pnl_Action.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_Action.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.pnl_Action.Location = new System.Drawing.Point(0, 95);
+            this.pnl_Action.Location = new System.Drawing.Point(0, 122);
             this.pnl_Action.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_Action.Name = "pnl_Action";
             this.pnl_Action.Size = new System.Drawing.Size(857, 39);
@@ -387,7 +390,7 @@
             // 
             // FrmBank
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(857, 674);
             this.Controls.Add(this.rgv_Bank);

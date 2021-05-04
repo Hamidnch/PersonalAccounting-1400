@@ -1,7 +1,6 @@
 ﻿using PersonalAccounting.CommonLibrary.Helper;
 using PersonalAccounting.Domain.Entity;
 using System;
-using System.Globalization;
 
 namespace PersonalAccounting.Domain.ViewModel
 {

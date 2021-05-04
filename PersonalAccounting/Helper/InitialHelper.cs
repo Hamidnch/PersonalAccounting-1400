@@ -19,6 +19,7 @@ namespace PersonalAccounting.UI.Helper
     {
         public static string dbPath = DefaultConstants.SqliteDbPath;
         public static Color BackColorCustom { get; set; } = Color.Beige;
+        public static Color GridBackColor { get; set; } = Color.BlanchedAlmond;
         public static DateTime CurrentDateTime { get; set; } = DateTime.Now;
         public static User CurrentUser { get; set; } = null;
 

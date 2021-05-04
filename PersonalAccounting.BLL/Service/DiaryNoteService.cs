@@ -3,7 +3,9 @@ using PersonalAccounting.BLL.IService;
 using PersonalAccounting.CommonLibrary.Helper;
 using PersonalAccounting.DAL.Infrastructure;
 using PersonalAccounting.Domain.Entity;
+using PersonalAccounting.Domain.ViewModel;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
@@ -53,6 +55,58 @@ namespace PersonalAccounting.BLL.Service
             //}
 
             return DiaryNotes.AsNoTracking().FirstOrDefault(dn => dn.Date == date && dn.UserId == userId);
+        }
+
+        public IList<ViewModelLoadAllDiaryNoteReport> GetAllDiaryNotes(DateTime? date = null, int? mentalConditionId = null, int? weatherConditionId = null,
+            string note = null, int? userId = null)
+        {
+            var diaryNoteList = DiaryNotes.AsNoTracking();
+            if (date != null)
+            {
+                diaryNoteList = diaryNoteList.Where(dn => dn.Date == date);
+            }
+
+            if (mentalConditionId != null)
+            {
+                diaryNoteList = diaryNoteList.Where(dn => dn.MentalConditionId == mentalConditionId);
+            }
+
+            if (weatherConditionId != null)
+            {
+                diaryNoteList = diaryNoteList.Where(dn => dn.WeatherConditionId == weatherConditionId);
+            }
+
+            if (userId != null)
+            {
+                diaryNoteList = diaryNoteList.Where(dn => dn.UserId == userId);
+            }
+
+            if (note != null)
+            {
+                diaryNoteList = diaryNoteList.Where(dn => dn.Note.Contains(note));
+            }
+
+            var myQuery = from diaryNote in diaryNoteList
+                          select
+                              new ViewModelLoadAllDiaryNoteReport()
+                              {
+                                  UserId = diaryNote.UserId,
+                                  Username = diaryNote.User.UserName,
+                                  WeatherConditionId = diaryNote.WeatherConditionId,
+                                  MentalConditionId = diaryNote.WeatherConditionId,
+                                  DiaryNoteDate = diaryNote.Date,
+                                  MentalConditionSubject = diaryNote.MentalCondition.Title,
+                                  WeatherConditionSubject = diaryNote.WeatherCondition.Title,
+                                  CreatedBy = diaryNote.CreatedBy,
+                                  CreationUserName = diaryNote.SelfUser.UserName,
+                                  UpdateBy = diaryNote.UpdateBy,
+                                  UpdateUserName = diaryNote.UpdateUser.UserName,
+                                  CreatedOn = diaryNote.CreatedOn,
+                                  UpdateOn = diaryNote.LastUpdate,
+                                  Note = diaryNote.Note,
+                                  Comment = diaryNote.Description
+                              };
+            return myQuery.ToList();
         }
 
         public async Task<CreateStatus> CreateAsync(DiaryNote diaryNote)

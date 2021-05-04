@@ -3,6 +3,7 @@ using PersonalAccounting.BLL.IService;
 using PersonalAccounting.CommonLibrary.Helper;
 using PersonalAccounting.Domain.Entity;
 using PersonalAccounting.UI.Helper;
+using PersonalAccounting.UI.ReportForms;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -205,6 +206,9 @@ namespace PersonalAccounting.UI
                     break;
                 case prefix + "ExpenseReport" + postfix:
                     InitialHelper.ShowFormWithAccessLevel(this, FrmExpenseReport.Instance());
+                    break;
+                case prefix + "DiaryNoteReport" + postfix:
+                    InitialHelper.ShowFormWithAccessLevel(this, FrmDiaryNoteReport.Instance());
                     break;
                 case prefix + "About" + postfix:
                     var frmAbout = new FrmAbout();

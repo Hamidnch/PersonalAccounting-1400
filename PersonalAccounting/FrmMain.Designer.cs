@@ -78,6 +78,8 @@ namespace PersonalAccounting.UI
             this.rt_ReportCollection = new Telerik.WinControls.UI.RibbonTab();
             this.rbg_ExpenseReportDetails = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.rbe_ExpenseReportDetails = new Telerik.WinControls.UI.RadButtonElement();
+            this.rbg_DiaryNoteReportDetails = new Telerik.WinControls.UI.RadRibbonBarGroup();
+            this.rbe_DiaryNoteReportDetails = new Telerik.WinControls.UI.RadButtonElement();
             this.rt_System = new Telerik.WinControls.UI.RibbonTab();
             this.rbg_BackupDetails = new Telerik.WinControls.UI.RadRibbonBarGroup();
             this.rbe_BackupDetails = new Telerik.WinControls.UI.RadButtonElement();
@@ -1110,7 +1112,8 @@ namespace PersonalAccounting.UI
             this.rt_ReportCollection.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.rt_ReportCollection.IsSelected = false;
             this.rt_ReportCollection.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.rbg_ExpenseReportDetails});
+            this.rbg_ExpenseReportDetails,
+            this.rbg_DiaryNoteReportDetails});
             this.rt_ReportCollection.Name = "rt_ReportCollection";
             this.rt_ReportCollection.Text = "گزارشات";
             this.rt_ReportCollection.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1176,6 +1179,66 @@ namespace PersonalAccounting.UI
             this.rbe_ExpenseReportDetails.TextOrientation = System.Windows.Forms.Orientation.Horizontal;
             this.rbe_ExpenseReportDetails.UseCompatibleTextRendering = false;
             this.rbe_ExpenseReportDetails.Click += new System.EventHandler(this.ShowFormDetails);
+            // 
+            // rbg_DiaryNoteReportDetails
+            // 
+            this.rbg_DiaryNoteReportDetails.Alignment = System.Drawing.ContentAlignment.TopLeft;
+            this.rbg_DiaryNoteReportDetails.AngleTransform = 0F;
+            this.rbg_DiaryNoteReportDetails.AutoSize = false;
+            this.rbg_DiaryNoteReportDetails.Bounds = new System.Drawing.Rectangle(0, 0, 115, 100);
+            this.rbg_DiaryNoteReportDetails.CanFocus = true;
+            this.rbg_DiaryNoteReportDetails.EnableBorderHighlight = false;
+            this.rbg_DiaryNoteReportDetails.EnableFocusBorder = false;
+            this.rbg_DiaryNoteReportDetails.EnableHighlight = false;
+            this.rbg_DiaryNoteReportDetails.EnableRippleAnimation = false;
+            this.rbg_DiaryNoteReportDetails.FlipText = false;
+            this.rbg_DiaryNoteReportDetails.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.rbg_DiaryNoteReportDetails.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.rbe_DiaryNoteReportDetails});
+            this.rbg_DiaryNoteReportDetails.Margin = new System.Windows.Forms.Padding(0);
+            this.rbg_DiaryNoteReportDetails.MaxSize = new System.Drawing.Size(0, 0);
+            this.rbg_DiaryNoteReportDetails.MinSize = new System.Drawing.Size(0, 0);
+            this.rbg_DiaryNoteReportDetails.Name = "rbg_DiaryNoteReportDetails";
+            this.rbg_DiaryNoteReportDetails.ShouldPaint = true;
+            this.rbg_DiaryNoteReportDetails.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            this.rbg_DiaryNoteReportDetails.StretchHorizontally = true;
+            this.rbg_DiaryNoteReportDetails.StretchVertically = true;
+            this.rbg_DiaryNoteReportDetails.Text = "گزارش یادداشتها";
+            this.rbg_DiaryNoteReportDetails.TextOrientation = System.Windows.Forms.Orientation.Horizontal;
+            this.rbg_DiaryNoteReportDetails.ToolTipText = "تهیه گزارش از یادداشت های روزانه";
+            this.rbg_DiaryNoteReportDetails.UseCompatibleTextRendering = true;
+            this.rbg_DiaryNoteReportDetails.UseDefaultDisabledPaint = true;
+            // 
+            // rbe_DiaryNoteReportDetails
+            // 
+            this.rbe_DiaryNoteReportDetails.Alignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rbe_DiaryNoteReportDetails.AngleTransform = 0F;
+            this.rbe_DiaryNoteReportDetails.AutoSize = false;
+            this.rbe_DiaryNoteReportDetails.BackColor = System.Drawing.Color.Transparent;
+            this.rbe_DiaryNoteReportDetails.Bounds = new System.Drawing.Rectangle(0, 0, 107, 74);
+            this.rbe_DiaryNoteReportDetails.DisplayStyle = Telerik.WinControls.DisplayStyle.Image;
+            this.rbe_DiaryNoteReportDetails.EnableBorderHighlight = true;
+            this.rbe_DiaryNoteReportDetails.EnableElementShadow = false;
+            this.rbe_DiaryNoteReportDetails.EnableFocusBorder = true;
+            this.rbe_DiaryNoteReportDetails.EnableFocusBorderAnimation = true;
+            this.rbe_DiaryNoteReportDetails.EnableHighlight = true;
+            this.rbe_DiaryNoteReportDetails.EnableRippleAnimation = true;
+            this.rbe_DiaryNoteReportDetails.FlipText = false;
+            this.rbe_DiaryNoteReportDetails.Image = ((System.Drawing.Image)(resources.GetObject("rbe_DiaryNoteReportDetails.Image")));
+            this.rbe_DiaryNoteReportDetails.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rbe_DiaryNoteReportDetails.ImageIndex = -1;
+            this.rbe_DiaryNoteReportDetails.ImageKey = "";
+            this.rbe_DiaryNoteReportDetails.Margin = new System.Windows.Forms.Padding(0);
+            this.rbe_DiaryNoteReportDetails.Name = "rbe_DiaryNoteReportDetails";
+            this.rbe_DiaryNoteReportDetails.Padding = new System.Windows.Forms.Padding(0);
+            this.rbe_DiaryNoteReportDetails.RightToLeft = false;
+            this.rbe_DiaryNoteReportDetails.ShouldPaint = true;
+            this.rbe_DiaryNoteReportDetails.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.rbe_DiaryNoteReportDetails.Text = "گزارش یادداشتها";
+            this.rbe_DiaryNoteReportDetails.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rbe_DiaryNoteReportDetails.TextOrientation = System.Windows.Forms.Orientation.Horizontal;
+            this.rbe_DiaryNoteReportDetails.UseCompatibleTextRendering = false;
+            this.rbe_DiaryNoteReportDetails.Click += new System.EventHandler(this.ShowFormDetails);
             // 
             // rt_System
             // 
@@ -1461,12 +1524,15 @@ namespace PersonalAccounting.UI
         private Telerik.WinControls.UI.RadButtonElement rbe_DiaryNoteDetails;
         private Telerik.WinControls.UI.RadRibbonBarGroup rbg_AboutDetails;
         private Telerik.WinControls.UI.RadButtonElement rbe_AboutDetails;
-        
+
         private Telerik.WinControls.UI.RadRibbonBarGroup rbg_BackupDetails;
-        private Telerik.WinControls.UI.RadButtonElement rbe_BackupDetails;        
-        
+        private Telerik.WinControls.UI.RadButtonElement rbe_BackupDetails;
+
         private Telerik.WinControls.UI.RadRibbonBarGroup rbg_ExpenseReportDetails;
         private Telerik.WinControls.UI.RadButtonElement rbe_ExpenseReportDetails;
+
+        private Telerik.WinControls.UI.RadRibbonBarGroup rbg_DiaryNoteReportDetails;
+        private Telerik.WinControls.UI.RadButtonElement rbe_DiaryNoteReportDetails;
 
         private Telerik.WinControls.UI.RadRibbonBarGroup rbg_QuitDetails;
         private Telerik.WinControls.UI.RadButtonElement rbe_QuitDetails;

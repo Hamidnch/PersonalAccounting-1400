@@ -50,6 +50,8 @@
         /// موجودی جاری صندوق
         /// </summary>
         public double FundCurrentValue { get; set; }
+
+        //public string FundCurrentValueString => Convert.ToString(FundCurrentValue, CultureInfo.InvariantCulture).AddSeparateEx();
         //public string PriceString
         //{
         //    get { return CommonHelper.AddSeparate(Convert.ToString(Price)); }

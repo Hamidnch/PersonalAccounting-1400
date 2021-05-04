@@ -2,6 +2,7 @@
 using PersonalAccounting.UI.Helper;
 using PersonalAccounting.UI.Infrastructure;
 using System;
+using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
 using Telerik.WinControls.UI.Localization;
@@ -16,8 +17,13 @@ namespace PersonalAccounting.UI
         [STAThread]
         private static void Main()
         {
-            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("fa-IR");
+            var irCulture = CultureInfo.GetCultureInfo("fa-IR");
+            CultureInfo.DefaultThreadCurrentCulture = irCulture;
+            CultureInfo.DefaultThreadCurrentUICulture = irCulture;
+
+            Thread.CurrentThread.CurrentCulture = irCulture;
             Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
+
             //new Mutex(true, "PersonalAccounting", out var ok);
             //if (!ok)
             //{
