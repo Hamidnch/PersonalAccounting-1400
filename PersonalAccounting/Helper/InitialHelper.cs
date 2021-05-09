@@ -7,11 +7,14 @@ using System;
 using System.ComponentModel;
 using System.Data.SQLite;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Telerik.WinControls;
+using Telerik.WinControls.UI;
 
 namespace PersonalAccounting.UI.Helper
 {
@@ -133,6 +136,47 @@ namespace PersonalAccounting.UI.Helper
             var dbInitializer = IocConfig.Container.GetInstance<InitializeData>();
             dbInitializer.ExecuteSeedData();
 
+        }
+
+        public static void CustomizeCalendarStyle(this RadDateTimePicker rdp,
+            Size size, Font headerFont, Font datesFont, Color foreColor, Color backColor,
+            Color backColor2, Color backColor3, Color backColor4, Color borderColor,
+            bool showFooter = true, bool showTodayButton = true, string todayButtonText = "امروز",
+            bool showClearButton = false)
+        {
+            if (!(rdp.DateTimePickerElement.GetCurrentBehavior() is RadDateTimePickerCalendar calendarBehavior)) return;
+
+            rdp.CalendarSize = size;
+            var calendar = calendarBehavior.Calendar;
+
+            calendar.HeaderNavigationMode = HeaderNavigationMode.Popup;
+
+            //calendar.ShowViewHeader = true;
+            //calendar.ShowHeader = true;
+            //calendar.AllowFishEye = true;
+            calendar.ShowFooter = showFooter;
+            calendar.TodayButton.Text = todayButtonText;
+            calendar.TodayButton.Enabled = showTodayButton;
+            calendar.ClearButton.Enabled = showClearButton;
+            calendar.ClearButton.Visibility = showClearButton ? ElementVisibility.Visible : ElementVisibility.Hidden;
+
+            var calendarElement = calendar.CalendarElement;
+
+            calendarElement.CalendarNavigationElement.Font = headerFont;
+            calendarElement.CalendarNavigationElement.ForeColor = foreColor;
+            calendarElement.CalendarNavigationElement.BackColor = backColor;
+            calendarElement.CalendarNavigationElement.BackColor2 = backColor2;
+            calendarElement.CalendarNavigationElement.BackColor3 = backColor3;
+            calendarElement.CalendarNavigationElement.BackColor4 = backColor4;
+            calendarElement.CalendarNavigationElement.BorderColor = borderColor;
+
+            if (!(calendarBehavior.Calendar.CalendarElement.CalendarVisualElement is MonthViewElement monthView)
+            ) return;
+
+            foreach (var item in monthView.TableElement.Children.Cast<RadItem>())
+            {
+                item.Font = datesFont;
+            }
         }
 
         public static void Backup(string strDestinationFolder, string folderPath, bool compressed = true)

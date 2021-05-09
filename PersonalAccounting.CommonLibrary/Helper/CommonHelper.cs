@@ -51,6 +51,11 @@ namespace PersonalAccounting.CommonLibrary.Helper
         public static Font BaseBoldFont { get; set; } =
             new Font("Tornado Tahoma", 10, FontStyle.Bold);
 
+        public static Font HeaderFont { get; set; } =
+            new Font("Tornado Tahoma", 9.0f, FontStyle.Bold);
+        public static Font DatesFont { get; set; } =
+            new Font("Tornado Tahoma",9.0f, FontStyle.Italic);
+
         public enum Mode
         {
             None = -1,
@@ -1170,7 +1175,7 @@ namespace PersonalAccounting.CommonLibrary.Helper
             btnDelete.Enabled = false;
             btnCancel.Enabled = true;
             btnClose.Enabled = false;
-            btnExportToExcel.Enabled = false;
+            btnExportToExcel.Enabled = true;
             ClearInputControls(pnlData);
             defaultTextBox.Focus();
             defaultTextBox.SelectAll();
@@ -1277,7 +1282,7 @@ namespace PersonalAccounting.CommonLibrary.Helper
             btnModify.Enabled = false;
             btnDelete.Enabled = false;
             btnClose.Enabled = false;
-            btnExportToExcel.Enabled = false;
+            btnExportToExcel.Enabled = true;
         }
         //public static void ModifyAction(Mode mode, UIPanelInnerContainer pnlData, RadGridView rgv,
         //    Button btnInsert, Button btnRegister, Button btnModify, Button btnDelete,

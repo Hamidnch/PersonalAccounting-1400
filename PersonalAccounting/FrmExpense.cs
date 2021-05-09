@@ -107,7 +107,7 @@ namespace PersonalAccounting.UI
             //};
 
             _pictureBox = CommonHelper.CreateIndicatorLoading(pnl_Action, new Size(356, 19),
-                new Point((pnl_Action.Width / 2) - 200, 8),
+                new Point((pnl_Action.Width / 2) - 190, 8),
                 CommonLibrary.Properties.Resources.Loadingvvv, false,
                 PictureBoxSizeMode.StretchImage, BorderStyle.None);
 

@@ -15,6 +15,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace PersonalAccounting.UI
@@ -98,10 +99,17 @@ namespace PersonalAccounting.UI
             FillDropdownList(rddl_Users);
             FillDropdownList(rddl_MentalConditions);
             FillDropdownList(rddl_WeatherConditions);
-
+            
             _selectedDate = PersianHelper.GetPersiaDateSimple(DateTime.Now);
-            txt_diaryNoteDate.Text = _selectedDate;
+            //txt_diaryNoteDate.Text = _selectedDate;
+            rdp_diaryNoteDate.Text = _selectedDate;
 
+            rdp_diaryNoteDate.CustomizeCalendarStyle(new Size(300, 300), 
+                CommonHelper.HeaderFont, CommonHelper.DatesFont,
+                Color.DarkSlateBlue, Color.White, Color.Gray, Color.DarkGray,
+                Color.Gainsboro, Color.DarkGray);
+
+            
             _isModify = false;
         }
 
@@ -535,7 +543,7 @@ namespace PersonalAccounting.UI
         {
             try
             {
-                if (rtb_Note.TextLength > 0)
+                if (rtb_Note.TextLength > 0 && _isModify)
                 {
                     //var dialog = new CustomDialogs(350, 200);
                     //dialog.Invoke("هشدار", "یادداشت نوشته شده را ذخیره نمی کنید؟",
@@ -547,10 +555,13 @@ namespace PersonalAccounting.UI
                     //}
                 }
 
-                txt_diaryNoteDate.Text =
-                    CommonHelper.IncDayOfDate(txt_diaryNoteDate.Text, 1, FormatDate.Fd4Year);
+                //txt_diaryNoteDate.Text =
+                //    CommonHelper.IncDayOfDate(txt_diaryNoteDate.Text, 1, FormatDate.Fd4Year);
+                //InitializeToday(txt_diaryNoteDate.Text);
 
-                InitializeToday(txt_diaryNoteDate.Text);
+                rdp_diaryNoteDate.Text = CommonHelper.IncDayOfDate(rdp_diaryNoteDate.Text, 1, FormatDate.Fd4Year);
+                InitializeToday(rdp_diaryNoteDate.Text);
+
             }
             catch (Exception exception)
             {
@@ -564,19 +575,23 @@ namespace PersonalAccounting.UI
             }
 
             //rtb_Note.Rtf = ReturnDiaryNotesByDate(txt_diaryNoteDate.Text).Result;
-            Txt_diaryNoteDate_TextChanged(sender, e);
+            //Txt_diaryNoteDate_TextChanged(sender, e);
+            rdp_diaryNoteDate_ValueChanged(sender, e);
         }
 
         private async void Btn_DecDate_Click(object sender, EventArgs e)
         {
             try
             {
-                if (rtb_Note.TextLength > 0)
+                if (rtb_Note.TextLength > 0 && _isModify)
                 {
                     DiaryNotesSaveOrUpdate();
                 }
-                txt_diaryNoteDate.Text = CommonHelper.DecDayOfDate(txt_diaryNoteDate.Text, 1, FormatDate.Fd4Year);
-                InitializeToday(txt_diaryNoteDate.Text);
+                //txt_diaryNoteDate.Text = CommonHelper.DecDayOfDate(txt_diaryNoteDate.Text, 1, FormatDate.Fd4Year);
+                //InitializeToday(txt_diaryNoteDate.Text);
+
+                rdp_diaryNoteDate.Text = CommonHelper.DecDayOfDate(rdp_diaryNoteDate.Text, 1, FormatDate.Fd4Year);
+                InitializeToday(rdp_diaryNoteDate.Text);
             }
             catch (Exception exception)
             {
@@ -591,7 +606,8 @@ namespace PersonalAccounting.UI
             }
 
             //rtb_Note.Rtf = ReturnDiaryNotesByDate(txt_diaryNoteDate.Text).Result;
-            Txt_diaryNoteDate_TextChanged(sender, e);
+            //Txt_diaryNoteDate_TextChanged(sender, e);
+            rdp_diaryNoteDate_ValueChanged(sender, e);
         }
 
         //private void CallDataForDiaryNote()
@@ -625,45 +641,45 @@ namespace PersonalAccounting.UI
         //    }
         //}
 
-        private async void Txt_diaryNoteDate_TextChanged(object sender, EventArgs e)
-        {
-            //CallDataForDiaryNote();
-            try
-            {
-                _selectedDate = txt_diaryNoteDate.Text;
-                // _radDateTimePicker.Text = _selectedDate;
+        //private async void Txt_diaryNoteDate_TextChanged(object sender, EventArgs e)
+        //{
+        //    //CallDataForDiaryNote();
+        //    try
+        //    {
+        //        _selectedDate = txt_diaryNoteDate.Text;
+        //        // _radDateTimePicker.Text = _selectedDate;
 
-                if (!_selectedDate.IsValidPersianDate()) return;
-                if (_backgroundWorker.IsBusy) return;
+        //        if (!_selectedDate.IsValidPersianDate()) return;
+        //        if (_backgroundWorker.IsBusy) return;
 
-                rtb_Note.Clear();
-                //lbl_Loading.Visible = true;
-                CommonHelper.IndicatorLoading(_pictureBox, true);
-                rtb_Note.ReadOnly = true;
-                rtb_Note.BackColor = SystemColors.Menu;
+        //        rtb_Note.Clear();
+        //        //lbl_Loading.Visible = true;
+        //        CommonHelper.IndicatorLoading(_pictureBox, true);
+        //        rtb_Note.ReadOnly = true;
+        //        rtb_Note.BackColor = SystemColors.Menu;
 
-                _isModify = false;
-                _backgroundWorker.RunWorkerAsync();
+        //        _isModify = false;
+        //        _backgroundWorker.RunWorkerAsync();
 
-                //Task.Factory.StartNew(() =>
-                //{
-                //CommonHelper.IndicatorLoading(this, _pictureBox, true);
-                //});
+        //        //Task.Factory.StartNew(() =>
+        //        //{
+        //        //CommonHelper.IndicatorLoading(this, _pictureBox, true);
+        //        //});
 
 
-                //LoadingForm = new FrmLoading();
-                //LoadingForm.ShowDialog();
+        //        //LoadingForm = new FrmLoading();
+        //        //LoadingForm.ShowDialog();
 
-                //InitializeToday(txt_diaryNoteDate.Text);
-                //rtb_Note.Rtf = ReturnDiaryNotesByDate(txt_diaryNoteDate.Text);
-            }
-            catch (Exception exception)
-            {
-                _isModify = false;
-                await LoggerService.ErrorAsync(this.Name, "Txt_diaryNoteDate_TextChanged", exception.Message,
-                    exception.ToDetailedString());
-            }
-        }
+        //        //InitializeToday(txt_diaryNoteDate.Text);
+        //        //rtb_Note.Rtf = ReturnDiaryNotesByDate(txt_diaryNoteDate.Text);
+        //    }
+        //    catch (Exception exception)
+        //    {
+        //        _isModify = false;
+        //        await LoggerService.ErrorAsync(this.Name, "Txt_diaryNoteDate_TextChanged", exception.Message,
+        //            exception.ToDetailedString());
+        //    }
+        //}
 
         private void rtb_Note_VScroll(object sender, EventArgs e)
         {
@@ -1501,7 +1517,8 @@ namespace PersonalAccounting.UI
 
             try
             {
-                var currentDate = PersianHelper.GetGregorianDateSimple(txt_diaryNoteDate.Text);
+                //var currentDate = PersianHelper.GetGregorianDateSimple(txt_diaryNoteDate.Text);
+                var currentDate = PersianHelper.GetGregorianDateSimple(rdp_diaryNoteDate.Text);
 
                 int? mcId = int.Parse(rddl_MentalConditions.SelectedItem["Id"].ToString());
                 int? wcId = int.Parse(rddl_WeatherConditions.SelectedItem["Id"].ToString());
@@ -1677,6 +1694,7 @@ namespace PersonalAccounting.UI
         //}
         private async Task<DiaryNote> ReturnDiaryNoteByDate(string currentDate)
         {
+            if (string.IsNullOrEmpty(currentDate)) return null;
             try
             {
                 var date = GetCurrentDate(currentDate);
@@ -1687,6 +1705,7 @@ namespace PersonalAccounting.UI
                 //: await _diaryNoteService.LoadByDateAsync(date, user.Id);
 
                 if (diaryNote == null) return null;
+
                 if (string.IsNullOrEmpty(diaryNote.Note)) return diaryNote;
 
                 //var decryptNote = _cryption.Decrypt(decompressNote);
@@ -1811,7 +1830,9 @@ namespace PersonalAccounting.UI
                             //else
                             //stamp.Append(Thread.CurrentPrincipal.Identity.Name);
                             //stamp.Append(" on " + DateTime.Now.ToLongDateString() + "\r\n");
-                            var currentDate = PersianHelper.GetGregorianDate(txt_diaryNoteDate.Text);
+                            
+                            //var currentDate = PersianHelper.GetGregorianDate(txt_diaryNoteDate.Text);
+                            var currentDate = PersianHelper.GetGregorianDate(rdp_diaryNoteDate.Text);
                             stamp.Append(" در تاریخ: " +
                                          PersianHelper.GetLongPersianDate(currentDate, out var color));
 
@@ -2139,12 +2160,13 @@ namespace PersonalAccounting.UI
 
         private async void rddl_Users_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
         {
-            if (!txt_diaryNoteDate.Text.IsValidPersianDate()) return;
+            //if (!txt_diaryNoteDate.Text.IsValidPersianDate()) return;
+            if (!rdp_diaryNoteDate.Text.IsValidPersianDate()) return;
 
             //DiaryNotesSaveOrUpdate(true);
             await ReturnDiaryNoteByDate(_selectedDate);
-            Txt_diaryNoteDate_TextChanged(sender, e);
-
+            //Txt_diaryNoteDate_TextChanged(sender, e);
+            rdp_diaryNoteDate_ValueChanged(sender, e);
             //MessageBox.Show((await GetSelectedUserId()).ToString());
         }
 
@@ -2161,6 +2183,41 @@ namespace PersonalAccounting.UI
             rddl_MentalConditions_SelectedValueChanged(sender, e);
         }
 
+        private async void rdp_diaryNoteDate_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                //rdp_diaryNoteDate.Format = DateTimePickerFormat.Custom;
+                //rdp_diaryNoteDate.CustomFormat = "yyyy/MM/dd";
+                _selectedDate = rdp_diaryNoteDate.Value.ToString("yyyy/MM/dd");
+
+                if (!_selectedDate.IsValidPersianDate()) return;
+                if (_backgroundWorker.IsBusy) return;
+
+                rtb_Note.Clear();
+                CommonHelper.IndicatorLoading(_pictureBox, true);
+                rtb_Note.ReadOnly = true;
+                rtb_Note.BackColor = SystemColors.Menu;
+                _isModify = false;
+                _backgroundWorker.RunWorkerAsync();
+            }
+            catch (Exception exception)
+            {
+                _isModify = false;
+                await LoggerService.ErrorAsync(this.Name, "rdp_diaryNoteDate_ValueChanged", exception.Message,
+                    exception.ToDetailedString());
+            }
+        }
+
+        private void rdp_diaryNoteDate_ValueChanging(object sender, ValueChangingEventArgs e)
+        {
+
+        }
+
+        private void Txt_diaryNoteDate_TextChanged(object sender, EventArgs e)
+        {
+
+        }
 
         #endregion
         //private void RadDateTimePicker1_ValueChanged(object sender, EventArgs e)

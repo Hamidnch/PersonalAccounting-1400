@@ -1637,7 +1637,18 @@
             <param name="callbackData"> Internal pointer that is required, but ignored. You can pass System.IntPtr.Zero
                 for this parameter.</param>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Telerik.Charting.ChartGraphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.PointF[],System.Drawing.Graphics.EnumerateMetafileProc,System.IntPtr)" -->
+        <member name="M:Telerik.Charting.ChartGraphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.PointF[],System.Drawing.Graphics.EnumerateMetafileProc,System.IntPtr)">
+            <summary>
+            Sends the records in the specified System.Drawing.Imaging.Metafile, one at
+                a time, to a callback method for display in a specified parallelogram.
+            </summary>
+            <param name="metafile">System.Drawing.Imaging.Metafile to enumerate.</param>
+            <param name="destPoints"> Array of three System.Drawing.PointF structures that define a parallelogram
+                that determines the size and location of the drawn metafile.</param>
+            <param name="callback">System.Drawing.Graphics.EnumerateMetafileProc delegate that specifies the
+                method to which the metafile records are sent.</param>
+            <param name="callbackData">Internal pointer that is required, but ignored. You can pass System.IntPtr.Zero for this parameter.</param>
+        </member>
         <member name="M:Telerik.Charting.ChartGraphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.Rectangle,System.Drawing.Graphics.EnumerateMetafileProc,System.IntPtr)">
             <summary>
             Sends the records of the specified System.Drawing.Imaging.Metafile, one at
@@ -1820,7 +1831,22 @@
             <param name="callback">System.Drawing.Graphics.EnumerateMetafileProc delegate that specifies the
                 method to which the metafile records are sent.</param>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Telerik.Charting.ChartGraphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.RectangleF,System.Drawing.Graphics.EnumerateMetafileProc,System.IntPtr,System.Drawing.Imaging.ImageAttributes)" -->
+        <member name="M:Telerik.Charting.ChartGraphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.RectangleF,System.Drawing.Graphics.EnumerateMetafileProc,System.IntPtr,System.Drawing.Imaging.ImageAttributes)">
+            <summary>
+            Sends the records of the specified System.Drawing.Imaging.Metafile, one at
+                a time, to a callback method for display in a specified rectangle using specified
+                image attributes.
+            </summary>
+            <param name="metafile">System.Drawing.Imaging.Metafile to enumerate.</param>
+            <param name="destRect">System.Drawing.RectangleF structure that specifies the location and size
+                of the drawn metafile.</param>
+            <param name="callback">System.Drawing.Graphics.EnumerateMetafileProc delegate that specifies the
+                method to which the metafile records are sent.</param>
+            <param name="callbackData">Internal pointer that is required, but ignored. You can pass System.IntPtr.Zero
+                for this parameter.</param>
+            <param name="imageAttr">System.Drawing.Imaging.ImageAttributes that specifies image attribute information
+                for the drawn image.</param>
+        </member>
         <member name="M:Telerik.Charting.ChartGraphics.EnumerateMetafile(System.Drawing.Imaging.Metafile,System.Drawing.RectangleF,System.Drawing.RectangleF,System.Drawing.GraphicsUnit,System.Drawing.Graphics.EnumerateMetafileProc)">
             <summary>
             Sends the records of a selected rectangle from a System.Drawing.Imaging.Metafile,
@@ -2721,7 +2747,16 @@
             <param name="combineMode">Member of the System.Drawing.Drawing2D.CombineMode enumeration that specifies
                 the combining operation to use.</param>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Telerik.Charting.ChartGraphics.SetClip(System.Drawing.Region,System.Drawing.Drawing2D.CombineMode)" -->
+        <member name="M:Telerik.Charting.ChartGraphics.SetClip(System.Drawing.Region,System.Drawing.Drawing2D.CombineMode)">
+            <summary>
+            Sets the clipping region of this System.Drawing.Graphics to the result of
+                the specified operation combining the current clip region and the specified
+                System.Drawing.Region.
+            </summary>
+            <param name="region">System.Drawing.Region to combine.</param>
+            <param name="combineMode">Member from the System.Drawing.Drawing2D.CombineMode enumeration that specifies
+             the combining operation to use.</param>
+        </member>
         <member name="M:Telerik.Charting.ChartGraphics.TransformPoints(System.Drawing.Drawing2D.CoordinateSpace,System.Drawing.Drawing2D.CoordinateSpace,System.Drawing.Point[])">
             <summary>
             Transforms an array of points from one coordinate space to another using

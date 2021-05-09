@@ -31,6 +31,7 @@ namespace PersonalAccounting.UI
         {
             this.txt_Path = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.rcb_IsCompressed = new Telerik.WinControls.UI.RadCheckBox();
             this.lbl_BackupFolderName = new System.Windows.Forms.Label();
             this.lbl_SelectPath = new System.Windows.Forms.Label();
             this.btn_SelectPath = new System.Windows.Forms.Button();
@@ -38,7 +39,6 @@ namespace PersonalAccounting.UI
             this.btn_Backup = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.rcb_IsCompressed = new Telerik.WinControls.UI.RadCheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rcb_IsCompressed)).BeginInit();
             this.SuspendLayout();
@@ -47,10 +47,10 @@ namespace PersonalAccounting.UI
             // 
             this.txt_Path.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_Path.Location = new System.Drawing.Point(41, 106);
+            this.txt_Path.Location = new System.Drawing.Point(41, 96);
             this.txt_Path.Name = "txt_Path";
             this.txt_Path.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_Path.Size = new System.Drawing.Size(450, 23);
+            this.txt_Path.Size = new System.Drawing.Size(450, 20);
             this.txt_Path.TabIndex = 0;
             // 
             // panel1
@@ -67,8 +67,21 @@ namespace PersonalAccounting.UI
             this.panel1.Controls.Add(this.txt_Path);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(501, 153);
+            this.panel1.Size = new System.Drawing.Size(501, 177);
             this.panel1.TabIndex = 1;
+            // 
+            // rcb_IsCompressed
+            // 
+            this.rcb_IsCompressed.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.rcb_IsCompressed.Font = new System.Drawing.Font("Tornado Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.rcb_IsCompressed.Location = new System.Drawing.Point(88, 21);
+            this.rcb_IsCompressed.Name = "rcb_IsCompressed";
+            this.rcb_IsCompressed.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.rcb_IsCompressed.Size = new System.Drawing.Size(98, 20);
+            this.rcb_IsCompressed.TabIndex = 3;
+            this.rcb_IsCompressed.Text = "فشرده شود؟";
+            this.rcb_IsCompressed.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rcb_IsCompressed.ToggleState = Telerik.WinControls.Enumerations.ToggleState.On;
             // 
             // lbl_BackupFolderName
             // 
@@ -77,7 +90,7 @@ namespace PersonalAccounting.UI
             this.lbl_BackupFolderName.AutoSize = true;
             this.lbl_BackupFolderName.Location = new System.Drawing.Point(412, 19);
             this.lbl_BackupFolderName.Name = "lbl_BackupFolderName";
-            this.lbl_BackupFolderName.Size = new System.Drawing.Size(87, 17);
+            this.lbl_BackupFolderName.Size = new System.Drawing.Size(70, 13);
             this.lbl_BackupFolderName.TabIndex = 1;
             this.lbl_BackupFolderName.Text = "نام فولدر بکاپ";
             // 
@@ -85,16 +98,16 @@ namespace PersonalAccounting.UI
             // 
             this.lbl_SelectPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_SelectPath.AutoSize = true;
-            this.lbl_SelectPath.Location = new System.Drawing.Point(412, 71);
+            this.lbl_SelectPath.Location = new System.Drawing.Point(428, 71);
             this.lbl_SelectPath.Name = "lbl_SelectPath";
-            this.lbl_SelectPath.Size = new System.Drawing.Size(82, 17);
+            this.lbl_SelectPath.Size = new System.Drawing.Size(66, 13);
             this.lbl_SelectPath.TabIndex = 1;
             this.lbl_SelectPath.Text = "انتخاب مسیر";
             // 
             // btn_SelectPath
             // 
             this.btn_SelectPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_SelectPath.Location = new System.Drawing.Point(5, 102);
+            this.btn_SelectPath.Location = new System.Drawing.Point(5, 92);
             this.btn_SelectPath.Name = "btn_SelectPath";
             this.btn_SelectPath.Size = new System.Drawing.Size(33, 31);
             this.btn_SelectPath.TabIndex = 2;
@@ -109,7 +122,7 @@ namespace PersonalAccounting.UI
             this.txt_BackupFolderName.Location = new System.Drawing.Point(274, 19);
             this.txt_BackupFolderName.Name = "txt_BackupFolderName";
             this.txt_BackupFolderName.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_BackupFolderName.Size = new System.Drawing.Size(132, 23);
+            this.txt_BackupFolderName.Size = new System.Drawing.Size(132, 20);
             this.txt_BackupFolderName.TabIndex = 0;
             this.txt_BackupFolderName.Text = "BackupFolder";
             // 
@@ -123,7 +136,7 @@ namespace PersonalAccounting.UI
             this.btn_Backup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Backup.Font = new System.Drawing.Font("Tornado Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btn_Backup.ForeColor = System.Drawing.SystemColors.Window;
-            this.btn_Backup.Location = new System.Drawing.Point(415, 201);
+            this.btn_Backup.Location = new System.Drawing.Point(415, 203);
             this.btn_Backup.Name = "btn_Backup";
             this.btn_Backup.Size = new System.Drawing.Size(97, 37);
             this.btn_Backup.TabIndex = 2;
@@ -141,7 +154,7 @@ namespace PersonalAccounting.UI
             this.btn_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Cancel.Font = new System.Drawing.Font("Tornado Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btn_Cancel.ForeColor = System.Drawing.Color.White;
-            this.btn_Cancel.Location = new System.Drawing.Point(312, 201);
+            this.btn_Cancel.Location = new System.Drawing.Point(312, 203);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(97, 37);
             this.btn_Cancel.TabIndex = 2;
@@ -155,27 +168,14 @@ namespace PersonalAccounting.UI
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label3.Location = new System.Drawing.Point(13, 194);
+            this.label3.Location = new System.Drawing.Point(13, 198);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(499, 1);
             this.label3.TabIndex = 24;
             // 
-            // rcb_IsCompressed
-            // 
-            this.rcb_IsCompressed.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.rcb_IsCompressed.Font = new System.Drawing.Font("Tornado Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.rcb_IsCompressed.Location = new System.Drawing.Point(88, 21);
-            this.rcb_IsCompressed.Name = "rcb_IsCompressed";
-            this.rcb_IsCompressed.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.rcb_IsCompressed.Size = new System.Drawing.Size(98, 20);
-            this.rcb_IsCompressed.TabIndex = 3;
-            this.rcb_IsCompressed.Text = "فشرده شود؟";
-            this.rcb_IsCompressed.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rcb_IsCompressed.ToggleState = Telerik.WinControls.Enumerations.ToggleState.On;
-            // 
             // FrmBackup
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(525, 250);
             this.Controls.Add(this.label3);

@@ -69,12 +69,12 @@
             this.pnl_Data = new System.Windows.Forms.Panel();
             this.rgv_BuyList = new Telerik.WinControls.UI.RadGridView();
             this.pnl_TopData = new Telerik.WinControls.UI.RadPanel();
-            this.btn_ExportToExcel = new System.Windows.Forms.Button();
             this.txt_ExpenseDocumentDate = new System.Windows.Forms.MaskedTextBox();
             this.lbl_DocumentId = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.pnl_Action = new System.Windows.Forms.Panel();
+            this.btn_ExportToExcel = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -135,9 +135,9 @@
             // uiPanel0Container
             // 
             this.uiPanel0Container.Controls.Add(this.rgv_Expenses);
-            this.uiPanel0Container.Location = new System.Drawing.Point(1, 28);
+            this.uiPanel0Container.Location = new System.Drawing.Point(1, 25);
             this.uiPanel0Container.Name = "uiPanel0Container";
-            this.uiPanel0Container.Size = new System.Drawing.Size(914, 176);
+            this.uiPanel0Container.Size = new System.Drawing.Size(914, 179);
             this.uiPanel0Container.TabIndex = 0;
             // 
             // rgv_Expenses
@@ -241,7 +241,7 @@
             this.rgv_Expenses.Name = "rgv_Expenses";
             this.rgv_Expenses.ReadOnly = true;
             this.rgv_Expenses.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.rgv_Expenses.Size = new System.Drawing.Size(914, 176);
+            this.rgv_Expenses.Size = new System.Drawing.Size(914, 179);
             this.rgv_Expenses.TabIndex = 5;
             this.rgv_Expenses.CurrentRowChanged += new Telerik.WinControls.UI.CurrentRowChangedEventHandler(this.rgvExpenses_CurrentRowChanged);
             this.rgv_Expenses.CellClick += new Telerik.WinControls.UI.GridViewCellEventHandler(this.rgv_Expenses_CellClick);
@@ -270,9 +270,9 @@
             // 
             this.pnlTopContainer.Controls.Add(this.pnl_Data);
             this.pnlTopContainer.Controls.Add(this.pnl_Action);
-            this.pnlTopContainer.Location = new System.Drawing.Point(0, 23);
+            this.pnlTopContainer.Location = new System.Drawing.Point(0, 20);
             this.pnlTopContainer.Name = "pnlTopContainer";
-            this.pnlTopContainer.Size = new System.Drawing.Size(916, 415);
+            this.pnlTopContainer.Size = new System.Drawing.Size(916, 418);
             this.pnlTopContainer.TabIndex = 0;
             // 
             // pnl_Data
@@ -285,7 +285,7 @@
             this.pnl_Data.Location = new System.Drawing.Point(0, 39);
             this.pnl_Data.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnl_Data.Name = "pnl_Data";
-            this.pnl_Data.Size = new System.Drawing.Size(916, 376);
+            this.pnl_Data.Size = new System.Drawing.Size(916, 379);
             this.pnl_Data.TabIndex = 1;
             this.pnl_Data.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnl_Data_MouseClick);
             // 
@@ -540,7 +540,7 @@
             this.rgv_BuyList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.rgv_BuyList.ShowGroupPanel = false;
             this.rgv_BuyList.ShowHeaderCellButtons = true;
-            this.rgv_BuyList.Size = new System.Drawing.Size(914, 343);
+            this.rgv_BuyList.Size = new System.Drawing.Size(914, 346);
             this.rgv_BuyList.TabIndex = 171;
             this.rgv_BuyList.CellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.rgv_BuyList_CellFormatting);
             this.rgv_BuyList.ViewCellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.rgv_BuyList_ViewCellFormatting);
@@ -569,19 +569,6 @@
             this.pnl_TopData.Size = new System.Drawing.Size(914, 31);
             this.pnl_TopData.TabIndex = 1;
             // 
-            // btn_ExportToExcel
-            // 
-            this.btn_ExportToExcel.BackColor = System.Drawing.Color.Transparent;
-            this.btn_ExportToExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_ExportToExcel.Location = new System.Drawing.Point(87, 3);
-            this.btn_ExportToExcel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btn_ExportToExcel.Name = "btn_ExportToExcel";
-            this.btn_ExportToExcel.Size = new System.Drawing.Size(177, 29);
-            this.btn_ExportToExcel.TabIndex = 171;
-            this.btn_ExportToExcel.Text = "ارسال به اکسل";
-            this.btn_ExportToExcel.UseVisualStyleBackColor = false;
-            this.btn_ExportToExcel.Click += new System.EventHandler(this.btn_ExportToExcel_Click);
-            // 
             // txt_ExpenseDocumentDate
             // 
             this.txt_ExpenseDocumentDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -592,7 +579,7 @@
             this.txt_ExpenseDocumentDate.Mask = "1000/00/00";
             this.txt_ExpenseDocumentDate.Name = "txt_ExpenseDocumentDate";
             this.txt_ExpenseDocumentDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_ExpenseDocumentDate.Size = new System.Drawing.Size(83, 23);
+            this.txt_ExpenseDocumentDate.Size = new System.Drawing.Size(83, 20);
             this.txt_ExpenseDocumentDate.TabIndex = 0;
             this.txt_ExpenseDocumentDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txt_ExpenseDocumentDate.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnl_Data_MouseClick);
@@ -607,7 +594,7 @@
             this.lbl_DocumentId.ForeColor = System.Drawing.Color.DarkGreen;
             this.lbl_DocumentId.Location = new System.Drawing.Point(37, 5);
             this.lbl_DocumentId.Name = "lbl_DocumentId";
-            this.lbl_DocumentId.Size = new System.Drawing.Size(20, 21);
+            this.lbl_DocumentId.Size = new System.Drawing.Size(17, 17);
             this.lbl_DocumentId.TabIndex = 170;
             this.lbl_DocumentId.Text = "0";
             this.lbl_DocumentId.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnl_Data_MouseClick);
@@ -620,7 +607,7 @@
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(836, 8);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 17);
+            this.label3.Size = new System.Drawing.Size(57, 13);
             this.label3.TabIndex = 167;
             this.label3.Text = "تاریخ هزینه";
             this.label3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnl_Data_MouseClick);
@@ -631,7 +618,7 @@
             this.label5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(91, 8);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 17);
+            this.label5.Size = new System.Drawing.Size(61, 13);
             this.label5.TabIndex = 170;
             this.label5.Text = "شماره سند";
             this.label5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnl_Data_MouseClick);
@@ -656,6 +643,19 @@
             this.pnl_Action.Size = new System.Drawing.Size(916, 39);
             this.pnl_Action.TabIndex = 0;
             this.pnl_Action.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnl_Data_MouseClick);
+            // 
+            // btn_ExportToExcel
+            // 
+            this.btn_ExportToExcel.BackColor = System.Drawing.Color.Transparent;
+            this.btn_ExportToExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_ExportToExcel.Location = new System.Drawing.Point(87, 3);
+            this.btn_ExportToExcel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_ExportToExcel.Name = "btn_ExportToExcel";
+            this.btn_ExportToExcel.Size = new System.Drawing.Size(160, 29);
+            this.btn_ExportToExcel.TabIndex = 171;
+            this.btn_ExportToExcel.Text = "ارسال به اکسل";
+            this.btn_ExportToExcel.UseVisualStyleBackColor = false;
+            this.btn_ExportToExcel.Click += new System.EventHandler(this.btn_ExportToExcel_Click);
             // 
             // btnClose
             // 
@@ -764,7 +764,7 @@
             // 
             // FrmExpense
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(922, 676);
             this.Controls.Add(this.pnlTop);

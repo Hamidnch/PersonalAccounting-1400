@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using PersonalAccounting.UI.Helper;
+using Telerik.WinControls.UI;
 
 namespace PersonalAccounting.UI
 {
@@ -40,7 +41,7 @@ namespace PersonalAccounting.UI
             this.rb_Exit = new Telerik.WinControls.UI.RadButton();
             this.btn_IncDate = new System.Windows.Forms.Button();
             this.btn_DecDate = new System.Windows.Forms.Button();
-            this.txt_diaryNoteDate = new System.Windows.Forms.MaskedTextBox();
+            this.rdp_diaryNoteDate = new Telerik.WinControls.UI.RadDateTimePicker();
             this.lbl_Users = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.rddl_WeatherConditions = new Telerik.WinControls.UI.RadDropDownList();
@@ -139,12 +140,14 @@ namespace PersonalAccounting.UI
             this.ss_RowColumn = new System.Windows.Forms.StatusStrip();
             this.tssl_Row = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssl_Column = new System.Windows.Forms.ToolStripStatusLabel();
+            this.txt_diaryNoteDate = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this._errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnl_TopData)).BeginInit();
             this.pnl_TopData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rddl_Users)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rb_Save)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rb_Exit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rdp_diaryNoteDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rddl_WeatherConditions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rddl_MentalConditions)).BeginInit();
             this.ts_DiaryNote.SuspendLayout();
@@ -160,12 +163,13 @@ namespace PersonalAccounting.UI
             // pnl_TopData
             // 
             this.pnl_TopData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.pnl_TopData.Controls.Add(this.txt_diaryNoteDate);
             this.pnl_TopData.Controls.Add(this.rddl_Users);
             this.pnl_TopData.Controls.Add(this.rb_Save);
             this.pnl_TopData.Controls.Add(this.rb_Exit);
             this.pnl_TopData.Controls.Add(this.btn_IncDate);
             this.pnl_TopData.Controls.Add(this.btn_DecDate);
-            this.pnl_TopData.Controls.Add(this.txt_diaryNoteDate);
+            this.pnl_TopData.Controls.Add(this.rdp_diaryNoteDate);
             this.pnl_TopData.Controls.Add(this.lbl_Users);
             this.pnl_TopData.Controls.Add(this.label4);
             this.pnl_TopData.Controls.Add(this.rddl_WeatherConditions);
@@ -193,9 +197,9 @@ namespace PersonalAccounting.UI
             this.rddl_Users.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.rddl_Users.EnableAlternatingItemColor = true;
             this.rddl_Users.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rddl_Users.Location = new System.Drawing.Point(608, 6);
+            this.rddl_Users.Location = new System.Drawing.Point(607, 9);
             this.rddl_Users.Name = "rddl_Users";
-            this.rddl_Users.Size = new System.Drawing.Size(228, 29);
+            this.rddl_Users.Size = new System.Drawing.Size(155, 29);
             this.rddl_Users.TabIndex = 199;
             this.rddl_Users.Visible = false;
             this.rddl_Users.SelectedIndexChanged += new Telerik.WinControls.UI.Data.PositionChangedEventHandler(this.rddl_Users_SelectedIndexChanged);
@@ -231,7 +235,7 @@ namespace PersonalAccounting.UI
             this.btn_IncDate.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btn_IncDate.FlatAppearance.BorderSize = 2;
             this.btn_IncDate.Image = ((System.Drawing.Image)(resources.GetObject("btn_IncDate.Image")));
-            this.btn_IncDate.Location = new System.Drawing.Point(1009, 9);
+            this.btn_IncDate.Location = new System.Drawing.Point(1007, 9);
             this.btn_IncDate.Name = "btn_IncDate";
             this.btn_IncDate.Size = new System.Drawing.Size(23, 25);
             this.btn_IncDate.TabIndex = 5;
@@ -246,7 +250,7 @@ namespace PersonalAccounting.UI
             this.btn_DecDate.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btn_DecDate.FlatAppearance.BorderSize = 2;
             this.btn_DecDate.Image = ((System.Drawing.Image)(resources.GetObject("btn_DecDate.Image")));
-            this.btn_DecDate.Location = new System.Drawing.Point(906, 9);
+            this.btn_DecDate.Location = new System.Drawing.Point(891, 9);
             this.btn_DecDate.Name = "btn_DecDate";
             this.btn_DecDate.Size = new System.Drawing.Size(23, 25);
             this.btn_DecDate.TabIndex = 6;
@@ -254,21 +258,39 @@ namespace PersonalAccounting.UI
             this.btn_DecDate.UseVisualStyleBackColor = false;
             this.btn_DecDate.Click += new System.EventHandler(this.Btn_DecDate_Click);
             // 
-            // txt_diaryNoteDate
+            // rdp_diaryNoteDate
             // 
-            this.txt_diaryNoteDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_diaryNoteDate.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txt_diaryNoteDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_diaryNoteDate.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txt_diaryNoteDate.HideSelection = false;
-            this.txt_diaryNoteDate.Location = new System.Drawing.Point(929, 10);
-            this.txt_diaryNoteDate.Mask = "1000/00/00";
-            this.txt_diaryNoteDate.Name = "txt_diaryNoteDate";
-            this.txt_diaryNoteDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_diaryNoteDate.Size = new System.Drawing.Size(80, 27);
-            this.txt_diaryNoteDate.TabIndex = 0;
-            this.txt_diaryNoteDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txt_diaryNoteDate.TextChanged += new System.EventHandler(this.Txt_diaryNoteDate_TextChanged);
+            this.rdp_diaryNoteDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rdp_diaryNoteDate.AutoSize = false;
+            this.rdp_diaryNoteDate.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.rdp_diaryNoteDate.Culture = new System.Globalization.CultureInfo("fa-IR");
+            this.rdp_diaryNoteDate.CustomFormat = "yyyy/MM/dd";
+            this.rdp_diaryNoteDate.EnableKeyMap = true;
+            this.rdp_diaryNoteDate.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.rdp_diaryNoteDate.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.rdp_diaryNoteDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.rdp_diaryNoteDate.Location = new System.Drawing.Point(913, 9);
+            this.rdp_diaryNoteDate.MinDate = new System.DateTime(622, 3, 22, 0, 0, 0, 0);
+            this.rdp_diaryNoteDate.Name = "rdp_diaryNoteDate";
+            this.rdp_diaryNoteDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            // 
+            // 
+            // 
+            this.rdp_diaryNoteDate.RootElement.ApplyShapeToControl = true;
+            this.rdp_diaryNoteDate.RootElement.EnableBorderHighlight = true;
+            this.rdp_diaryNoteDate.RootElement.EnableElementShadow = true;
+            this.rdp_diaryNoteDate.RootElement.EnableFocusBorder = true;
+            this.rdp_diaryNoteDate.RootElement.EnableHighlight = true;
+            this.rdp_diaryNoteDate.RootElement.EnableRippleAnimation = true;
+            this.rdp_diaryNoteDate.RootElement.ShouldPaint = true;
+            this.rdp_diaryNoteDate.RootElement.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.rdp_diaryNoteDate.Size = new System.Drawing.Size(95, 25);
+            this.rdp_diaryNoteDate.TabIndex = 0;
+            this.rdp_diaryNoteDate.TabStop = false;
+            this.rdp_diaryNoteDate.Text = "1400/02/15";
+            this.rdp_diaryNoteDate.Value = new System.DateTime(2021, 5, 5, 10, 9, 33, 572);
+            this.rdp_diaryNoteDate.ValueChanged += new System.EventHandler(this.rdp_diaryNoteDate_ValueChanged);
+            this.rdp_diaryNoteDate.ValueChanging += new Telerik.WinControls.UI.ValueChangingEventHandler(this.rdp_diaryNoteDate_ValueChanging);
             // 
             // lbl_Users
             // 
@@ -277,9 +299,9 @@ namespace PersonalAccounting.UI
             this.lbl_Users.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Users.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lbl_Users.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lbl_Users.Location = new System.Drawing.Point(840, 14);
+            this.lbl_Users.Location = new System.Drawing.Point(768, 16);
             this.lbl_Users.Name = "lbl_Users";
-            this.lbl_Users.Size = new System.Drawing.Size(56, 18);
+            this.lbl_Users.Size = new System.Drawing.Size(47, 14);
             this.lbl_Users.TabIndex = 198;
             this.lbl_Users.Text = "نام کاربر";
             this.lbl_Users.Visible = false;
@@ -293,7 +315,7 @@ namespace PersonalAccounting.UI
             this.label4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label4.Location = new System.Drawing.Point(1035, 12);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(36, 18);
+            this.label4.Size = new System.Drawing.Size(29, 14);
             this.label4.TabIndex = 198;
             this.label4.Text = "تاريخ";
             // 
@@ -307,7 +329,7 @@ namespace PersonalAccounting.UI
             this.rddl_WeatherConditions.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.rddl_WeatherConditions.EnableAlternatingItemColor = true;
             this.rddl_WeatherConditions.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rddl_WeatherConditions.Location = new System.Drawing.Point(103, 6);
+            this.rddl_WeatherConditions.Location = new System.Drawing.Point(22, 6);
             this.rddl_WeatherConditions.Name = "rddl_WeatherConditions";
             this.rddl_WeatherConditions.Size = new System.Drawing.Size(197, 66);
             this.rddl_WeatherConditions.TabIndex = 2;
@@ -324,7 +346,7 @@ namespace PersonalAccounting.UI
             this.rddl_MentalConditions.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.rddl_MentalConditions.EnableAlternatingItemColor = true;
             this.rddl_MentalConditions.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rddl_MentalConditions.Location = new System.Drawing.Point(397, 6);
+            this.rddl_MentalConditions.Location = new System.Drawing.Point(316, 6);
             this.rddl_MentalConditions.Name = "rddl_MentalConditions";
             this.rddl_MentalConditions.NullText = "موردی یافت نشد";
             this.rddl_MentalConditions.Size = new System.Drawing.Size(197, 66);
@@ -342,9 +364,9 @@ namespace PersonalAccounting.UI
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label2.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.label2.Location = new System.Drawing.Point(306, 51);
+            this.label2.Location = new System.Drawing.Point(225, 51);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(110, 18);
+            this.label2.Size = new System.Drawing.Size(88, 14);
             this.label2.TabIndex = 194;
             this.label2.Text = "وضعیت آب و هوا";
             // 
@@ -354,9 +376,9 @@ namespace PersonalAccounting.UI
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Tornado Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label1.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.label1.Location = new System.Drawing.Point(598, 51);
+            this.label1.Location = new System.Drawing.Point(517, 51);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 18);
+            this.label1.Size = new System.Drawing.Size(71, 14);
             this.label1.TabIndex = 195;
             this.label1.Text = "شرایط روحی";
             // 
@@ -396,11 +418,11 @@ namespace PersonalAccounting.UI
             this.tsc_FontName,
             this.toolStripSeparator2,
             this.tsb_FullScreen});
-            this.ts_DiaryNote.Location = new System.Drawing.Point(0, 71);
+            this.ts_DiaryNote.Location = new System.Drawing.Point(0, 79);
             this.ts_DiaryNote.Name = "ts_DiaryNote";
             this.ts_DiaryNote.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.ts_DiaryNote.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ts_DiaryNote.Size = new System.Drawing.Size(1076, 31);
+            this.ts_DiaryNote.Size = new System.Drawing.Size(1076, 27);
             this.ts_DiaryNote.TabIndex = 182;
             this.ts_DiaryNote.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.Ts_DiaryNote_ItemClicked);
             // 
@@ -410,7 +432,7 @@ namespace PersonalAccounting.UI
             this.tsb_IndentIncrease.Image = ((System.Drawing.Image)(resources.GetObject("tsb_IndentIncrease.Image")));
             this.tsb_IndentIncrease.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_IndentIncrease.Name = "tsb_IndentIncrease";
-            this.tsb_IndentIncrease.Size = new System.Drawing.Size(29, 25);
+            this.tsb_IndentIncrease.Size = new System.Drawing.Size(24, 24);
             this.tsb_IndentIncrease.Text = "کاهش تورفتگی متن";
             this.tsb_IndentIncrease.ToolTipText = "کاهش تورفتگی متن";
             // 
@@ -420,7 +442,7 @@ namespace PersonalAccounting.UI
             this.tsb_IndentDecrease.Image = ((System.Drawing.Image)(resources.GetObject("tsb_IndentDecrease.Image")));
             this.tsb_IndentDecrease.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_IndentDecrease.Name = "tsb_IndentDecrease";
-            this.tsb_IndentDecrease.Size = new System.Drawing.Size(29, 25);
+            this.tsb_IndentDecrease.Size = new System.Drawing.Size(24, 24);
             this.tsb_IndentDecrease.Text = "افزایش تورفتگی متن";
             this.tsb_IndentDecrease.ToolTipText = "افزایش تورفتگی متن";
             // 
@@ -431,14 +453,14 @@ namespace PersonalAccounting.UI
             this.tsb_Bullet.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Bullet.Image")));
             this.tsb_Bullet.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Bullet.Name = "tsb_Bullet";
-            this.tsb_Bullet.Size = new System.Drawing.Size(29, 25);
+            this.tsb_Bullet.Size = new System.Drawing.Size(24, 24);
             this.tsb_Bullet.Text = "Bullet";
             this.tsb_Bullet.ToolTipText = "Bullet";
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 27);
             // 
             // tsb_AlignRight
             // 
@@ -447,7 +469,7 @@ namespace PersonalAccounting.UI
             this.tsb_AlignRight.Image = ((System.Drawing.Image)(resources.GetObject("tsb_AlignRight.Image")));
             this.tsb_AlignRight.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_AlignRight.Name = "tsb_AlignRight";
-            this.tsb_AlignRight.Size = new System.Drawing.Size(29, 25);
+            this.tsb_AlignRight.Size = new System.Drawing.Size(24, 24);
             this.tsb_AlignRight.Text = "ترازبندی راست";
             this.tsb_AlignRight.ToolTipText = "ترازبندی راست";
             // 
@@ -458,7 +480,7 @@ namespace PersonalAccounting.UI
             this.tsb_AlignCenter.Image = ((System.Drawing.Image)(resources.GetObject("tsb_AlignCenter.Image")));
             this.tsb_AlignCenter.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_AlignCenter.Name = "tsb_AlignCenter";
-            this.tsb_AlignCenter.Size = new System.Drawing.Size(29, 25);
+            this.tsb_AlignCenter.Size = new System.Drawing.Size(24, 24);
             this.tsb_AlignCenter.Text = "ترازبندی وسط";
             this.tsb_AlignCenter.ToolTipText = "ترازبندی وسط";
             // 
@@ -469,14 +491,14 @@ namespace PersonalAccounting.UI
             this.tsb_AlignLeft.Image = ((System.Drawing.Image)(resources.GetObject("tsb_AlignLeft.Image")));
             this.tsb_AlignLeft.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_AlignLeft.Name = "tsb_AlignLeft";
-            this.tsb_AlignLeft.Size = new System.Drawing.Size(29, 25);
+            this.tsb_AlignLeft.Size = new System.Drawing.Size(24, 24);
             this.tsb_AlignLeft.Text = "ترازبندی چپ";
             this.tsb_AlignLeft.ToolTipText = "ترازبندی چپ";
             // 
             // toolStripSeparator10
             // 
             this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator10.Size = new System.Drawing.Size(6, 27);
             // 
             // tsb_Bold
             // 
@@ -485,7 +507,7 @@ namespace PersonalAccounting.UI
             this.tsb_Bold.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Bold.Image")));
             this.tsb_Bold.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Bold.Name = "tsb_Bold";
-            this.tsb_Bold.Size = new System.Drawing.Size(29, 25);
+            this.tsb_Bold.Size = new System.Drawing.Size(24, 24);
             this.tsb_Bold.Text = "ضخیم کردن متن انتخابی";
             this.tsb_Bold.ToolTipText = "ضخیم کردن متن انتخابی";
             // 
@@ -496,7 +518,7 @@ namespace PersonalAccounting.UI
             this.tsb_Italic.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Italic.Image")));
             this.tsb_Italic.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Italic.Name = "tsb_Italic";
-            this.tsb_Italic.Size = new System.Drawing.Size(29, 25);
+            this.tsb_Italic.Size = new System.Drawing.Size(24, 24);
             this.tsb_Italic.Text = "مورب کردن متن انتخابی";
             // 
             // tsb_Underline
@@ -506,7 +528,7 @@ namespace PersonalAccounting.UI
             this.tsb_Underline.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Underline.Image")));
             this.tsb_Underline.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Underline.Name = "tsb_Underline";
-            this.tsb_Underline.Size = new System.Drawing.Size(29, 25);
+            this.tsb_Underline.Size = new System.Drawing.Size(24, 24);
             this.tsb_Underline.Text = "زیرخط دار کردن متن انتخابی";
             // 
             // tsb_Strikeout
@@ -516,13 +538,13 @@ namespace PersonalAccounting.UI
             this.tsb_Strikeout.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Strikeout.Image")));
             this.tsb_Strikeout.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Strikeout.Name = "tsb_Strikeout";
-            this.tsb_Strikeout.Size = new System.Drawing.Size(29, 25);
+            this.tsb_Strikeout.Size = new System.Drawing.Size(24, 24);
             this.tsb_Strikeout.Text = "خط زدن متن انتخابی";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
             // tsb_SelectAll
             // 
@@ -530,7 +552,7 @@ namespace PersonalAccounting.UI
             this.tsb_SelectAll.Image = ((System.Drawing.Image)(resources.GetObject("tsb_SelectAll.Image")));
             this.tsb_SelectAll.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_SelectAll.Name = "tsb_SelectAll";
-            this.tsb_SelectAll.Size = new System.Drawing.Size(29, 25);
+            this.tsb_SelectAll.Size = new System.Drawing.Size(24, 24);
             this.tsb_SelectAll.Text = "انتخاب همه";
             // 
             // tsb_Paste
@@ -539,7 +561,7 @@ namespace PersonalAccounting.UI
             this.tsb_Paste.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Paste.Image")));
             this.tsb_Paste.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Paste.Name = "tsb_Paste";
-            this.tsb_Paste.Size = new System.Drawing.Size(29, 25);
+            this.tsb_Paste.Size = new System.Drawing.Size(24, 24);
             this.tsb_Paste.Text = "الصاق";
             // 
             // tsb_Copy
@@ -548,7 +570,7 @@ namespace PersonalAccounting.UI
             this.tsb_Copy.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Copy.Image")));
             this.tsb_Copy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Copy.Name = "tsb_Copy";
-            this.tsb_Copy.Size = new System.Drawing.Size(29, 25);
+            this.tsb_Copy.Size = new System.Drawing.Size(24, 24);
             this.tsb_Copy.Text = "کپی";
             // 
             // tsb_Cut
@@ -557,13 +579,13 @@ namespace PersonalAccounting.UI
             this.tsb_Cut.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Cut.Image")));
             this.tsb_Cut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Cut.Name = "tsb_Cut";
-            this.tsb_Cut.Size = new System.Drawing.Size(29, 25);
+            this.tsb_Cut.Size = new System.Drawing.Size(24, 24);
             this.tsb_Cut.ToolTipText = "برش";
             // 
             // toolStripSeparator9
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 27);
             // 
             // tsb_Redo
             // 
@@ -571,7 +593,7 @@ namespace PersonalAccounting.UI
             this.tsb_Redo.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Redo.Image")));
             this.tsb_Redo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Redo.Name = "tsb_Redo";
-            this.tsb_Redo.Size = new System.Drawing.Size(29, 25);
+            this.tsb_Redo.Size = new System.Drawing.Size(24, 24);
             this.tsb_Redo.ToolTipText = "Redo";
             // 
             // tsb_Undo
@@ -580,13 +602,13 @@ namespace PersonalAccounting.UI
             this.tsb_Undo.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Undo.Image")));
             this.tsb_Undo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Undo.Name = "tsb_Undo";
-            this.tsb_Undo.Size = new System.Drawing.Size(29, 25);
+            this.tsb_Undo.Size = new System.Drawing.Size(24, 24);
             this.tsb_Undo.ToolTipText = "Undo";
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
             // 
             // tsb_PrintPreview
             // 
@@ -594,7 +616,7 @@ namespace PersonalAccounting.UI
             this.tsb_PrintPreview.Image = ((System.Drawing.Image)(resources.GetObject("tsb_PrintPreview.Image")));
             this.tsb_PrintPreview.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_PrintPreview.Name = "tsb_PrintPreview";
-            this.tsb_PrintPreview.Size = new System.Drawing.Size(29, 25);
+            this.tsb_PrintPreview.Size = new System.Drawing.Size(24, 24);
             this.tsb_PrintPreview.Text = "پیش نمایش چاپ";
             // 
             // tsb_Print
@@ -603,13 +625,13 @@ namespace PersonalAccounting.UI
             this.tsb_Print.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Print.Image")));
             this.tsb_Print.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Print.Name = "tsb_Print";
-            this.tsb_Print.Size = new System.Drawing.Size(29, 25);
+            this.tsb_Print.Size = new System.Drawing.Size(24, 24);
             this.tsb_Print.Text = "چاپ یادداشت";
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 27);
             // 
             // tsb_FontDialog
             // 
@@ -617,7 +639,7 @@ namespace PersonalAccounting.UI
             this.tsb_FontDialog.Image = ((System.Drawing.Image)(resources.GetObject("tsb_FontDialog.Image")));
             this.tsb_FontDialog.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_FontDialog.Name = "tsb_FontDialog";
-            this.tsb_FontDialog.Size = new System.Drawing.Size(29, 25);
+            this.tsb_FontDialog.Size = new System.Drawing.Size(24, 24);
             this.tsb_FontDialog.ToolTipText = "انتخاب فونت";
             // 
             // tsc_FontSize
@@ -677,7 +699,7 @@ namespace PersonalAccounting.UI
             "98",
             "100"});
             this.tsc_FontSize.Name = "tsc_FontSize";
-            this.tsc_FontSize.Size = new System.Drawing.Size(75, 28);
+            this.tsc_FontSize.Size = new System.Drawing.Size(75, 27);
             this.tsc_FontSize.Text = "10";
             this.tsc_FontSize.ToolTipText = "اندازه متن";
             this.tsc_FontSize.TextChanged += new System.EventHandler(this.Tsc_FontSize_TextChanged);
@@ -686,13 +708,13 @@ namespace PersonalAccounting.UI
             // 
             this.tsc_FontName.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.tsc_FontName.Name = "tsc_FontName";
-            this.tsc_FontName.Size = new System.Drawing.Size(150, 28);
+            this.tsc_FontName.Size = new System.Drawing.Size(150, 27);
             this.tsc_FontName.SelectedIndexChanged += new System.EventHandler(this.Tsc_FontName_SelectedIndexChanged);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
             // tsb_FullScreen
             // 
@@ -701,7 +723,7 @@ namespace PersonalAccounting.UI
             this.tsb_FullScreen.Image = ((System.Drawing.Image)(resources.GetObject("tsb_FullScreen.Image")));
             this.tsb_FullScreen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_FullScreen.Name = "tsb_FullScreen";
-            this.tsb_FullScreen.Size = new System.Drawing.Size(29, 25);
+            this.tsb_FullScreen.Size = new System.Drawing.Size(24, 24);
             this.tsb_FullScreen.Text = "تمام صفحه";
             // 
             // ts_DiaryNote2
@@ -735,10 +757,10 @@ namespace PersonalAccounting.UI
             this.tsb_SearchClear,
             this.tsb_SearchHighlight,
             this.txt_SearchHighlight});
-            this.ts_DiaryNote2.Location = new System.Drawing.Point(0, 102);
+            this.ts_DiaryNote2.Location = new System.Drawing.Point(0, 106);
             this.ts_DiaryNote2.Name = "ts_DiaryNote2";
             this.ts_DiaryNote2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.ts_DiaryNote2.Size = new System.Drawing.Size(1076, 31);
+            this.ts_DiaryNote2.Size = new System.Drawing.Size(1076, 27);
             this.ts_DiaryNote2.TabIndex = 183;
             this.ts_DiaryNote2.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.Ts_DiaryNote2_ItemClicked);
             // 
@@ -749,7 +771,7 @@ namespace PersonalAccounting.UI
             this.tsb_ZoomOut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_ZoomOut.Name = "tsb_ZoomOut";
             this.tsb_ZoomOut.RightToLeftAutoMirrorImage = true;
-            this.tsb_ZoomOut.Size = new System.Drawing.Size(29, 24);
+            this.tsb_ZoomOut.Size = new System.Drawing.Size(24, 24);
             this.tsb_ZoomOut.Text = "کم کردن زوم";
             this.tsb_ZoomOut.ToolTipText = "کم کردن زوم";
             // 
@@ -760,7 +782,7 @@ namespace PersonalAccounting.UI
             this.tsb_ZoomIn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_ZoomIn.Name = "tsb_ZoomIn";
             this.tsb_ZoomIn.RightToLeftAutoMirrorImage = true;
-            this.tsb_ZoomIn.Size = new System.Drawing.Size(29, 24);
+            this.tsb_ZoomIn.Size = new System.Drawing.Size(24, 24);
             this.tsb_ZoomIn.Text = "زیاد کردن زوم";
             this.tsb_ZoomIn.ToolTipText = "زیاد کردن زوم";
             // 
@@ -784,7 +806,7 @@ namespace PersonalAccounting.UI
             this.tsb_InsertPicture.Image = ((System.Drawing.Image)(resources.GetObject("tsb_InsertPicture.Image")));
             this.tsb_InsertPicture.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_InsertPicture.Name = "tsb_InsertPicture";
-            this.tsb_InsertPicture.Size = new System.Drawing.Size(29, 24);
+            this.tsb_InsertPicture.Size = new System.Drawing.Size(24, 24);
             this.tsb_InsertPicture.Text = "افزودن عکس";
             this.tsb_InsertPicture.ToolTipText = "افزودن عکس";
             // 
@@ -795,7 +817,7 @@ namespace PersonalAccounting.UI
             this.tsb_Stamp.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Stamp.Name = "tsb_Stamp";
             this.tsb_Stamp.RightToLeftAutoMirrorImage = true;
-            this.tsb_Stamp.Size = new System.Drawing.Size(29, 24);
+            this.tsb_Stamp.Size = new System.Drawing.Size(24, 24);
             this.tsb_Stamp.Text = "چاپ اتوماتیک تاریخ جاری";
             // 
             // toolStripSeparator13
@@ -809,7 +831,7 @@ namespace PersonalAccounting.UI
             this.tsb_Replace.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Replace.Image")));
             this.tsb_Replace.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Replace.Name = "tsb_Replace";
-            this.tsb_Replace.Size = new System.Drawing.Size(29, 24);
+            this.tsb_Replace.Size = new System.Drawing.Size(24, 24);
             this.tsb_Replace.Text = "جستجو و جایگزین";
             this.tsb_Replace.ToolTipText = "جستجو و جایگزین";
             // 
@@ -819,7 +841,7 @@ namespace PersonalAccounting.UI
             this.tsb_Find.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Find.Image")));
             this.tsb_Find.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Find.Name = "tsb_Find";
-            this.tsb_Find.Size = new System.Drawing.Size(29, 24);
+            this.tsb_Find.Size = new System.Drawing.Size(24, 24);
             this.tsb_Find.Text = "جستجو";
             this.tsb_Find.ToolTipText = "جستجو";
             // 
@@ -835,7 +857,7 @@ namespace PersonalAccounting.UI
             this.tsb_Subscript.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Subscript.Image")));
             this.tsb_Subscript.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Subscript.Name = "tsb_Subscript";
-            this.tsb_Subscript.Size = new System.Drawing.Size(29, 24);
+            this.tsb_Subscript.Size = new System.Drawing.Size(24, 24);
             this.tsb_Subscript.Text = "پایین انداختن متن";
             // 
             // tsb_Superscript
@@ -845,7 +867,7 @@ namespace PersonalAccounting.UI
             this.tsb_Superscript.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Superscript.Image")));
             this.tsb_Superscript.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_Superscript.Name = "tsb_Superscript";
-            this.tsb_Superscript.Size = new System.Drawing.Size(29, 24);
+            this.tsb_Superscript.Size = new System.Drawing.Size(24, 24);
             this.tsb_Superscript.Text = "بالا بردن متن";
             // 
             // toolStripSeparator16
@@ -859,7 +881,7 @@ namespace PersonalAccounting.UI
             this.tsb_ShrinkFont.Image = ((System.Drawing.Image)(resources.GetObject("tsb_ShrinkFont.Image")));
             this.tsb_ShrinkFont.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_ShrinkFont.Name = "tsb_ShrinkFont";
-            this.tsb_ShrinkFont.Size = new System.Drawing.Size(29, 24);
+            this.tsb_ShrinkFont.Size = new System.Drawing.Size(24, 24);
             this.tsb_ShrinkFont.Text = "کوچک کردن فونت";
             // 
             // tsb_GrowFont
@@ -868,7 +890,7 @@ namespace PersonalAccounting.UI
             this.tsb_GrowFont.Image = ((System.Drawing.Image)(resources.GetObject("tsb_GrowFont.Image")));
             this.tsb_GrowFont.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_GrowFont.Name = "tsb_GrowFont";
-            this.tsb_GrowFont.Size = new System.Drawing.Size(29, 24);
+            this.tsb_GrowFont.Size = new System.Drawing.Size(24, 24);
             this.tsb_GrowFont.Text = "بزرگ کردن فونت";
             // 
             // toolStripSeparator14
@@ -882,7 +904,7 @@ namespace PersonalAccounting.UI
             this.tsb_FontColor.Image = ((System.Drawing.Image)(resources.GetObject("tsb_FontColor.Image")));
             this.tsb_FontColor.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_FontColor.Name = "tsb_FontColor";
-            this.tsb_FontColor.Size = new System.Drawing.Size(29, 24);
+            this.tsb_FontColor.Size = new System.Drawing.Size(24, 24);
             this.tsb_FontColor.Text = "تغییر رنگ متن انتخابی";
             this.tsb_FontColor.ToolTipText = "تغییر رنگ متن انتخابی";
             // 
@@ -892,7 +914,7 @@ namespace PersonalAccounting.UI
             this.tsb_BackColor.Image = ((System.Drawing.Image)(resources.GetObject("tsb_BackColor.Image")));
             this.tsb_BackColor.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_BackColor.Name = "tsb_BackColor";
-            this.tsb_BackColor.Size = new System.Drawing.Size(29, 24);
+            this.tsb_BackColor.Size = new System.Drawing.Size(24, 24);
             this.tsb_BackColor.Text = "تغییر پس زمینه متن انتخابی";
             this.tsb_BackColor.ToolTipText = "تغییر پس زمینه متن انتخابی";
             // 
@@ -902,7 +924,7 @@ namespace PersonalAccounting.UI
             this.tsb_FillColor.Image = ((System.Drawing.Image)(resources.GetObject("tsb_FillColor.Image")));
             this.tsb_FillColor.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_FillColor.Name = "tsb_FillColor";
-            this.tsb_FillColor.Size = new System.Drawing.Size(29, 24);
+            this.tsb_FillColor.Size = new System.Drawing.Size(24, 24);
             this.tsb_FillColor.Text = "تغییر رنگ پس زمینه";
             // 
             // tsb_WordWrap
@@ -912,7 +934,7 @@ namespace PersonalAccounting.UI
             this.tsb_WordWrap.Image = ((System.Drawing.Image)(resources.GetObject("tsb_WordWrap.Image")));
             this.tsb_WordWrap.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_WordWrap.Name = "tsb_WordWrap";
-            this.tsb_WordWrap.Size = new System.Drawing.Size(29, 24);
+            this.tsb_WordWrap.Size = new System.Drawing.Size(24, 24);
             this.tsb_WordWrap.Text = "شکستن خط";
             this.tsb_WordWrap.ToolTipText = "با رسیدن نوشته به انتهای یک خط، مکان نما به طور خودکار به خط بعدی پرش می کند";
             // 
@@ -927,7 +949,7 @@ namespace PersonalAccounting.UI
             this.tsb_SearchClear.Image = ((System.Drawing.Image)(resources.GetObject("tsb_SearchClear.Image")));
             this.tsb_SearchClear.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_SearchClear.Name = "tsb_SearchClear";
-            this.tsb_SearchClear.Size = new System.Drawing.Size(29, 24);
+            this.tsb_SearchClear.Size = new System.Drawing.Size(24, 24);
             this.tsb_SearchClear.Text = "حذف جستجوی برجسته شده";
             // 
             // tsb_SearchHighlight
@@ -936,7 +958,7 @@ namespace PersonalAccounting.UI
             this.tsb_SearchHighlight.Image = ((System.Drawing.Image)(resources.GetObject("tsb_SearchHighlight.Image")));
             this.tsb_SearchHighlight.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_SearchHighlight.Name = "tsb_SearchHighlight";
-            this.tsb_SearchHighlight.Size = new System.Drawing.Size(29, 24);
+            this.tsb_SearchHighlight.Size = new System.Drawing.Size(24, 24);
             this.tsb_SearchHighlight.Text = "برجسته کردن جستجو";
             this.tsb_SearchHighlight.ToolTipText = "برجسته کردن جستجو";
             // 
@@ -955,10 +977,10 @@ namespace PersonalAccounting.UI
             this.lbl_MonthYear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_MonthYear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.lbl_MonthYear.Font = new System.Drawing.Font("Tornado Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lbl_MonthYear.ForeColor = System.Drawing.Color.Brown;
-            this.lbl_MonthYear.Location = new System.Drawing.Point(682, 42);
+            this.lbl_MonthYear.ForeColor = System.Drawing.Color.DarkGreen;
+            this.lbl_MonthYear.Location = new System.Drawing.Point(768, 43);
             this.lbl_MonthYear.Name = "lbl_MonthYear";
-            this.lbl_MonthYear.Size = new System.Drawing.Size(380, 26);
+            this.lbl_MonthYear.Size = new System.Drawing.Size(294, 26);
             this.lbl_MonthYear.TabIndex = 176;
             this.lbl_MonthYear.Text = "مهر 1387";
             this.lbl_MonthYear.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -986,7 +1008,7 @@ namespace PersonalAccounting.UI
             this.tsm_ZoomOut});
             this.cms_DiaryNote.Name = "contextMenu";
             this.cms_DiaryNote.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.cms_DiaryNote.Size = new System.Drawing.Size(170, 366);
+            this.cms_DiaryNote.Size = new System.Drawing.Size(147, 366);
             this.cms_DiaryNote.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.Cms_DiaryNote_ItemClicked);
             // 
             // tsm_Cut
@@ -994,7 +1016,7 @@ namespace PersonalAccounting.UI
             this.tsm_Cut.Image = ((System.Drawing.Image)(resources.GetObject("tsm_Cut.Image")));
             this.tsm_Cut.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsm_Cut.Name = "tsm_Cut";
-            this.tsm_Cut.Size = new System.Drawing.Size(169, 26);
+            this.tsm_Cut.Size = new System.Drawing.Size(146, 26);
             this.tsm_Cut.Text = "برش";
             // 
             // tsm_Copy
@@ -1002,7 +1024,7 @@ namespace PersonalAccounting.UI
             this.tsm_Copy.Image = ((System.Drawing.Image)(resources.GetObject("tsm_Copy.Image")));
             this.tsm_Copy.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsm_Copy.Name = "tsm_Copy";
-            this.tsm_Copy.Size = new System.Drawing.Size(169, 26);
+            this.tsm_Copy.Size = new System.Drawing.Size(146, 26);
             this.tsm_Copy.Text = "کپی";
             // 
             // tsm_Paste
@@ -1010,7 +1032,7 @@ namespace PersonalAccounting.UI
             this.tsm_Paste.Image = ((System.Drawing.Image)(resources.GetObject("tsm_Paste.Image")));
             this.tsm_Paste.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsm_Paste.Name = "tsm_Paste";
-            this.tsm_Paste.Size = new System.Drawing.Size(169, 26);
+            this.tsm_Paste.Size = new System.Drawing.Size(146, 26);
             this.tsm_Paste.Text = "الصاق";
             // 
             // tsm_Delete
@@ -1018,7 +1040,7 @@ namespace PersonalAccounting.UI
             this.tsm_Delete.Image = ((System.Drawing.Image)(resources.GetObject("tsm_Delete.Image")));
             this.tsm_Delete.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsm_Delete.Name = "tsm_Delete";
-            this.tsm_Delete.Size = new System.Drawing.Size(169, 26);
+            this.tsm_Delete.Size = new System.Drawing.Size(146, 26);
             this.tsm_Delete.Text = "پاک کردن";
             // 
             // tsm_SelectAll
@@ -1026,20 +1048,20 @@ namespace PersonalAccounting.UI
             this.tsm_SelectAll.Image = ((System.Drawing.Image)(resources.GetObject("tsm_SelectAll.Image")));
             this.tsm_SelectAll.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsm_SelectAll.Name = "tsm_SelectAll";
-            this.tsm_SelectAll.Size = new System.Drawing.Size(169, 26);
+            this.tsm_SelectAll.Size = new System.Drawing.Size(146, 26);
             this.tsm_SelectAll.Text = "انتخاب همه";
             // 
             // toolStripSeparator12
             // 
             this.toolStripSeparator12.Name = "toolStripSeparator12";
-            this.toolStripSeparator12.Size = new System.Drawing.Size(166, 6);
+            this.toolStripSeparator12.Size = new System.Drawing.Size(143, 6);
             // 
             // tsm_Undo
             // 
             this.tsm_Undo.Image = ((System.Drawing.Image)(resources.GetObject("tsm_Undo.Image")));
             this.tsm_Undo.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsm_Undo.Name = "tsm_Undo";
-            this.tsm_Undo.Size = new System.Drawing.Size(169, 26);
+            this.tsm_Undo.Size = new System.Drawing.Size(146, 26);
             this.tsm_Undo.Text = "Undo";
             // 
             // tsm_Redo
@@ -1047,13 +1069,13 @@ namespace PersonalAccounting.UI
             this.tsm_Redo.Image = ((System.Drawing.Image)(resources.GetObject("tsm_Redo.Image")));
             this.tsm_Redo.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsm_Redo.Name = "tsm_Redo";
-            this.tsm_Redo.Size = new System.Drawing.Size(169, 26);
+            this.tsm_Redo.Size = new System.Drawing.Size(146, 26);
             this.tsm_Redo.Text = "Redo";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(166, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(143, 6);
             // 
             // tsm_Alignment
             // 
@@ -1063,7 +1085,7 @@ namespace PersonalAccounting.UI
             this.tsmi_AlignRight});
             this.tsm_Alignment.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsm_Alignment.Name = "tsm_Alignment";
-            this.tsm_Alignment.Size = new System.Drawing.Size(169, 26);
+            this.tsm_Alignment.Size = new System.Drawing.Size(146, 26);
             this.tsm_Alignment.Text = "ترازبندی";
             // 
             // tsmi_AlignLeft
@@ -1072,7 +1094,7 @@ namespace PersonalAccounting.UI
             this.tsmi_AlignLeft.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_AlignLeft.Image")));
             this.tsmi_AlignLeft.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsmi_AlignLeft.Name = "tsmi_AlignLeft";
-            this.tsmi_AlignLeft.Size = new System.Drawing.Size(181, 26);
+            this.tsmi_AlignLeft.Size = new System.Drawing.Size(144, 22);
             this.tsmi_AlignLeft.Text = "ترازبندی چپ";
             this.tsmi_AlignLeft.Click += new System.EventHandler(this.Tsmi_AlignLeft_Click);
             // 
@@ -1082,7 +1104,7 @@ namespace PersonalAccounting.UI
             this.tsmi_AlignCenter.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_AlignCenter.Image")));
             this.tsmi_AlignCenter.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsmi_AlignCenter.Name = "tsmi_AlignCenter";
-            this.tsmi_AlignCenter.Size = new System.Drawing.Size(181, 26);
+            this.tsmi_AlignCenter.Size = new System.Drawing.Size(144, 22);
             this.tsmi_AlignCenter.Text = "ترازبندی راست";
             this.tsmi_AlignCenter.Click += new System.EventHandler(this.Tsmi_AlignCenter_Click);
             // 
@@ -1092,7 +1114,7 @@ namespace PersonalAccounting.UI
             this.tsmi_AlignRight.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_AlignRight.Image")));
             this.tsmi_AlignRight.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsmi_AlignRight.Name = "tsmi_AlignRight";
-            this.tsmi_AlignRight.Size = new System.Drawing.Size(181, 26);
+            this.tsmi_AlignRight.Size = new System.Drawing.Size(144, 22);
             this.tsmi_AlignRight.Text = "ترازبندی راست";
             this.tsmi_AlignRight.Click += new System.EventHandler(this.Tsmi_AlignRight_Click);
             // 
@@ -1105,7 +1127,7 @@ namespace PersonalAccounting.UI
             this.tsmi_Strikeout});
             this.tsm_Style.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsm_Style.Name = "tsm_Style";
-            this.tsm_Style.Size = new System.Drawing.Size(169, 26);
+            this.tsm_Style.Size = new System.Drawing.Size(146, 26);
             this.tsm_Style.Text = "سبک متن";
             // 
             // tsmi_Bold
@@ -1113,7 +1135,7 @@ namespace PersonalAccounting.UI
             this.tsmi_Bold.CheckOnClick = true;
             this.tsmi_Bold.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_Bold.Image")));
             this.tsmi_Bold.Name = "tsmi_Bold";
-            this.tsmi_Bold.Size = new System.Drawing.Size(158, 26);
+            this.tsmi_Bold.Size = new System.Drawing.Size(126, 22);
             this.tsmi_Bold.Text = "ضخیم";
             this.tsmi_Bold.Click += new System.EventHandler(this.Tsmi_Bold_Click);
             // 
@@ -1122,7 +1144,7 @@ namespace PersonalAccounting.UI
             this.tsmi_Italic.CheckOnClick = true;
             this.tsmi_Italic.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_Italic.Image")));
             this.tsmi_Italic.Name = "tsmi_Italic";
-            this.tsmi_Italic.Size = new System.Drawing.Size(158, 26);
+            this.tsmi_Italic.Size = new System.Drawing.Size(126, 22);
             this.tsmi_Italic.Text = "مورب";
             this.tsmi_Italic.Click += new System.EventHandler(this.Tsmi_Italic_Click);
             // 
@@ -1131,7 +1153,7 @@ namespace PersonalAccounting.UI
             this.tsmi_Underline.CheckOnClick = true;
             this.tsmi_Underline.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_Underline.Image")));
             this.tsmi_Underline.Name = "tsmi_Underline";
-            this.tsmi_Underline.Size = new System.Drawing.Size(158, 26);
+            this.tsmi_Underline.Size = new System.Drawing.Size(126, 22);
             this.tsmi_Underline.Text = "زیر خط دار";
             this.tsmi_Underline.Click += new System.EventHandler(this.Tsmi_Underline_Click);
             // 
@@ -1140,7 +1162,7 @@ namespace PersonalAccounting.UI
             this.tsmi_Strikeout.CheckOnClick = true;
             this.tsmi_Strikeout.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_Strikeout.Image")));
             this.tsmi_Strikeout.Name = "tsmi_Strikeout";
-            this.tsmi_Strikeout.Size = new System.Drawing.Size(158, 26);
+            this.tsmi_Strikeout.Size = new System.Drawing.Size(126, 22);
             this.tsmi_Strikeout.Text = "خط خورده";
             this.tsmi_Strikeout.Click += new System.EventHandler(this.Tsmi_Strikeout_Click);
             // 
@@ -1152,7 +1174,7 @@ namespace PersonalAccounting.UI
             this.tsmi_Bullets});
             this.tsm_Indentation.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsm_Indentation.Name = "tsm_Indentation";
-            this.tsm_Indentation.Size = new System.Drawing.Size(169, 26);
+            this.tsm_Indentation.Size = new System.Drawing.Size(146, 26);
             this.tsm_Indentation.Text = "تو رفتگی";
             // 
             // tsmi_IndentIncrease
@@ -1160,7 +1182,7 @@ namespace PersonalAccounting.UI
             this.tsmi_IndentIncrease.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_IndentIncrease.Image")));
             this.tsmi_IndentIncrease.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsmi_IndentIncrease.Name = "tsmi_IndentIncrease";
-            this.tsmi_IndentIncrease.Size = new System.Drawing.Size(196, 26);
+            this.tsmi_IndentIncrease.Size = new System.Drawing.Size(154, 22);
             this.tsmi_IndentIncrease.Text = "افزایش تو رفتگی";
             this.tsmi_IndentIncrease.Click += new System.EventHandler(this.tsmi_IndentIncrease_Click);
             // 
@@ -1169,7 +1191,7 @@ namespace PersonalAccounting.UI
             this.tsmi_IndentDecrease.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_IndentDecrease.Image")));
             this.tsmi_IndentDecrease.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsmi_IndentDecrease.Name = "tsmi_IndentDecrease";
-            this.tsmi_IndentDecrease.Size = new System.Drawing.Size(196, 26);
+            this.tsmi_IndentDecrease.Size = new System.Drawing.Size(154, 22);
             this.tsmi_IndentDecrease.Text = "کاهش تو رفتگی";
             this.tsmi_IndentDecrease.Click += new System.EventHandler(this.tsmi_IndentDecrease_Click);
             // 
@@ -1179,34 +1201,34 @@ namespace PersonalAccounting.UI
             this.tsmi_Bullets.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_Bullets.Image")));
             this.tsmi_Bullets.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsmi_Bullets.Name = "tsmi_Bullets";
-            this.tsmi_Bullets.Size = new System.Drawing.Size(196, 26);
+            this.tsmi_Bullets.Size = new System.Drawing.Size(154, 22);
             this.tsmi_Bullets.Text = "Bullets";
             this.tsmi_Bullets.Click += new System.EventHandler(this.tsmi_Bullets_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(166, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(143, 6);
             // 
             // tsm_InsertPicture
             // 
             this.tsm_InsertPicture.Image = ((System.Drawing.Image)(resources.GetObject("tsm_InsertPicture.Image")));
             this.tsm_InsertPicture.ImageTransparentColor = System.Drawing.Color.Black;
             this.tsm_InsertPicture.Name = "tsm_InsertPicture";
-            this.tsm_InsertPicture.Size = new System.Drawing.Size(169, 26);
+            this.tsm_InsertPicture.Size = new System.Drawing.Size(146, 26);
             this.tsm_InsertPicture.Text = "افزودن تصویر";
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(166, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(143, 6);
             // 
             // tsm_ZoomIn
             // 
             this.tsm_ZoomIn.Image = ((System.Drawing.Image)(resources.GetObject("tsm_ZoomIn.Image")));
             this.tsm_ZoomIn.ImageTransparentColor = System.Drawing.Color.White;
             this.tsm_ZoomIn.Name = "tsm_ZoomIn";
-            this.tsm_ZoomIn.Size = new System.Drawing.Size(169, 26);
+            this.tsm_ZoomIn.Size = new System.Drawing.Size(146, 26);
             this.tsm_ZoomIn.Text = "افزایش زوم";
             // 
             // tsm_ZoomOut
@@ -1214,7 +1236,7 @@ namespace PersonalAccounting.UI
             this.tsm_ZoomOut.Image = ((System.Drawing.Image)(resources.GetObject("tsm_ZoomOut.Image")));
             this.tsm_ZoomOut.ImageTransparentColor = System.Drawing.Color.White;
             this.tsm_ZoomOut.Name = "tsm_ZoomOut";
-            this.tsm_ZoomOut.Size = new System.Drawing.Size(169, 26);
+            this.tsm_ZoomOut.Size = new System.Drawing.Size(146, 26);
             this.tsm_ZoomOut.Text = "کاهش زوم";
             // 
             // pd_DiaryNote
@@ -1265,7 +1287,7 @@ namespace PersonalAccounting.UI
             this.numberLabel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.numberLabel.Location = new System.Drawing.Point(9, 4);
             this.numberLabel.Name = "numberLabel";
-            this.numberLabel.Size = new System.Drawing.Size(20, 21);
+            this.numberLabel.Size = new System.Drawing.Size(15, 16);
             this.numberLabel.TabIndex = 14;
             this.numberLabel.Text = "1";
             this.numberLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1279,7 +1301,7 @@ namespace PersonalAccounting.UI
             this.rtb_Note.HideSelection = false;
             this.rtb_Note.Location = new System.Drawing.Point(0, 0);
             this.rtb_Note.Name = "rtb_Note";
-            this.rtb_Note.Size = new System.Drawing.Size(1038, 498);
+            this.rtb_Note.Size = new System.Drawing.Size(1038, 502);
             this.rtb_Note.TabIndex = 0;
             this.rtb_Note.Text = "";
             this.rtb_Note.HScroll += new System.EventHandler(this.rtb_Note_Click);
@@ -1311,27 +1333,43 @@ namespace PersonalAccounting.UI
             this.ss_RowColumn.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tssl_Row,
             this.tssl_Column});
-            this.ss_RowColumn.Location = new System.Drawing.Point(0, 498);
+            this.ss_RowColumn.Location = new System.Drawing.Point(0, 502);
             this.ss_RowColumn.Name = "ss_RowColumn";
-            this.ss_RowColumn.Size = new System.Drawing.Size(1038, 26);
+            this.ss_RowColumn.Size = new System.Drawing.Size(1038, 22);
             this.ss_RowColumn.TabIndex = 180;
             this.ss_RowColumn.Text = "statusStrip1";
             // 
             // tssl_Row
             // 
             this.tssl_Row.Name = "tssl_Row";
-            this.tssl_Row.Size = new System.Drawing.Size(27, 20);
+            this.tssl_Row.Size = new System.Drawing.Size(22, 17);
             this.tssl_Row.Text = "---";
             // 
             // tssl_Column
             // 
             this.tssl_Column.Name = "tssl_Column";
-            this.tssl_Column.Size = new System.Drawing.Size(27, 20);
+            this.tssl_Column.Size = new System.Drawing.Size(22, 17);
             this.tssl_Column.Text = "---";
+            // 
+            // txt_diaryNoteDate
+            // 
+            this.txt_diaryNoteDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_diaryNoteDate.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txt_diaryNoteDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_diaryNoteDate.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.txt_diaryNoteDate.HideSelection = false;
+            this.txt_diaryNoteDate.Location = new System.Drawing.Point(650, 51);
+            this.txt_diaryNoteDate.Mask = "1000/00/00";
+            this.txt_diaryNoteDate.Name = "txt_diaryNoteDate";
+            this.txt_diaryNoteDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txt_diaryNoteDate.Size = new System.Drawing.Size(80, 23);
+            this.txt_diaryNoteDate.TabIndex = 200;
+            this.txt_diaryNoteDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_diaryNoteDate.Visible = false;
             // 
             // FrmDiaryNote
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1076, 684);
             this.Controls.Add(this.splitContainer1);
@@ -1351,6 +1389,7 @@ namespace PersonalAccounting.UI
             ((System.ComponentModel.ISupportInitialize)(this.rddl_Users)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rb_Save)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rb_Exit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rdp_diaryNoteDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rddl_WeatherConditions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rddl_MentalConditions)).EndInit();
             this.ts_DiaryNote.ResumeLayout(false);
@@ -1468,7 +1507,8 @@ namespace PersonalAccounting.UI
         private Telerik.WinControls.UI.RadButton rb_Save;
         private System.Windows.Forms.Button btn_IncDate;
         private System.Windows.Forms.Button btn_DecDate;
-        private System.Windows.Forms.MaskedTextBox txt_diaryNoteDate;
+        private RadDateTimePicker rdp_diaryNoteDate;
+
         private System.Windows.Forms.Label label4;
         private Telerik.WinControls.UI.RadDropDownList rddl_WeatherConditions;
         private Telerik.WinControls.UI.RadDropDownList rddl_MentalConditions;
@@ -1476,6 +1516,7 @@ namespace PersonalAccounting.UI
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbl_Users;
         private Telerik.WinControls.UI.RadDropDownList rddl_Users;
+        private MaskedTextBox txt_diaryNoteDate;
 
         //private Telerik.WinControls.UI.RadDateTimePicker radDateTimePicker1;
     }
