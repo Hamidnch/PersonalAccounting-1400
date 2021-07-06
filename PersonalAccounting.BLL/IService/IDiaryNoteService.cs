@@ -11,7 +11,7 @@ namespace PersonalAccounting.BLL.IService
     {
         Task<string> LoadByIdAsync(int noteId);
         Task<DiaryNote> LoadByDateAsync(DateTime date, int userId);
-        DiaryNote LoadByDate(DateTime date, int userId);
+        Task<DiaryNote> LoadByDate(DateTime date, int userId);
         IList<ViewModelLoadAllDiaryNoteReport> GetAllDiaryNotes(DateTime? date = null,
             int? mentalConditionId = null, int? weatherConditionId = null, string note = null, int? userId = null);
         Task<CreateStatus> CreateAsync(DiaryNote diaryNote);

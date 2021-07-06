@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using Telerik.WinControls.UI;
 
@@ -156,8 +157,10 @@ namespace PersonalAccounting.UI.ReportForms
                 var date = GetCurrentDate(txt_diaryNoteDate.Text);
                 //var currentUser = InitialHelper.CurrentUser;
 
-                var diaryNoteList = _diaryNoteService.GetAllDiaryNotes(date, int.Parse(rddl_MentalConditions.SelectedValue.ToString()),
-                    int.Parse(rddl_WeatherConditions.SelectedValue.ToString()), txt_Note.Text, int.Parse(rddl_Users.SelectedValue.ToString()));
+                var diaryNoteList = _diaryNoteService.GetAllDiaryNotes(date, 
+                    int.Parse(rddl_MentalConditions.SelectedValue.ToString()),
+                    int.Parse(rddl_WeatherConditions.SelectedValue.ToString()),
+                    txt_Note.Text, int.Parse(rddl_Users.SelectedValue.ToString()));
 
                 return diaryNoteList;
             }

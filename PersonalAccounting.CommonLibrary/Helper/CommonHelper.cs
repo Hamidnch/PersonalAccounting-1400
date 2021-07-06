@@ -1181,6 +1181,23 @@ namespace PersonalAccounting.CommonLibrary.Helper
             defaultTextBox.SelectAll();
         }
 
+        public static void InsertActionExpense(Panel pnlData, RadGridView rgv, Button btnInsert,
+            Button btnRegister, Button btnModify, Button btnDelete, Button btnCancel,
+            Button btnClose, Button btnExportToExcel,
+            RadDateTimePicker defaultTextBox)
+        {
+            rgv.Enabled = false;
+            btnInsert.Enabled = false;
+            btnRegister.Enabled = false;
+            btnModify.Enabled = false;
+            btnDelete.Enabled = false;
+            btnCancel.Enabled = true;
+            btnClose.Enabled = false;
+            btnExportToExcel.Enabled = true;
+            ClearInputControls(pnlData);
+            defaultTextBox.Focus();
+            defaultTextBox.Select();
+        }
         //public static void CancelAction(Mode mode, ELGroupBox pnlData, RadGridView rgv, Button btnInsert,
         //    Button btnRegister, Button btnModify, Button btnDelete, Button btnCancel, Button btnClose)
         //{

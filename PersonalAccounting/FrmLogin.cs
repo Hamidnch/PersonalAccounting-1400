@@ -41,13 +41,11 @@ namespace PersonalAccounting.UI
             //_roleService = roleService;
             //_permissionService = permissionService;
             InitializeComponent();
-
             _backgroundWorker = new BackgroundWorker();
             _backgroundWorker.DoWork += _backgroundWorker_DoWork;
             _backgroundWorker.RunWorkerCompleted += _backgroundWorker_RunWorkerCompleted;
             _pictureBox = CommonHelper.CreateIndicatorLoading(
                 this, new Size(356, 19), new Point(10, 101), Resources.Loadingvvv);
-
         }
 
         //private void CreateIndicatorLoading()

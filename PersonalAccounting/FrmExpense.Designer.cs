@@ -69,7 +69,9 @@
             this.pnl_Data = new System.Windows.Forms.Panel();
             this.rgv_BuyList = new Telerik.WinControls.UI.RadGridView();
             this.pnl_TopData = new Telerik.WinControls.UI.RadPanel();
-            this.txt_ExpenseDocumentDate = new System.Windows.Forms.MaskedTextBox();
+            this.btn_IncDate = new System.Windows.Forms.Button();
+            this.btn_DecDate = new System.Windows.Forms.Button();
+            this.rdp_ExpenseDocumentDate = new Telerik.WinControls.UI.RadDateTimePicker();
             this.lbl_DocumentId = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -98,6 +100,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.rgv_BuyList.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnl_TopData)).BeginInit();
             this.pnl_TopData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rdp_ExpenseDocumentDate)).BeginInit();
             this.pnl_Action.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -135,9 +138,9 @@
             // uiPanel0Container
             // 
             this.uiPanel0Container.Controls.Add(this.rgv_Expenses);
-            this.uiPanel0Container.Location = new System.Drawing.Point(1, 25);
+            this.uiPanel0Container.Location = new System.Drawing.Point(1, 28);
             this.uiPanel0Container.Name = "uiPanel0Container";
-            this.uiPanel0Container.Size = new System.Drawing.Size(914, 179);
+            this.uiPanel0Container.Size = new System.Drawing.Size(914, 176);
             this.uiPanel0Container.TabIndex = 0;
             // 
             // rgv_Expenses
@@ -241,7 +244,7 @@
             this.rgv_Expenses.Name = "rgv_Expenses";
             this.rgv_Expenses.ReadOnly = true;
             this.rgv_Expenses.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.rgv_Expenses.Size = new System.Drawing.Size(914, 179);
+            this.rgv_Expenses.Size = new System.Drawing.Size(914, 176);
             this.rgv_Expenses.TabIndex = 5;
             this.rgv_Expenses.CurrentRowChanged += new Telerik.WinControls.UI.CurrentRowChangedEventHandler(this.rgvExpenses_CurrentRowChanged);
             this.rgv_Expenses.CellClick += new Telerik.WinControls.UI.GridViewCellEventHandler(this.rgv_Expenses_CellClick);
@@ -270,9 +273,9 @@
             // 
             this.pnlTopContainer.Controls.Add(this.pnl_Data);
             this.pnlTopContainer.Controls.Add(this.pnl_Action);
-            this.pnlTopContainer.Location = new System.Drawing.Point(0, 20);
+            this.pnlTopContainer.Location = new System.Drawing.Point(0, 23);
             this.pnlTopContainer.Name = "pnlTopContainer";
-            this.pnlTopContainer.Size = new System.Drawing.Size(916, 418);
+            this.pnlTopContainer.Size = new System.Drawing.Size(916, 415);
             this.pnlTopContainer.TabIndex = 0;
             // 
             // pnl_Data
@@ -285,7 +288,7 @@
             this.pnl_Data.Location = new System.Drawing.Point(0, 39);
             this.pnl_Data.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnl_Data.Name = "pnl_Data";
-            this.pnl_Data.Size = new System.Drawing.Size(916, 379);
+            this.pnl_Data.Size = new System.Drawing.Size(916, 376);
             this.pnl_Data.TabIndex = 1;
             this.pnl_Data.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnl_Data_MouseClick);
             // 
@@ -302,7 +305,7 @@
             this.rgv_BuyList.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.rgv_BuyList.ForeColor = System.Drawing.SystemColors.ControlText;
             this.rgv_BuyList.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.rgv_BuyList.Location = new System.Drawing.Point(0, 31);
+            this.rgv_BuyList.Location = new System.Drawing.Point(0, 33);
             // 
             // 
             // 
@@ -540,7 +543,7 @@
             this.rgv_BuyList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.rgv_BuyList.ShowGroupPanel = false;
             this.rgv_BuyList.ShowHeaderCellButtons = true;
-            this.rgv_BuyList.Size = new System.Drawing.Size(914, 346);
+            this.rgv_BuyList.Size = new System.Drawing.Size(914, 341);
             this.rgv_BuyList.TabIndex = 171;
             this.rgv_BuyList.CellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.rgv_BuyList_CellFormatting);
             this.rgv_BuyList.ViewCellFormatting += new Telerik.WinControls.UI.CellFormattingEventHandler(this.rgv_BuyList_ViewCellFormatting);
@@ -558,7 +561,9 @@
             // pnl_TopData
             // 
             this.pnl_TopData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
-            this.pnl_TopData.Controls.Add(this.txt_ExpenseDocumentDate);
+            this.pnl_TopData.Controls.Add(this.btn_IncDate);
+            this.pnl_TopData.Controls.Add(this.btn_DecDate);
+            this.pnl_TopData.Controls.Add(this.rdp_ExpenseDocumentDate);
             this.pnl_TopData.Controls.Add(this.lbl_DocumentId);
             this.pnl_TopData.Controls.Add(this.label3);
             this.pnl_TopData.Controls.Add(this.label5);
@@ -566,24 +571,74 @@
             this.pnl_TopData.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnl_TopData.Location = new System.Drawing.Point(0, 0);
             this.pnl_TopData.Name = "pnl_TopData";
-            this.pnl_TopData.Size = new System.Drawing.Size(914, 31);
+            this.pnl_TopData.Size = new System.Drawing.Size(914, 33);
             this.pnl_TopData.TabIndex = 1;
             // 
-            // txt_ExpenseDocumentDate
+            // btn_IncDate
             // 
-            this.txt_ExpenseDocumentDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_ExpenseDocumentDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_ExpenseDocumentDate.Enabled = false;
-            this.txt_ExpenseDocumentDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txt_ExpenseDocumentDate.Location = new System.Drawing.Point(745, 5);
-            this.txt_ExpenseDocumentDate.Mask = "1000/00/00";
-            this.txt_ExpenseDocumentDate.Name = "txt_ExpenseDocumentDate";
-            this.txt_ExpenseDocumentDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_ExpenseDocumentDate.Size = new System.Drawing.Size(83, 20);
-            this.txt_ExpenseDocumentDate.TabIndex = 0;
-            this.txt_ExpenseDocumentDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txt_ExpenseDocumentDate.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnl_Data_MouseClick);
-            this.txt_ExpenseDocumentDate.TextChanged += new System.EventHandler(this.txt_ExpenseDocumentDate_TextChanged);
+            this.btn_IncDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_IncDate.BackColor = System.Drawing.Color.Transparent;
+            this.btn_IncDate.Enabled = false;
+            this.btn_IncDate.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btn_IncDate.FlatAppearance.BorderSize = 2;
+            this.btn_IncDate.Image = ((System.Drawing.Image)(resources.GetObject("btn_IncDate.Image")));
+            this.btn_IncDate.Location = new System.Drawing.Point(810, 2);
+            this.btn_IncDate.Name = "btn_IncDate";
+            this.btn_IncDate.Size = new System.Drawing.Size(23, 27);
+            this.btn_IncDate.TabIndex = 172;
+            this.btn_IncDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_IncDate.UseVisualStyleBackColor = false;
+            this.btn_IncDate.Click += new System.EventHandler(this.btn_IncDate_Click);
+            // 
+            // btn_DecDate
+            // 
+            this.btn_DecDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_DecDate.BackColor = System.Drawing.Color.Transparent;
+            this.btn_DecDate.Enabled = false;
+            this.btn_DecDate.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btn_DecDate.FlatAppearance.BorderSize = 2;
+            this.btn_DecDate.Image = ((System.Drawing.Image)(resources.GetObject("btn_DecDate.Image")));
+            this.btn_DecDate.Location = new System.Drawing.Point(673, 2);
+            this.btn_DecDate.Name = "btn_DecDate";
+            this.btn_DecDate.Size = new System.Drawing.Size(23, 27);
+            this.btn_DecDate.TabIndex = 173;
+            this.btn_DecDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_DecDate.UseVisualStyleBackColor = false;
+            this.btn_DecDate.Click += new System.EventHandler(this.btn_DecDate_Click);
+            // 
+            // rdp_ExpenseDocumentDate
+            // 
+            this.rdp_ExpenseDocumentDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rdp_ExpenseDocumentDate.AutoSize = false;
+            this.rdp_ExpenseDocumentDate.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.rdp_ExpenseDocumentDate.CustomFormat = "yyyy/MM/dd";
+            this.rdp_ExpenseDocumentDate.Enabled = false;
+            this.rdp_ExpenseDocumentDate.EnableKeyMap = true;
+            this.rdp_ExpenseDocumentDate.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.rdp_ExpenseDocumentDate.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.rdp_ExpenseDocumentDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.rdp_ExpenseDocumentDate.Location = new System.Drawing.Point(697, 3);
+            this.rdp_ExpenseDocumentDate.MinDate = new System.DateTime(622, 3, 22, 0, 0, 0, 0);
+            this.rdp_ExpenseDocumentDate.Name = "rdp_ExpenseDocumentDate";
+            this.rdp_ExpenseDocumentDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            // 
+            // 
+            // 
+            this.rdp_ExpenseDocumentDate.RootElement.ApplyShapeToControl = true;
+            this.rdp_ExpenseDocumentDate.RootElement.EnableBorderHighlight = true;
+            this.rdp_ExpenseDocumentDate.RootElement.EnableElementShadow = true;
+            this.rdp_ExpenseDocumentDate.RootElement.EnableFocusBorder = true;
+            this.rdp_ExpenseDocumentDate.RootElement.EnableHighlight = true;
+            this.rdp_ExpenseDocumentDate.RootElement.EnableRippleAnimation = true;
+            this.rdp_ExpenseDocumentDate.RootElement.ShouldPaint = true;
+            this.rdp_ExpenseDocumentDate.RootElement.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.rdp_ExpenseDocumentDate.Size = new System.Drawing.Size(112, 25);
+            this.rdp_ExpenseDocumentDate.TabIndex = 171;
+            this.rdp_ExpenseDocumentDate.TabStop = false;
+            this.rdp_ExpenseDocumentDate.Text = "1400/02/15";
+            this.rdp_ExpenseDocumentDate.Value = new System.DateTime(2021, 5, 5, 10, 9, 33, 572);
+            this.rdp_ExpenseDocumentDate.TextChanged += new System.EventHandler(this.txt_ExpenseDocumentDate_TextChanged);
+            this.rdp_ExpenseDocumentDate.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnl_Data_MouseClick);
             // 
             // lbl_DocumentId
             // 
@@ -594,7 +649,7 @@
             this.lbl_DocumentId.ForeColor = System.Drawing.Color.DarkGreen;
             this.lbl_DocumentId.Location = new System.Drawing.Point(37, 5);
             this.lbl_DocumentId.Name = "lbl_DocumentId";
-            this.lbl_DocumentId.Size = new System.Drawing.Size(17, 17);
+            this.lbl_DocumentId.Size = new System.Drawing.Size(20, 21);
             this.lbl_DocumentId.TabIndex = 170;
             this.lbl_DocumentId.Text = "0";
             this.lbl_DocumentId.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnl_Data_MouseClick);
@@ -607,7 +662,7 @@
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(836, 8);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 13);
+            this.label3.Size = new System.Drawing.Size(71, 17);
             this.label3.TabIndex = 167;
             this.label3.Text = "تاریخ هزینه";
             this.label3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnl_Data_MouseClick);
@@ -618,7 +673,7 @@
             this.label5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(91, 8);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(61, 13);
+            this.label5.Size = new System.Drawing.Size(78, 17);
             this.label5.TabIndex = 170;
             this.label5.Text = "شماره سند";
             this.label5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnl_Data_MouseClick);
@@ -764,7 +819,7 @@
             // 
             // FrmExpense
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(922, 676);
             this.Controls.Add(this.pnlTop);
@@ -795,6 +850,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnl_TopData)).EndInit();
             this.pnl_TopData.ResumeLayout(false);
             this.pnl_TopData.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rdp_ExpenseDocumentDate)).EndInit();
             this.pnl_Action.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -805,7 +861,6 @@
         private Janus.Windows.UI.Dock.UIPanelManager uiPanelManager1;
         private Janus.Windows.UI.Dock.UIPanel pnlTop;
         private Janus.Windows.UI.Dock.UIPanelInnerContainer pnlTopContainer;
-        private System.Windows.Forms.MaskedTextBox txt_ExpenseDocumentDate;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private Telerik.WinControls.UI.RadGridView rgv_BuyList;
@@ -825,5 +880,8 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button btn_ExportToExcel;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Button btn_IncDate;
+        private System.Windows.Forms.Button btn_DecDate;
+        private Telerik.WinControls.UI.RadDateTimePicker rdp_ExpenseDocumentDate;
     }
 }

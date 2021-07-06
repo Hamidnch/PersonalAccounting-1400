@@ -804,7 +804,7 @@ namespace PersonalAccounting.UI
             _mode = CommonHelper.Mode.Insert;
 
             CommonHelper.InsertActionExpense(pnl_Data, rgv_Expenses, btnInsert, btnRegister,
-                btnModify, btnDelete, btnCancel, btnClose, btn_ExportToExcel, txt_ExpenseDocumentDate);
+                btnModify, btnDelete, btnCancel, btnClose, btn_ExportToExcel, rdp_ExpenseDocumentDate);
 
             rgv_BuyList.ReadOnly = false;
             rgv_BuyList.TableElement.BackColor = Color.White;
@@ -830,7 +830,10 @@ namespace PersonalAccounting.UI
             //txt_IncomeDate.Select();
             //txt_IncomeDate.SelectAll();
 
-            txt_ExpenseDocumentDate.SetPersianDateToTextBoxAndSelectAll();
+            rdp_ExpenseDocumentDate.SetPersianDateToTextBoxAndSelectAll();
+            btn_IncDate.Enabled = true;
+            btn_DecDate.Enabled = true;
+            txt_ExpenseDocumentDate_TextChanged(sender, e);
         }
 
         private void rgv_BuyList_UserDeletingRow(object sender, GridViewRowCancelEventArgs e)
@@ -857,6 +860,9 @@ namespace PersonalAccounting.UI
             CommonHelper.IndicatorLoading(_pictureBox, true);
 
             _pnlFloating.Visible = false;
+            rdp_ExpenseDocumentDate.Enabled = false;
+            btn_IncDate.Enabled = false;
+            btn_DecDate.Enabled = false;
             //rgv_BuyList.DataSource = null;
             //txt_IncomeDate.Text = CommonLibrary.Properties.Resources.NullDatelFormat;
         }
@@ -876,7 +882,10 @@ namespace PersonalAccounting.UI
 
             rgv_BuyList.ReadOnly = false;
             rgv_BuyList.TableElement.BackColor = Color.White;
-            txt_ExpenseDocumentDate.Enabled = true;
+            rdp_ExpenseDocumentDate.Enabled = true;
+            rdp_ExpenseDocumentDate.Enabled = true;
+            btn_IncDate.Enabled = true;
+            btn_DecDate.Enabled = true;
 
         }
 
@@ -959,7 +968,7 @@ namespace PersonalAccounting.UI
             //    return;
             //}
 
-            var persianRegisterDate = PersianHelper.GetGregorianDate(txt_ExpenseDocumentDate.Text);
+            var persianRegisterDate = PersianHelper.GetGregorianDate(rdp_ExpenseDocumentDate.Text);
             var currentUser = InitialHelper.CurrentUser;
             var currentDateTime = InitialHelper.CurrentDateTime;
             //var selectedUser = await GetSelectedUserId();
@@ -1068,6 +1077,9 @@ namespace PersonalAccounting.UI
                                 btnCancel.Enabled = false;
                                 btnInsert.Enabled = true;
                                 btnDelete.Enabled = true;
+                                rdp_ExpenseDocumentDate.Enabled = false;
+                                btn_IncDate.Enabled = false;
+                                btn_DecDate.Enabled = false;
                                 break;
                         }
                     }
@@ -1202,7 +1214,9 @@ namespace PersonalAccounting.UI
                         btnCancel.Enabled = false;
                         btnInsert.Enabled = true;
                         btnDelete.Enabled = true;
-
+                        rdp_ExpenseDocumentDate.Enabled = false;
+                        btn_IncDate.Enabled = false;
+                        btn_DecDate.Enabled = false;
                         CommonHelper.ShowNotificationMessage("ویرایش سند هزینه", "این لیست هزینه با شماره سند "
                             + currentDocument.Id + " ویرایش گردید.");
                     }
@@ -1288,38 +1302,52 @@ namespace PersonalAccounting.UI
         {
             if (rgv_BuyList.ReadOnly) return;
 
-            var fundCurrentValueCellValue = e.Row?.Cells["FundCurrentValue"]?.Value;
-            var priceCell = e.Row?.Cells["Price"];
-            var priceCellValue = priceCell?.Value;
-
-            if (priceCell == null) return;
-
-            if (fundCurrentValueCellValue == null) return;
-
-            var fundCurrentValue = decimal.Parse(fundCurrentValueCellValue.ToString());
-
-            if (priceCellValue == null) return;
-
-            var price = decimal.Parse(priceCellValue.ToString());
-
-            if (price != 0 && fundCurrentValue != 0 && price > fundCurrentValue) //&& _mode != CommonHelper.Mode.Update)
+            try
             {
-                priceCell.ErrorText = "موجودی صندوق کافی نیست";
-                priceCell.Style.ForeColor = Color.Red;
-                //priceCell.Style.BackColor = Color.Black;
+                var fundCurrentValueCellValue = e.Row?.Cells["FundCurrentValue"]?.Value;
+                var priceCell = e.Row?.Cells["Price"];
+                var priceCellValue = priceCell?.Value;
 
-                e.Row.ErrorText = "قیمت بیشتر از موجودی صندوق می باشد.";
-                _error = true;
+                if (priceCell == null) return;
 
-                await LoggerService.WarningAsync(this.Name, "rgv_BuyList_CellValidating", "موجودی صندوق کافی نیست",
-                    $" قیمت:{price}" + $", موجودی جاری صندوق: {fundCurrentValue}");
+                if (fundCurrentValueCellValue == null) return;
+                if (string.IsNullOrEmpty(fundCurrentValueCellValue?.ToString())) return;
+
+                var fundCurrentValue = decimal.Parse(fundCurrentValueCellValue.ToString());
+
+                if (priceCellValue == null) return;
+
+                var price = decimal.Parse(priceCellValue.ToString());
+
+                if (price != 0 && fundCurrentValue != 0 && price > fundCurrentValue
+                ) //&& _mode != CommonHelper.Mode.Update)
+                {
+                    priceCell.ErrorText = "موجودی صندوق کافی نیست";
+                    priceCell.Style.ForeColor = Color.Red;
+                    //priceCell.Style.BackColor = Color.Black;
+
+                    e.Row.ErrorText = "قیمت بیشتر از موجودی صندوق می باشد.";
+                    _error = true;
+
+                    await LoggerService.WarningAsync(this.Name, "rgv_BuyList_CellValidating", "موجودی صندوق کافی نیست",
+                        $" قیمت:{price}" + $", موجودی جاری صندوق: {fundCurrentValue}");
+                }
+                else
+                {
+                    priceCell.ErrorText = string.Empty;
+                    priceCell.Style.ForeColor = Color.Black;
+                    _error = false;
+                }
             }
-            else
+            catch (FormatException exception)
             {
-                priceCell.ErrorText = string.Empty;
-                priceCell.Style.ForeColor = Color.Black;
-                _error = false;
+                CommonHelper.ShowNotificationMessage("خطا در عملیات", exception.Message);
             }
+            catch (Exception exception)
+            {
+                CommonHelper.ShowNotificationMessage("خطا در عملیات", exception.Message);
+            }
+            
             // e.Cancel = true;
             //var column = e.Column as GridViewDataColumn;
             //if (e.Row is GridViewDataRowInfo && column != null)
@@ -1346,9 +1374,9 @@ namespace PersonalAccounting.UI
         {
             if (_mode == CommonHelper.Mode.Insert)
             {
-                btnRegister.Enabled = (txt_ExpenseDocumentDate.Text != string.Empty &&
+                btnRegister.Enabled = (rdp_ExpenseDocumentDate.Text != string.Empty &&
                                        !_error &&
-                                       txt_ExpenseDocumentDate.Text != CommonLibrary.Properties.Resources.DateMaskFormat);
+                                       rdp_ExpenseDocumentDate.Text != CommonLibrary.Properties.Resources.DateMaskFormat);
             }
         }
 
@@ -1426,7 +1454,7 @@ namespace PersonalAccounting.UI
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             lbl_DocumentId.Text = Convert.ToString(_documentId);
-            txt_ExpenseDocumentDate.Text = _expenseDocumentDate;
+            rdp_ExpenseDocumentDate.Text = _expenseDocumentDate;
             rgv_BuyList.DataSource = _expenses;
             //lbl_SumPrice.Text = "هزینه کل: " + _sumPrice.ToString("N0") + " ریال";
             CommonHelper.IndicatorLoading(_pictureBox, false);
@@ -1638,6 +1666,16 @@ namespace PersonalAccounting.UI
                 var message = $"The file cannot be opened on your system.\nError message: {ex.Message}";
                 RadMessageBox.Show(message, "Open File", MessageBoxButtons.OK, RadMessageIcon.Error);
             }
+        }
+
+        private void btn_IncDate_Click(object sender, EventArgs e)
+        {
+            rdp_ExpenseDocumentDate.Text = CommonHelper.IncDayOfDate(rdp_ExpenseDocumentDate.Text, 1, FormatDate.Fd4Year);
+        }
+
+        private void btn_DecDate_Click(object sender, EventArgs e)
+        {
+            rdp_ExpenseDocumentDate.Text = CommonHelper.DecDayOfDate(rdp_ExpenseDocumentDate.Text, 1, FormatDate.Fd4Year);
         }
     }
 }

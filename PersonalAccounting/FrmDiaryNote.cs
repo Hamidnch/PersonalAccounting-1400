@@ -15,7 +15,6 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
 namespace PersonalAccounting.UI
@@ -96,10 +95,10 @@ namespace PersonalAccounting.UI
                 CultureInfo.InvariantCulture);
             tsb_WordWrap.Checked = rtb_Note.WordWrap;
 
-            FillDropdownList(rddl_Users);
-            FillDropdownList(rddl_MentalConditions);
             FillDropdownList(rddl_WeatherConditions);
-            
+            FillDropdownList(rddl_MentalConditions);
+            FillDropdownList(rddl_Users);
+
             _selectedDate = PersianHelper.GetPersiaDateSimple(DateTime.Now);
             //txt_diaryNoteDate.Text = _selectedDate;
             rdp_diaryNoteDate.Text = _selectedDate;
@@ -179,7 +178,7 @@ namespace PersonalAccounting.UI
             rddl_Users.Visible = true;
             lbl_Users.Visible = true;
 
-            //rddl_Users.SelectedItem = rddl_Users.FindItemExact(InitialHelper.CurrentUser.UserName, false);
+             //rddl_Users.SelectedItem = rddl_Users.FindItemExact(InitialHelper.CurrentUser.UserName, false);
             //await ReturnDiaryNoteByDate(_selectedDate);
         }
 

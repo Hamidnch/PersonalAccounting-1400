@@ -164,7 +164,6 @@
     <Reference Include="Persia">
       <HintPath>..\..\Archive\PersonalAccounting\PersonalAccounting\bin\Debug\Persia.dll</HintPath>
     </Reference>
-    <Reference Include="RadControlSpy, Version=2019.2.508.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
     <Reference Include="StructureMap, Version=4.7.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\StructureMap.4.7.1\lib\net45\StructureMap.dll</HintPath>
     </Reference>
@@ -218,7 +217,6 @@
       <HintPath>..\..\Archive\PersonalAccounting\PersonalAccounting\bin\Debug\VistaButton.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="VisualStyleBuilder.Design, Version=2019.2.508.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FrmAbout.cs">

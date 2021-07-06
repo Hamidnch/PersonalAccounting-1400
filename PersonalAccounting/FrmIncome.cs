@@ -53,6 +53,17 @@ namespace PersonalAccounting.UI
             //this.rgv_Income.Columns["FundCurrentValue"].FormatString = "{0:n0}";
             //this.rgv_Income.Columns["FundOldValue"].FormatString = "{0:n0}";
 
+            rgv_Income.MasterTemplate.ShowTotals = true;
+            rgv_Income.EnableAlternatingRowColor = true;
+
+            var summaryFiItem = new GridViewSummaryItem("IncomePrice", "{0:n0}" + DefaultConstants.MoneyUnit,
+                GridAggregateFunction.Sum);
+
+            var summaryRowItem = new GridViewSummaryRowItem { summaryFiItem };
+            rgv_Income.SummaryRowsBottom.Add(summaryRowItem);
+            rgv_Income.MasterView.SummaryRows[0].PinPosition = PinnedRowPosition.Bottom;
+            rgv_Income.MasterTemplate.BottomPinnedRowsMode = GridViewBottomPinnedRowsMode.Float;
+
             BindGrid();
             FillDropdownList(rddl_IncomeTypes);
             FillDropdownList(rddl_Funds);

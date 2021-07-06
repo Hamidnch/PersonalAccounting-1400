@@ -108,6 +108,17 @@ namespace PersonalAccounting.UI.Helper
             textBox.Select();
             textBox.SelectAll();
         }
+        public static void SetPersianDateToTextBoxAndSelectAll(this RadDateTimePicker textBox, bool enable = true, bool isSelectAll = true)
+        {
+            var selectedDate = PersianHelper.GetPersiaDateSimple(DateTime.Now);
+            textBox.Enabled = enable;
+            textBox.Text = selectedDate;
+
+            if (!isSelectAll) return;
+
+            textBox.Focus();
+            textBox.Select();
+        }
 
         public static void InstallFont()
         {

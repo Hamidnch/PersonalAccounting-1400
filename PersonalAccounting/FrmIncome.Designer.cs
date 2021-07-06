@@ -400,8 +400,6 @@
             this.rgv_Income.BackColor = System.Drawing.SystemColors.Control;
             this.rgv_Income.Cursor = System.Windows.Forms.Cursors.Default;
             this.rgv_Income.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rgv_Income.EnableHotTracking = false;
-            this.rgv_Income.EnableKineticScrolling = true;
             this.rgv_Income.EnterKeyMode = Telerik.WinControls.UI.RadGridViewEnterKeyMode.EnterMovesToNextRow;
             this.rgv_Income.Font = new System.Drawing.Font("Tahoma", 9F);
             this.rgv_Income.ForeColor = System.Drawing.SystemColors.ControlText;

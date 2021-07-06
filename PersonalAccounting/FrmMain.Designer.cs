@@ -117,7 +117,7 @@ namespace PersonalAccounting.UI
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(0, 17);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(0, 16);
             this.toolStripStatusLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // rrb_Main
@@ -390,7 +390,7 @@ namespace PersonalAccounting.UI
             this.rt_PrimaryDefinitions.EnableBorderHighlight = true;
             this.rt_PrimaryDefinitions.EnableFocusBorder = true;
             this.rt_PrimaryDefinitions.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.rt_PrimaryDefinitions.IsSelected = false;
+            this.rt_PrimaryDefinitions.IsSelected = true;
             this.rt_PrimaryDefinitions.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.rbg_MeasurementUnitDetails,
             this.rbg_BankDetails,
@@ -1110,7 +1110,7 @@ namespace PersonalAccounting.UI
             this.rt_ReportCollection.Alignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.rt_ReportCollection.AutoSize = true;
             this.rt_ReportCollection.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rt_ReportCollection.IsSelected = true;
+            this.rt_ReportCollection.IsSelected = false;
             this.rt_ReportCollection.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.rbg_ExpenseReportDetails,
             this.rbg_DiaryNoteReportDetails});
@@ -1453,7 +1453,7 @@ namespace PersonalAccounting.UI
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1193, 645);
             this.Controls.Add(this.rrb_Main);

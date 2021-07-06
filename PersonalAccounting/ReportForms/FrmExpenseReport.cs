@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using Telerik.WinControls;
 using Telerik.WinControls.UI;
 
-namespace PersonalAccounting.UI
+namespace PersonalAccounting.UI.ReportForms
 {
     public partial class FrmExpenseReport : BaseForm
     {

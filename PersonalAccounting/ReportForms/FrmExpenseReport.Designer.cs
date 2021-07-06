@@ -1,5 +1,5 @@
 ﻿
-namespace PersonalAccounting.UI
+namespace PersonalAccounting.UI.ReportForms
 {
     partial class FrmExpenseReport
     {

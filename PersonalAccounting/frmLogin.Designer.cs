@@ -31,14 +31,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.pnl_Data = new Klik.Windows.Forms.v1.EntryLib.ELPanel();
             this.txt_Password = new System.Windows.Forms.TextBox();
-            this.txt_UserName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pic_Login = new System.Windows.Forms.PictureBox();
             this.btn_Enter = new VistaButton.VistaButton();
             this.btn_Exit = new VistaButton.VistaButton();
-            this.elEntryBoxButton1 = new Klik.Windows.Forms.v1.EntryLib.ELEntryBoxButton();
+            this.elEntryBoxButton1 = ((Klik.Windows.Forms.v1.EntryLib.ELEntryBoxButton)(new Klik.Windows.Forms.v1.EntryLib.ELEntryBoxButton()));
+            this.txt_UserName = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pnl_Data)).BeginInit();
             this.pnl_Data.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Login)).BeginInit();
@@ -49,8 +49,8 @@
             this.pnl_Data.BackgroundStyle.GradientAngle = 45F;
             this.pnl_Data.BackgroundStyle.GradientEndColor = System.Drawing.Color.LightSteelBlue;
             this.pnl_Data.BackgroundStyle.GradientStartColor = System.Drawing.Color.White;
-            this.pnl_Data.Controls.Add(this.txt_Password);
             this.pnl_Data.Controls.Add(this.txt_UserName);
+            this.pnl_Data.Controls.Add(this.txt_Password);
             this.pnl_Data.Controls.Add(this.label3);
             this.pnl_Data.Controls.Add(this.label2);
             this.pnl_Data.Controls.Add(this.label1);
@@ -60,7 +60,6 @@
             this.pnl_Data.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_Data.Location = new System.Drawing.Point(0, 0);
             this.pnl_Data.Name = "pnl_Data";
-            this.pnl_Data.Office2007Scheme = Klik.Windows.Forms.v1.Common.Office2007Schemes.ModernSilver;
             this.pnl_Data.Size = new System.Drawing.Size(373, 172);
             this.pnl_Data.TabIndex = 3;
             this.pnl_Data.VisualStyle = Klik.Windows.Forms.v1.Common.ControlVisualStyles.Custom;
@@ -70,32 +69,19 @@
             this.txt_Password.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_Password.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_Password.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txt_Password.Location = new System.Drawing.Point(101, 71);
+            this.txt_Password.Location = new System.Drawing.Point(101, 62);
             this.txt_Password.Name = "txt_Password";
             this.txt_Password.PasswordChar = '*';
             this.txt_Password.Size = new System.Drawing.Size(187, 26);
             this.txt_Password.TabIndex = 1;
-            this.txt_Password.Text = "Element**";
             this.txt_Password.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txt_Password.UseSystemPasswordChar = true;
-            // 
-            // txt_UserName
-            // 
-            this.txt_UserName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_UserName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_UserName.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txt_UserName.Location = new System.Drawing.Point(101, 30);
-            this.txt_UserName.Name = "txt_UserName";
-            this.txt_UserName.Size = new System.Drawing.Size(187, 26);
-            this.txt_UserName.TabIndex = 0;
-            this.txt_UserName.Text = "Admin";
-            this.txt_UserName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
             // 
             this.label3.BackColor = System.Drawing.SystemColors.Control;
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Location = new System.Drawing.Point(11, 122);
+            this.label3.Location = new System.Drawing.Point(11, 124);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(354, 2);
             this.label3.TabIndex = 23;
@@ -108,7 +94,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label2.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label2.Location = new System.Drawing.Point(303, 76);
+            this.label2.Location = new System.Drawing.Point(303, 67);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 17);
             this.label2.TabIndex = 19;
@@ -121,7 +107,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label1.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label1.Location = new System.Drawing.Point(303, 35);
+            this.label1.Location = new System.Drawing.Point(303, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 17);
             this.label1.TabIndex = 19;
@@ -133,7 +119,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pic_Login.BackColor = System.Drawing.Color.Transparent;
             this.pic_Login.Image = ((System.Drawing.Image)(resources.GetObject("pic_Login.Image")));
-            this.pic_Login.Location = new System.Drawing.Point(11, 18);
+            this.pic_Login.Location = new System.Drawing.Point(11, 19);
             this.pic_Login.Name = "pic_Login";
             this.pic_Login.Size = new System.Drawing.Size(78, 75);
             this.pic_Login.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -153,7 +139,7 @@
             this.btn_Enter.HighlightColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.btn_Enter.Image = ((System.Drawing.Image)(resources.GetObject("btn_Enter.Image")));
             this.btn_Enter.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_Enter.Location = new System.Drawing.Point(286, 132);
+            this.btn_Enter.Location = new System.Drawing.Point(284, 132);
             this.btn_Enter.Name = "btn_Enter";
             this.btn_Enter.Size = new System.Drawing.Size(82, 32);
             this.btn_Enter.TabIndex = 2;
@@ -172,7 +158,7 @@
             this.btn_Exit.HighlightColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.btn_Exit.Image = ((System.Drawing.Image)(resources.GetObject("btn_Exit.Image")));
             this.btn_Exit.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_Exit.Location = new System.Drawing.Point(202, 132);
+            this.btn_Exit.Location = new System.Drawing.Point(200, 132);
             this.btn_Exit.Name = "btn_Exit";
             this.btn_Exit.Size = new System.Drawing.Size(82, 32);
             this.btn_Exit.TabIndex = 3;
@@ -184,10 +170,20 @@
             this.elEntryBoxButton1.Text = "(F4)...";
             this.elEntryBoxButton1.TextStyle.Text = "(F4)...";
             // 
+            // txt_UserName
+            // 
+            this.txt_UserName.Location = new System.Drawing.Point(101, 26);
+            this.txt_UserName.Name = "txt_UserName";
+            this.txt_UserName.Size = new System.Drawing.Size(187, 24);
+            this.txt_UserName.TabIndex = 25;
+            this.txt_UserName.Text = "Admin";
+            this.txt_UserName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(373, 172);
             this.Controls.Add(this.pnl_Data);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));

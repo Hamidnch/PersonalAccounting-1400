@@ -41,20 +41,29 @@ namespace PersonalAccounting.BLL.Service
             //{
             //    return await DiaryNotes.AsNoTracking().FirstOrDefaultAsync(dn => dn.Date == date);
             //}
+            try
+            {
+                var res = await DiaryNotes.AsNoTracking()
+                    .FirstOrDefaultAsync(dn => dn.Date == date && dn.UserId == userId);
+                return res;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                //throw;
+                return null;
+            }
 
-            var res = await DiaryNotes.AsNoTracking()
-                .FirstOrDefaultAsync(dn => dn.Date == date && dn.UserId == userId);
-            return res;
         }
 
-        public DiaryNote LoadByDate(DateTime date, int userId)
+        public async Task<DiaryNote> LoadByDate(DateTime date, int userId)
         {
             //if (createdBy == null)
             //{
             //    DiaryNotes.AsNoTracking().FirstOrDefault(dn => dn.Date == date);
             //}
 
-            return DiaryNotes.AsNoTracking().FirstOrDefault(dn => dn.Date == date && dn.UserId == userId);
+            return await DiaryNotes.AsNoTracking().FirstOrDefaultAsync(dn => dn.Date == date && dn.UserId == userId);
         }
 
         public IList<ViewModelLoadAllDiaryNoteReport> GetAllDiaryNotes(DateTime? date = null, int? mentalConditionId = null, int? weatherConditionId = null,
